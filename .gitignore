@@ -34,9 +34,6 @@ Thumbs.db
 # Docker volumes (local postgres data)
 postgres_data/
 
-# GeoJSON (large file, user-provided)
-backend/app/seed/data/guatemala.geojson
-
 # Claude
 .claude/settings.local.json
 
