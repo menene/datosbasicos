@@ -1,0 +1,44 @@
+# Environment
+.env
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# Alembic
+backend/alembic/versions/*.pyc
+
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker volumes (local postgres data)
+postgres_data/
+
+# GeoJSON (large file, user-provided)
+backend/app/seed/data/guatemala.geojson
+
+# Claude
+.claude/settings.local.json
+
+# Docker
+docker-compose.yml

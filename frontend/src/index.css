@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 30% 97%;       /* crema */
+    --foreground: 150 60% 10%;      /* verde muy oscuro */
+    --card: 0 0% 100%;
+    --card-foreground: 150 60% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 150 60% 10%;
+    --primary: 145 58% 26%;         /* selva #1B6B3A */
+    --primary-foreground: 0 0% 98%;
+    --secondary: 40 30% 92%;
+    --secondary-foreground: 150 60% 15%;
+    --muted: 40 20% 92%;
+    --muted-foreground: 150 10% 45%;
+    --accent: 46 80% 59%;           /* maiz #E8C547 */
+    --accent-foreground: 150 60% 10%;
+    --destructive: 15 72% 30%;      /* tierra */
+    --destructive-foreground: 0 0% 98%;
+    --border: 40 20% 85%;
+    --input: 40 20% 85%;
+    --ring: 145 58% 26%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 150 30% 8%;
+    --foreground: 40 30% 95%;
+    --card: 150 25% 11%;
+    --card-foreground: 40 30% 95%;
+    --popover: 150 25% 11%;
+    --popover-foreground: 40 30% 95%;
+    --primary: 145 45% 45%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 150 20% 18%;
+    --secondary-foreground: 40 30% 90%;
+    --muted: 150 20% 18%;
+    --muted-foreground: 150 10% 60%;
+    --accent: 46 75% 52%;
+    --accent-foreground: 150 60% 10%;
+    --destructive: 15 72% 40%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 150 20% 20%;
+    --input: 150 20% 20%;
+    --ring: 145 45% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+}
