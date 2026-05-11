@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import type { Departamento, DepartamentoDetail, IndicadorResumen, VariableKey } from "@/types/departamento";
 
-const API = import.meta.env.VITE_API_URL ?? "/api/v1";
+const API = import.meta.env.VITE_API_URL || "/api/v1";
 
 async function fetchJson<T>(url: string): Promise<T> {
   const res = await fetch(url);
