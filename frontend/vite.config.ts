@@ -12,6 +12,7 @@ export default defineConfig({
   server: {
     host: "0.0.0.0",
     port: 5173,
+    allowedHosts: ["datosbasicos.cookielab.cc"],
     proxy: {
       "/api": {
         target: "http://backend:8000",
