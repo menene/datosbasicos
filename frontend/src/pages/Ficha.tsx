@@ -14,6 +14,7 @@ import { useFiltros } from "@/store/filtros";
 import { formatearValor } from "@/lib/utils";
 import { VARIABLES, VARIABLES_ALERTA } from "@/types/departamento";
 import type { VariableKey } from "@/types/departamento";
+import DepartamentoShape from "@/components/ficha/DepartamentoShape";
 
 function KpiCard({
   label,
@@ -93,20 +94,23 @@ export default function FichaPage() {
   if (!slug) {
     return (
       <div className="max-w-screen-2xl mx-auto px-6 py-12">
-        <h1 className="font-display font-semibold text-2xl text-foreground mb-6">
+        <h1 className="font-display font-semibold text-2xl text-foreground mb-2">
           Ficha departamental
         </h1>
-        <p className="text-sm text-muted-foreground font-body mb-4">
+        <p className="text-sm text-muted-foreground font-body mb-6">
           Selecciona un departamento:
         </p>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 max-w-2xl">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
           {deptOptions?.map((d) => (
             <button
               key={d.slug}
               onClick={() => navigate(`/ficha/${d.slug}`)}
-              className="text-left px-3 py-2 rounded-md border border-border text-sm font-body hover:bg-muted hover:text-foreground text-muted-foreground transition-colors"
+              className="group flex flex-col items-center gap-2 p-4 rounded-lg border border-border bg-white hover:border-selva hover:shadow-sm transition-all"
             >
-              {d.nombre}
+              <DepartamentoShape slug={d.slug} size={96} />
+              <span className="text-sm font-body font-medium text-muted-foreground group-hover:text-selva text-center transition-colors">
+                {d.nombre}
+              </span>
             </button>
           ))}
         </div>
@@ -148,31 +152,38 @@ export default function FichaPage() {
       </button>
 
       {/* Header */}
-      <div className="flex flex-col gap-1">
-        <h1 className="font-display font-semibold text-3xl text-foreground leading-tight">
-          {depto.nombre}
-        </h1>
-        <div className="flex items-center gap-4 text-sm text-muted-foreground font-body mt-1">
-          {depto.region && (
-            <span className="flex items-center gap-1">
-              <MapPin size={13} />
-              {depto.region}
+      <div className="flex flex-col-reverse sm:flex-row sm:items-start sm:justify-between gap-6">
+        <div className="flex flex-col gap-1 flex-1 min-w-0">
+          <h1 className="font-display font-semibold text-3xl text-foreground leading-tight">
+            {depto.nombre}
+          </h1>
+          <div className="flex items-center gap-4 text-sm text-muted-foreground font-body mt-1">
+            {depto.region && (
+              <span className="flex items-center gap-1">
+                <MapPin size={13} />
+                {depto.region}
+              </span>
+            )}
+            {depto.superficie_km2 && (
+              <span>
+                {new Intl.NumberFormat("es-GT").format(depto.superficie_km2)} km²
+              </span>
+            )}
+            <span className="text-xs bg-muted px-2 py-0.5 rounded-full">
+              Datos {anio}
             </span>
+          </div>
+          {depto.descripcion && (
+            <p className="text-sm text-muted-foreground font-body mt-3 leading-relaxed max-w-2xl border-l-2 border-border pl-3">
+              {depto.descripcion}
+            </p>
           )}
-          {depto.superficie_km2 && (
-            <span>
-              {new Intl.NumberFormat("es-GT").format(depto.superficie_km2)} km²
-            </span>
-          )}
-          <span className="text-xs bg-muted px-2 py-0.5 rounded-full">
-            Datos {anio}
-          </span>
         </div>
-        {depto.descripcion && (
-          <p className="text-sm text-muted-foreground font-body mt-3 leading-relaxed max-w-2xl border-l-2 border-border pl-3">
-            {depto.descripcion}
-          </p>
-        )}
+        <DepartamentoShape
+          slug={depto.slug}
+          size={160}
+          className="shrink-0 self-start"
+        />
       </div>
 
       {/* KPI grid */}

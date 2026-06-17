@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { Map, BarChart2, Table2, FileText, BookMarked, ArrowRight } from "lucide-react";
+import { Map, BarChart2, Table2, FileText, BookMarked, ArrowRight, Calendar } from "lucide-react";
+import { ANIOS_DISPONIBLES } from "@/store/filtros";
 
 const SECTIONS = [
   {
@@ -8,7 +9,7 @@ const SECTIONS = [
     label: "Mapa",
     color: "#1B6B3A",
     bg: "#D6ECD8",
-    desc: "Choropleth interactivo de los 22 departamentos. Explora cualquier indicador en el territorio.",
+    desc: "Mapa interactivo de los 22 departamentos. Explora cualquier indicador en el territorio.",
   },
   {
     to: "/graficas",
@@ -24,7 +25,7 @@ const SECTIONS = [
     label: "Tabla",
     color: "#6B3A1B",
     bg: "#FEE9D0",
-    desc: "Todos los indicadores en una tabla ordenable y filtrable. Ideal para análisis rápido.",
+    desc: "Todos los indicadores en una tabla ordenable y filtrable. Ideal para análisis rápido y exportable a Excel",
   },
   {
     to: "/ficha",
@@ -34,14 +35,14 @@ const SECTIONS = [
     bg: "#EDE9FE",
     desc: "Perfil completo de cada departamento: indicadores, gráficas y datos históricos.",
   },
-  {
-    to: "/libro",
-    icon: BookMarked,
-    label: "Libro",
-    color: "#854D0E",
-    bg: "#FEF9C3",
-    desc: "Descarga el atlas estadístico en PDF. Referencia completa para investigadores y tomadores de decisiones.",
-  },
+//   {
+//     to: "/libro",
+//     icon: BookMarked,
+//     label: "Libro",
+//     color: "#854D0E",
+//     bg: "#FEF9C3",
+//     desc: "Descarga el atlas estadístico en PDF. Referencia completa para investigadores y tomadores de decisiones.",
+//   },
 ];
 
 const HIGHLIGHTS = [
@@ -86,11 +87,20 @@ export default function InicioPage() {
               <span className="text-maiz">2026</span>
             </h1>
 
-            <p className="text-muted-foreground font-body text-lg leading-relaxed mb-8 max-w-xl">
+            <p className="text-muted-foreground font-body text-lg leading-relaxed mb-6 max-w-xl">
               Plataforma de datos abiertos con indicadores demográficos, sociales y
               económicos de los 22 departamentos de Guatemala. Visualiza, compara
               y descarga la información.
             </p>
+
+            <div className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-maiz/10 border border-maiz/30 mb-8">
+              <Calendar size={15} className="text-tierra shrink-0" />
+              <p className="text-sm font-body text-foreground">
+                <span className="font-semibold">Nuevo:</span> compara los datos de{" "}
+                {ANIOS_DISPONIBLES.join(" y ")} usando el selector de año en la
+                barra superior.
+              </p>
+            </div>
 
             <div className="flex flex-wrap gap-3">
               <button
@@ -128,7 +138,7 @@ export default function InicioPage() {
           Herramientas disponibles
         </h2>
         <p className="text-sm text-muted-foreground font-body mb-8">
-          Cinco formas de explorar los datos de Guatemala.
+          Muchas formas de explorar los datos de Guatemala.
         </p>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">

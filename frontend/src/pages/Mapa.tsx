@@ -22,7 +22,7 @@ export default function MapaPage() {
       <aside className="w-72 shrink-0 flex flex-col border-l border-border bg-white overflow-hidden">
         {/* Variable selector */}
         <div className="p-4 border-b border-border">
-            <p>Selecciona una variable para visualizarla en el mapa</p>
+            <p className="mb-5">Selecciona una variable para visualizarla en el mapa 👇🏽</p>
           <label className="block text-xs font-medium text-muted-foreground font-body mb-1.5">
             Variable
           </label>
@@ -55,9 +55,9 @@ export default function MapaPage() {
 
         {/* Placeholder cuando no hay selección */}
         {!departamentoActivo && (
-          <div className="flex-1 flex items-center justify-center p-6">
+          <div className="flex-1 flex items-center justify-center p-3">
             <p className="text-xs text-muted-foreground text-center font-body leading-relaxed">
-              Haz clic en un departamento para ver sus indicadores
+              👈🏽 Haz clic en un departamento para ver sus indicadores
             </p>
           </div>
         )}
