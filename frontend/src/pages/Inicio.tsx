@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Map, BarChart2, Table2, FileText, BookMarked, ArrowRight, Calendar } from "lucide-react";
+import { Map, BarChart2, Table2, FileText, BookMarked, ArrowRight, Calendar, GitCompareArrows } from "lucide-react";
 import { ANIOS_DISPONIBLES } from "@/store/filtros";
 
 const SECTIONS = [
@@ -34,6 +34,14 @@ const SECTIONS = [
     color: "#5B21B6",
     bg: "#EDE9FE",
     desc: "Perfil completo de cada departamento: indicadores, gráficas y datos históricos.",
+  },
+  {
+    to: "/tabla",
+    icon: GitCompareArrows,
+    label: "Comparativo entre años",
+    color: "#8B4513",
+    bg: "#FDF1D8",
+    desc: "Compara los indicadores entre 2005 y 2025 lado a lado en tabla, gráficas y fichas. Selecciona los años desde cada sección.",
   },
 //   {
 //     to: "/libro",
@@ -96,9 +104,10 @@ export default function InicioPage() {
             <div className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-maiz/10 border border-maiz/30 mb-8">
               <Calendar size={15} className="text-tierra shrink-0" />
               <p className="text-sm font-body text-foreground">
-                <span className="font-semibold">Nuevo:</span> compara los datos de{" "}
-                {ANIOS_DISPONIBLES.join(" y ")} usando el selector de año en la
-                barra superior.
+                <span className="font-semibold">Nuevo:</span> compara los
+                indicadores de {ANIOS_DISPONIBLES.join(" y ")} lado a lado en
+                tabla, gráficas y fichas para ver cómo ha cambiado cada
+                departamento.
               </p>
             </div>
 

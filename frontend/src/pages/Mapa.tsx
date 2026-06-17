@@ -3,12 +3,14 @@ import { ChevronDown } from "lucide-react";
 import MapaChoropleth from "@/components/mapa/MapaChoropleth";
 import PanelDepartamento from "@/components/mapa/PanelDepartamento";
 import LeyendaColor from "@/components/mapa/LeyendaColor";
-import { useFiltros } from "@/store/filtros";
+import { ANIOS_DISPONIBLES, useFiltros } from "@/store/filtros";
 import { useSeleccion } from "@/store/seleccion";
 import { VARIABLES } from "@/types/departamento";
 
 export default function MapaPage() {
   const { variableActiva, setVariable } = useFiltros();
+  const anioMapa = useFiltros((s) => s.anioMapa);
+  const setAnioMapa = useFiltros((s) => s.setAnioMapa);
   const { departamentoActivo } = useSeleccion();
 
   return (
@@ -20,28 +22,54 @@ export default function MapaPage() {
 
       {/* ── Sidebar ── */}
       <aside className="w-72 shrink-0 flex flex-col border-l border-border bg-white overflow-hidden">
-        {/* Variable selector */}
-        <div className="p-4 border-b border-border">
-            <p className="mb-5">Selecciona una variable para visualizarla en el mapa 👇🏽</p>
-          <label className="block text-xs font-medium text-muted-foreground font-body mb-1.5">
-            Variable
-          </label>
-          <div className="relative">
-            <select
-              value={variableActiva}
-              onChange={(e) => setVariable(e.target.value as typeof variableActiva)}
-              className="w-full appearance-none bg-muted border border-border rounded-md px-3 py-2 text-sm font-body text-foreground focus:outline-none focus:ring-2 focus:ring-selva cursor-pointer pr-8"
-            >
-              {VARIABLES.map((v) => (
-                <option key={v.key} value={v.key}>
-                  {v.label}
-                </option>
-              ))}
-            </select>
-            <ChevronDown
-              size={14}
-              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none"
-            />
+        {/* Variable + year selectors */}
+        <div className="p-4 border-b border-border space-y-4">
+          <p>Selecciona una variable para visualizarla en el mapa 👇🏽</p>
+
+          <div>
+            <label className="block text-xs font-medium text-muted-foreground font-body mb-1.5">
+              Variable
+            </label>
+            <div className="relative">
+              <select
+                value={variableActiva}
+                onChange={(e) => setVariable(e.target.value as typeof variableActiva)}
+                className="w-full appearance-none bg-muted border border-border rounded-md px-3 py-2 text-sm font-body text-foreground focus:outline-none focus:ring-2 focus:ring-selva cursor-pointer pr-8"
+              >
+                {VARIABLES.map((v) => (
+                  <option key={v.key} value={v.key}>
+                    {v.label}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown
+                size={14}
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-xs font-medium text-muted-foreground font-body mb-1.5">
+              Año
+            </label>
+            <div className="relative">
+              <select
+                value={anioMapa}
+                onChange={(e) => setAnioMapa(Number(e.target.value))}
+                className="w-full appearance-none bg-muted border border-border rounded-md px-3 py-2 text-sm font-body text-foreground focus:outline-none focus:ring-2 focus:ring-selva cursor-pointer pr-8"
+              >
+                {ANIOS_DISPONIBLES.map((a) => (
+                  <option key={a} value={a}>
+                    {a}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown
+                size={14}
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none"
+              />
+            </div>
           </div>
         </div>
 

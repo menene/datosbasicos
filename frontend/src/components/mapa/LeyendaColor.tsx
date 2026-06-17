@@ -9,7 +9,8 @@ import { formatearValor } from "@/lib/utils";
 const STEPS = 5;
 
 export default function LeyendaColor() {
-  const { variableActiva, anio } = useFiltros();
+  const variableActiva = useFiltros((s) => s.variableActiva);
+  const anio = useFiltros((s) => s.anioMapa);
   const { data: resumen } = useResumenIndicadores(anio);
 
   const variableInfo = VARIABLES.find((v) => v.key === variableActiva);

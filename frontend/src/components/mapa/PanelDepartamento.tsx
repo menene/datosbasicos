@@ -51,7 +51,7 @@ function Skeleton() {
 
 export default function PanelDepartamento() {
   const { departamentoActivo, setDepartamentoActivo } = useSeleccion();
-  const { anio } = useFiltros();
+  const anio = useFiltros((s) => s.anioMapa);
   const { data: depto, isLoading } = useDepartamento(departamentoActivo, anio);
 
   if (!departamentoActivo) return null;

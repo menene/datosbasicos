@@ -1,5 +1,20 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQueries, useQuery } from "@tanstack/react-query";
 import type { Departamento, DepartamentoDetail, IndicadorResumen, VariableKey } from "@/types/departamento";
+
+export interface DepartamentosPorAnio {
+  anio: number;
+  data: Departamento[];
+}
+
+export interface DepartamentoPorAnio {
+  anio: number;
+  data: DepartamentoDetail | undefined;
+}
+
+export interface ResumenPorAnio {
+  anio: number;
+  data: IndicadorResumen[];
+}
 
 const API = import.meta.env.VITE_API_URL || "/api/v1";
 
@@ -45,5 +60,77 @@ export function useResumenIndicadores(anio = 2025) {
     queryKey: ["indicadores-resumen", anio],
     queryFn: () => fetchJson<IndicadorResumen[]>(`${API}/indicadores/resumen?anio=${anio}`),
     staleTime: 10 * 60 * 1000,
+  });
+}
+
+// ── Multi-year variants ─────────────────────────────────────────────────────
+
+export function useDepartamentosMulti(
+  anios: number[],
+  extra: Omit<ListParams, "anio"> = {}
+) {
+  const { region, orden, dir = "asc" } = extra;
+  return useQueries({
+    queries: anios.map((anio) => {
+      const qs = new URLSearchParams();
+      if (region) qs.set("region", region);
+      if (orden) qs.set("orden", orden);
+      qs.set("dir", dir);
+      qs.set("anio", String(anio));
+      return {
+        queryKey: ["departamentos", { region, orden, dir, anio }],
+        queryFn: () => fetchJson<Departamento[]>(`${API}/departamentos?${qs}`),
+        staleTime: 5 * 60 * 1000,
+      };
+    }),
+    combine: (results) => ({
+      data: results.map((r, i) => ({
+        anio: anios[i],
+        data: r.data ?? [],
+      })) as DepartamentosPorAnio[],
+      isLoading: results.some((r) => r.isLoading),
+      isError: results.some((r) => r.isError),
+    }),
+  });
+}
+
+export function useDepartamentoMulti(slug: string | null, anios: number[]) {
+  return useQueries({
+    queries: anios.map((anio) => ({
+      queryKey: ["departamento", slug, anio],
+      queryFn: () =>
+        fetchJson<DepartamentoDetail>(
+          `${API}/departamentos/${slug}?anio=${anio}`
+        ),
+      enabled: !!slug,
+      staleTime: 5 * 60 * 1000,
+    })),
+    combine: (results) => ({
+      data: results.map((r, i) => ({
+        anio: anios[i],
+        data: r.data,
+      })) as DepartamentoPorAnio[],
+      isLoading: results.some((r) => r.isLoading),
+      isError: results.some((r) => r.isError),
+    }),
+  });
+}
+
+export function useResumenIndicadoresMulti(anios: number[]) {
+  return useQueries({
+    queries: anios.map((anio) => ({
+      queryKey: ["indicadores-resumen", anio],
+      queryFn: () =>
+        fetchJson<IndicadorResumen[]>(`${API}/indicadores/resumen?anio=${anio}`),
+      staleTime: 10 * 60 * 1000,
+    })),
+    combine: (results) => ({
+      data: results.map((r, i) => ({
+        anio: anios[i],
+        data: r.data ?? [],
+      })) as ResumenPorAnio[],
+      isLoading: results.some((r) => r.isLoading),
+      isError: results.some((r) => r.isError),
+    }),
   });
 }

@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, NavLink, Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Map, BarChart2, Table2, FileText, Users, Calendar, ChevronDown } from "lucide-react";
+import { Map, BarChart2, Table2, FileText, Users } from "lucide-react";
 
 import InicioPage from "@/pages/Inicio";
 import MapaPage from "@/pages/Mapa";
@@ -9,7 +9,6 @@ import TablaPage from "@/pages/Tabla";
 import FichaPage from "@/pages/Ficha";
 import LibroPage from "@/pages/Libro";
 import AcercaPage from "@/pages/Acerca";
-import { ANIOS_DISPONIBLES, useFiltros } from "@/store/filtros";
 
 const NAV_ITEMS = [
   { to: "/mapa", label: "Mapa", icon: Map },
@@ -19,34 +18,6 @@ const NAV_ITEMS = [
 //   { to: "/libro", label: "Libro", icon: BookMarked },
   { to: "/acerca", label: "Acerca", icon: Users },
 ];
-
-function SelectorAnio() {
-  const { anio, setAnio } = useFiltros();
-  return (
-    <div className="relative">
-      <Calendar
-        size={13}
-        className="absolute left-2.5 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none"
-      />
-      <select
-        value={anio}
-        onChange={(e) => setAnio(Number(e.target.value))}
-        aria-label="Año de los datos"
-        className="appearance-none pl-7 pr-7 py-1.5 text-sm font-body font-medium border border-border rounded-md bg-background text-foreground hover:bg-muted/50 focus:outline-none focus:ring-1 focus:ring-selva cursor-pointer"
-      >
-        {ANIOS_DISPONIBLES.map((a) => (
-          <option key={a} value={a}>
-            {a}
-          </option>
-        ))}
-      </select>
-      <ChevronDown
-        size={13}
-        className="absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none"
-      />
-    </div>
-  );
-}
 
 function AppShell() {
   const location = useLocation();
@@ -80,10 +51,6 @@ function AppShell() {
               </NavLink>
             ))}
           </nav>
-
-          <div className="ml-auto">
-            <SelectorAnio />
-          </div>
         </div>
       </header>
 

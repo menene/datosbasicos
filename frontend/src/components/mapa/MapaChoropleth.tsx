@@ -73,7 +73,8 @@ interface TooltipState {
 
 export default function MapaChoropleth() {
   const { data: geoData, isLoading: geoLoading, isError: geoError } = useGeoData();
-  const { variableActiva, anio } = useFiltros();
+  const variableActiva = useFiltros((s) => s.variableActiva);
+  const anio = useFiltros((s) => s.anioMapa);
   const { departamentoActivo, setDepartamentoActivo } = useSeleccion();
   const { data: departamentos } = useDepartamentos({ anio });
   const { data: resumen } = useResumenIndicadores(anio);
