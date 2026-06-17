@@ -42,6 +42,7 @@ class Indicador(Base):
     # Familia
     fecundidad: Mapped[float | None] = mapped_column(Numeric(4, 2))
     crecimiento_anual_pct: Mapped[float | None] = mapped_column(Numeric(4, 2))
+    tiempo_duplicacion_anios: Mapped[float | None] = mapped_column(Numeric(5, 2))
 
     # Desarrollo
     idh_ranking: Mapped[int | None] = mapped_column(SmallInteger)

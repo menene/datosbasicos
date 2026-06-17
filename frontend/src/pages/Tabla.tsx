@@ -12,11 +12,10 @@ import {
 import { ArrowUpDown, ArrowUp, ArrowDown, ExternalLink, Search, Download } from "lucide-react";
 import * as XLSX from "xlsx";
 import { useDepartamentos } from "@/api/departamentos";
+import { useFiltros } from "@/store/filtros";
 import { formatearValor } from "@/lib/utils";
 import { VARIABLES } from "@/types/departamento";
 import type { Departamento } from "@/types/departamento";
-
-const ANIO = 2025;
 
 const COLUMNAS_TEXTO = new Set(["nombre", "region"]);
 const esNumerica = (id: string) => !COLUMNAS_TEXTO.has(id);
@@ -33,10 +32,11 @@ function SortIcon({ sorted }: { sorted: false | "asc" | "desc" }) {
 
 export default function TablaPage() {
   const navigate = useNavigate();
+  const anio = useFiltros((s) => s.anio);
   const [sorting, setSorting] = useState<SortingState>([]);
   const [globalFilter, setGlobalFilter] = useState("");
 
-  const { data: departamentos, isLoading } = useDepartamentos({ anio: ANIO });
+  const { data: departamentos, isLoading } = useDepartamentos({ anio });
 
   const data = useMemo<Row[]>(
     () => (departamentos as Row[]) ?? [],
@@ -135,8 +135,8 @@ export default function TablaPage() {
     ws["!cols"] = colWidths;
 
     const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, `Departamentos ${ANIO}`);
-    XLSX.writeFile(wb, `guatemala-departamentos-${ANIO}.xlsx`);
+    XLSX.utils.book_append_sheet(wb, ws, `Departamentos ${anio}`);
+    XLSX.writeFile(wb, `guatemala-departamentos-${anio}.xlsx`);
   };
 
   if (isLoading) {
@@ -160,7 +160,7 @@ export default function TablaPage() {
             Datos por departamento
           </h1>
           <p className="text-xs text-muted-foreground font-body mt-0.5">
-            {table.getRowModel().rows.length} de {data.length} departamentos · {ANIO}
+            {table.getRowModel().rows.length} de {data.length} departamentos · {anio}
           </p>
         </div>
         <div className="flex items-center gap-2">

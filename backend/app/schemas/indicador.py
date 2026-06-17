@@ -22,6 +22,7 @@ class IndicadorSchema(BaseModel):
 
     fecundidad: float | None = None
     crecimiento_anual_pct: float | None = None
+    tiempo_duplicacion_anios: float | None = None
 
     idh_ranking: int | None = None
 

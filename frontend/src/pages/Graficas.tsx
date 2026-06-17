@@ -19,8 +19,6 @@ import type { VariableKey } from "@/types/departamento";
 import { formatearValor } from "@/lib/utils";
 import { getColorForValue } from "@/lib/colores";
 
-const ANIO = 2025;
-
 // ── Variable selector ────────────────────────────────────────────────────────
 
 function VarSelect({
@@ -97,13 +95,13 @@ function ScatterTooltip({
 
 export default function GraficasPage() {
   const navigate = useNavigate();
-  const { variableActiva, setVariable: setVariableActiva } = useFiltros();
+  const { variableActiva, setVariable: setVariableActiva, anio } = useFiltros();
   const [sortAsc, setSortAsc] = useState(false);
   const [varX, setVarX] = useState<VariableKey>("acceso_agua_pct");
   const [varY, setVarY] = useState<VariableKey>("analfabetismo_pct");
 
-  const { data: departamentos, isLoading } = useDepartamentos({ anio: ANIO });
-  const { data: resumen } = useResumenIndicadores(ANIO);
+  const { data: departamentos, isLoading } = useDepartamentos({ anio });
+  const { data: resumen } = useResumenIndicadores(anio);
 
   const varInfo = VARIABLES.find((v) => v.key === variableActiva)!;
   const varXInfo = VARIABLES.find((v) => v.key === varX)!;

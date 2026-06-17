@@ -10,11 +10,10 @@ import {
 } from "recharts";
 import { ArrowLeft, MapPin } from "lucide-react";
 import { useDepartamento, useDepartamentos, useResumenIndicadores } from "@/api/departamentos";
+import { useFiltros } from "@/store/filtros";
 import { formatearValor } from "@/lib/utils";
 import { VARIABLES, VARIABLES_ALERTA } from "@/types/departamento";
 import type { VariableKey } from "@/types/departamento";
-
-const ANIO = 2025;
 
 function KpiCard({
   label,
@@ -52,6 +51,7 @@ const KPIS: Array<{ key: VariableKey; label: string; formato: "numero" | "decima
   { key: "esperanza_vida", label: "Esperanza de vida", formato: "decimal", unit: "años" },
   { key: "fecundidad", label: "Tasa de fecundidad", formato: "decimal" },
   { key: "crecimiento_anual_pct", label: "Crecimiento anual", formato: "porcentaje" },
+  { key: "tiempo_duplicacion_anios", label: "Tiempo de duplicación", formato: "decimal", unit: "años" },
   { key: "idh_ranking", label: "Ranking IDH", formato: "numero" },
 ];
 
@@ -65,10 +65,11 @@ interface ChartEntry {
 export default function FichaPage() {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
+  const anio = useFiltros((s) => s.anio);
 
-  const { data: depto, isLoading, isError } = useDepartamento(slug ?? null, ANIO);
-  const { data: resumen } = useResumenIndicadores(ANIO);
-  const { data: todos } = useDepartamentos({ anio: ANIO });
+  const { data: depto, isLoading, isError } = useDepartamento(slug ?? null, anio);
+  const { data: resumen } = useResumenIndicadores(anio);
+  const { data: todos } = useDepartamentos({ anio });
 
   // Chart: only percentage/decimal variables (not raw numbers like population)
   const chartData: ChartEntry[] = VARIABLES.filter(
@@ -164,7 +165,7 @@ export default function FichaPage() {
             </span>
           )}
           <span className="text-xs bg-muted px-2 py-0.5 rounded-full">
-            Datos {ANIO}
+            Datos {anio}
           </span>
         </div>
         {depto.descripcion && (

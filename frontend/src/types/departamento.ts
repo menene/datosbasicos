@@ -16,6 +16,7 @@ export interface Indicadores {
   acceso_saneamiento_pct: number | null;
   fecundidad: number | null;
   crecimiento_anual_pct: number | null;
+  tiempo_duplicacion_anios: number | null;
   idh_ranking: number | null;
 }
 
@@ -57,6 +58,7 @@ export const VARIABLES: Variable[] = [
   { key: "acceso_agua_pct", label: "Acceso agua (%)", formato: "porcentaje" },
   { key: "fecundidad", label: "Tasa de fecundidad", formato: "decimal" },
   { key: "crecimiento_anual_pct", label: "Crecimiento anual (%)", formato: "porcentaje" },
+  { key: "tiempo_duplicacion_anios", label: "Tiempo de duplicación (años)", formato: "decimal" },
 ] as const;
 
 export const VARIABLES_ALERTA: VariableKey[] = ["analfabetismo_pct"];

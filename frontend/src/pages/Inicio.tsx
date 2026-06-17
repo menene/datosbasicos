@@ -47,7 +47,7 @@ const SECTIONS = [
 const HIGHLIGHTS = [
   { value: "22", label: "Departamentos" },
   { value: "340", label: "Municipios" },
-  { value: "13", label: "Indicadores" },
+  { value: "14", label: "Indicadores" },
   { value: "2026", label: "Edición" },
 ];
 

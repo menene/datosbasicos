@@ -57,24 +57,27 @@ async def seed(db: AsyncSession) -> None:
             await db.flush()
             print(f"  Departamento creado: {entry['nombre']}")
 
-        # Indicadores
-        ind_data = entry.get("indicadores", {})
-        anio = ind_data.get("anio", 2025)
-        result = await db.execute(
-            select(Indicador).where(
-                Indicador.departamento_id == depto.id,
-                Indicador.anio == anio,
+        # Indicadores — soporta lista (un registro por año) o dict (legacy, un solo año)
+        ind_raw = entry.get("indicadores", [])
+        ind_entries = ind_raw if isinstance(ind_raw, list) else [ind_raw]
+
+        for ind_data in ind_entries:
+            anio = ind_data.get("anio", 2025)
+            result = await db.execute(
+                select(Indicador).where(
+                    Indicador.departamento_id == depto.id,
+                    Indicador.anio == anio,
+                )
             )
-        )
-        indicador = result.scalar_one_or_none()
+            indicador = result.scalar_one_or_none()
 
-        if not indicador:
-            indicador = Indicador(departamento_id=depto.id, anio=anio)
-            db.add(indicador)
+            if not indicador:
+                indicador = Indicador(departamento_id=depto.id, anio=anio)
+                db.add(indicador)
 
-        for campo, valor in ind_data.items():
-            if campo != "anio" and hasattr(indicador, campo):
-                setattr(indicador, campo, valor)
+            for campo, valor in ind_data.items():
+                if campo != "anio" and hasattr(indicador, campo):
+                    setattr(indicador, campo, valor)
 
     await db.commit()
     print("Seed completado.")

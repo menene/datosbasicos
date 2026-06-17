@@ -22,6 +22,7 @@ CAMPOS_NUMERICOS = [
     "acceso_saneamiento_pct",
     "fecundidad",
     "crecimiento_anual_pct",
+    "tiempo_duplicacion_anios",
     "idh_ranking",
 ]
 

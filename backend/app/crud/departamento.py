@@ -38,7 +38,7 @@ async def get_departamentos(
     INDICADOR_FIELDS = {
         "poblacion_total", "densidad_hab_km2", "pct_urbana", "pct_indigena",
         "esperanza_vida", "analfabetismo_pct", "acceso_agua_pct", "fecundidad",
-        "crecimiento_anual_pct", "idh_ranking",
+        "crecimiento_anual_pct", "tiempo_duplicacion_anios", "idh_ranking",
     }
 
     if orden:
