@@ -22,6 +22,7 @@ export default function MapaPage() {
       <aside className="w-72 shrink-0 flex flex-col border-l border-border bg-white overflow-hidden">
         {/* Variable selector */}
         <div className="p-4 border-b border-border">
+            <p>Selecciona una variable para visualizarla en el mapa</p>
           <label className="block text-xs font-medium text-muted-foreground font-body mb-1.5">
             Variable
           </label>

@@ -9,13 +9,17 @@ import {
   createColumnHelper,
   type SortingState,
 } from "@tanstack/react-table";
-import { ArrowUpDown, ArrowUp, ArrowDown, ExternalLink, Search } from "lucide-react";
+import { ArrowUpDown, ArrowUp, ArrowDown, ExternalLink, Search, Download } from "lucide-react";
+import * as XLSX from "xlsx";
 import { useDepartamentos } from "@/api/departamentos";
 import { formatearValor } from "@/lib/utils";
 import { VARIABLES } from "@/types/departamento";
 import type { Departamento } from "@/types/departamento";
 
 const ANIO = 2025;
+
+const COLUMNAS_TEXTO = new Set(["nombre", "region"]);
+const esNumerica = (id: string) => !COLUMNAS_TEXTO.has(id);
 
 type Row = Departamento & { [key: string]: unknown };
 
@@ -109,6 +113,32 @@ export default function TablaPage() {
     getFilteredRowModel: getFilteredRowModel(),
   });
 
+  const descargarExcel = () => {
+    const filas = table.getRowModel().rows.map((row) => {
+      const dep = row.original;
+      const fila: Record<string, string | number | null> = {
+        Departamento: dep.nombre,
+        "Región": dep.region ?? null,
+        "Superficie (km²)": dep.superficie_km2,
+      };
+      for (const v of VARIABLES) {
+        const val = dep.indicadores?.[v.key];
+        fila[v.label] = typeof val === "number" ? val : null;
+      }
+      return fila;
+    });
+
+    const ws = XLSX.utils.json_to_sheet(filas);
+    const colWidths = Object.keys(filas[0] ?? {}).map((key) => ({
+      wch: Math.max(key.length + 2, 14),
+    }));
+    ws["!cols"] = colWidths;
+
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, `Departamentos ${ANIO}`);
+    XLSX.writeFile(wb, `guatemala-departamentos-${ANIO}.xlsx`);
+  };
+
   if (isLoading) {
     return (
       <div className="max-w-screen-2xl mx-auto px-6 py-12 animate-pulse space-y-3">
@@ -133,17 +163,28 @@ export default function TablaPage() {
             {table.getRowModel().rows.length} de {data.length} departamentos · {ANIO}
           </p>
         </div>
-        <div className="relative">
-          <Search
-            size={14}
-            className="absolute left-2.5 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none"
-          />
-          <input
-            value={globalFilter}
-            onChange={(e) => setGlobalFilter(e.target.value)}
-            placeholder="Buscar departamento…"
-            className="pl-8 pr-3 py-1.5 text-sm font-body border border-border rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-selva w-56"
-          />
+        <div className="flex items-center gap-2">
+          <div className="relative">
+            <Search
+              size={14}
+              className="absolute left-2.5 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none"
+            />
+            <input
+              value={globalFilter}
+              onChange={(e) => setGlobalFilter(e.target.value)}
+              placeholder="Buscar departamento…"
+              className="pl-8 pr-3 py-1.5 text-sm font-body border border-border rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-selva w-56"
+            />
+          </div>
+          <button
+            onClick={descargarExcel}
+            disabled={table.getRowModel().rows.length === 0}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-body border border-border rounded-md bg-background text-foreground hover:bg-muted/50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            title="Descargar tabla como Excel"
+          >
+            <Download size={14} />
+            Excel
+          </button>
         </div>
       </div>
 
@@ -153,23 +194,30 @@ export default function TablaPage() {
           <thead>
             {table.getHeaderGroups().map((hg) => (
               <tr key={hg.id} className="bg-muted/50 border-b border-border">
-                {hg.headers.map((header) => (
-                  <th
-                    key={header.id}
-                    className="px-3 py-2.5 text-left font-medium text-xs text-muted-foreground font-body whitespace-nowrap select-none"
-                    style={{ minWidth: header.id === "nombre" ? 160 : 110 }}
-                  >
-                    {header.isPlaceholder ? null : (
-                      <button
-                        onClick={header.column.getToggleSortingHandler()}
-                        className="flex items-center gap-1 hover:text-foreground transition-colors"
-                      >
-                        {flexRender(header.column.columnDef.header, header.getContext())}
-                        <SortIcon sorted={header.column.getIsSorted()} />
-                      </button>
-                    )}
-                  </th>
-                ))}
+                {hg.headers.map((header) => {
+                  const numerica = esNumerica(header.id);
+                  return (
+                    <th
+                      key={header.id}
+                      className={`px-3 py-2.5 font-medium text-xs text-muted-foreground font-body whitespace-nowrap select-none ${
+                        numerica ? "text-center" : "text-left"
+                      }`}
+                      style={{ minWidth: header.id === "nombre" ? 160 : 110 }}
+                    >
+                      {header.isPlaceholder ? null : (
+                        <button
+                          onClick={header.column.getToggleSortingHandler()}
+                          className={`flex items-center gap-1 hover:text-foreground transition-colors ${
+                            numerica ? "mx-auto" : ""
+                          }`}
+                        >
+                          {flexRender(header.column.columnDef.header, header.getContext())}
+                          <SortIcon sorted={header.column.getIsSorted()} />
+                        </button>
+                      )}
+                    </th>
+                  );
+                })}
               </tr>
             ))}
           </thead>
@@ -184,7 +232,9 @@ export default function TablaPage() {
                 {row.getVisibleCells().map((cell) => (
                   <td
                     key={cell.id}
-                    className="px-3 py-2 font-body whitespace-nowrap text-foreground"
+                    className={`px-3 py-2 font-body whitespace-nowrap text-foreground ${
+                      esNumerica(cell.column.id) ? "text-center tabular-nums" : ""
+                    }`}
                   >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </td>

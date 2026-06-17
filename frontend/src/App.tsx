@@ -15,7 +15,7 @@ const NAV_ITEMS = [
   { to: "/graficas", label: "Gráficas", icon: BarChart2 },
   { to: "/tabla", label: "Tabla", icon: Table2 },
   { to: "/ficha", label: "Ficha", icon: FileText },
-  { to: "/libro", label: "Libro", icon: BookMarked },
+//   { to: "/libro", label: "Libro", icon: BookMarked },
   { to: "/acerca", label: "Acerca", icon: Users },
 ];
 

@@ -46,8 +46,8 @@ const SECTIONS = [
 
 const HIGHLIGHTS = [
   { value: "22", label: "Departamentos" },
+  { value: "340", label: "Municipios" },
   { value: "13", label: "Indicadores" },
-  { value: "18 M", label: "Habitantes" },
   { value: "2026", label: "Edición" },
 ];
 
@@ -100,13 +100,13 @@ export default function InicioPage() {
                 Explorar el mapa
                 <ArrowRight size={15} />
               </button>
-              <button
+              {/* <button
                 onClick={() => navigate("/libro")}
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-border text-foreground font-body font-medium text-sm hover:bg-muted transition-colors"
               >
                 <BookMarked size={15} />
                 Descargar libro PDF
-              </button>
+              </button> */}
             </div>
           </div>
 
