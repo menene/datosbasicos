@@ -39,21 +39,15 @@ const colorPromedioPorAnio = (anio: number, idx: number): string =>
 function KpiCard({
   label,
   unit,
-  isAlert,
   valores,
 }: {
   label: string;
   unit?: string;
-  isAlert?: boolean;
   valores: Array<{ anio: number; texto: string }>;
 }) {
   const multi = valores.length > 1;
   return (
-    <div
-      className={`rounded-lg px-4 py-3 border ${
-        isAlert ? "bg-red-50 border-red-100" : "bg-muted/40 border-border"
-      }`}
-    >
+    <div className="rounded-lg px-4 py-3 border bg-muted/40 border-border">
       <p className="text-xs text-muted-foreground font-body mb-1.5">{label}</p>
       <div className={multi ? "space-y-0.5" : ""}>
         {valores.map(({ anio, texto }) => (
@@ -67,9 +61,9 @@ function KpiCard({
               </span>
             )}
             <p
-              className={`font-display font-semibold ${
+              className={`font-display font-semibold text-foreground ${
                 multi ? "text-sm" : "text-lg"
-              } ${isAlert ? "text-red-700" : "text-foreground"}`}
+              }`}
             >
               {texto}
               {unit && (
@@ -324,7 +318,6 @@ export default function FichaPage() {
                 key={key}
                 label={label}
                 unit={unit}
-                isAlert={VARIABLES_ALERTA.includes(key)}
                 valores={valores}
               />
             );

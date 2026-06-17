@@ -52,13 +52,18 @@ export const VARIABLES: Variable[] = [
   { key: "poblacion_total", label: "Población total", formato: "numero" },
   { key: "densidad_hab_km2", label: "Densidad (hab/km²)", formato: "decimal" },
   { key: "pct_urbana", label: "Población urbana (%)", formato: "porcentaje" },
+  { key: "pct_rural", label: "Población rural (%)", formato: "porcentaje" },
   { key: "pct_indigena", label: "Población indígena (%)", formato: "porcentaje" },
-  { key: "esperanza_vida", label: "Esperanza de vida", formato: "decimal" },
+  { key: "pct_hombres", label: "Hombres (%)", formato: "porcentaje" },
+  { key: "pct_mujeres", label: "Mujeres (%)", formato: "porcentaje" },
   { key: "analfabetismo_pct", label: "Analfabetismo (%)", formato: "porcentaje" },
   { key: "acceso_agua_pct", label: "Acceso agua (%)", formato: "porcentaje" },
+  { key: "acceso_saneamiento_pct", label: "Acceso saneamiento (%)", formato: "porcentaje" },
+  { key: "esperanza_vida", label: "Esperanza de vida", formato: "decimal" },
   { key: "fecundidad", label: "Tasa de fecundidad", formato: "decimal" },
   { key: "crecimiento_anual_pct", label: "Crecimiento anual (%)", formato: "porcentaje" },
   { key: "tiempo_duplicacion_anios", label: "Tiempo de duplicación (años)", formato: "decimal" },
+  { key: "idh_ranking", label: "Ranking IDH", formato: "numero" },
 ] as const;
 
 export const VARIABLES_ALERTA: VariableKey[] = ["analfabetismo_pct"];
