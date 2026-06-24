@@ -9,6 +9,9 @@ class DepartamentoSummary(BaseModel):
     nombre: str
     region: str | None = None
     superficie_km2: float | None = None
+    feria_titular: str | None = None
+    distancia_capital_km: int | None = None
+    idiomas_predominantes: str | None = None
     indicadores: IndicadorSchema | None = None
 
     model_config = {"from_attributes": True}

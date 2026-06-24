@@ -14,9 +14,15 @@ export interface Indicadores {
   analfabetismo_pct: number | null;
   acceso_agua_pct: number | null;
   acceso_saneamiento_pct: number | null;
+  mortalidad_general: number | null;
+  mortalidad_materna: number | null;
   fecundidad: number | null;
   crecimiento_anual_pct: number | null;
   tiempo_duplicacion_anios: number | null;
+  poblacion_activa: number | null;
+  poblacion_ocupada: number | null;
+  poblacion_desocupada: number | null;
+  ingreso_medio_anual: number | null;
   idh_ranking: number | null;
 }
 
@@ -26,6 +32,9 @@ export interface Departamento {
   nombre: string;
   region: string | null;
   superficie_km2: number | null;
+  feria_titular: string | null;
+  distancia_capital_km: number | null;
+  idiomas_predominantes: string | null;
   indicadores: Indicadores | null;
 }
 
@@ -63,7 +72,18 @@ export const VARIABLES: Variable[] = [
   { key: "fecundidad", label: "Tasa de fecundidad", formato: "decimal" },
   { key: "crecimiento_anual_pct", label: "Crecimiento anual (%)", formato: "porcentaje" },
   { key: "tiempo_duplicacion_anios", label: "Tiempo de duplicación (años)", formato: "decimal" },
+  { key: "mortalidad_general", label: "Mortalidad general (×1000 hab.)", formato: "decimal" },
+  { key: "mortalidad_materna", label: "Mortalidad materna (×1000 n.v.)", formato: "decimal" },
+  { key: "poblacion_activa", label: "Población activa", formato: "numero" },
+  { key: "poblacion_ocupada", label: "Población ocupada", formato: "numero" },
+  { key: "poblacion_desocupada", label: "Población desocupada", formato: "numero" },
+  { key: "ingreso_medio_anual", label: "Ingreso medio anual (Q.)", formato: "decimal" },
   { key: "idh_ranking", label: "Ranking IDH", formato: "numero" },
 ] as const;
 
-export const VARIABLES_ALERTA: VariableKey[] = ["analfabetismo_pct"];
+export const VARIABLES_ALERTA: VariableKey[] = [
+  "analfabetismo_pct",
+  "mortalidad_general",
+  "mortalidad_materna",
+  "poblacion_desocupada",
+];

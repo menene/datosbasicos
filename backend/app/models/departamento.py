@@ -21,6 +21,11 @@ class Departamento(Base):
     region_id: Mapped[int | None] = mapped_column(Integer, ForeignKey("region.id"))
     superficie_km2: Mapped[float | None] = mapped_column(Numeric(10, 2))
     descripcion: Mapped[str | None] = mapped_column(Text)
+
+    feria_titular: Mapped[str | None] = mapped_column(String(200))
+    distancia_capital_km: Mapped[int | None] = mapped_column(Integer)
+    idiomas_predominantes: Mapped[str | None] = mapped_column(Text)
+
     created_at: Mapped[datetime] = mapped_column(TIMESTAMP(timezone=True), server_default=func.now())
 
     region_obj: Mapped["Region | None"] = relationship("Region", back_populates="departamentos")

@@ -22,15 +22,17 @@ import type { VariableKey, Indicadores } from "@/types/departamento";
 import DepartamentoShape from "@/components/ficha/DepartamentoShape";
 
 const COLORES_ANIO: Record<number, string> = {
+  1994: "#1E4D8C",
   2005: "#8B4513",
   2025: "#1B6B3A",
 };
 const COLORES_PROMEDIO: Record<number, string> = {
+  1994: "#a5b4cb",
   2005: "#D4B895",
   2025: "#94a3b8",
 };
-const FALLBACK_ANIO = ["#1E4D8C", "#854D0E", "#5B21B6", "#0e7490"];
-const FALLBACK_PROMEDIO = ["#a5b4cb", "#d6c39a", "#c9b3e2", "#a1d0d8"];
+const FALLBACK_ANIO = ["#5B21B6", "#0e7490", "#854D0E"];
+const FALLBACK_PROMEDIO = ["#c9b3e2", "#a1d0d8", "#d6c39a"];
 const colorPorAnio = (anio: number, idx: number): string =>
   COLORES_ANIO[anio] ?? FALLBACK_ANIO[idx % FALLBACK_ANIO.length];
 const colorPromedioPorAnio = (anio: number, idx: number): string =>
@@ -280,6 +282,34 @@ export default function FichaPage() {
             <p className="text-sm text-muted-foreground font-body mt-3 leading-relaxed max-w-2xl border-l-2 border-border pl-3">
               {depto.descripcion}
             </p>
+          )}
+          {(depto.distancia_capital_km !== null ||
+            depto.feria_titular ||
+            depto.idiomas_predominantes) && (
+            <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1 text-sm font-body mt-4 max-w-2xl">
+              {depto.distancia_capital_km !== null && (
+                <div className="flex gap-2">
+                  <dt className="text-muted-foreground">Distancia a la capital:</dt>
+                  <dd className="text-foreground font-medium">
+                    {new Intl.NumberFormat("es-GT").format(depto.distancia_capital_km)} km
+                  </dd>
+                </div>
+              )}
+              {depto.feria_titular && (
+                <div className="flex gap-2">
+                  <dt className="text-muted-foreground">Feria titular:</dt>
+                  <dd className="text-foreground font-medium">{depto.feria_titular}</dd>
+                </div>
+              )}
+              {depto.idiomas_predominantes && (
+                <div className="flex gap-2 sm:col-span-2">
+                  <dt className="text-muted-foreground">Idiomas:</dt>
+                  <dd className="text-foreground font-medium">
+                    {depto.idiomas_predominantes}
+                  </dd>
+                </div>
+              )}
+            </dl>
           )}
         </div>
         <DepartamentoShape

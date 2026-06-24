@@ -25,10 +25,11 @@ import { formatearValor } from "@/lib/utils";
 import { getColorForValue } from "@/lib/colores";
 
 const COLORES_ANIO: Record<number, string> = {
+  1994: "#1E4D8C",
   2005: "#8B4513",
   2025: "#1B6B3A",
 };
-const FALLBACK = ["#1E4D8C", "#854D0E", "#5B21B6", "#0e7490"];
+const FALLBACK = ["#5B21B6", "#0e7490", "#854D0E"];
 const colorPorAnio = (anio: number, idx: number): string =>
   COLORES_ANIO[anio] ?? FALLBACK[idx % FALLBACK.length];
 

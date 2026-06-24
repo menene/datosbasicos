@@ -7,6 +7,30 @@
     "descripcion": "Departamento capital de Guatemala, el más poblado y urbanizado del país.",
     "indicadores": [
       {
+        "anio": 1994,
+        "poblacion_total": 2189807,
+        "densidad_hab_km2": 1023.4,
+        "pct_hombres": 47.9,
+        "pct_mujeres": 52.1,
+        "pct_urbana": 90.2,
+        "pct_rural": 9.8,
+        "pct_indigena": 13.5,
+        "esperanza_vida": 66.5,
+        "analfabetismo_pct": null,
+        "acceso_agua_pct": 60.0,
+        "acceso_saneamiento_pct": 57.0,
+        "mortalidad_general": 7.7,
+        "mortalidad_materna": 7.4,
+        "fecundidad": 3.6,
+        "crecimiento_anual_pct": 2.7,
+        "tiempo_duplicacion_anios": 25.92,
+        "poblacion_activa": 701500,
+        "poblacion_ocupada": 414600,
+        "poblacion_desocupada": 286900,
+        "ingreso_medio_anual": 10311.7,
+        "idh_ranking": null
+      },
+      {
         "anio": 2005,
         "poblacion_total": 2980000,
         "densidad_hab_km2": 1248.0,
@@ -42,7 +66,10 @@
         "tiempo_duplicacion_anios": 42.42,
         "idh_ranking": 1
       }
-    ]
+    ],
+    "feria_titular": "15 de agosto, Virgen de la Asunción",
+    "distancia_capital_km": 0,
+    "idiomas_predominantes": "Español, Pocomam, Kaqchikel"
   },
   {
     "slug": "el-progreso",
@@ -51,6 +78,30 @@
     "superficie_km2": 1922.0,
     "descripcion": "Departamento ubicado al noreste de Guatemala, conocido por su producción agrícola.",
     "indicadores": [
+      {
+        "anio": 1994,
+        "poblacion_total": 115457,
+        "densidad_hab_km2": 80.36,
+        "pct_hombres": 49.4,
+        "pct_mujeres": 50.6,
+        "pct_urbana": 27.4,
+        "pct_rural": 72.6,
+        "pct_indigena": 12.8,
+        "esperanza_vida": 63.2,
+        "analfabetismo_pct": null,
+        "acceso_agua_pct": 60.0,
+        "acceso_saneamiento_pct": 57.0,
+        "mortalidad_general": 7.8,
+        "mortalidad_materna": 21.2,
+        "fecundidad": 5.6,
+        "crecimiento_anual_pct": 2.1,
+        "tiempo_duplicacion_anios": 33.25,
+        "poblacion_activa": 26200,
+        "poblacion_ocupada": 15500,
+        "poblacion_desocupada": 10700,
+        "ingreso_medio_anual": 2782.4,
+        "idh_ranking": null
+      },
       {
         "anio": 2005,
         "poblacion_total": 147500,
@@ -87,7 +138,10 @@
         "tiempo_duplicacion_anios": 46.67,
         "idh_ranking": 10
       }
-    ]
+    ],
+    "feria_titular": "15 de enero, Señor de Esquipulas",
+    "distancia_capital_km": 78,
+    "idiomas_predominantes": "Español"
   },
   {
     "slug": "sacatepequez",
@@ -96,6 +150,30 @@
     "superficie_km2": 465.0,
     "descripcion": "El departamento más pequeño de Guatemala, hogar de La Antigua Guatemala, Patrimonio de la Humanidad.",
     "indicadores": [
+      {
+        "anio": 1994,
+        "poblacion_total": 196573,
+        "densidad_hab_km2": 386.46,
+        "pct_hombres": 48.2,
+        "pct_mujeres": 51.8,
+        "pct_urbana": 44.5,
+        "pct_rural": 55.5,
+        "pct_indigena": 48.2,
+        "esperanza_vida": 65.8,
+        "analfabetismo_pct": null,
+        "acceso_agua_pct": 60.0,
+        "acceso_saneamiento_pct": 57.0,
+        "mortalidad_general": 8.0,
+        "mortalidad_materna": 20.1,
+        "fecundidad": 5.2,
+        "crecimiento_anual_pct": 2.9,
+        "tiempo_duplicacion_anios": 24.08,
+        "poblacion_activa": 52900,
+        "poblacion_ocupada": 31200,
+        "poblacion_desocupada": 21700,
+        "ingreso_medio_anual": 3377.8,
+        "idh_ranking": null
+      },
       {
         "anio": 2005,
         "poblacion_total": 275000,
@@ -132,7 +210,10 @@
         "tiempo_duplicacion_anios": 36.83,
         "idh_ranking": 2
       }
-    ]
+    ],
+    "feria_titular": "25 de julio, Santiago Apóstol",
+    "distancia_capital_km": 40,
+    "idiomas_predominantes": "Español, Kaqchikel"
   },
   {
     "slug": "chimaltenango",
@@ -141,6 +222,30 @@
     "superficie_km2": 1179.0,
     "descripcion": "Departamento de la región central con alta población indígena kaqchikel.",
     "indicadores": [
+      {
+        "anio": 1994,
+        "poblacion_total": 374904,
+        "densidad_hab_km2": 173.27,
+        "pct_hombres": 49.6,
+        "pct_mujeres": 50.4,
+        "pct_urbana": 17.3,
+        "pct_rural": 82.7,
+        "pct_indigena": 77.9,
+        "esperanza_vida": 62.9,
+        "analfabetismo_pct": null,
+        "acceso_agua_pct": 60.0,
+        "acceso_saneamiento_pct": 57.0,
+        "mortalidad_general": 8.8,
+        "mortalidad_materna": 13.3,
+        "fecundidad": 6.0,
+        "crecimiento_anual_pct": 2.9,
+        "tiempo_duplicacion_anios": 24.08,
+        "poblacion_activa": 92600,
+        "poblacion_ocupada": 54700,
+        "poblacion_desocupada": 37900,
+        "ingreso_medio_anual": 5407.1,
+        "idh_ranking": null
+      },
       {
         "anio": 2005,
         "poblacion_total": 425000,
@@ -177,7 +282,10 @@
         "tiempo_duplicacion_anios": 31.08,
         "idh_ranking": 7
       }
-    ]
+    ],
+    "feria_titular": "26 de julio, Santa Ana",
+    "distancia_capital_km": 58,
+    "idiomas_predominantes": "Español, Kaqchikel"
   },
   {
     "slug": "escuintla",
@@ -186,6 +294,30 @@
     "superficie_km2": 4384.0,
     "descripcion": "Importante departamento agro-industrial de la costa sur de Guatemala.",
     "indicadores": [
+      {
+        "anio": 1994,
+        "poblacion_total": 592737,
+        "densidad_hab_km2": 123.31,
+        "pct_hombres": 49.7,
+        "pct_mujeres": 50.3,
+        "pct_urbana": 46.8,
+        "pct_rural": 53.2,
+        "pct_indigena": 27.1,
+        "esperanza_vida": 64.7,
+        "analfabetismo_pct": null,
+        "acceso_agua_pct": 60.0,
+        "acceso_saneamiento_pct": 57.0,
+        "mortalidad_general": 8.0,
+        "mortalidad_materna": 8.9,
+        "fecundidad": 5.3,
+        "crecimiento_anual_pct": 3.0,
+        "tiempo_duplicacion_anios": 23.25,
+        "poblacion_activa": 168900,
+        "poblacion_ocupada": 99800,
+        "poblacion_desocupada": 69100,
+        "ingreso_medio_anual": 4109.4,
+        "idh_ranking": null
+      },
       {
         "anio": 2005,
         "poblacion_total": 625000,
@@ -222,7 +354,10 @@
         "tiempo_duplicacion_anios": 35.0,
         "idh_ranking": 6
       }
-    ]
+    ],
+    "feria_titular": "8 de diciembre, Inmaculada Concepción",
+    "distancia_capital_km": 59,
+    "idiomas_predominantes": "Español, Poqomam, Kaqchikel"
   },
   {
     "slug": "santa-rosa",
@@ -231,6 +366,30 @@
     "superficie_km2": 2955.0,
     "descripcion": "Departamento del suroriente guatemalteco, conocido por su producción ganadera.",
     "indicadores": [
+      {
+        "anio": 1994,
+        "poblacion_total": 285442,
+        "densidad_hab_km2": 96.2,
+        "pct_hombres": 49.1,
+        "pct_mujeres": 50.9,
+        "pct_urbana": 22.6,
+        "pct_rural": 77.4,
+        "pct_indigena": 22.5,
+        "esperanza_vida": 63.4,
+        "analfabetismo_pct": null,
+        "acceso_agua_pct": 60.0,
+        "acceso_saneamiento_pct": 57.0,
+        "mortalidad_general": 7.7,
+        "mortalidad_materna": 10.0,
+        "fecundidad": 5.6,
+        "crecimiento_anual_pct": 2.1,
+        "tiempo_duplicacion_anios": 33.25,
+        "poblacion_activa": 74100,
+        "poblacion_ocupada": 43800,
+        "poblacion_desocupada": 30300,
+        "ingreso_medio_anual": 2271.0,
+        "idh_ranking": null
+      },
       {
         "anio": 2005,
         "poblacion_total": 325000,
@@ -267,7 +426,10 @@
         "tiempo_duplicacion_anios": 42.42,
         "idh_ranking": 11
       }
-    ]
+    ],
+    "feria_titular": "Del 22 al 26 de diciembre, Niño Dios",
+    "distancia_capital_km": 69,
+    "idiomas_predominantes": "Español, Xinka"
   },
   {
     "slug": "solola",
@@ -276,6 +438,30 @@
     "superficie_km2": 1061.0,
     "descripcion": "Departamento de gran riqueza cultural maya, ubicado a orillas del Lago Atitlán.",
     "indicadores": [
+      {
+        "anio": 1994,
+        "poblacion_total": 265900,
+        "densidad_hab_km2": 227.43,
+        "pct_hombres": 49.8,
+        "pct_mujeres": 50.2,
+        "pct_urbana": 12.4,
+        "pct_rural": 87.6,
+        "pct_indigena": 96.6,
+        "esperanza_vida": 61.7,
+        "analfabetismo_pct": null,
+        "acceso_agua_pct": 60.0,
+        "acceso_saneamiento_pct": 57.0,
+        "mortalidad_general": 9.6,
+        "mortalidad_materna": 21.1,
+        "fecundidad": 6.4,
+        "crecimiento_anual_pct": 3.2,
+        "tiempo_duplicacion_anios": 21.83,
+        "poblacion_activa": 61700,
+        "poblacion_ocupada": 36500,
+        "poblacion_desocupada": 25200,
+        "ingreso_medio_anual": 2271.0,
+        "idh_ranking": null
+      },
       {
         "anio": 2005,
         "poblacion_total": 325000,
@@ -312,7 +498,10 @@
         "tiempo_duplicacion_anios": 42.42,
         "idh_ranking": 17
       }
-    ]
+    ],
+    "feria_titular": "15 de agosto, Virgen de la Asunción",
+    "distancia_capital_km": 140,
+    "idiomas_predominantes": "Kaqchikel, K'iche', Kaqchikel-Tzutuhil, Tz'utujil"
   },
   {
     "slug": "totonicapan",
@@ -321,6 +510,30 @@
     "superficie_km2": 1061.0,
     "descripcion": "Departamento de tradición artesanal k'iche', conocido por sus textiles y madera.",
     "indicadores": [
+      {
+        "anio": 1994,
+        "poblacion_total": 324328,
+        "densidad_hab_km2": 294.72,
+        "pct_hombres": 49.5,
+        "pct_mujeres": 50.5,
+        "pct_urbana": 14.8,
+        "pct_rural": 85.2,
+        "pct_indigena": 97.5,
+        "esperanza_vida": 61.2,
+        "analfabetismo_pct": null,
+        "acceso_agua_pct": 60.0,
+        "acceso_saneamiento_pct": 57.0,
+        "mortalidad_general": 15.1,
+        "mortalidad_materna": 11.5,
+        "fecundidad": 6.5,
+        "crecimiento_anual_pct": 2.9,
+        "tiempo_duplicacion_anios": 24.08,
+        "poblacion_activa": 81200,
+        "poblacion_ocupada": 48000,
+        "poblacion_desocupada": 33200,
+        "ingreso_medio_anual": 3761.1,
+        "idh_ranking": null
+      },
       {
         "anio": 2005,
         "poblacion_total": 410000,
@@ -357,7 +570,10 @@
         "tiempo_duplicacion_anios": 35.0,
         "idh_ranking": 20
       }
-    ]
+    ],
+    "feria_titular": "29 de septiembre, San Miguel Arcángel",
+    "distancia_capital_km": 201,
+    "idiomas_predominantes": "K'iche', Español"
   },
   {
     "slug": "quetzaltenango",
@@ -366,6 +582,30 @@
     "superficie_km2": 1951.0,
     "descripcion": "La capital del occidente, segundo departamento más importante de Guatemala económica y culturalmente.",
     "indicadores": [
+      {
+        "anio": 1994,
+        "poblacion_total": null,
+        "densidad_hab_km2": 242.85,
+        "pct_hombres": 48.6,
+        "pct_mujeres": 51.4,
+        "pct_urbana": 41.2,
+        "pct_rural": 58.8,
+        "pct_indigena": 60.6,
+        "esperanza_vida": 64.4,
+        "analfabetismo_pct": null,
+        "acceso_agua_pct": null,
+        "acceso_saneamiento_pct": null,
+        "mortalidad_general": 19.9,
+        "mortalidad_materna": 12.13,
+        "fecundidad": 5.8,
+        "crecimiento_anual_pct": 2.8,
+        "tiempo_duplicacion_anios": 25.0,
+        "poblacion_activa": 158100,
+        "poblacion_ocupada": 93500,
+        "poblacion_desocupada": 64700,
+        "ingreso_medio_anual": 3724.5,
+        "idh_ranking": null
+      },
       {
         "anio": 2005,
         "poblacion_total": 625000,
@@ -402,7 +642,10 @@
         "tiempo_duplicacion_anios": 64.83,
         "idh_ranking": 3
       }
-    ]
+    ],
+    "feria_titular": "6 de octubre, Virgen del Rosario",
+    "distancia_capital_km": 201,
+    "idiomas_predominantes": "Español, K'iche', Mam"
   },
   {
     "slug": "suchitepequez",
@@ -411,6 +654,30 @@
     "superficie_km2": 2510.0,
     "descripcion": "Departamento de la costa sur con gran producción de caña de azúcar y palma africana.",
     "indicadores": [
+      {
+        "anio": 1994,
+        "poblacion_total": 392704,
+        "densidad_hab_km2": 124.58,
+        "pct_hombres": 49.4,
+        "pct_mujeres": 50.6,
+        "pct_urbana": 27.1,
+        "pct_rural": 72.9,
+        "pct_indigena": 53.4,
+        "esperanza_vida": 63.6,
+        "analfabetismo_pct": null,
+        "acceso_agua_pct": 60.0,
+        "acceso_saneamiento_pct": 57.0,
+        "mortalidad_general": 9.9,
+        "mortalidad_materna": 12.0,
+        "fecundidad": 5.7,
+        "crecimiento_anual_pct": 2.8,
+        "tiempo_duplicacion_anios": 25.0,
+        "poblacion_activa": 102400,
+        "poblacion_ocupada": 60500,
+        "poblacion_desocupada": 41900,
+        "ingreso_medio_anual": 3028.0,
+        "idh_ranking": null
+      },
       {
         "anio": 2005,
         "poblacion_total": 475000,
@@ -447,7 +714,10 @@
         "tiempo_duplicacion_anios": 64.83,
         "idh_ranking": 13
       }
-    ]
+    ],
+    "feria_titular": "Fiesta de Carnaval (movible)",
+    "distancia_capital_km": 167,
+    "idiomas_predominantes": "Español, K'iche', Kaqchikel"
   },
   {
     "slug": "retalhuleu",
@@ -456,6 +726,30 @@
     "superficie_km2": 1856.0,
     "descripcion": "Departamento costero del sur conocido como la 'Capital del Mundo', con desarrollo turístico.",
     "indicadores": [
+      {
+        "anio": 1994,
+        "poblacion_total": 261145,
+        "densidad_hab_km2": 128.33,
+        "pct_hombres": 49.3,
+        "pct_mujeres": 50.7,
+        "pct_urbana": 35.2,
+        "pct_rural": 64.8,
+        "pct_indigena": 55.2,
+        "esperanza_vida": 64.0,
+        "analfabetismo_pct": null,
+        "acceso_agua_pct": 60.0,
+        "acceso_saneamiento_pct": 57.0,
+        "mortalidad_general": 9.0,
+        "mortalidad_materna": 8.3,
+        "fecundidad": 5.8,
+        "crecimiento_anual_pct": 3.0,
+        "tiempo_duplicacion_anios": 23.33,
+        "poblacion_activa": 63300,
+        "poblacion_ocupada": 37200,
+        "poblacion_desocupada": 25800,
+        "ingreso_medio_anual": 2039.0,
+        "idh_ranking": null
+      },
       {
         "anio": 2005,
         "poblacion_total": 241411,
@@ -492,7 +786,10 @@
         "tiempo_duplicacion_anios": 43.0,
         "idh_ranking": 12
       }
-    ]
+    ],
+    "feria_titular": "8 de diciembre, Concepción de María",
+    "distancia_capital_km": 192,
+    "idiomas_predominantes": "Español, K'iche', Mam"
   },
   {
     "slug": "san-marcos",
@@ -501,6 +798,30 @@
     "superficie_km2": 3792.0,
     "descripcion": "El departamento más occidental de Guatemala, fronterizo con México, con gran diversidad altitudinal.",
     "indicadores": [
+      {
+        "anio": 1994,
+        "poblacion_total": 766799,
+        "densidad_hab_km2": 172.46,
+        "pct_hombres": 49.7,
+        "pct_mujeres": 50.3,
+        "pct_urbana": 16.5,
+        "pct_rural": 83.5,
+        "pct_indigena": 75.9,
+        "esperanza_vida": 61.8,
+        "analfabetismo_pct": null,
+        "acceso_agua_pct": 60.0,
+        "acceso_saneamiento_pct": 57.0,
+        "mortalidad_general": 8.1,
+        "mortalidad_materna": 7.3,
+        "fecundidad": 6.5,
+        "crecimiento_anual_pct": 3.0,
+        "tiempo_duplicacion_anios": 23.33,
+        "poblacion_activa": 178700,
+        "poblacion_ocupada": 105600,
+        "poblacion_desocupada": 73100,
+        "ingreso_medio_anual": 2435.6,
+        "idh_ranking": null
+      },
       {
         "anio": 2005,
         "poblacion_total": 825000,
@@ -537,7 +858,10 @@
         "tiempo_duplicacion_anios": 36.83,
         "idh_ranking": 16
       }
-    ]
+    ],
+    "feria_titular": "25 de abril, San Marcos",
+    "distancia_capital_km": 252,
+    "idiomas_predominantes": "Español, Mam, Tejutla, Sipakapense"
   },
   {
     "slug": "huehuetenango",
@@ -546,6 +870,30 @@
     "superficie_km2": 7400.0,
     "descripcion": "El departamento con mayor diversidad lingüística de Guatemala, fronterizo con Chiapas, México.",
     "indicadores": [
+      {
+        "anio": 1994,
+        "poblacion_total": 790170,
+        "densidad_hab_km2": 487.36,
+        "pct_hombres": 49.9,
+        "pct_mujeres": 50.1,
+        "pct_urbana": 14.2,
+        "pct_rural": 85.8,
+        "pct_indigena": 75.9,
+        "esperanza_vida": 61.8,
+        "analfabetismo_pct": null,
+        "acceso_agua_pct": 60.0,
+        "acceso_saneamiento_pct": 57.0,
+        "mortalidad_general": 7.4,
+        "mortalidad_materna": 20.4,
+        "fecundidad": 6.4,
+        "crecimiento_anual_pct": 3.3,
+        "tiempo_duplicacion_anios": 21.17,
+        "poblacion_activa": 187700,
+        "poblacion_ocupada": 110900,
+        "poblacion_desocupada": 76800,
+        "ingreso_medio_anual": 1577.1,
+        "idh_ranking": null
+      },
       {
         "anio": 2005,
         "poblacion_total": 950000,
@@ -582,7 +930,10 @@
         "tiempo_duplicacion_anios": 35.0,
         "idh_ranking": 21
       }
-    ]
+    ],
+    "feria_titular": "16 de julio, Nuestra Señora del Carmen",
+    "distancia_capital_km": 266,
+    "idiomas_predominantes": "Español, Mam, Tectite-Mam, Chuj, Jacalteco, Kanjobal, Jacalteco-Mam, Acateco, Tektiteko, Acuateco"
   },
   {
     "slug": "quiche",
@@ -591,6 +942,30 @@
     "superficie_km2": 8378.0,
     "descripcion": "El departamento más extenso del altiplano, con profunda herencia maya k'iche'.",
     "indicadores": [
+      {
+        "anio": 1994,
+        "poblacion_total": 631790,
+        "densidad_hab_km2": 67.87,
+        "pct_hombres": 50.2,
+        "pct_mujeres": 49.8,
+        "pct_urbana": 11.9,
+        "pct_rural": 88.1,
+        "pct_indigena": 95.6,
+        "esperanza_vida": 60.2,
+        "analfabetismo_pct": null,
+        "acceso_agua_pct": 60.0,
+        "acceso_saneamiento_pct": 57.0,
+        "mortalidad_general": 9.9,
+        "mortalidad_materna": 17.2,
+        "fecundidad": 6.1,
+        "crecimiento_anual_pct": 3.2,
+        "tiempo_duplicacion_anios": 21.83,
+        "poblacion_activa": 140600,
+        "poblacion_ocupada": 83100,
+        "poblacion_desocupada": 57500,
+        "ingreso_medio_anual": 1059.8,
+        "idh_ranking": null
+      },
       {
         "anio": 2005,
         "poblacion_total": 950000,
@@ -627,7 +1002,10 @@
         "tiempo_duplicacion_anios": 33.33,
         "idh_ranking": 22
       }
-    ]
+    ],
+    "feria_titular": "18 de agosto, Santa Elena de la Cruz",
+    "distancia_capital_km": 164,
+    "idiomas_predominantes": "Español, K'iche', Ixil, Pocomchí-Uspanteko, K'iche'-Sakapulteko, Uspanteko"
   },
   {
     "slug": "baja-verapaz",
@@ -636,6 +1014,30 @@
     "superficie_km2": 3124.0,
     "descripcion": "Departamento de transición entre el altiplano y las Verapaces, con gran biodiversidad.",
     "indicadores": [
+      {
+        "anio": 1994,
+        "poblacion_total": 200024,
+        "densidad_hab_km2": 60.66,
+        "pct_hombres": 50.1,
+        "pct_mujeres": 49.9,
+        "pct_urbana": 18.7,
+        "pct_rural": 81.3,
+        "pct_indigena": 61.1,
+        "esperanza_vida": 62.1,
+        "analfabetismo_pct": null,
+        "acceso_agua_pct": 60.0,
+        "acceso_saneamiento_pct": 57.0,
+        "mortalidad_general": 7.2,
+        "mortalidad_materna": 12.8,
+        "fecundidad": 6.2,
+        "crecimiento_anual_pct": 2.7,
+        "tiempo_duplicacion_anios": 25.92,
+        "poblacion_activa": 44700,
+        "poblacion_ocupada": 26400,
+        "poblacion_desocupada": 18300,
+        "ingreso_medio_anual": 2725.2,
+        "idh_ranking": null
+      },
       {
         "anio": 2005,
         "poblacion_total": 225000,
@@ -672,7 +1074,10 @@
         "tiempo_duplicacion_anios": 38.83,
         "idh_ranking": 18
       }
-    ]
+    ],
+    "feria_titular": "21 de septiembre, San Mateo",
+    "distancia_capital_km": 154,
+    "idiomas_predominantes": "Español, Achí, Achí-Poqomchí, Kaqchikel"
   },
   {
     "slug": "alta-verapaz",
@@ -681,6 +1086,30 @@
     "superficie_km2": 8686.0,
     "descripcion": "El departamento más lluvioso de Guatemala, conocido por su biodiversidad y cultivo de cardamomo.",
     "indicadores": [
+      {
+        "anio": 1994,
+        "poblacion_total": 650117,
+        "densidad_hab_km2": 55.46,
+        "pct_hombres": 50.3,
+        "pct_mujeres": 49.7,
+        "pct_urbana": 15.3,
+        "pct_rural": 84.7,
+        "pct_indigena": 89.3,
+        "esperanza_vida": 61.5,
+        "analfabetismo_pct": null,
+        "acceso_agua_pct": 60.0,
+        "acceso_saneamiento_pct": 57.0,
+        "mortalidad_general": 8.4,
+        "mortalidad_materna": 23.6,
+        "fecundidad": 5.9,
+        "crecimiento_anual_pct": 3.2,
+        "tiempo_duplicacion_anios": 21.83,
+        "poblacion_activa": 168200,
+        "poblacion_ocupada": 99400,
+        "poblacion_desocupada": 68800,
+        "ingreso_medio_anual": 2573.8,
+        "idh_ranking": null
+      },
       {
         "anio": 2005,
         "poblacion_total": 750000,
@@ -717,7 +1146,10 @@
         "tiempo_duplicacion_anios": 33.33,
         "idh_ranking": 21
       }
-    ]
+    ],
+    "feria_titular": "4 de agosto, Santo Domingo de Guzmán",
+    "distancia_capital_km": 219,
+    "idiomas_predominantes": "Español, Q'eqchi', Poqomchi'"
   },
   {
     "slug": "peten",
@@ -726,6 +1158,30 @@
     "superficie_km2": 35854.0,
     "descripcion": "El departamento más extenso de Guatemala, hogar de Tikal y gran parte de la selva maya.",
     "indicadores": [
+      {
+        "anio": 1994,
+        "poblacion_total": 295381,
+        "densidad_hab_km2": 9.76,
+        "pct_hombres": 50.8,
+        "pct_mujeres": 49.2,
+        "pct_urbana": 29.6,
+        "pct_rural": 70.4,
+        "pct_indigena": 24.3,
+        "esperanza_vida": 63.0,
+        "analfabetismo_pct": null,
+        "acceso_agua_pct": 60.0,
+        "acceso_saneamiento_pct": 57.0,
+        "mortalidad_general": 6.9,
+        "mortalidad_materna": 17.6,
+        "fecundidad": 6.4,
+        "crecimiento_anual_pct": 4.08,
+        "tiempo_duplicacion_anios": 12.17,
+        "poblacion_activa": 71400,
+        "poblacion_ocupada": 42200,
+        "poblacion_desocupada": 29200,
+        "ingreso_medio_anual": 2950.9,
+        "idh_ranking": null
+      },
       {
         "anio": 2005,
         "poblacion_total": 550000,
@@ -762,7 +1218,10 @@
         "tiempo_duplicacion_anios": 25.42,
         "idh_ranking": 14
       }
-    ]
+    ],
+    "feria_titular": "15 de enero, Señor de Esquipulas; 12 de diciembre, Virgen de Guadalupe",
+    "distancia_capital_km": 507,
+    "idiomas_predominantes": "Español, Itzá-Español, Itzá, Itzá-Lacandón, Lacandón-Chol-Itzá-Q'eqchi', Ixil, Mopán, Mopán-Q'eqchi', Mopán-Yucateco"
   },
   {
     "slug": "izabal",
@@ -771,6 +1230,30 @@
     "superficie_km2": 9038.0,
     "descripcion": "Departamento caribeño con el Lago de Izabal y Puerto Barrios, principal puerto del Atlántico.",
     "indicadores": [
+      {
+        "anio": 1994,
+        "poblacion_total": 359107,
+        "densidad_hab_km2": 20.97,
+        "pct_hombres": 50.4,
+        "pct_mujeres": 49.6,
+        "pct_urbana": 33.8,
+        "pct_rural": 66.2,
+        "pct_indigena": 32.7,
+        "esperanza_vida": 63.5,
+        "analfabetismo_pct": null,
+        "acceso_agua_pct": 60.0,
+        "acceso_saneamiento_pct": 57.0,
+        "mortalidad_general": 4.8,
+        "mortalidad_materna": 6.6,
+        "fecundidad": 5.7,
+        "crecimiento_anual_pct": 3.2,
+        "tiempo_duplicacion_anios": 21.83,
+        "poblacion_activa": 87800,
+        "poblacion_ocupada": 51900,
+        "poblacion_desocupada": 35900,
+        "ingreso_medio_anual": 6131.7,
+        "idh_ranking": null
+      },
       {
         "anio": 2005,
         "poblacion_total": 325000,
@@ -807,7 +1290,10 @@
         "tiempo_duplicacion_anios": 31.08,
         "idh_ranking": 9
       }
-    ]
+    ],
+    "feria_titular": "19 de julio, Sagrado Corazón de Jesús",
+    "distancia_capital_km": 308,
+    "idiomas_predominantes": "Español, Garífuna-Español y Q'eqchi', Garífuna, Q'eqchi'"
   },
   {
     "slug": "zacapa",
@@ -816,6 +1302,30 @@
     "superficie_km2": 2690.0,
     "descripcion": "Departamento conocido por su clima cálido y seco, y por su producción de tabaco y queso.",
     "indicadores": [
+      {
+        "anio": 1994,
+        "poblacion_total": 171138,
+        "densidad_hab_km2": 49.33,
+        "pct_hombres": 49.5,
+        "pct_mujeres": 50.5,
+        "pct_urbana": 32.7,
+        "pct_rural": 67.3,
+        "pct_indigena": 10.4,
+        "esperanza_vida": 63.3,
+        "analfabetismo_pct": null,
+        "acceso_agua_pct": 60.0,
+        "acceso_saneamiento_pct": 57.0,
+        "mortalidad_general": 8.1,
+        "mortalidad_materna": 19.6,
+        "fecundidad": 5.3,
+        "crecimiento_anual_pct": 1.9,
+        "tiempo_duplicacion_anios": 36.83,
+        "poblacion_activa": 42600,
+        "poblacion_ocupada": 25200,
+        "poblacion_desocupada": 17400,
+        "ingreso_medio_anual": 3244.3,
+        "idh_ranking": null
+      },
       {
         "anio": 2005,
         "poblacion_total": 210000,
@@ -852,7 +1362,10 @@
         "tiempo_duplicacion_anios": 41.17,
         "idh_ranking": 8
       }
-    ]
+    ],
+    "feria_titular": "Del 4 al 9 de diciembre, Virgen de Concepción",
+    "distancia_capital_km": 156,
+    "idiomas_predominantes": "Español"
   },
   {
     "slug": "chiquimula",
@@ -861,6 +1374,30 @@
     "superficie_km2": 2376.0,
     "descripcion": "Departamento fronterizo con Honduras y El Salvador, conocido como la 'Tierra del Sol'.",
     "indicadores": [
+      {
+        "anio": 1994,
+        "poblacion_total": 268300,
+        "densidad_hab_km2": 83.75,
+        "pct_hombres": 49.8,
+        "pct_mujeres": 50.2,
+        "pct_urbana": 22.1,
+        "pct_rural": 77.9,
+        "pct_indigena": 16.8,
+        "esperanza_vida": 62.7,
+        "analfabetismo_pct": null,
+        "acceso_agua_pct": 60.0,
+        "acceso_saneamiento_pct": 57.0,
+        "mortalidad_general": 6.7,
+        "mortalidad_materna": 9.3,
+        "fecundidad": 5.6,
+        "crecimiento_anual_pct": 2.1,
+        "tiempo_duplicacion_anios": 33.25,
+        "poblacion_activa": 69500,
+        "poblacion_ocupada": 41100,
+        "poblacion_desocupada": 28400,
+        "ingreso_medio_anual": 3028.0,
+        "idh_ranking": null
+      },
       {
         "anio": 2005,
         "poblacion_total": 310000,
@@ -897,7 +1434,10 @@
         "tiempo_duplicacion_anios": 38.92,
         "idh_ranking": 15
       }
-    ]
+    ],
+    "feria_titular": "Del 12 al 18 de agosto, Virgen del Tránsito",
+    "distancia_capital_km": 170,
+    "idiomas_predominantes": "Español, Ch'ortí"
   },
   {
     "slug": "jalapa",
@@ -906,6 +1446,30 @@
     "superficie_km2": 2063.0,
     "descripcion": "Departamento del suroriente conocido por su producción de tomate y frijol.",
     "indicadores": [
+      {
+        "anio": 1994,
+        "poblacion_total": 206336,
+        "densidad_hab_km2": 131.36,
+        "pct_hombres": 49.6,
+        "pct_mujeres": 50.4,
+        "pct_urbana": 15.9,
+        "pct_rural": 84.1,
+        "pct_indigena": 37.4,
+        "esperanza_vida": 62.3,
+        "analfabetismo_pct": null,
+        "acceso_agua_pct": 60.0,
+        "acceso_saneamiento_pct": 57.0,
+        "mortalidad_general": 9.5,
+        "mortalidad_materna": 10.1,
+        "fecundidad": 6.2,
+        "crecimiento_anual_pct": 2.6,
+        "tiempo_duplicacion_anios": 26.92,
+        "poblacion_activa": 51600,
+        "poblacion_ocupada": 30500,
+        "poblacion_desocupada": 21100,
+        "ingreso_medio_anual": 2700.2,
+        "idh_ranking": null
+      },
       {
         "anio": 2005,
         "poblacion_total": 275000,
@@ -942,7 +1506,10 @@
         "tiempo_duplicacion_anios": 38.92,
         "idh_ranking": 19
       }
-    ]
+    ],
+    "feria_titular": "Del 2 al 5 de mayo, Santa Cruz",
+    "distancia_capital_km": 101,
+    "idiomas_predominantes": "Español, Poqomam"
   },
   {
     "slug": "jutiapa",
@@ -951,6 +1518,30 @@
     "superficie_km2": 3219.0,
     "descripcion": "El departamento más oriental de Guatemala, fronterizo con El Salvador y Honduras.",
     "indicadores": [
+      {
+        "anio": 1994,
+        "poblacion_total": 378630,
+        "densidad_hab_km2": 94.19,
+        "pct_hombres": 49.2,
+        "pct_mujeres": 50.8,
+        "pct_urbana": 21.4,
+        "pct_rural": 78.6,
+        "pct_indigena": 11.2,
+        "esperanza_vida": 62.9,
+        "analfabetismo_pct": null,
+        "acceso_agua_pct": 60.0,
+        "acceso_saneamiento_pct": 57.0,
+        "mortalidad_general": 6.5,
+        "mortalidad_materna": 7.8,
+        "fecundidad": 6.6,
+        "crecimiento_anual_pct": 2.2,
+        "tiempo_duplicacion_anios": 31.75,
+        "poblacion_activa": 87100,
+        "poblacion_ocupada": 51500,
+        "poblacion_desocupada": 35600,
+        "ingreso_medio_anual": 3974.3,
+        "idh_ranking": null
+      },
       {
         "anio": 2005,
         "poblacion_total": 365000,
@@ -987,6 +1578,9 @@
         "tiempo_duplicacion_anios": 41.08,
         "idh_ranking": 16
       }
-    ]
+    ],
+    "feria_titular": "24 y 25 de julio, San Cristóbal",
+    "distancia_capital_km": 124,
+    "idiomas_predominantes": "Español, Xinca"
   }
 ]

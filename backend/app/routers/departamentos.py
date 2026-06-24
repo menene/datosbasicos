@@ -17,6 +17,9 @@ def _to_summary(d) -> DepartamentoSummary:
         nombre=d.nombre,
         region=d.region_obj.nombre if d.region_obj else None,
         superficie_km2=float(d.superficie_km2) if d.superficie_km2 is not None else None,
+        feria_titular=d.feria_titular,
+        distancia_capital_km=d.distancia_capital_km,
+        idiomas_predominantes=d.idiomas_predominantes,
         indicadores=IndicadorSchema.model_validate(ind) if ind else None,
     )
 
@@ -29,6 +32,9 @@ def _to_detail(d) -> DepartamentoDetail:
         nombre=d.nombre,
         region=d.region_obj.nombre if d.region_obj else None,
         superficie_km2=float(d.superficie_km2) if d.superficie_km2 is not None else None,
+        feria_titular=d.feria_titular,
+        distancia_capital_km=d.distancia_capital_km,
+        idiomas_predominantes=d.idiomas_predominantes,
         descripcion=d.descripcion,
         indicadores=IndicadorSchema.model_validate(ind) if ind else None,
     )

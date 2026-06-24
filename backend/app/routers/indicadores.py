@@ -20,9 +20,15 @@ CAMPOS_NUMERICOS = [
     "analfabetismo_pct",
     "acceso_agua_pct",
     "acceso_saneamiento_pct",
+    "mortalidad_general",
+    "mortalidad_materna",
     "fecundidad",
     "crecimiento_anual_pct",
     "tiempo_duplicacion_anios",
+    "poblacion_activa",
+    "poblacion_ocupada",
+    "poblacion_desocupada",
+    "ingreso_medio_anual",
     "idh_ranking",
 ]
 

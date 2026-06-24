@@ -41,7 +41,7 @@ const SECTIONS = [
     label: "Comparativo entre años",
     color: "#8B4513",
     bg: "#FDF1D8",
-    desc: "Compara los indicadores entre 2005 y 2025 lado a lado en tabla, gráficas y fichas. Selecciona los años desde cada sección.",
+    desc: "Compara los indicadores entre 1994, 2005 y 2025 lado a lado en tabla, gráficas y fichas. Selecciona los años desde cada sección.",
   },
 //   {
 //     to: "/libro",

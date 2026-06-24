@@ -19,10 +19,17 @@ class IndicadorSchema(BaseModel):
     analfabetismo_pct: float | None = None
     acceso_agua_pct: float | None = None
     acceso_saneamiento_pct: float | None = None
+    mortalidad_general: float | None = None
+    mortalidad_materna: float | None = None
 
     fecundidad: float | None = None
     crecimiento_anual_pct: float | None = None
     tiempo_duplicacion_anios: float | None = None
+
+    poblacion_activa: int | None = None
+    poblacion_ocupada: int | None = None
+    poblacion_desocupada: int | None = None
+    ingreso_medio_anual: float | None = None
 
     idh_ranking: int | None = None
 

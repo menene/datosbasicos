@@ -39,23 +39,32 @@ async def seed(db: AsyncSession) -> None:
             print(f"  Region creada: {nombre}")
         regiones[nombre] = region
 
+    # Campos del departamento que se sincronizan (upsert) en cada seed.
+    DEPTO_FIELDS = (
+        "nombre",
+        "superficie_km2",
+        "descripcion",
+        "feria_titular",
+        "distancia_capital_km",
+        "idiomas_predominantes",
+    )
+
     # Crear departamentos e indicadores
     for entry in data:
         result = await db.execute(select(Departamento).where(Departamento.slug == entry["slug"]))
         depto = result.scalar_one_or_none()
+        region_obj = regiones.get(entry.get("region", ""))
 
         if not depto:
-            region_obj = regiones.get(entry.get("region", ""))
-            depto = Departamento(
-                slug=entry["slug"],
-                nombre=entry["nombre"],
-                region_id=region_obj.id if region_obj else None,
-                superficie_km2=entry.get("superficie_km2"),
-                descripcion=entry.get("descripcion"),
-            )
+            depto = Departamento(slug=entry["slug"], nombre=entry["nombre"])
             db.add(depto)
-            await db.flush()
             print(f"  Departamento creado: {entry['nombre']}")
+
+        depto.region_id = region_obj.id if region_obj else None
+        for campo in DEPTO_FIELDS:
+            if campo in entry and hasattr(depto, campo):
+                setattr(depto, campo, entry[campo])
+        await db.flush()
 
         # Indicadores — soporta lista (un registro por año) o dict (legacy, un solo año)
         ind_raw = entry.get("indicadores", [])

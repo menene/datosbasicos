@@ -39,6 +39,9 @@ async def get_departamentos(
         "poblacion_total", "densidad_hab_km2", "pct_urbana", "pct_indigena",
         "esperanza_vida", "analfabetismo_pct", "acceso_agua_pct", "fecundidad",
         "crecimiento_anual_pct", "tiempo_duplicacion_anios", "idh_ranking",
+        "mortalidad_general", "mortalidad_materna",
+        "poblacion_activa", "poblacion_ocupada", "poblacion_desocupada",
+        "ingreso_medio_anual",
     }
 
     if orden:

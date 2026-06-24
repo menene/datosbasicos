@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import type { VariableKey } from "@/types/departamento";
 
-export const ANIOS_DISPONIBLES = [2005, 2025] as const;
+export const ANIOS_DISPONIBLES = [1994, 2005, 2025] as const;
 export const ANIO_PREDETERMINADO = 2025;
 
 interface FiltrosStore {

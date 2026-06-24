@@ -89,14 +89,43 @@ export default function PanelDepartamento() {
             </button>
           </div>
 
-          {/* Superficie */}
-          {depto.superficie_km2 && (
-            <p className="text-xs text-muted-foreground font-body">
-              Superficie:{" "}
-              <span className="font-medium text-foreground">
-                {new Intl.NumberFormat("es-GT").format(depto.superficie_km2)} km²
-              </span>
-            </p>
+          {/* Datos generales */}
+          {(depto.superficie_km2 ||
+            depto.distancia_capital_km !== null ||
+            depto.feria_titular ||
+            depto.idiomas_predominantes) && (
+            <dl className="text-xs text-muted-foreground font-body space-y-1">
+              {depto.superficie_km2 != null && (
+                <div>
+                  Superficie:{" "}
+                  <span className="font-medium text-foreground">
+                    {new Intl.NumberFormat("es-GT").format(depto.superficie_km2)} km²
+                  </span>
+                </div>
+              )}
+              {depto.distancia_capital_km != null && (
+                <div>
+                  Distancia a la capital:{" "}
+                  <span className="font-medium text-foreground">
+                    {new Intl.NumberFormat("es-GT").format(depto.distancia_capital_km)} km
+                  </span>
+                </div>
+              )}
+              {depto.feria_titular && (
+                <div>
+                  Feria titular:{" "}
+                  <span className="font-medium text-foreground">{depto.feria_titular}</span>
+                </div>
+              )}
+              {depto.idiomas_predominantes && (
+                <div>
+                  Idiomas:{" "}
+                  <span className="font-medium text-foreground">
+                    {depto.idiomas_predominantes}
+                  </span>
+                </div>
+              )}
+            </dl>
           )}
 
           {/* KPI grid */}

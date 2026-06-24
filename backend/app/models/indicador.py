@@ -38,11 +38,19 @@ class Indicador(Base):
     analfabetismo_pct: Mapped[float | None] = mapped_column(Numeric(5, 2))
     acceso_agua_pct: Mapped[float | None] = mapped_column(Numeric(5, 2))
     acceso_saneamiento_pct: Mapped[float | None] = mapped_column(Numeric(5, 2))
+    mortalidad_general: Mapped[float | None] = mapped_column(Numeric(5, 2))
+    mortalidad_materna: Mapped[float | None] = mapped_column(Numeric(5, 2))
 
     # Familia
     fecundidad: Mapped[float | None] = mapped_column(Numeric(4, 2))
     crecimiento_anual_pct: Mapped[float | None] = mapped_column(Numeric(4, 2))
     tiempo_duplicacion_anios: Mapped[float | None] = mapped_column(Numeric(5, 2))
+
+    # Actividad económica
+    poblacion_activa: Mapped[int | None] = mapped_column(Integer)
+    poblacion_ocupada: Mapped[int | None] = mapped_column(Integer)
+    poblacion_desocupada: Mapped[int | None] = mapped_column(Integer)
+    ingreso_medio_anual: Mapped[float | None] = mapped_column(Numeric(12, 2))
 
     # Desarrollo
     idh_ranking: Mapped[int | None] = mapped_column(SmallInteger)
