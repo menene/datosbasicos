@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Map, BarChart2, Table2, FileText, BookMarked, ArrowRight, Calendar, GitCompareArrows } from "lucide-react";
+import { Map, BarChart2, Table2, FileText, ArrowRight, Calendar, GitCompareArrows } from "lucide-react";
 import { ANIOS_DISPONIBLES } from "@/store/filtros";
 
 const SECTIONS = [

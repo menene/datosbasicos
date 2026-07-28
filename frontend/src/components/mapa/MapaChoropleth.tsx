@@ -5,49 +5,13 @@ import { useDepartamentos, useResumenIndicadores } from "@/api/departamentos";
 import { useFiltros } from "@/store/filtros";
 import { useSeleccion } from "@/store/seleccion";
 import { COLOR_SIN_DATO } from "@/lib/colores";
+import { MAP_W, MAP_H, featureToSvgPath, slugify } from "@/lib/mapa";
 import { VARIABLES } from "@/types/departamento";
 import type { Departamento, VariableKey } from "@/types/departamento";
 import { formatearValor } from "@/lib/utils";
 
-const MAP_W = 800;
-const MAP_H = 700;
-const PAD = 20;
-
-// Guatemala bounding box (from GADM data)
-const LON_MIN = -92.23, LON_MAX = -88.23;
-const LAT_MIN = 13.74, LAT_MAX = 17.82;
-
-// Simple equirectangular projection — bypasses D3 geoPath entirely
-function projectPt(lon: number, lat: number): [number, number] {
-  const x = PAD + ((lon - LON_MIN) / (LON_MAX - LON_MIN)) * (MAP_W - 2 * PAD);
-  const y = PAD + ((LAT_MAX - lat) / (LAT_MAX - LAT_MIN)) * (MAP_H - 2 * PAD);
-  return [x, y];
-}
-
-function featureToSvgPath(feature: GeoJSON.Feature): string | null {
-  const geom = feature.geometry;
-  if (!geom) return null;
-  let rings: number[][][];
-  if (geom.type === "Polygon") rings = geom.coordinates as number[][][];
-  else if (geom.type === "MultiPolygon") rings = (geom.coordinates as number[][][][]).flat();
-  else return null;
-  return rings.map((ring) => {
-    const pts = (ring as [number, number][]).map(([lon, lat]) => projectPt(lon, lat));
-    return "M" + pts.map(([x, y]) => `${x.toFixed(1)},${y.toFixed(1)}`).join("L") + "Z";
-  }).join(" ");
-}
-
 // Variables where a sqrt transform gives better visual distribution
 const SQRT_VARS: VariableKey[] = ["poblacion_total", "densidad_hab_km2"];
-
-function slugify(name: string): string {
-  return name
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .replace(/[\s_]+/g, "-")
-    .replace(/[^a-z0-9-]/g, "");
-}
 
 function buildScale(variableKey: VariableKey, min: number, max: number) {
   const isAlerta = variableKey === "analfabetismo_pct";

@@ -13,3 +13,15 @@ export function useGeoData() {
     staleTime: Infinity,
   });
 }
+
+export function useGeoMunicipios() {
+  return useQuery({
+    queryKey: ["geo-municipios"],
+    queryFn: async () => {
+      const res = await fetch(`${API}/geo/municipios`);
+      if (!res.ok) throw new Error(`Error ${res.status}`);
+      return res.json() as Promise<GeoJSON.FeatureCollection>;
+    },
+    staleTime: Infinity,
+  });
+}

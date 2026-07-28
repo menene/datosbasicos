@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import {
   BarChart,
   Bar,
@@ -20,6 +20,9 @@ import { formatearValor } from "@/lib/utils";
 import { VARIABLES, VARIABLES_ALERTA } from "@/types/departamento";
 import type { VariableKey, Indicadores } from "@/types/departamento";
 import DepartamentoShape from "@/components/ficha/DepartamentoShape";
+import KpiCard from "@/components/ficha/KpiCard";
+import Breadcrumb from "@/components/ficha/Breadcrumb";
+import { useMunicipios } from "@/api/municipios";
 
 const COLORES_ANIO: Record<number, string> = {
   1994: "#1E4D8C",
@@ -37,49 +40,6 @@ const colorPorAnio = (anio: number, idx: number): string =>
   COLORES_ANIO[anio] ?? FALLBACK_ANIO[idx % FALLBACK_ANIO.length];
 const colorPromedioPorAnio = (anio: number, idx: number): string =>
   COLORES_PROMEDIO[anio] ?? FALLBACK_PROMEDIO[idx % FALLBACK_PROMEDIO.length];
-
-function KpiCard({
-  label,
-  unit,
-  valores,
-}: {
-  label: string;
-  unit?: string;
-  valores: Array<{ anio: number; texto: string }>;
-}) {
-  const multi = valores.length > 1;
-  return (
-    <div className="rounded-lg px-4 py-3 border bg-muted/40 border-border">
-      <p className="text-xs text-muted-foreground font-body mb-1.5">{label}</p>
-      <div className={multi ? "space-y-0.5" : ""}>
-        {valores.map(({ anio, texto }) => (
-          <div
-            key={anio}
-            className="flex items-baseline gap-1.5 leading-tight"
-          >
-            {multi && (
-              <span className="text-[10px] font-body font-medium text-muted-foreground tabular-nums w-9 shrink-0">
-                {anio}
-              </span>
-            )}
-            <p
-              className={`font-display font-semibold text-foreground ${
-                multi ? "text-sm" : "text-lg"
-              }`}
-            >
-              {texto}
-              {unit && (
-                <span className="text-xs font-body font-normal text-muted-foreground ml-1">
-                  {unit}
-                </span>
-              )}
-            </p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 const KPIS: Array<{
   key: VariableKey;
@@ -118,7 +78,7 @@ interface ChartEntryComparativo {
 }
 
 export default function FichaPage() {
-  const { slug } = useParams<{ slug: string }>();
+  const { departamento_slug: slug } = useParams<{ departamento_slug: string }>();
   const navigate = useNavigate();
   const anios = useFiltros((s) => s.anios);
   const multiAnio = anios.length > 1;
@@ -131,6 +91,11 @@ export default function FichaPage() {
   const { data: resumenPorAnio } = useResumenIndicadoresMulti(anios);
   // Department list for selector & nav uses the most recent year for names.
   const { data: todos } = useDepartamentos({ anio: anioMasReciente });
+  // Municipios of this department for the bottom drill-down nav.
+  const { data: municipios } = useMunicipios();
+  const municipiosDelDepto = municipios
+    ?.filter((m) => m.departamento_slug === slug)
+    .sort((a, b) => a.nombre.localeCompare(b.nombre));
 
   const deptoMasReciente = deptoPorAnio.find(
     (p) => p.anio === anioMasReciente
@@ -244,17 +209,24 @@ export default function FichaPage() {
 
   return (
     <div className="max-w-screen-xl mx-auto px-6 py-8 space-y-8">
-      {/* Back + year selector */}
+      {/* Breadcrumb + year selector */}
       <div className="flex items-center justify-between gap-4 flex-wrap">
-        <button
-          onClick={() => navigate(-1)}
-          className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground font-body transition-colors"
-        >
-          <ArrowLeft size={14} />
-          Volver
-        </button>
+        <Breadcrumb
+          items={[
+            { label: "Fichas", to: "/ficha" },
+            { label: depto.nombre },
+          ]}
+        />
         <SelectorAniosMulti />
       </div>
+
+      <button
+        onClick={() => navigate(-1)}
+        className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground font-body transition-colors -mt-4"
+      >
+        <ArrowLeft size={14} />
+        Volver
+      </button>
 
       {/* Header */}
       <div className="flex flex-col-reverse sm:flex-row sm:items-start sm:justify-between gap-6">
@@ -507,7 +479,31 @@ export default function FichaPage() {
         </div>
       )}
 
-      {/* Department nav */}
+      {/* Drill-down: municipios of this department */}
+      <div className="border-t border-border pt-6">
+        <p className="text-xs text-muted-foreground font-body mb-3">
+          Municipios de {depto.nombre}
+        </p>
+        {municipiosDelDepto && municipiosDelDepto.length > 0 ? (
+          <div className="flex flex-wrap gap-2">
+            {municipiosDelDepto.map((m) => (
+              <Link
+                key={m.slug}
+                to={`/ficha/${m.departamento_slug}/${m.slug}`}
+                className="px-3 py-1 rounded-full text-xs font-body border border-border text-muted-foreground hover:border-selva hover:text-selva hover:bg-selva/5 transition-colors"
+              >
+                {m.nombre}
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <p className="text-xs text-muted-foreground/70 font-body italic">
+            Aún no hay fichas de municipios para este departamento.
+          </p>
+        )}
+      </div>
+
+      {/* Lateral nav: other departments */}
       {deptOptions && (
         <div className="border-t border-border pt-6">
           <p className="text-xs text-muted-foreground font-body mb-3">
