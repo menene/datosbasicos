@@ -22,7 +22,9 @@ import SelectorAniosMulti from "@/components/SelectorAniosMulti";
 import { VARIABLES, VARIABLES_ALERTA } from "@/types/departamento";
 import type { VariableKey } from "@/types/departamento";
 import { formatearValor } from "@/lib/utils";
+import { agregarNacional, esAditiva } from "@/lib/totales";
 import { getColorForValue } from "@/lib/colores";
+import TarjetaNacional from "@/components/TarjetaNacional";
 
 const COLORES_ANIO: Record<number, string> = {
   1994: "#1E4D8C",
@@ -239,6 +241,22 @@ export default function GraficasPage() {
     return rows;
   }, [multiAnio, porAnio, anios, variableActiva, sortAsc, anioReciente]);
 
+  // National figure for the ranking variable, one stat per selected year.
+  const statsNacional = useMemo(
+    () =>
+      porAnio.map(({ anio, data }) => ({
+        label: String(anio),
+        valor: formatearValor(
+          agregarNacional(data.map((d) => ({ ...d.indicadores }))).valores[
+            variableActiva
+          ] ?? null,
+          varInfo.formato
+        ),
+      })),
+    [porAnio, variableActiva, varInfo]
+  );
+  const aditivaRanking = esAditiva(variableActiva);
+
   // Scatter
   const scatterDataPorAnio = useMemo(() => {
     return porAnio.map(({ anio, data }) => {
@@ -328,6 +346,16 @@ export default function GraficasPage() {
             </span>
           )}
         </h2>
+
+        <TarjetaNacional
+          className="mb-6 max-w-xl"
+          stats={statsNacional}
+          nota={
+            aditivaRanking
+              ? "Total nacional (suma de los 22 departamentos)."
+              : "Promedio simple de los 22 departamentos (sin ponderar por población; aproximado)."
+          }
+        />
 
         {!multiAnio && (
           <ResponsiveContainer

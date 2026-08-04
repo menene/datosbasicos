@@ -6,8 +6,13 @@ import MapaMunicipios from "@/components/mapa/MapaMunicipios";
 import PanelDepartamento from "@/components/mapa/PanelDepartamento";
 import PanelMunicipio from "@/components/mapa/PanelMunicipio";
 import LeyendaColor from "@/components/mapa/LeyendaColor";
+import TarjetaNacional from "@/components/TarjetaNacional";
 import { ANIOS_DISPONIBLES, useFiltros } from "@/store/filtros";
 import { useSeleccion } from "@/store/seleccion";
+import { useDepartamentos } from "@/api/departamentos";
+import { useMunicipios } from "@/api/municipios";
+import { agregarNacional, esAditiva } from "@/lib/totales";
+import { formatearValor } from "@/lib/utils";
 import { VARIABLES } from "@/types/departamento";
 
 type Tab = "departamentos" | "municipios";
@@ -22,6 +27,18 @@ export default function MapaPage() {
 
   const esMunicipios = tab === "municipios";
   const seleccionActiva = esMunicipios ? municipioActivo : departamentoActivo;
+
+  // National figure for the active variable + year, shown in the sidebar.
+  const { data: deptos } = useDepartamentos({ anio: anioMapa });
+  const { data: municipios } = useMunicipios();
+  const varInfo = VARIABLES.find((v) => v.key === variableActiva)!;
+  const agregadoNacional = esMunicipios
+    ? agregarNacional(
+        (municipios ?? []).map((m) => m as unknown as Record<string, number | null>)
+      )
+    : agregarNacional((deptos ?? []).map((d) => ({ ...d.indicadores })));
+  const valorNacional = agregadoNacional.valores[variableActiva] ?? null;
+  const aditiva = esAditiva(variableActiva);
 
   // Switching views clears the other view's selection so panels don't leak across.
   function cambiarTab(next: Tab) {
@@ -112,6 +129,19 @@ export default function MapaPage() {
               />
             </div>
           </div>
+
+          {/* Total nacional para la variable + año activos */}
+          <TarjetaNacional
+            stats={[
+              {
+                label: `${varInfo.label} · ${esMunicipios ? "2026" : anioMapa}`,
+                valor: formatearValor(valorNacional, varInfo.formato),
+                sub: aditiva
+                  ? `Suma de ${esMunicipios ? "340 municipios" : "22 departamentos"}`
+                  : `Promedio de ${esMunicipios ? "340 municipios" : "22 departamentos"}`,
+              },
+            ]}
+          />
         </div>
 
         {/* Leyenda de color (misma escala en ambas vistas) */}

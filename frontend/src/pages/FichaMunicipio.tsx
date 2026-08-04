@@ -13,9 +13,11 @@ import { ArrowLeft, MapPin } from "lucide-react";
 import { useMunicipios } from "@/api/municipios";
 import { useDepartamento } from "@/api/departamentos";
 import { formatearValor } from "@/lib/utils";
+import { agregarNacional } from "@/lib/totales";
 import { VARIABLES_ALERTA } from "@/types/departamento";
 import type { VariableKey } from "@/types/departamento";
 import type { Municipio } from "@/types/municipio";
+import TarjetaNacional from "@/components/TarjetaNacional";
 import KpiCard from "@/components/ficha/KpiCard";
 import MunicipioShape from "@/components/ficha/MunicipioShape";
 import Breadcrumb from "@/components/ficha/Breadcrumb";
@@ -126,6 +128,17 @@ export default function FichaMunicipioPage() {
 
   const deptNombre = depto?.nombre ?? muni.departamento;
 
+  // National context: national population (sum of municipios) + this share.
+  const agregadoNacional = agregarNacional(
+    (municipios ?? []).map((m) => m as unknown as Record<string, number | null>)
+  );
+  const poblacionNacional = agregadoNacional.valores.poblacion_total;
+  const poblacionMuni = muniVal(muni, "poblacion_total");
+  const participacion =
+    poblacionNacional && poblacionMuni
+      ? (poblacionMuni / poblacionNacional) * 100
+      : null;
+
   return (
     <div className="max-w-screen-xl mx-auto px-6 py-8 space-y-8">
       {/* Breadcrumb */}
@@ -189,6 +202,36 @@ export default function FichaMunicipioPage() {
           ))}
         </div>
       </div>
+
+      {/* National context */}
+      {poblacionNacional !== null && (
+        <TarjetaNacional
+          stats={[
+            {
+              label: "Población nacional",
+              valor: formatearValor(poblacionNacional, "numero"),
+              sub: "suma de 340 municipios",
+            },
+            ...(agregadoNacional.superficie_km2 !== null
+              ? [
+                  {
+                    label: "Superficie nacional",
+                    valor: `${new Intl.NumberFormat("es-GT").format(agregadoNacional.superficie_km2)} km²`,
+                  },
+                ]
+              : []),
+            ...(participacion !== null
+              ? [
+                  {
+                    label: `Participación de ${muni.nombre}`,
+                    valor: formatearValor(participacion, "porcentaje"),
+                    sub: "de la población del país",
+                  },
+                ]
+              : []),
+          ]}
+        />
+      )}
 
       {/* Chart: vs parent department */}
       {chartData.length > 0 && (

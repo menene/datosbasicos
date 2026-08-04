@@ -17,8 +17,10 @@ import {
 import { useFiltros } from "@/store/filtros";
 import SelectorAniosMulti from "@/components/SelectorAniosMulti";
 import { formatearValor } from "@/lib/utils";
+import { agregarNacional } from "@/lib/totales";
 import { VARIABLES, VARIABLES_ALERTA } from "@/types/departamento";
 import type { VariableKey, Indicadores } from "@/types/departamento";
+import TarjetaNacional from "@/components/TarjetaNacional";
 import DepartamentoShape from "@/components/ficha/DepartamentoShape";
 import KpiCard from "@/components/ficha/KpiCard";
 import Breadcrumb from "@/components/ficha/Breadcrumb";
@@ -201,6 +203,20 @@ export default function FichaPage() {
 
   const depto = deptoMasReciente;
 
+  // National context (most recent year): totals + this department's share.
+  const agregadoNacional = agregarNacional(
+    (todos ?? []).map((d) => ({ ...d.indicadores, superficie_km2: d.superficie_km2 }))
+  );
+  const poblacionNacional = agregadoNacional.valores.poblacion_total;
+  const poblacionDepto =
+    typeof depto.indicadores?.poblacion_total === "number"
+      ? depto.indicadores.poblacion_total
+      : null;
+  const participacion =
+    poblacionNacional && poblacionDepto
+      ? (poblacionDepto / poblacionNacional) * 100
+      : null;
+
   // Build (anio → Indicadores) map for KPI rendering
   const indicadoresPorAnio = new Map<number, Indicadores | null | undefined>();
   for (const { anio, data } of deptoPorAnio) {
@@ -326,6 +342,35 @@ export default function FichaPage() {
           })}
         </div>
       </div>
+
+      {/* National context */}
+      {poblacionNacional !== null && (
+        <TarjetaNacional
+          stats={[
+            {
+              label: "Población nacional",
+              valor: formatearValor(poblacionNacional, "numero"),
+              sub: `Año ${anioMasReciente}`,
+            },
+            {
+              label: "Superficie nacional",
+              valor:
+                agregadoNacional.superficie_km2 !== null
+                  ? `${new Intl.NumberFormat("es-GT").format(agregadoNacional.superficie_km2)} km²`
+                  : "—",
+            },
+            ...(participacion !== null
+              ? [
+                  {
+                    label: `Participación de ${depto.nombre}`,
+                    valor: formatearValor(participacion, "porcentaje"),
+                    sub: "de la población del país",
+                  },
+                ]
+              : []),
+          ]}
+        />
+      )}
 
       {/* Chart */}
       {!multiAnio && chartDataSolo.length > 0 && (

@@ -24,8 +24,14 @@ import { useMunicipios } from "@/api/municipios";
 import { useFiltros } from "@/store/filtros";
 import SelectorAniosMulti from "@/components/SelectorAniosMulti";
 import { formatearValor } from "@/lib/utils";
+import { agregarNacional } from "@/lib/totales";
+import type { AgregadoNacional } from "@/lib/totales";
 import { VARIABLES } from "@/types/departamento";
 import type { Indicadores, Variable, VariableKey } from "@/types/departamento";
+
+const FORMATO_POR_KEY: Record<string, Variable["formato"]> = Object.fromEntries(
+  VARIABLES.map((v) => [v.key, v.formato])
+);
 
 type Vista = "departamentos" | "municipios";
 
@@ -138,6 +144,43 @@ export default function TablaPage() {
 
   const data = esMunicipios ? dataMunis : dataDeptos;
 
+  // National total per year (sum for additive keys, simple average otherwise).
+  // Computed over the full dataset — the country total is independent of search.
+  const agregadoPorAnio = useMemo<Record<number, AgregadoNacional>>(() => {
+    const out: Record<number, AgregadoNacional> = {};
+    for (const anio of aniosEfectivos) {
+      out[anio] = agregarNacional(
+        data.map((r) => ({
+          ...(r.porAnio[anio] ?? {}),
+          superficie_km2: r.superficie_km2,
+        }))
+      );
+    }
+    return out;
+  }, [data, aniosEfectivos]);
+
+  const anioBase = aniosEfectivos[0];
+
+  const celdaTotal = (colId: string): React.ReactNode => {
+    if (colId === "nombre")
+      return <span className="font-semibold text-selva">Guatemala</span>;
+    if (colId === "grupo")
+      return <span className="text-muted-foreground text-xs">Total nacional</span>;
+    if (colId === "superficie_km2") {
+      const sup = agregadoPorAnio[anioBase]?.superficie_km2 ?? null;
+      return sup !== null ? new Intl.NumberFormat("es-GT").format(sup) : "—";
+    }
+    let key = colId as VariableKey;
+    let anio = anioBase;
+    if (colId.includes("__")) {
+      const [k, a] = colId.split("__");
+      key = k as VariableKey;
+      anio = Number(a);
+    }
+    const val = agregadoPorAnio[anio]?.valores[key] ?? null;
+    return formatearValor(val, FORMATO_POR_KEY[key]);
+  };
+
   const columns = useMemo<ColumnDef<Row, unknown>[]>(() => {
     const cols: ColumnDef<Row, unknown>[] = [
       columnHelper.accessor("nombre", {
@@ -247,6 +290,24 @@ export default function TablaPage() {
       }
       return fila;
     });
+
+    // Prepend the national total row.
+    const totalFila: Record<string, string | number | null> = {
+      [entidadLabel]: "Guatemala (total nacional)",
+      [grupoLabel]: null,
+      "Superficie (km²)": agregadoPorAnio[anioBase]?.superficie_km2 ?? null,
+    };
+    for (const v of variablesActivas) {
+      if (multiAnio) {
+        for (const anio of anios) {
+          totalFila[`${v.label} (${anio})`] =
+            agregadoPorAnio[anio]?.valores[v.key] ?? null;
+        }
+      } else {
+        totalFila[v.label] = agregadoPorAnio[anioBase]?.valores[v.key] ?? null;
+      }
+    }
+    filas.unshift(totalFila);
 
     const ws = XLSX.utils.json_to_sheet(filas);
     ws["!cols"] = Object.keys(filas[0] ?? {}).map((key) => ({
@@ -396,6 +457,23 @@ export default function TablaPage() {
               })}
             </thead>
             <tbody>
+              {data.length > 0 && (
+                <tr className="border-b-2 border-selva/30 bg-selva/[0.06] font-medium">
+                  {table.getVisibleLeafColumns().map((col) => {
+                    const centrada = !esTexto(col.id);
+                    return (
+                      <td
+                        key={col.id}
+                        className={`px-3 py-2.5 font-body whitespace-nowrap text-foreground ${
+                          centrada ? "text-center tabular-nums" : ""
+                        }`}
+                      >
+                        {celdaTotal(col.id)}
+                      </td>
+                    );
+                  })}
+                </tr>
+              )}
               {table.getRowModel().rows.map((row, i) => (
                 <tr
                   key={row.id}
@@ -422,6 +500,16 @@ export default function TablaPage() {
             </tbody>
           </table>
         </div>
+      )}
+
+      {!isLoading && data.length > 0 && (
+        <p className="text-[11px] text-muted-foreground/80 font-body mt-3 leading-snug max-w-3xl">
+          La fila <span className="text-selva font-medium">Guatemala</span> es el
+          total nacional: población y superficie son sumas de{" "}
+          {esMunicipios ? "los 340 municipios" : "los 22 departamentos"}; los
+          porcentajes y tasas son promedios simples (sin ponderar por población),
+          por lo que son aproximados. El ranking IDH no se totaliza.
+        </p>
       )}
     </div>
   );
