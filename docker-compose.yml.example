@@ -44,7 +44,12 @@ services:
     restart: unless-stopped
     environment:
       VITE_API_URL: ${VITE_API_URL}
-      # Analítica: si están vacías, el frontend no carga el tracker.
+      # Analítica. Tenerlas en .env NO basta: Compose solo usa .env para
+      # interpolar ${VAR} en este archivo — la variable llega al contenedor
+      # únicamente si aparece listada aquí.
+      # VITE_UMAMI_URL se resuelve en el navegador del visitante, así que debe
+      # ser una URL pública. En un sitio HTTPS tiene que ser HTTPS también, o
+      # el navegador bloquea el tracker por contenido mixto.
       VITE_UMAMI_URL: ${VITE_UMAMI_URL:-}
       VITE_UMAMI_WEBSITE_ID: ${VITE_UMAMI_WEBSITE_ID:-}
     ports:
@@ -66,7 +71,8 @@ services:
       APP_SECRET: ${UMAMI_APP_SECRET}
       DISABLE_TELEMETRY: "1"
     ports:
-      - "127.0.0.1:3000:3000"
+      # Solo loopback: el acceso público pasa por Caddy (TLS).
+      - "127.0.0.1:${UMAMI_PORT:-3000}:3000"
     depends_on:
       db:
         condition: service_healthy

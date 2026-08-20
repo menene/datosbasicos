@@ -700,6 +700,52 @@ Para comprobar que funciona: abrir la app, DevTools → Network, filtrar por
 `send`. Cada navegación debe producir un `POST /api/send` con respuesta `200`,
 y la visita aparece en **Realtime** del panel en segundos.
 
+### En producción
+
+`docker-compose.yml` y `.env` están en `.gitignore` a propósito: cada entorno
+tiene los suyos. La referencia versionada es `docker-compose.yml.example`, y
+**los cambios hay que aplicarlos a mano en el servidor**.
+
+Dos cosas que no se deducen solas:
+
+**Tener las variables en `.env` no basta.** Compose usa `.env` únicamente para
+interpolar `${VAR}` dentro del compose; la variable llega al contenedor solo si
+está listada en el bloque `environment:` del servicio. Si `VITE_UMAMI_URL` está
+en `.env` pero no bajo `frontend:`, el contenedor nunca la ve y el tracker
+queda deshabilitado en silencio.
+
+**`VITE_UMAMI_URL` se resuelve en el navegador del visitante, no en el
+servidor.** `http://localhost:3000` apunta a la máquina de quien visita el
+sitio. En producción debe ser la URL pública del panel, y **en HTTPS tiene que
+ser HTTPS**: un sitio HTTPS no puede cargar un script HTTP, el navegador lo
+bloquea por contenido mixto antes de que salga la petición.
+
+Como el panel se publica solo en loopback (`127.0.0.1:${UMAMI_PORT}`), eso
+implica un bloque de Caddy:
+
+```
+analytics.tudominio.com {
+	reverse_proxy 127.0.0.1:3030
+}
+```
+
+```bash
+VITE_UMAMI_URL=https://analytics.tudominio.com
+```
+
+Tras cualquier cambio de estas variables hay que **recrear** el contenedor, no
+reiniciarlo — Vite lee el entorno al arrancar el proceso:
+
+```bash
+docker compose up -d --force-recreate frontend
+docker compose exec frontend env | grep VITE_          # deben estar las tres
+curl -s https://TUDOMINIO/src/lib/analytics.ts | head -1   # con valores reales
+```
+
+El `curl` de la página **no** sirve para verificar: el tracker se inyecta desde
+JS en tiempo de ejecución, así que el HTML nunca contiene la palabra `umami`
+aunque todo funcione.
+
 ### Eventos instrumentados
 
 Las vistas de página se registran solas — el tracker intercepta
