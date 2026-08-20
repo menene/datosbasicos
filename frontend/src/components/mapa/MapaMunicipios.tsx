@@ -4,6 +4,7 @@ import { useMunicipios, municipiosDominio } from "@/api/municipios";
 import { useFiltros } from "@/store/filtros";
 import { useSeleccion } from "@/store/seleccion";
 import { getColorForValue, COLOR_SIN_DATO, COLOR_SELECCIONADO } from "@/lib/colores";
+import { track } from "@/lib/analytics";
 import { MAP_W, MAP_H, featureToSvgPath, slugify } from "@/lib/mapa";
 import { VARIABLES } from "@/types/departamento";
 import type { Municipio } from "@/types/municipio";
@@ -137,9 +138,17 @@ export default function MapaMunicipios() {
                 });
               }}
               onMouseLeave={() => setTooltip(null)}
-              onClick={() =>
-                setMunicipioActivo(muniSlug === municipioActivo ? null : muniSlug)
-              }
+              onClick={() => {
+                const deseleccionar = muniSlug === municipioActivo;
+                setMunicipioActivo(deseleccionar ? null : muniSlug);
+                if (!deseleccionar) {
+                  track("mapa_municipio_click", {
+                    municipio: muniSlug,
+                    departamento: deptSlug,
+                    variable: variableActiva,
+                  });
+                }
+              }}
             />
           );
         })}

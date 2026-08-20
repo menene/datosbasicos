@@ -12,6 +12,7 @@ import { useSeleccion } from "@/store/seleccion";
 import { useDepartamentos } from "@/api/departamentos";
 import { useMunicipios } from "@/api/municipios";
 import { agregarNacional, esAditiva } from "@/lib/totales";
+import { track } from "@/lib/analytics";
 import { formatearValor } from "@/lib/utils";
 import { VARIABLES } from "@/types/departamento";
 
@@ -46,6 +47,7 @@ export default function MapaPage() {
     setDepartamentoActivo(null);
     setMunicipioActivo(null);
     setTab(next);
+    track("mapa_vista", { vista: next });
   }
 
   return (
@@ -91,7 +93,11 @@ export default function MapaPage() {
             <div className="relative">
               <select
                 value={variableActiva}
-                onChange={(e) => setVariable(e.target.value as typeof variableActiva)}
+                onChange={(e) => {
+                  const v = e.target.value as typeof variableActiva;
+                  setVariable(v);
+                  track("variable_seleccionada", { variable: v, origen: "mapa" });
+                }}
                 className="w-full appearance-none bg-muted border border-border rounded-md px-3 py-2 text-sm font-body text-foreground focus:outline-none focus:ring-2 focus:ring-selva cursor-pointer pr-8"
               >
                 {VARIABLES.map((v) => (
@@ -114,7 +120,11 @@ export default function MapaPage() {
             <div className="relative">
               <select
                 value={anioMapa}
-                onChange={(e) => setAnioMapa(Number(e.target.value))}
+                onChange={(e) => {
+                  const a = Number(e.target.value);
+                  setAnioMapa(a);
+                  track("anio_cambiado", { anios: String(a), origen: "mapa" });
+                }}
                 className="w-full appearance-none bg-muted border border-border rounded-md px-3 py-2 text-sm font-body text-foreground focus:outline-none focus:ring-2 focus:ring-selva cursor-pointer pr-8"
               >
                 {ANIOS_DISPONIBLES.map((a) => (

@@ -1,6 +1,7 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { Calendar, Check, ChevronDown } from "lucide-react";
 import { ANIOS_DISPONIBLES, useFiltros } from "@/store/filtros";
+import { track } from "@/lib/analytics";
 
 function etiquetaSeleccion(anios: number[]): string {
   if (anios.length === 0) return "Ninguno";
@@ -11,11 +12,24 @@ function etiquetaSeleccion(anios: number[]): string {
 
 export default function SelectorAniosMulti({
   className = "",
+  origen = "desconocido",
 }: {
   className?: string;
+  /** Página que monta el selector; distingue el mismo evento por contexto. */
+  origen?: string;
 }) {
   const anios = useFiltros((s) => s.anios);
   const toggleAnio = useFiltros((s) => s.toggleAnio);
+
+  function alternar(anio: number) {
+    toggleAnio(anio);
+    // El store rechaza dejar la selección vacía, así que se lee el resultado
+    // efectivo en vez de asumir que el toggle se aplicó.
+    track("anio_cambiado", {
+      anios: useFiltros.getState().anios.join(","),
+      origen,
+    });
+  }
 
   return (
     <DropdownMenu.Root>
@@ -60,7 +74,7 @@ export default function SelectorAniosMulti({
                 checked={selected}
                 disabled={isOnly}
                 onSelect={(e) => e.preventDefault()}
-                onCheckedChange={() => toggleAnio(a)}
+                onCheckedChange={() => alternar(a)}
                 className={`relative flex items-center gap-2 pl-8 pr-3 py-1.5 rounded-sm cursor-pointer outline-none select-none
                             ${selected ? "text-selva font-medium" : "text-foreground"}
                             data-[highlighted]:bg-selva/10

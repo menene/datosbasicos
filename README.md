@@ -18,7 +18,8 @@ Plataforma web de análisis e investigación sobre los 22 departamentos de Guate
 10. [Variables de entorno](#variables-de-entorno)
 11. [Comandos de desarrollo](#comandos-de-desarrollo)
 12. [Datos iniciales (seed)](#datos-iniciales-seed)
-13. [Convenciones de código](#convenciones-de-código)
+13. [Analítica (Umami)](#analítica-umami)
+14. [Convenciones de código](#convenciones-de-código)
 
 ---
 
@@ -178,7 +179,8 @@ guatemala-datos/
         │   └── departamento.ts
         └── lib/
             ├── utils.ts          # cn() y helpers
-            └── colores.ts        # Escalas D3 para el choropleth
+            ├── colores.ts        # Escalas D3 para el choropleth
+            └── analytics.ts      # Wrapper tipado sobre Umami
 ```
 
 ---
@@ -567,7 +569,16 @@ ALLOWED_ORIGINS=http://localhost:5173
 
 # Frontend
 VITE_API_URL=http://localhost:8000/api/v1
+
+# Analítica (Umami)
+UMAMI_APP_SECRET=change_me_in_production
+VITE_UMAMI_URL=http://localhost:3000
+VITE_UMAMI_WEBSITE_ID=
 ```
+
+`VITE_UMAMI_WEBSITE_ID` se obtiene del panel de Umami tras crear el sitio.
+Mientras esté vacía el frontend no inyecta el tracker ni envía eventos. Ver
+[Analítica (Umami)](#analítica-umami).
 
 ---
 
@@ -594,6 +605,10 @@ docker compose exec backend alembic upgrade head
 
 # Cargar datos iniciales
 docker compose exec backend python -m app.seed.seed
+
+# Crear la base de Umami (una sola vez; ver "Analítica")
+docker compose exec db psql -U $POSTGRES_USER -d $POSTGRES_DB \
+  -c "CREATE DATABASE umami;"
 
 # Crear nueva migración (tras modificar modelos)
 docker compose exec backend alembic revision --autogenerate -m "nombre_cambio"
@@ -628,6 +643,7 @@ docker compose down -v
 | Swagger UI | http://localhost:8000/docs |
 | ReDoc | http://localhost:8000/redoc |
 | pgAdmin | http://localhost:5050 |
+| Umami (analítica) | http://localhost:3000 |
 
 ---
 
@@ -642,6 +658,109 @@ El script `backend/app/seed/seed.py` carga:
 Los datos fuente están en `backend/app/seed/data/departamentos.json` extraídos del documento `GUATEMALA_DATOS_BÁSICOS_2026.docx`.
 
 El GeoJSON de los departamentos debe obtenerse de GADM (https://gadm.org) nivel ADM1 para Guatemala y colocarse en `backend/app/seed/data/guatemala.geojson`.
+
+---
+
+## Analítica (Umami)
+
+La plataforma usa [Umami](https://umami.is) autoalojado para medir tráfico y
+uso. Es sin cookies y no almacena datos personales, así que **no requiere
+banner de consentimiento** — algo relevante en una herramienta de datos
+públicos.
+
+El servicio `umami` vive en el `docker-compose.yml` de la raíz y comparte el
+Postgres del proyecto usando una base aparte (`umami`), así que no hace falta
+levantar nada adicional: `docker compose up` lo incluye.
+
+### Puesta en marcha
+
+La base `umami` hay que crearla una sola vez. Como el volumen de Postgres ya
+existe, los scripts de `docker-entrypoint-initdb.d` no se ejecutan:
+
+```bash
+docker compose exec db psql -U $POSTGRES_USER -d $POSTGRES_DB \
+  -c "CREATE DATABASE umami;"
+
+docker compose up -d umami
+docker compose logs -f umami        # esperar "Ready on http://0.0.0.0:3000"
+```
+
+El primer arranque corre las migraciones de Prisma (~30–60 s).
+
+Luego, en el panel en http://localhost:3000:
+
+1. Login inicial **`admin` / `umami`** → cambiar la contraseña
+2. **Settings → Websites → Add website**
+   - Name: `Guatemala Datos Básicos`
+   - Domain: `localhost`
+3. Copiar el **Website ID** a `VITE_UMAMI_WEBSITE_ID` en el `.env` de la raíz
+4. `docker compose restart frontend` para que Vite tome la variable
+
+Para comprobar que funciona: abrir la app, DevTools → Network, filtrar por
+`send`. Cada navegación debe producir un `POST /api/send` con respuesta `200`,
+y la visita aparece en **Realtime** del panel en segundos.
+
+### Eventos instrumentados
+
+Las vistas de página se registran solas — el tracker intercepta
+`history.pushState`, así que las rutas de React Router funcionan sin código
+adicional, y `/ficha/:slug` da el desglose por departamento desde la URL.
+
+| Evento | Se dispara cuando | Propiedades |
+|---|---|---|
+| `mapa_vista` | Cambio entre pestañas Departamentos / Municipios | `vista` |
+| `mapa_departamento_click` | Clic que **selecciona** un departamento | `departamento`, `variable`, `anio` |
+| `mapa_municipio_click` | Clic que **selecciona** un municipio | `municipio`, `departamento`, `variable` |
+| `variable_seleccionada` | Cambio de variable | `variable`, `origen` |
+| `anio_cambiado` | Cambio de año o de la selección múltiple | `anios`, `origen` |
+| `tabla_vista` | Cambio entre pestañas de la tabla | `vista` |
+| `tabla_orden` | Ordenar por una columna | `columna`, `direccion`, `vista` |
+| `tabla_busqueda` | Búsqueda en la tabla (≥2 caracteres, debounce 800 ms) | `termino`, `vista` |
+| `exportar_xlsx` | Descarga del Excel | `vista`, `filas`, `anios` |
+| `ficha_departamento` | Se abre la ficha de un departamento | `departamento`, `anios` |
+| `ficha_municipio` | Se abre la ficha de un municipio | `municipio`, `departamento` |
+| `navegar_a_ficha` | Clic que lleva a una ficha desde otra vista | `destino`, `origen` |
+| `grafica_orden` | Cambio de orden del ranking | `direccion`, `variable` |
+| `dispersion_ejes` | Cambio de eje X o Y en el scatter | `eje`, `variable` |
+| `inicio_cta` | Clic en un botón de la portada | `destino`, `origen` |
+
+Los eventos de selección solo se emiten cuando el estado **cambia de verdad**:
+deseleccionar un departamento o volver a hacer clic en la pestaña activa no
+genera evento. Sin esa guarda los conteos se inflan y dejan de ser comparables
+entre vistas.
+
+La pregunta que estos eventos contestan no es «cuánta gente entró» sino «qué
+partes del trabajo valieron la pena»: si `ficha_municipio` se mueve, la
+extracción de municipios se justificó; si `exportar_xlsx` es alto, la gente
+quiere los datos crudos y conviene publicar un CSV directo.
+
+### Cómo se instrumenta el frontend
+
+Las vistas de página se registran solas: el tracker de Umami intercepta
+`history.pushState`, así que las rutas de React Router funcionan sin código
+adicional.
+
+Los eventos de uso se disparan desde `frontend/src/lib/analytics.ts`:
+
+```ts
+import { track } from "@/lib/analytics";
+
+track("exportar_xlsx", { vista: "municipios", filas: 340 });
+```
+
+Reglas del módulo:
+
+- Los nombres de evento son una **unión cerrada** (`type Evento`). Para agregar
+  uno hay que declararlo primero — así un typo es error de compilación y no una
+  fila huérfana en la base de Umami.
+- Todo queda **inerte** si falta `VITE_UMAMI_URL` o `VITE_UMAMI_WEBSITE_ID`: ni
+  se inyecta el script ni se envían eventos.
+- `track()` nunca lanza. Si un bloqueador impidió cargar el tracker, la llamada
+  simplemente no hace nada.
+- Para cajas de búsqueda existe `trackDebounced()`, que espera 800 ms de
+  inactividad en vez de emitir por pulsación.
+
+Al agregar un evento, actualizar también la tabla de arriba.
 
 ---
 

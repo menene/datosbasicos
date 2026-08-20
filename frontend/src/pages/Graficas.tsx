@@ -22,6 +22,7 @@ import SelectorAniosMulti from "@/components/SelectorAniosMulti";
 import { VARIABLES, VARIABLES_ALERTA } from "@/types/departamento";
 import type { VariableKey } from "@/types/departamento";
 import { formatearValor } from "@/lib/utils";
+import { track } from "@/lib/analytics";
 import { agregarNacional, esAditiva } from "@/lib/totales";
 import { getColorForValue } from "@/lib/colores";
 import TarjetaNacional from "@/components/TarjetaNacional";
@@ -172,6 +173,32 @@ export default function GraficasPage() {
   const [varX, setVarX] = useState<VariableKey>("acceso_agua_pct");
   const [varY, setVarY] = useState<VariableKey>("analfabetismo_pct");
 
+  /** Navegación a ficha desde cualquiera de las tres gráficas. */
+  const irAFicha = (slug: string, origen: string) => {
+    track("navegar_a_ficha", { destino: `/ficha/${slug}`, origen });
+    navigate(`/ficha/${slug}`);
+  };
+
+  const cambiarVariable = (v: VariableKey) => {
+    setVariableActiva(v);
+    track("variable_seleccionada", { variable: v, origen: "graficas" });
+  };
+
+  const cambiarEje = (eje: "x" | "y", v: VariableKey) => {
+    if (eje === "x") setVarX(v);
+    else setVarY(v);
+    track("dispersion_ejes", { eje, variable: v });
+  };
+
+  const cambiarOrden = (asc: boolean) => {
+    if (asc === sortAsc) return;
+    setSortAsc(asc);
+    track("grafica_orden", {
+      direccion: asc ? "asc" : "desc",
+      variable: variableActiva,
+    });
+  };
+
   const { data: porAnio, isLoading } = useDepartamentosMulti(anios);
   const { data: resumenPorAnio } = useResumenIndicadoresMulti(anios);
 
@@ -301,7 +328,7 @@ export default function GraficasPage() {
             Rankings y correlaciones · {anios.join(", ")}
           </p>
         </div>
-        <SelectorAniosMulti />
+        <SelectorAniosMulti origen="graficas" />
       </div>
 
       {/* ── Ranking ── */}
@@ -310,13 +337,13 @@ export default function GraficasPage() {
           <div className="flex-1 min-w-48">
             <VarSelect
               value={variableActiva}
-              onChange={setVariableActiva}
+              onChange={cambiarVariable}
               label="Variable"
             />
           </div>
           <div className="flex gap-1">
             <button
-              onClick={() => setSortAsc(false)}
+              onClick={() => cambiarOrden(false)}
               className={`px-3 py-1.5 rounded-l-md border text-xs font-body transition-colors ${
                 !sortAsc
                   ? "bg-selva text-white border-selva"
@@ -326,7 +353,7 @@ export default function GraficasPage() {
               Mayor → menor
             </button>
             <button
-              onClick={() => setSortAsc(true)}
+              onClick={() => cambiarOrden(true)}
               className={`px-3 py-1.5 rounded-r-md border-y border-r text-xs font-body transition-colors ${
                 sortAsc
                   ? "bg-selva text-white border-selva"
@@ -417,7 +444,7 @@ export default function GraficasPage() {
                     {formatearValor(value, varInfo.formato)}
                   </text>
                 )}
-                onClick={(d: { slug: string }) => navigate(`/ficha/${d.slug}`)}
+                onClick={(d: { slug: string }) => irAFicha(d.slug, "ranking")}
                 style={{ cursor: "pointer" }}
               >
                 {rankingDataSolo.map((entry, i) => (
@@ -490,7 +517,7 @@ export default function GraficasPage() {
                   radius={[0, 3, 3, 0]}
                   style={{ cursor: "pointer" }}
                   onClick={(d: { slug: string }) =>
-                    navigate(`/ficha/${d.slug}`)
+                    irAFicha(d.slug, "ranking_multianio")
                   }
                 />
               ))}
@@ -510,8 +537,8 @@ export default function GraficasPage() {
         </h2>
 
         <div className="flex flex-wrap gap-4 mb-6">
-          <VarSelect value={varX} onChange={setVarX} label="Eje X" />
-          <VarSelect value={varY} onChange={setVarY} label="Eje Y" />
+          <VarSelect value={varX} onChange={(v) => cambiarEje("x", v)} label="Eje X" />
+          <VarSelect value={varY} onChange={(v) => cambiarEje("y", v)} label="Eje Y" />
         </div>
 
         <ResponsiveContainer width="100%" height={multiAnio ? 440 : 400}>
@@ -581,7 +608,7 @@ export default function GraficasPage() {
                     : "#1B6B3A"
                 }
                 fillOpacity={0.75}
-                onClick={(d: { slug: string }) => navigate(`/ficha/${d.slug}`)}
+                onClick={(d: { slug: string }) => irAFicha(d.slug, "dispersion")}
                 style={{ cursor: "pointer" }}
               />
             ))}

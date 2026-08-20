@@ -24,6 +24,7 @@ import { useMunicipios } from "@/api/municipios";
 import { useFiltros } from "@/store/filtros";
 import SelectorAniosMulti from "@/components/SelectorAniosMulti";
 import { formatearValor } from "@/lib/utils";
+import { track, trackDebounced } from "@/lib/analytics";
 import { agregarNacional } from "@/lib/totales";
 import type { AgregadoNacional } from "@/lib/totales";
 import { VARIABLES } from "@/types/departamento";
@@ -192,7 +193,10 @@ export default function TablaPage() {
             : `/ficha/${r.slug}`;
           return (
             <button
-              onClick={() => navigate(to)}
+              onClick={() => {
+                track("navegar_a_ficha", { destino: to, origen: "tabla" });
+                navigate(to);
+              }}
               className="flex items-center gap-1 font-medium text-selva hover:underline text-left"
             >
               {info.getValue() as string}
@@ -264,7 +268,19 @@ export default function TablaPage() {
     data,
     columns,
     state: { sorting, globalFilter },
-    onSortingChange: setSorting,
+    onSortingChange: (updater) => {
+      const siguiente =
+        typeof updater === "function" ? updater(sorting) : updater;
+      setSorting(siguiente);
+      const col = siguiente[0];
+      if (col) {
+        track("tabla_orden", {
+          columna: col.id,
+          direccion: col.desc ? "desc" : "asc",
+          vista,
+        });
+      }
+    },
     onGlobalFilterChange: setGlobalFilter,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
@@ -272,6 +288,11 @@ export default function TablaPage() {
   });
 
   const descargarExcel = () => {
+    track("exportar_xlsx", {
+      vista,
+      filas: table.getRowModel().rows.length,
+      anios: aniosEfectivos.join(","),
+    });
     const filas = table.getRowModel().rows.map((row) => {
       const r = row.original;
       const fila: Record<string, string | number | null> = {
@@ -338,8 +359,10 @@ export default function TablaPage() {
             <button
               key={t.key}
               onClick={() => {
+                if (t.key === vista) return;
                 setVista(t.key);
                 setSorting([]);
+                track("tabla_vista", { vista: t.key });
               }}
               className={`px-4 py-1.5 text-sm font-body rounded-md transition-colors ${
                 vista === t.key
@@ -366,7 +389,7 @@ export default function TablaPage() {
           </p>
         </div>
         <div className="flex items-center gap-2 flex-wrap">
-          {!esMunicipios && <SelectorAniosMulti />}
+          {!esMunicipios && <SelectorAniosMulti origen="tabla" />}
           <div className="relative">
             <Search
               size={14}
@@ -374,7 +397,17 @@ export default function TablaPage() {
             />
             <input
               value={globalFilter}
-              onChange={(e) => setGlobalFilter(e.target.value)}
+              onChange={(e) => {
+                const termino = e.target.value;
+                setGlobalFilter(termino);
+                // Debounce: emitir por pulsación produciría ruido inservible.
+                if (termino.trim().length >= 2) {
+                  trackDebounced("tabla_busqueda", {
+                    termino: termino.trim().toLowerCase(),
+                    vista,
+                  });
+                }
+              }}
               placeholder={`Buscar ${esMunicipios ? "municipio" : "departamento"}…`}
               className="pl-8 pr-3 py-1.5 text-sm font-body border border-border rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-selva w-56"
             />

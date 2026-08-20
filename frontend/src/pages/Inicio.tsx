@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Map, BarChart2, Table2, FileText, ArrowRight, Calendar, GitCompareArrows } from "lucide-react";
 import { ANIOS_DISPONIBLES } from "@/store/filtros";
+import { track } from "@/lib/analytics";
 
 const SECTIONS = [
   {
@@ -113,7 +114,10 @@ export default function InicioPage() {
 
             <div className="flex flex-wrap gap-3">
               <button
-                onClick={() => navigate("/mapa")}
+                onClick={() => {
+                  track("inicio_cta", { destino: "/mapa", origen: "hero" });
+                  navigate("/mapa");
+                }}
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-selva text-white font-body font-medium text-sm hover:bg-selva/90 transition-colors"
               >
                 Explorar el mapa
@@ -154,7 +158,10 @@ export default function InicioPage() {
           {SECTIONS.map(({ to, icon: Icon, label, color, bg, desc }) => (
             <button
               key={to}
-              onClick={() => navigate(to)}
+              onClick={() => {
+                track("inicio_cta", { destino: to, origen: "herramientas" });
+                navigate(to);
+              }}
               className="group text-left rounded-2xl border border-border bg-white p-6 hover:border-transparent hover:shadow-lg transition-all duration-200"
               style={{ "--hover-color": color } as React.CSSProperties}
             >

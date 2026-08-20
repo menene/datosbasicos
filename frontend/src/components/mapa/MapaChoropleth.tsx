@@ -5,6 +5,7 @@ import { useDepartamentos, useResumenIndicadores } from "@/api/departamentos";
 import { useFiltros } from "@/store/filtros";
 import { useSeleccion } from "@/store/seleccion";
 import { COLOR_SIN_DATO } from "@/lib/colores";
+import { track } from "@/lib/analytics";
 import { MAP_W, MAP_H, featureToSvgPath, slugify } from "@/lib/mapa";
 import { VARIABLES } from "@/types/departamento";
 import type { Departamento, VariableKey } from "@/types/departamento";
@@ -156,11 +157,18 @@ export default function MapaChoropleth() {
                   });
                 }}
                 onMouseLeave={() => setTooltip(null)}
-                onClick={() =>
-                  setDepartamentoActivo(
-                    slug === departamentoActivo ? null : slug
-                  )
-                }
+                onClick={() => {
+                  const deseleccionar = slug === departamentoActivo;
+                  setDepartamentoActivo(deseleccionar ? null : slug);
+                  // Solo interesa la selección: deseleccionar es ruido.
+                  if (!deseleccionar) {
+                    track("mapa_departamento_click", {
+                      departamento: slug,
+                      variable: variableActiva,
+                      anio,
+                    });
+                  }
+                }}
               />
             );
         })}

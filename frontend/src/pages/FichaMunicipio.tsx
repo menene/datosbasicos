@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import {
   BarChart,
@@ -13,6 +13,7 @@ import { ArrowLeft, MapPin } from "lucide-react";
 import { useMunicipios } from "@/api/municipios";
 import { useDepartamento } from "@/api/departamentos";
 import { formatearValor } from "@/lib/utils";
+import { track } from "@/lib/analytics";
 import { agregarNacional } from "@/lib/totales";
 import { VARIABLES_ALERTA } from "@/types/departamento";
 import type { VariableKey } from "@/types/departamento";
@@ -74,6 +75,16 @@ export default function FichaMunicipioPage() {
   const muni = municipios?.find(
     (m) => m.departamento_slug === departamento_slug && m.slug === municipio_slug
   );
+
+  // Mide si el trabajo de municipios encuentra público. Se dispara con la ruta,
+  // no con la carga de datos, para no depender de la caché de TanStack Query.
+  useEffect(() => {
+    if (!municipio_slug || !departamento_slug) return;
+    track("ficha_municipio", {
+      municipio: municipio_slug,
+      departamento: departamento_slug,
+    });
+  }, [municipio_slug, departamento_slug]);
 
   // Other municipios in the same department (nav chips)
   const hermanos = useMemo(
@@ -308,7 +319,13 @@ export default function FichaMunicipioPage() {
             {hermanos.map((m) => (
               <button
                 key={m.slug}
-                onClick={() => navigate(`/ficha/${m.departamento_slug}/${m.slug}`)}
+                onClick={() => {
+                  track("navegar_a_ficha", {
+                    destino: `/ficha/${m.departamento_slug}/${m.slug}`,
+                    origen: "municipios_hermanos",
+                  });
+                  navigate(`/ficha/${m.departamento_slug}/${m.slug}`);
+                }}
                 className={`px-3 py-1 rounded-full text-xs font-body border transition-colors ${
                   m.slug === municipio_slug
                     ? "bg-selva text-white border-selva"

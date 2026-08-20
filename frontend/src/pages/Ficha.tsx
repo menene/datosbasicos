@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import {
   BarChart,
@@ -17,6 +18,7 @@ import {
 import { useFiltros } from "@/store/filtros";
 import SelectorAniosMulti from "@/components/SelectorAniosMulti";
 import { formatearValor } from "@/lib/utils";
+import { track } from "@/lib/analytics";
 import { agregarNacional } from "@/lib/totales";
 import { VARIABLES, VARIABLES_ALERTA } from "@/types/departamento";
 import type { VariableKey, Indicadores } from "@/types/departamento";
@@ -91,6 +93,16 @@ export default function FichaPage() {
     anios
   );
   const { data: resumenPorAnio } = useResumenIndicadoresMulti(anios);
+
+  // La vista de página la registra Umami solo; este evento agrega el corte por
+  // departamento y los años activos, que es lo que no se lee de la URL.
+  useEffect(() => {
+    if (!slug) return;
+    track("ficha_departamento", { departamento: slug, anios: anios.join(",") });
+    // Intencionalmente sin `anios`: interesa la apertura de la ficha, no cada
+    // cambio de año (que ya emite su propio `anio_cambiado`).
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [slug]);
   // Department list for selector & nav uses the most recent year for names.
   const { data: todos } = useDepartamentos({ anio: anioMasReciente });
   // Municipios of this department for the bottom drill-down nav.
@@ -163,7 +175,13 @@ export default function FichaPage() {
           {deptOptions?.map((d) => (
             <button
               key={d.slug}
-              onClick={() => navigate(`/ficha/${d.slug}`)}
+              onClick={() => {
+                track("navegar_a_ficha", {
+                  destino: `/ficha/${d.slug}`,
+                  origen: "selector_ficha",
+                });
+                navigate(`/ficha/${d.slug}`);
+              }}
               className="group flex flex-col items-center gap-2 p-4 rounded-lg border border-border bg-white hover:border-selva hover:shadow-sm transition-all"
             >
               <DepartamentoShape slug={d.slug} size={96} />
@@ -233,7 +251,7 @@ export default function FichaPage() {
             { label: depto.nombre },
           ]}
         />
-        <SelectorAniosMulti />
+        <SelectorAniosMulti origen="ficha" />
       </div>
 
       <button
@@ -535,6 +553,12 @@ export default function FichaPage() {
               <Link
                 key={m.slug}
                 to={`/ficha/${m.departamento_slug}/${m.slug}`}
+                onClick={() =>
+                  track("navegar_a_ficha", {
+                    destino: `/ficha/${m.departamento_slug}/${m.slug}`,
+                    origen: "municipios_del_depto",
+                  })
+                }
                 className="px-3 py-1 rounded-full text-xs font-body border border-border text-muted-foreground hover:border-selva hover:text-selva hover:bg-selva/5 transition-colors"
               >
                 {m.nombre}
@@ -558,7 +582,13 @@ export default function FichaPage() {
             {deptOptions.map((d) => (
               <button
                 key={d.slug}
-                onClick={() => navigate(`/ficha/${d.slug}`)}
+                onClick={() => {
+                  track("navegar_a_ficha", {
+                    destino: `/ficha/${d.slug}`,
+                    origen: "otros_departamentos",
+                  });
+                  navigate(`/ficha/${d.slug}`);
+                }}
                 className={`px-3 py-1 rounded-full text-xs font-body border transition-colors ${
                   d.slug === slug
                     ? "bg-selva text-white border-selva"
