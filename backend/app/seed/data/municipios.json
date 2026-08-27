@@ -1,5 +1,605 @@
 [
   {
+    "slug": "cahabon",
+    "nombre": "Cahabón",
+    "departamento_slug": "alta-verapaz",
+    "departamento": "Alta Verapaz",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 10200.0,
+    "poblacion_inactiva": 9300.0,
+    "pct_pea": 52.3
+  },
+  {
+    "slug": "chahal",
+    "nombre": "Chahal",
+    "departamento_slug": "alta-verapaz",
+    "departamento": "Alta Verapaz",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 7500.0,
+    "poblacion_inactiva": 6500.0,
+    "pct_pea": 53.6
+  },
+  {
+    "slug": "chisec",
+    "nombre": "Chisec",
+    "departamento_slug": "alta-verapaz",
+    "departamento": "Alta Verapaz",
+    "superficie_km2": null,
+    "poblacion_total": 84553.0,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 25000.0,
+    "poblacion_inactiva": 21000.0,
+    "pct_pea": 54.3
+  },
+  {
+    "slug": "coban",
+    "nombre": "Cobán",
+    "departamento_slug": "alta-verapaz",
+    "departamento": "Alta Verapaz",
+    "superficie_km2": null,
+    "poblacion_total": 212421.0,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 72000.0,
+    "poblacion_inactiva": 56000.0,
+    "pct_pea": 56.3
+  },
+  {
+    "slug": "fray-bartolome-de-las-casas",
+    "nombre": "Fray Bartolomé de Las Casas",
+    "departamento_slug": "alta-verapaz",
+    "departamento": "Alta Verapaz",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 13500.0,
+    "poblacion_inactiva": 11500.0,
+    "pct_pea": 54.0
+  },
+  {
+    "slug": "lanquin",
+    "nombre": "Lanquín",
+    "departamento_slug": "alta-verapaz",
+    "departamento": "Alta Verapaz",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 9000.0,
+    "poblacion_inactiva": 8000.0,
+    "pct_pea": 52.9
+  },
+  {
+    "slug": "panzos",
+    "nombre": "Panzós",
+    "departamento_slug": "alta-verapaz",
+    "departamento": "Alta Verapaz",
+    "superficie_km2": null,
+    "poblacion_total": 71846.0,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 20500.0,
+    "poblacion_inactiva": 18500.0,
+    "pct_pea": 52.6
+  },
+  {
+    "slug": "raxruha",
+    "nombre": "Raxruhá",
+    "departamento_slug": "alta-verapaz",
+    "departamento": "Alta Verapaz",
+    "superficie_km2": null,
+    "poblacion_total": 36832.0,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 11000.0,
+    "poblacion_inactiva": 9500.0,
+    "pct_pea": 53.7
+  },
+  {
+    "slug": "san-cristobal-verapaz",
+    "nombre": "San Cristóbal Verapaz",
+    "departamento_slug": "alta-verapaz",
+    "departamento": "Alta Verapaz",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 22000.0,
+    "poblacion_inactiva": 17500.0,
+    "pct_pea": 55.7
+  },
+  {
+    "slug": "san-juan-chamelco",
+    "nombre": "San Juan Chamelco",
+    "departamento_slug": "alta-verapaz",
+    "departamento": "Alta Verapaz",
+    "superficie_km2": null,
+    "poblacion_total": 68819.0,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 21000.0,
+    "poblacion_inactiva": 18000.0,
+    "pct_pea": 53.8
+  },
+  {
+    "slug": "san-pedro-carcha",
+    "nombre": "San Pedro Carchá",
+    "departamento_slug": "alta-verapaz",
+    "departamento": "Alta Verapaz",
+    "superficie_km2": null,
+    "poblacion_total": 235275.0,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 70000.0,
+    "poblacion_inactiva": 62000.0,
+    "pct_pea": 53.0
+  },
+  {
+    "slug": "santa-catalina-la-tinta",
+    "nombre": "Santa Catalina La Tinta",
+    "departamento_slug": "alta-verapaz",
+    "departamento": "Alta Verapaz",
+    "superficie_km2": null,
+    "poblacion_total": 27027.0,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 8000.0,
+    "poblacion_inactiva": 7000.0,
+    "pct_pea": 53.3
+  },
+  {
+    "slug": "santa-cruz-verapaz",
+    "nombre": "Santa Cruz Verapaz",
+    "departamento_slug": "alta-verapaz",
+    "departamento": "Alta Verapaz",
+    "superficie_km2": null,
+    "poblacion_total": 32042.0,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 10800.0,
+    "poblacion_inactiva": 8200.0,
+    "pct_pea": 56.8
+  },
+  {
+    "slug": "senahu",
+    "nombre": "Senahú",
+    "departamento_slug": "alta-verapaz",
+    "departamento": "Alta Verapaz",
+    "superficie_km2": null,
+    "poblacion_total": 91974.0,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 26000.0,
+    "poblacion_inactiva": 24000.0,
+    "pct_pea": 52.0
+  },
+  {
+    "slug": "tactic",
+    "nombre": "Tactic",
+    "departamento_slug": "alta-verapaz",
+    "departamento": "Alta Verapaz",
+    "superficie_km2": null,
+    "poblacion_total": 38052.0,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 12500.0,
+    "poblacion_inactiva": 9500.0,
+    "pct_pea": 56.8
+  },
+  {
+    "slug": "tamahu",
+    "nombre": "Tamahú",
+    "departamento_slug": "alta-verapaz",
+    "departamento": "Alta Verapaz",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 6800.0,
+    "poblacion_inactiva": 5700.0,
+    "pct_pea": 54.4
+  },
+  {
+    "slug": "tucuru",
+    "nombre": "Tucurú",
+    "departamento_slug": "alta-verapaz",
+    "departamento": "Alta Verapaz",
+    "superficie_km2": null,
+    "poblacion_total": 57456.0,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 17000.0,
+    "poblacion_inactiva": 15000.0,
+    "pct_pea": 53.1
+  },
+  {
+    "slug": "cubulco",
+    "nombre": "Cubulco",
+    "departamento_slug": "baja-verapaz",
+    "departamento": "Baja Verapaz",
+    "superficie_km2": null,
+    "poblacion_total": 54869.0,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 17500.0,
+    "poblacion_inactiva": 17500.0,
+    "pct_pea": 50.0
+  },
+  {
+    "slug": "el-chol",
+    "nombre": "El Chol",
+    "departamento_slug": "baja-verapaz",
+    "departamento": "Baja Verapaz",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 3000.0,
+    "poblacion_inactiva": 3000.0,
+    "pct_pea": 50.0
+  },
+  {
+    "slug": "granados",
+    "nombre": "Granados",
+    "departamento_slug": "baja-verapaz",
+    "departamento": "Baja Verapaz",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 4200.0,
+    "poblacion_inactiva": 4300.0,
+    "pct_pea": 49.4
+  },
+  {
+    "slug": "purulha",
+    "nombre": "Purulhá",
+    "departamento_slug": "baja-verapaz",
+    "departamento": "Baja Verapaz",
+    "superficie_km2": null,
+    "poblacion_total": 56822.0,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 18000.0,
+    "poblacion_inactiva": 18000.0,
+    "pct_pea": 50.0
+  },
+  {
+    "slug": "rabinal",
+    "nombre": "Rabinal",
+    "departamento_slug": "baja-verapaz",
+    "departamento": "Baja Verapaz",
+    "superficie_km2": null,
+    "poblacion_total": 40797.0,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 13200.0,
+    "poblacion_inactiva": 13300.0,
+    "pct_pea": 49.8
+  },
+  {
+    "slug": "salama",
+    "nombre": "Salamá",
+    "departamento_slug": "baja-verapaz",
+    "departamento": "Baja Verapaz",
+    "superficie_km2": null,
+    "poblacion_total": 65275.0,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 22000.0,
+    "poblacion_inactiva": 20500.0,
+    "pct_pea": 51.8
+  },
+  {
+    "slug": "san-jeronimo",
+    "nombre": "San Jerónimo",
+    "departamento_slug": "baja-verapaz",
+    "departamento": "Baja Verapaz",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 6500.0,
+    "poblacion_inactiva": 6500.0,
+    "pct_pea": 50.0
+  },
+  {
+    "slug": "san-miguel-chicaj",
+    "nombre": "San Miguel Chicaj",
+    "departamento_slug": "baja-verapaz",
+    "departamento": "Baja Verapaz",
+    "superficie_km2": null,
+    "poblacion_total": 33123.0,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 10500.0,
+    "poblacion_inactiva": 10500.0,
+    "pct_pea": 50.0
+  },
+  {
     "slug": "acatenango",
     "nombre": "Acatenango",
     "departamento_slug": "chimaltenango",
@@ -17,7 +617,35 @@
     "acceso_agua_pct": 52.4,
     "acceso_saneamiento_pct": 21.2,
     "fecundidad": 4.05,
-    "crecimiento_anual_pct": 2.32
+    "crecimiento_anual_pct": 2.32,
+    "tiempo_duplicacion_anios": 30.17,
+    "poblacion_activa": 12014.0,
+    "poblacion_inactiva": 13699.0,
+    "pct_pea": 46.7
+  },
+  {
+    "slug": "chimaltenango",
+    "nombre": "Chimaltenango",
+    "departamento_slug": "chimaltenango",
+    "departamento": "Chimaltenango",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 27084.0,
+    "poblacion_inactiva": 25100.0,
+    "pct_pea": 51.9
   },
   {
     "slug": "comalapa",
@@ -37,7 +665,11 @@
     "acceso_agua_pct": 72.4,
     "acceso_saneamiento_pct": 31.7,
     "fecundidad": 3.45,
-    "crecimiento_anual_pct": 2.68
+    "crecimiento_anual_pct": 2.68,
+    "tiempo_duplicacion_anios": 26.12,
+    "poblacion_activa": 17474.0,
+    "poblacion_inactiva": 20767.0,
+    "pct_pea": 45.7
   },
   {
     "slug": "el-tejar",
@@ -57,7 +689,11 @@
     "acceso_agua_pct": 84.7,
     "acceso_saneamiento_pct": 44.2,
     "fecundidad": 3.27,
-    "crecimiento_anual_pct": 2.9
+    "crecimiento_anual_pct": 2.9,
+    "tiempo_duplicacion_anios": 24.14,
+    "poblacion_activa": 7809.0,
+    "poblacion_inactiva": 5892.0,
+    "pct_pea": 57.0
   },
   {
     "slug": "parramos",
@@ -77,7 +713,11 @@
     "acceso_agua_pct": 87.3,
     "acceso_saneamiento_pct": 46.8,
     "fecundidad": 3.21,
-    "crecimiento_anual_pct": 3.05
+    "crecimiento_anual_pct": 3.05,
+    "tiempo_duplicacion_anios": 22.95,
+    "poblacion_activa": 6117.0,
+    "poblacion_inactiva": 6827.0,
+    "pct_pea": 47.3
   },
   {
     "slug": "patzicia",
@@ -97,7 +737,11 @@
     "acceso_agua_pct": 75.2,
     "acceso_saneamiento_pct": 34.1,
     "fecundidad": 3.52,
-    "crecimiento_anual_pct": 2.85
+    "crecimiento_anual_pct": 2.85,
+    "tiempo_duplicacion_anios": 24.56,
+    "poblacion_activa": 5343.0,
+    "poblacion_inactiva": 6246.0,
+    "pct_pea": 46.1
   },
   {
     "slug": "patzun",
@@ -117,7 +761,11 @@
     "acceso_agua_pct": 63.7,
     "acceso_saneamiento_pct": 27.5,
     "fecundidad": 3.78,
-    "crecimiento_anual_pct": 2.79
+    "crecimiento_anual_pct": 2.79,
+    "tiempo_duplicacion_anios": 25.09,
+    "poblacion_activa": 15032.0,
+    "poblacion_inactiva": 17865.0,
+    "pct_pea": 45.7
   },
   {
     "slug": "pochuta",
@@ -137,7 +785,11 @@
     "acceso_agua_pct": 49.6,
     "acceso_saneamiento_pct": 19.8,
     "fecundidad": 4.12,
-    "crecimiento_anual_pct": 2.18
+    "crecimiento_anual_pct": 2.18,
+    "tiempo_duplicacion_anios": 32.11,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "san-andres-itzapa",
@@ -157,7 +809,11 @@
     "acceso_agua_pct": 82.6,
     "acceso_saneamiento_pct": 41.3,
     "fecundidad": 3.38,
-    "crecimiento_anual_pct": 2.92
+    "crecimiento_anual_pct": 2.92,
+    "tiempo_duplicacion_anios": 23.97,
+    "poblacion_activa": 5460.0,
+    "poblacion_inactiva": 6392.0,
+    "pct_pea": 46.1
   },
   {
     "slug": "san-jose-poaquil",
@@ -177,7 +833,11 @@
     "acceso_agua_pct": 58.2,
     "acceso_saneamiento_pct": 25.6,
     "fecundidad": 3.6,
-    "crecimiento_anual_pct": 2.95
+    "crecimiento_anual_pct": 2.95,
+    "tiempo_duplicacion_anios": 23.73,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "san-martin-jilotepeque",
@@ -197,7 +857,11 @@
     "acceso_agua_pct": 61.5,
     "acceso_saneamiento_pct": 28.3,
     "fecundidad": 3.85,
-    "crecimiento_anual_pct": 2.72
+    "crecimiento_anual_pct": 2.72,
+    "tiempo_duplicacion_anios": 25.74,
+    "poblacion_activa": 19646.0,
+    "poblacion_inactiva": 22330.0,
+    "pct_pea": 46.8
   },
   {
     "slug": "santa-apolonia",
@@ -217,7 +881,11 @@
     "acceso_agua_pct": 54.8,
     "acceso_saneamiento_pct": 22.3,
     "fecundidad": 3.92,
-    "crecimiento_anual_pct": 2.45
+    "crecimiento_anual_pct": 2.45,
+    "tiempo_duplicacion_anios": 28.57,
+    "poblacion_activa": 2052.0,
+    "poblacion_inactiva": 2495.0,
+    "pct_pea": 45.1
   },
   {
     "slug": "santa-cruz-balanya",
@@ -237,7 +905,11 @@
     "acceso_agua_pct": 68.4,
     "acceso_saneamiento_pct": 30.2,
     "fecundidad": 3.72,
-    "crecimiento_anual_pct": 2.53
+    "crecimiento_anual_pct": 2.53,
+    "tiempo_duplicacion_anios": 27.67,
+    "poblacion_activa": 3570.0,
+    "poblacion_inactiva": 4276.0,
+    "pct_pea": 45.5
   },
   {
     "slug": "tecpan-guatemala",
@@ -257,7 +929,11 @@
     "acceso_agua_pct": 65.3,
     "acceso_saneamiento_pct": 29.4,
     "fecundidad": 3.7,
-    "crecimiento_anual_pct": 2.81
+    "crecimiento_anual_pct": 2.81,
+    "tiempo_duplicacion_anios": 24.91,
+    "poblacion_activa": 14626.0,
+    "poblacion_inactiva": 16826.0,
+    "pct_pea": 46.5
   },
   {
     "slug": "yepocapa",
@@ -277,7 +953,11 @@
     "acceso_agua_pct": 47.2,
     "acceso_saneamiento_pct": 18.5,
     "fecundidad": 4.21,
-    "crecimiento_anual_pct": 2.25
+    "crecimiento_anual_pct": 2.25,
+    "tiempo_duplicacion_anios": 31.11,
+    "poblacion_activa": 3352.0,
+    "poblacion_inactiva": 4060.0,
+    "pct_pea": 45.2
   },
   {
     "slug": "zaragoza",
@@ -297,7 +977,11 @@
     "acceso_agua_pct": 80.5,
     "acceso_saneamiento_pct": 42.7,
     "fecundidad": 3.32,
-    "crecimiento_anual_pct": 2.98
+    "crecimiento_anual_pct": 2.98,
+    "tiempo_duplicacion_anios": 23.49,
+    "poblacion_activa": 6003.0,
+    "poblacion_inactiva": 6624.0,
+    "pct_pea": 47.5
   },
   {
     "slug": "camotan",
@@ -317,7 +1001,35 @@
     "acceso_agua_pct": 55.2,
     "acceso_saneamiento_pct": 29.8,
     "fecundidad": 3.7,
-    "crecimiento_anual_pct": 1.49
+    "crecimiento_anual_pct": 1.49,
+    "tiempo_duplicacion_anios": 46.98,
+    "poblacion_activa": 10298.0,
+    "poblacion_inactiva": 14809.0,
+    "pct_pea": 41.0
+  },
+  {
+    "slug": "chiquimula",
+    "nombre": "Chiquimula",
+    "departamento_slug": "chiquimula",
+    "departamento": "Chiquimula",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 31953.0,
+    "poblacion_inactiva": 36261.0,
+    "pct_pea": 46.8
   },
   {
     "slug": "concepcion-las-minas",
@@ -337,7 +1049,11 @@
     "acceso_agua_pct": 74.8,
     "acceso_saneamiento_pct": 45.7,
     "fecundidad": 2.7,
-    "crecimiento_anual_pct": 1.04
+    "crecimiento_anual_pct": 1.04,
+    "tiempo_duplicacion_anios": 67.31,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "esquipulas",
@@ -357,7 +1073,11 @@
     "acceso_agua_pct": 89.2,
     "acceso_saneamiento_pct": 71.6,
     "fecundidad": 2.4,
-    "crecimiento_anual_pct": 1.68
+    "crecimiento_anual_pct": 1.68,
+    "tiempo_duplicacion_anios": 41.67,
+    "poblacion_activa": 18728.0,
+    "poblacion_inactiva": 22704.0,
+    "pct_pea": 45.2
   },
   {
     "slug": "ipala",
@@ -377,7 +1097,11 @@
     "acceso_agua_pct": 77.4,
     "acceso_saneamiento_pct": 48.6,
     "fecundidad": 2.7,
-    "crecimiento_anual_pct": 1.48
+    "crecimiento_anual_pct": 1.48,
+    "tiempo_duplicacion_anios": 47.3,
+    "poblacion_activa": 4729.0,
+    "poblacion_inactiva": 6187.0,
+    "pct_pea": 43.3
   },
   {
     "slug": "jocotan",
@@ -397,7 +1121,11 @@
     "acceso_agua_pct": 58.4,
     "acceso_saneamiento_pct": 32.6,
     "fecundidad": 3.6,
-    "crecimiento_anual_pct": 1.52
+    "crecimiento_anual_pct": 1.52,
+    "tiempo_duplicacion_anios": 46.05,
+    "poblacion_activa": 11947.0,
+    "poblacion_inactiva": 16678.0,
+    "pct_pea": 41.7
   },
   {
     "slug": "olopa",
@@ -417,7 +1145,11 @@
     "acceso_agua_pct": 62.7,
     "acceso_saneamiento_pct": 36.4,
     "fecundidad": 3.4,
-    "crecimiento_anual_pct": 1.47
+    "crecimiento_anual_pct": 1.47,
+    "tiempo_duplicacion_anios": 47.62,
+    "poblacion_activa": 5762.0,
+    "poblacion_inactiva": 7999.0,
+    "pct_pea": 41.9
   },
   {
     "slug": "quezaltepeque",
@@ -437,7 +1169,11 @@
     "acceso_agua_pct": 71.2,
     "acceso_saneamiento_pct": 44.1,
     "fecundidad": 2.9,
-    "crecimiento_anual_pct": 1.45
+    "crecimiento_anual_pct": 1.45,
+    "tiempo_duplicacion_anios": 48.28,
+    "poblacion_activa": 4640.0,
+    "poblacion_inactiva": 5981.0,
+    "pct_pea": 43.7
   },
   {
     "slug": "san-jacinto",
@@ -457,7 +1193,11 @@
     "acceso_agua_pct": 73.5,
     "acceso_saneamiento_pct": 46.2,
     "fecundidad": 2.8,
-    "crecimiento_anual_pct": 1.44
+    "crecimiento_anual_pct": 1.44,
+    "tiempo_duplicacion_anios": 48.61,
+    "poblacion_activa": 3677.0,
+    "poblacion_inactiva": 4718.0,
+    "pct_pea": 43.8
   },
   {
     "slug": "san-jose-la-arada",
@@ -477,7 +1217,11 @@
     "acceso_agua_pct": 67.5,
     "acceso_saneamiento_pct": 41.2,
     "fecundidad": 3.1,
-    "crecimiento_anual_pct": 1.18
+    "crecimiento_anual_pct": 1.18,
+    "tiempo_duplicacion_anios": 59.32,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "san-juan-ermita",
@@ -497,7 +1241,11 @@
     "acceso_agua_pct": 65.8,
     "acceso_saneamiento_pct": 38.7,
     "fecundidad": 3.3,
-    "crecimiento_anual_pct": 1.32
+    "crecimiento_anual_pct": 1.32,
+    "tiempo_duplicacion_anios": 53.03,
+    "poblacion_activa": 5143.0,
+    "poblacion_inactiva": 6761.0,
+    "pct_pea": 43.2
   },
   {
     "slug": "el-jicaro",
@@ -517,7 +1265,35 @@
     "acceso_agua_pct": 78.5,
     "acceso_saneamiento_pct": 50.2,
     "fecundidad": 2.6,
-    "crecimiento_anual_pct": 1.32
+    "crecimiento_anual_pct": 1.32,
+    "tiempo_duplicacion_anios": 53.03,
+    "poblacion_activa": 3949.0,
+    "poblacion_inactiva": 4693.0,
+    "pct_pea": 45.7
+  },
+  {
+    "slug": "guastatoya",
+    "nombre": "Guastatoya",
+    "departamento_slug": "el-progreso",
+    "departamento": "El Progreso",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 8915.0,
+    "poblacion_inactiva": 9512.0,
+    "pct_pea": 48.4
   },
   {
     "slug": "morazan",
@@ -537,7 +1313,11 @@
     "acceso_agua_pct": 79.3,
     "acceso_saneamiento_pct": 51.4,
     "fecundidad": 2.6,
-    "crecimiento_anual_pct": 1.48
+    "crecimiento_anual_pct": 1.48,
+    "tiempo_duplicacion_anios": 47.3,
+    "poblacion_activa": 3340.0,
+    "poblacion_inactiva": 4088.0,
+    "pct_pea": 45.0
   },
   {
     "slug": "san-agustin-acasaguastlan",
@@ -557,7 +1337,11 @@
     "acceso_agua_pct": 82.1,
     "acceso_saneamiento_pct": 55.3,
     "fecundidad": 2.5,
-    "crecimiento_anual_pct": 1.71
+    "crecimiento_anual_pct": 1.71,
+    "tiempo_duplicacion_anios": 40.94,
+    "poblacion_activa": 3061.0,
+    "poblacion_inactiva": 3839.0,
+    "pct_pea": 44.4
   },
   {
     "slug": "san-antonio-la-paz",
@@ -577,7 +1361,11 @@
     "acceso_agua_pct": 83.2,
     "acceso_saneamiento_pct": 56.1,
     "fecundidad": 2.4,
-    "crecimiento_anual_pct": 1.42
+    "crecimiento_anual_pct": 1.42,
+    "tiempo_duplicacion_anios": 49.3,
+    "poblacion_activa": 5548.0,
+    "poblacion_inactiva": 6656.0,
+    "pct_pea": 45.5
   },
   {
     "slug": "san-cristobal-acasaguastlan",
@@ -597,7 +1385,11 @@
     "acceso_agua_pct": 83.5,
     "acceso_saneamiento_pct": 56.7,
     "fecundidad": 2.4,
-    "crecimiento_anual_pct": 1.3
+    "crecimiento_anual_pct": 1.3,
+    "tiempo_duplicacion_anios": 53.85,
+    "poblacion_activa": 3111.0,
+    "poblacion_inactiva": 3835.0,
+    "pct_pea": 44.8
   },
   {
     "slug": "sanarate",
@@ -617,7 +1409,11 @@
     "acceso_agua_pct": 84.7,
     "acceso_saneamiento_pct": 58.2,
     "fecundidad": 2.4,
-    "crecimiento_anual_pct": 1.62
+    "crecimiento_anual_pct": 1.62,
+    "tiempo_duplicacion_anios": 43.21,
+    "poblacion_activa": 12472.0,
+    "poblacion_inactiva": 14419.0,
+    "pct_pea": 46.4
   },
   {
     "slug": "sansare",
@@ -637,7 +1433,35 @@
     "acceso_agua_pct": 81.4,
     "acceso_saneamiento_pct": 53.8,
     "fecundidad": 2.5,
-    "crecimiento_anual_pct": 1.32
+    "crecimiento_anual_pct": 1.32,
+    "tiempo_duplicacion_anios": 53.03,
+    "poblacion_activa": 4403.0,
+    "poblacion_inactiva": 5313.0,
+    "pct_pea": 45.3
+  },
+  {
+    "slug": "escuintla",
+    "nombre": "Escuintla",
+    "departamento_slug": "escuintla",
+    "departamento": "Escuintla",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 62511.0,
+    "poblacion_inactiva": 56976.0,
+    "pct_pea": 52.3
   },
   {
     "slug": "guanagazapa",
@@ -657,7 +1481,11 @@
     "acceso_agua_pct": 74.9,
     "acceso_saneamiento_pct": 62.3,
     "fecundidad": 2.9,
-    "crecimiento_anual_pct": 1.8
+    "crecimiento_anual_pct": 1.8,
+    "tiempo_duplicacion_anios": 38.89,
+    "poblacion_activa": 6884.0,
+    "poblacion_inactiva": 6995.0,
+    "pct_pea": 49.6
   },
   {
     "slug": "iztapa",
@@ -677,7 +1505,11 @@
     "acceso_agua_pct": 77.2,
     "acceso_saneamiento_pct": 64.5,
     "fecundidad": 2.8,
-    "crecimiento_anual_pct": 1.9
+    "crecimiento_anual_pct": 1.9,
+    "tiempo_duplicacion_anios": 36.84,
+    "poblacion_activa": 6246.0,
+    "poblacion_inactiva": 6172.0,
+    "pct_pea": 50.3
   },
   {
     "slug": "la-democracia",
@@ -697,7 +1529,11 @@
     "acceso_agua_pct": 84.5,
     "acceso_saneamiento_pct": 68.9,
     "fecundidad": 2.8,
-    "crecimiento_anual_pct": 2.1
+    "crecimiento_anual_pct": 2.1,
+    "tiempo_duplicacion_anios": 33.33,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "la-gomera",
@@ -717,7 +1553,11 @@
     "acceso_agua_pct": 72.6,
     "acceso_saneamiento_pct": 54.9,
     "fecundidad": 2.9,
-    "crecimiento_anual_pct": 2.0
+    "crecimiento_anual_pct": 2.0,
+    "tiempo_duplicacion_anios": 35.0,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "masagua",
@@ -737,7 +1577,11 @@
     "acceso_agua_pct": 68.3,
     "acceso_saneamiento_pct": 59.7,
     "fecundidad": 2.9,
-    "crecimiento_anual_pct": 2.2
+    "crecimiento_anual_pct": 2.2,
+    "tiempo_duplicacion_anios": 31.82,
+    "poblacion_activa": 11440.0,
+    "poblacion_inactiva": 11324.0,
+    "pct_pea": 50.3
   },
   {
     "slug": "nueva-concepcion",
@@ -757,7 +1601,11 @@
     "acceso_agua_pct": 75.8,
     "acceso_saneamiento_pct": 61.4,
     "fecundidad": 2.9,
-    "crecimiento_anual_pct": 2.3
+    "crecimiento_anual_pct": 2.3,
+    "tiempo_duplicacion_anios": 30.43,
+    "poblacion_activa": 5260.0,
+    "poblacion_inactiva": 5474.0,
+    "pct_pea": 49.0
   },
   {
     "slug": "palin",
@@ -777,7 +1625,35 @@
     "acceso_agua_pct": 94.2,
     "acceso_saneamiento_pct": 86.7,
     "fecundidad": 2.4,
-    "crecimiento_anual_pct": 3.1
+    "crecimiento_anual_pct": 3.1,
+    "tiempo_duplicacion_anios": 22.58,
+    "poblacion_activa": 18771.0,
+    "poblacion_inactiva": 18141.0,
+    "pct_pea": 50.8
+  },
+  {
+    "slug": "san-jose",
+    "nombre": "San José",
+    "departamento_slug": "escuintla",
+    "departamento": "Escuintla",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 11894.0,
+    "poblacion_inactiva": 11753.0,
+    "pct_pea": 50.3
   },
   {
     "slug": "san-vicente-pacaya",
@@ -797,7 +1673,11 @@
     "acceso_agua_pct": 82.1,
     "acceso_saneamiento_pct": 69.4,
     "fecundidad": 2.7,
-    "crecimiento_anual_pct": 1.7
+    "crecimiento_anual_pct": 1.7,
+    "tiempo_duplicacion_anios": 41.18,
+    "poblacion_activa": 5533.0,
+    "poblacion_inactiva": 5713.0,
+    "pct_pea": 49.2
   },
   {
     "slug": "santa-lucia-cotzumalguapa",
@@ -817,7 +1697,35 @@
     "acceso_agua_pct": 89.7,
     "acceso_saneamiento_pct": 76.4,
     "fecundidad": 2.6,
-    "crecimiento_anual_pct": 2.9
+    "crecimiento_anual_pct": 2.9,
+    "tiempo_duplicacion_anios": 24.14,
+    "poblacion_activa": 38160.0,
+    "poblacion_inactiva": 36663.0,
+    "pct_pea": 51.0
+  },
+  {
+    "slug": "sipacate",
+    "nombre": "Sipacate",
+    "departamento_slug": "escuintla",
+    "departamento": "Escuintla",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 3370.0,
+    "poblacion_inactiva": 3638.0,
+    "pct_pea": 48.1
   },
   {
     "slug": "siquinala",
@@ -837,7 +1745,11 @@
     "acceso_agua_pct": 86.2,
     "acceso_saneamiento_pct": 71.8,
     "fecundidad": 2.7,
-    "crecimiento_anual_pct": 2.4
+    "crecimiento_anual_pct": 2.4,
+    "tiempo_duplicacion_anios": 29.17,
+    "poblacion_activa": 7242.0,
+    "poblacion_inactiva": 7290.0,
+    "pct_pea": 49.8
   },
   {
     "slug": "tiquisate",
@@ -857,7 +1769,11 @@
     "acceso_agua_pct": 81.4,
     "acceso_saneamiento_pct": 66.2,
     "fecundidad": 2.8,
-    "crecimiento_anual_pct": 2.5
+    "crecimiento_anual_pct": 2.5,
+    "tiempo_duplicacion_anios": 28.0,
+    "poblacion_activa": 19989.0,
+    "poblacion_inactiva": 19752.0,
+    "pct_pea": 50.3
   },
   {
     "slug": "amatitlan",
@@ -865,19 +1781,23 @@
     "departamento_slug": "guatemala",
     "departamento": "Guatemala",
     "superficie_km2": 117.0,
-    "poblacion_total": null,
-    "densidad_hab_km2": 572.0,
-    "pct_hombres": null,
-    "pct_mujeres": null,
-    "pct_urbana": 15.88,
-    "pct_rural": null,
-    "pct_indigena": 3.57,
+    "poblacion_total": 120115.0,
+    "densidad_hab_km2": 1026.62,
+    "pct_hombres": 48.4,
+    "pct_mujeres": 51.6,
+    "pct_urbana": 84.2,
+    "pct_rural": 15.8,
+    "pct_indigena": 13.7,
     "esperanza_vida": 72.0,
     "analfabetismo_pct": 7.45,
-    "acceso_agua_pct": 93.0,
-    "acceso_saneamiento_pct": 80.0,
-    "fecundidad": 1.6,
-    "crecimiento_anual_pct": 2.5
+    "acceso_agua_pct": 89.1,
+    "acceso_saneamiento_pct": 81.5,
+    "fecundidad": 2.33,
+    "crecimiento_anual_pct": 1.78,
+    "tiempo_duplicacion_anios": 39.0,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "chinautla",
@@ -885,19 +1805,23 @@
     "departamento_slug": "guatemala",
     "departamento": "Guatemala",
     "superficie_km2": 56.0,
-    "poblacion_total": null,
-    "densidad_hab_km2": 1500.0,
-    "pct_hombres": null,
-    "pct_mujeres": null,
-    "pct_urbana": null,
-    "pct_rural": null,
-    "pct_indigena": 17.0,
+    "poblacion_total": 125462.0,
+    "densidad_hab_km2": 2240.39,
+    "pct_hombres": 48.78,
+    "pct_mujeres": 51.22,
+    "pct_urbana": 68.4,
+    "pct_rural": 31.6,
+    "pct_indigena": 34.6,
     "esperanza_vida": 72.0,
     "analfabetismo_pct": 9.37,
-    "acceso_agua_pct": null,
-    "acceso_saneamiento_pct": null,
-    "fecundidad": 2.7,
-    "crecimiento_anual_pct": null
+    "acceso_agua_pct": 85.2,
+    "acceso_saneamiento_pct": 61.4,
+    "fecundidad": 2.52,
+    "crecimiento_anual_pct": 2.87,
+    "tiempo_duplicacion_anios": 24.0,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "chuarrancho",
@@ -905,19 +1829,23 @@
     "departamento_slug": "guatemala",
     "departamento": "Guatemala",
     "superficie_km2": 98.0,
-    "poblacion_total": null,
-    "densidad_hab_km2": 121.0,
-    "pct_hombres": null,
-    "pct_mujeres": null,
-    "pct_urbana": null,
-    "pct_rural": null,
-    "pct_indigena": 86.0,
+    "poblacion_total": 13501.0,
+    "densidad_hab_km2": 137.77,
+    "pct_hombres": 49.0,
+    "pct_mujeres": 51.0,
+    "pct_urbana": 32.4,
+    "pct_rural": 67.6,
+    "pct_indigena": 29.3,
     "esperanza_vida": 72.0,
     "analfabetismo_pct": 30.23,
-    "acceso_agua_pct": 93.0,
-    "acceso_saneamiento_pct": null,
-    "fecundidad": 2.7,
-    "crecimiento_anual_pct": 1.62
+    "acceso_agua_pct": 68.7,
+    "acceso_saneamiento_pct": 39.2,
+    "fecundidad": 2.68,
+    "crecimiento_anual_pct": 1.53,
+    "tiempo_duplicacion_anios": 46.0,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "fraijanes",
@@ -925,19 +1853,71 @@
     "departamento_slug": "guatemala",
     "departamento": "Guatemala",
     "superficie_km2": 95.48,
-    "poblacion_total": null,
-    "densidad_hab_km2": 630.0,
-    "pct_hombres": 52.0,
-    "pct_mujeres": 48.0,
-    "pct_urbana": null,
-    "pct_rural": null,
-    "pct_indigena": 4.7,
+    "poblacion_total": 60381.0,
+    "densidad_hab_km2": 632.39,
+    "pct_hombres": 48.27,
+    "pct_mujeres": 51.73,
+    "pct_urbana": 76.5,
+    "pct_rural": 23.5,
+    "pct_indigena": 11.2,
     "esperanza_vida": 72.0,
     "analfabetismo_pct": 10.76,
-    "acceso_agua_pct": null,
-    "acceso_saneamiento_pct": null,
-    "fecundidad": 2.7,
-    "crecimiento_anual_pct": 2.0
+    "acceso_agua_pct": 90.4,
+    "acceso_saneamiento_pct": 76.8,
+    "fecundidad": 2.12,
+    "crecimiento_anual_pct": 2.54,
+    "tiempo_duplicacion_anios": 28.0,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
+  },
+  {
+    "slug": "guatemala",
+    "nombre": "Guatemala",
+    "departamento_slug": "guatemala",
+    "departamento": "Guatemala",
+    "superficie_km2": null,
+    "poblacion_total": 1155998.0,
+    "densidad_hab_km2": null,
+    "pct_hombres": 48.0,
+    "pct_mujeres": 52.0,
+    "pct_urbana": 98.2,
+    "pct_rural": 1.8,
+    "pct_indigena": 6.2,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": 96.3,
+    "acceso_saneamiento_pct": 92.1,
+    "fecundidad": 1.81,
+    "crecimiento_anual_pct": 1.24,
+    "tiempo_duplicacion_anios": 56.0,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
+  },
+  {
+    "slug": "mixco",
+    "nombre": "Mixco",
+    "departamento_slug": "guatemala",
+    "departamento": "Guatemala",
+    "superficie_km2": null,
+    "poblacion_total": 548921.0,
+    "densidad_hab_km2": null,
+    "pct_hombres": 48.3,
+    "pct_mujeres": 51.7,
+    "pct_urbana": 96.5,
+    "pct_rural": 3.5,
+    "pct_indigena": 7.4,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": 94.7,
+    "acceso_saneamiento_pct": 89.5,
+    "fecundidad": 1.95,
+    "crecimiento_anual_pct": 2.61,
+    "tiempo_duplicacion_anios": 27.0,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "palencia",
@@ -945,19 +1925,71 @@
     "departamento_slug": "guatemala",
     "departamento": "Guatemala",
     "superficie_km2": 196.0,
-    "poblacion_total": null,
-    "densidad_hab_km2": 382.0,
-    "pct_hombres": 49.0,
-    "pct_mujeres": 51.0,
-    "pct_urbana": null,
-    "pct_rural": null,
-    "pct_indigena": 2.04,
+    "poblacion_total": 28258.0,
+    "densidad_hab_km2": 144.17,
+    "pct_hombres": 48.85,
+    "pct_mujeres": 51.15,
+    "pct_urbana": 42.1,
+    "pct_rural": 57.9,
+    "pct_indigena": 26.4,
     "esperanza_vida": 72.0,
     "analfabetismo_pct": 33.0,
-    "acceso_agua_pct": 38.0,
-    "acceso_saneamiento_pct": null,
-    "fecundidad": 2.7,
-    "crecimiento_anual_pct": 2.66
+    "acceso_agua_pct": 74.3,
+    "acceso_saneamiento_pct": 48.6,
+    "fecundidad": 2.75,
+    "crecimiento_anual_pct": 1.94,
+    "tiempo_duplicacion_anios": 36.0,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
+  },
+  {
+    "slug": "petapa",
+    "nombre": "Petapa",
+    "departamento_slug": "guatemala",
+    "departamento": "Guatemala",
+    "superficie_km2": null,
+    "poblacion_total": 164659.0,
+    "densidad_hab_km2": null,
+    "pct_hombres": 48.34,
+    "pct_mujeres": 51.66,
+    "pct_urbana": 89.7,
+    "pct_rural": 10.3,
+    "pct_indigena": 7.8,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": 92.9,
+    "acceso_saneamiento_pct": 86.7,
+    "fecundidad": 1.97,
+    "crecimiento_anual_pct": 2.84,
+    "tiempo_duplicacion_anios": 25.0,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
+  },
+  {
+    "slug": "san-jose-del-golfo",
+    "nombre": "San José del Golfo",
+    "departamento_slug": "guatemala",
+    "departamento": "Guatemala",
+    "superficie_km2": null,
+    "poblacion_total": 9128.0,
+    "densidad_hab_km2": null,
+    "pct_hombres": 48.78,
+    "pct_mujeres": 51.22,
+    "pct_urbana": 35.2,
+    "pct_rural": 64.8,
+    "pct_indigena": 22.7,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": 76.4,
+    "acceso_saneamiento_pct": 52.8,
+    "fecundidad": 2.63,
+    "crecimiento_anual_pct": 1.82,
+    "tiempo_duplicacion_anios": 38.0,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "san-jose-pinula",
@@ -965,19 +1997,23 @@
     "departamento_slug": "guatemala",
     "departamento": "Guatemala",
     "superficie_km2": 197.7,
-    "poblacion_total": null,
-    "densidad_hab_km2": 139.0,
-    "pct_hombres": 50.0,
-    "pct_mujeres": 53.0,
-    "pct_urbana": 66.5,
-    "pct_rural": null,
-    "pct_indigena": 3.8,
+    "poblacion_total": 49412.0,
+    "densidad_hab_km2": 249.93,
+    "pct_hombres": 48.76,
+    "pct_mujeres": 51.24,
+    "pct_urbana": 58.6,
+    "pct_rural": 41.4,
+    "pct_indigena": 18.3,
     "esperanza_vida": 70.0,
     "analfabetismo_pct": 91.4,
-    "acceso_agua_pct": 80.0,
-    "acceso_saneamiento_pct": 60.0,
-    "fecundidad": 2.7,
-    "crecimiento_anual_pct": 1.8
+    "acceso_agua_pct": 82.1,
+    "acceso_saneamiento_pct": 65.3,
+    "fecundidad": 2.41,
+    "crecimiento_anual_pct": 2.45,
+    "tiempo_duplicacion_anios": 28.0,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "san-juan-sacatepequez",
@@ -985,19 +2021,23 @@
     "departamento_slug": "guatemala",
     "departamento": "Guatemala",
     "superficie_km2": 242.0,
-    "poblacion_total": null,
-    "densidad_hab_km2": 760.0,
-    "pct_hombres": null,
-    "pct_mujeres": null,
-    "pct_urbana": null,
-    "pct_rural": null,
-    "pct_indigena": 63.0,
+    "poblacion_total": 212505.0,
+    "densidad_hab_km2": 878.12,
+    "pct_hombres": 48.71,
+    "pct_mujeres": 51.29,
+    "pct_urbana": 52.6,
+    "pct_rural": 47.4,
+    "pct_indigena": 58.4,
     "esperanza_vida": 72.0,
     "analfabetismo_pct": 27.84,
-    "acceso_agua_pct": null,
-    "acceso_saneamiento_pct": null,
-    "fecundidad": null,
-    "crecimiento_anual_pct": 1.8
+    "acceso_agua_pct": 78.3,
+    "acceso_saneamiento_pct": 51.9,
+    "fecundidad": 2.91,
+    "crecimiento_anual_pct": 2.76,
+    "tiempo_duplicacion_anios": 25.0,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "san-pedro-ayampuc",
@@ -1005,19 +2045,23 @@
     "departamento_slug": "guatemala",
     "departamento": "Guatemala",
     "superficie_km2": 106.0,
-    "poblacion_total": null,
-    "densidad_hab_km2": 550.0,
-    "pct_hombres": 47.5,
-    "pct_mujeres": 52.5,
-    "pct_urbana": null,
-    "pct_rural": 99.4,
-    "pct_indigena": 27.0,
+    "poblacion_total": 71095.0,
+    "densidad_hab_km2": 670.71,
+    "pct_hombres": 48.77,
+    "pct_mujeres": 51.23,
+    "pct_urbana": 55.3,
+    "pct_rural": 44.7,
+    "pct_indigena": 41.2,
     "esperanza_vida": 72.0,
     "analfabetismo_pct": 12.0,
-    "acceso_agua_pct": null,
-    "acceso_saneamiento_pct": null,
-    "fecundidad": 2.7,
-    "crecimiento_anual_pct": null
+    "acceso_agua_pct": 79.6,
+    "acceso_saneamiento_pct": 55.7,
+    "fecundidad": 2.84,
+    "crecimiento_anual_pct": 3.12,
+    "tiempo_duplicacion_anios": 22.0,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "san-pedro-sacatepequez",
@@ -1025,19 +2069,47 @@
     "departamento_slug": "guatemala",
     "departamento": "Guatemala",
     "superficie_km2": 48.0,
-    "poblacion_total": null,
-    "densidad_hab_km2": 1178.0,
-    "pct_hombres": 49.0,
-    "pct_mujeres": 51.0,
-    "pct_urbana": null,
-    "pct_rural": null,
-    "pct_indigena": 93.0,
+    "poblacion_total": 61805.0,
+    "densidad_hab_km2": 1287.6,
+    "pct_hombres": 48.72,
+    "pct_mujeres": 51.28,
+    "pct_urbana": 48.7,
+    "pct_rural": 51.3,
+    "pct_indigena": 62.8,
     "esperanza_vida": 72.0,
     "analfabetismo_pct": null,
-    "acceso_agua_pct": null,
-    "acceso_saneamiento_pct": null,
-    "fecundidad": 2.7,
-    "crecimiento_anual_pct": null
+    "acceso_agua_pct": 71.8,
+    "acceso_saneamiento_pct": 42.3,
+    "fecundidad": 3.02,
+    "crecimiento_anual_pct": 1.65,
+    "tiempo_duplicacion_anios": 42.0,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
+  },
+  {
+    "slug": "san-raimundo",
+    "nombre": "San Raimundo",
+    "departamento_slug": "guatemala",
+    "departamento": "Guatemala",
+    "superficie_km2": 114.0,
+    "poblacion_total": 37254.0,
+    "densidad_hab_km2": 326.79,
+    "pct_hombres": 48.74,
+    "pct_mujeres": 51.26,
+    "pct_urbana": 45.8,
+    "pct_rural": 54.2,
+    "pct_indigena": 38.5,
+    "esperanza_vida": 72.0,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": 75.9,
+    "acceso_saneamiento_pct": 47.5,
+    "fecundidad": 2.78,
+    "crecimiento_anual_pct": 2.08,
+    "tiempo_duplicacion_anios": 33.0,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "santa-catarina-pinula",
@@ -1045,19 +2117,23 @@
     "departamento_slug": "guatemala",
     "departamento": "Guatemala",
     "superficie_km2": 49.3,
-    "poblacion_total": null,
-    "densidad_hab_km2": 1747.0,
-    "pct_hombres": 49.0,
-    "pct_mujeres": 51.0,
-    "pct_urbana": null,
-    "pct_rural": null,
-    "pct_indigena": null,
+    "poblacion_total": 71165.0,
+    "densidad_hab_km2": 1443.51,
+    "pct_hombres": 48.39,
+    "pct_mujeres": 51.61,
+    "pct_urbana": 72.3,
+    "pct_rural": 27.7,
+    "pct_indigena": 12.5,
     "esperanza_vida": 71.0,
     "analfabetismo_pct": 3.65,
-    "acceso_agua_pct": 85.0,
-    "acceso_saneamiento_pct": 45.0,
-    "fecundidad": 2.8,
-    "crecimiento_anual_pct": 2.3
+    "acceso_agua_pct": 88.5,
+    "acceso_saneamiento_pct": 78.2,
+    "fecundidad": 2.25,
+    "crecimiento_anual_pct": 2.18,
+    "tiempo_duplicacion_anios": 32.0,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "villa-canales",
@@ -1065,19 +2141,47 @@
     "departamento_slug": "guatemala",
     "departamento": "Guatemala",
     "superficie_km2": 353.0,
-    "poblacion_total": null,
-    "densidad_hab_km2": 475.0,
-    "pct_hombres": 48.9,
-    "pct_mujeres": 51.1,
-    "pct_urbana": null,
-    "pct_rural": null,
-    "pct_indigena": 4.0,
+    "poblacion_total": 192358.0,
+    "densidad_hab_km2": 544.92,
+    "pct_hombres": 48.4,
+    "pct_mujeres": 51.6,
+    "pct_urbana": 81.4,
+    "pct_rural": 18.6,
+    "pct_indigena": 9.6,
     "esperanza_vida": 72.0,
     "analfabetismo_pct": 10.0,
-    "acceso_agua_pct": null,
-    "acceso_saneamiento_pct": null,
-    "fecundidad": 2.7,
-    "crecimiento_anual_pct": null
+    "acceso_agua_pct": 91.8,
+    "acceso_saneamiento_pct": 84.2,
+    "fecundidad": 2.04,
+    "crecimiento_anual_pct": 2.92,
+    "tiempo_duplicacion_anios": 24.0,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
+  },
+  {
+    "slug": "villa-nueva",
+    "nombre": "Villa Nueva",
+    "departamento_slug": "guatemala",
+    "departamento": "Guatemala",
+    "superficie_km2": null,
+    "poblacion_total": 693521.0,
+    "densidad_hab_km2": null,
+    "pct_hombres": 48.34,
+    "pct_mujeres": 51.66,
+    "pct_urbana": 94.8,
+    "pct_rural": 5.2,
+    "pct_indigena": 8.1,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": 93.2,
+    "acceso_saneamiento_pct": 87.4,
+    "fecundidad": 2.08,
+    "crecimiento_anual_pct": 3.03,
+    "tiempo_duplicacion_anios": 23.0,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "aguacatan",
@@ -1097,7 +2201,11 @@
     "acceso_agua_pct": 78.4,
     "acceso_saneamiento_pct": 41.3,
     "fecundidad": 3.8,
-    "crecimiento_anual_pct": 2.14
+    "crecimiento_anual_pct": 2.14,
+    "tiempo_duplicacion_anios": 32.71,
+    "poblacion_activa": 9257.0,
+    "poblacion_inactiva": 12889.0,
+    "pct_pea": 41.8
   },
   {
     "slug": "barillas",
@@ -1117,7 +2225,11 @@
     "acceso_agua_pct": 68.7,
     "acceso_saneamiento_pct": 31.4,
     "fecundidad": 4.4,
-    "crecimiento_anual_pct": 2.26
+    "crecimiento_anual_pct": 2.26,
+    "tiempo_duplicacion_anios": 30.97,
+    "poblacion_activa": 10301.0,
+    "poblacion_inactiva": 14462.0,
+    "pct_pea": 41.6
   },
   {
     "slug": "chiantla",
@@ -1137,7 +2249,11 @@
     "acceso_agua_pct": 76.4,
     "acceso_saneamiento_pct": 41.2,
     "fecundidad": 3.6,
-    "crecimiento_anual_pct": 2.12
+    "crecimiento_anual_pct": 2.12,
+    "tiempo_duplicacion_anios": 33.02,
+    "poblacion_activa": 18141.0,
+    "poblacion_inactiva": 24048.0,
+    "pct_pea": 43.0
   },
   {
     "slug": "colotenango",
@@ -1157,7 +2273,11 @@
     "acceso_agua_pct": 76.1,
     "acceso_saneamiento_pct": 37.2,
     "fecundidad": 4.0,
-    "crecimiento_anual_pct": 2.25
+    "crecimiento_anual_pct": 2.25,
+    "tiempo_duplicacion_anios": 31.11,
+    "poblacion_activa": 7811.0,
+    "poblacion_inactiva": 12065.0,
+    "pct_pea": 39.3
   },
   {
     "slug": "concepcion-huista",
@@ -1177,7 +2297,11 @@
     "acceso_agua_pct": 73.8,
     "acceso_saneamiento_pct": 36.1,
     "fecundidad": 4.1,
-    "crecimiento_anual_pct": 2.02
+    "crecimiento_anual_pct": 2.02,
+    "tiempo_duplicacion_anios": 34.65,
+    "poblacion_activa": 6313.0,
+    "poblacion_inactiva": 9429.0,
+    "pct_pea": 40.1
   },
   {
     "slug": "cuilco",
@@ -1197,7 +2321,35 @@
     "acceso_agua_pct": 68.7,
     "acceso_saneamiento_pct": 35.4,
     "fecundidad": 3.9,
-    "crecimiento_anual_pct": 2.08
+    "crecimiento_anual_pct": 2.08,
+    "tiempo_duplicacion_anios": 33.65,
+    "poblacion_activa": 10882.0,
+    "poblacion_inactiva": 14965.0,
+    "pct_pea": 42.1
+  },
+  {
+    "slug": "huehuetenango",
+    "nombre": "Huehuetenango",
+    "departamento_slug": "huehuetenango",
+    "departamento": "Huehuetenango",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 43453.0,
+    "poblacion_inactiva": 45793.0,
+    "pct_pea": 48.7
   },
   {
     "slug": "ixtahuacan",
@@ -1217,7 +2369,11 @@
     "acceso_agua_pct": 70.5,
     "acceso_saneamiento_pct": 36.8,
     "fecundidad": 3.9,
-    "crecimiento_anual_pct": 2.28
+    "crecimiento_anual_pct": 2.28,
+    "tiempo_duplicacion_anios": 30.7,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "jacaltenango",
@@ -1237,7 +2393,11 @@
     "acceso_agua_pct": 82.7,
     "acceso_saneamiento_pct": 51.3,
     "fecundidad": 3.4,
-    "crecimiento_anual_pct": 2.35
+    "crecimiento_anual_pct": 2.35,
+    "tiempo_duplicacion_anios": 29.79,
+    "poblacion_activa": 5620.0,
+    "poblacion_inactiva": 9343.0,
+    "pct_pea": 37.6
   },
   {
     "slug": "la-democracia",
@@ -1257,7 +2417,11 @@
     "acceso_agua_pct": 83.4,
     "acceso_saneamiento_pct": 47.8,
     "fecundidad": 3.4,
-    "crecimiento_anual_pct": 2.01
+    "crecimiento_anual_pct": 2.01,
+    "tiempo_duplicacion_anios": 34.83,
+    "poblacion_activa": 2856.0,
+    "poblacion_inactiva": 4968.0,
+    "pct_pea": 36.5
   },
   {
     "slug": "la-libertad",
@@ -1277,7 +2441,11 @@
     "acceso_agua_pct": 82.1,
     "acceso_saneamiento_pct": 49.6,
     "fecundidad": 3.3,
-    "crecimiento_anual_pct": 1.92
+    "crecimiento_anual_pct": 1.92,
+    "tiempo_duplicacion_anios": 36.46,
+    "poblacion_activa": 9375.0,
+    "poblacion_inactiva": 13599.0,
+    "pct_pea": 40.8
   },
   {
     "slug": "malacatancito",
@@ -1297,7 +2465,11 @@
     "acceso_agua_pct": 81.5,
     "acceso_saneamiento_pct": 48.7,
     "fecundidad": 3.2,
-    "crecimiento_anual_pct": 1.87
+    "crecimiento_anual_pct": 1.87,
+    "tiempo_duplicacion_anios": 37.43,
+    "poblacion_activa": 7551.0,
+    "poblacion_inactiva": 10728.0,
+    "pct_pea": 41.3
   },
   {
     "slug": "nenton",
@@ -1317,7 +2489,11 @@
     "acceso_agua_pct": 72.3,
     "acceso_saneamiento_pct": 38.6,
     "fecundidad": 4.1,
-    "crecimiento_anual_pct": 2.15
+    "crecimiento_anual_pct": 2.15,
+    "tiempo_duplicacion_anios": 32.56,
+    "poblacion_activa": 4877.0,
+    "poblacion_inactiva": 8340.0,
+    "pct_pea": 36.9
   },
   {
     "slug": "san-antonio-huista",
@@ -1337,7 +2513,11 @@
     "acceso_agua_pct": 81.5,
     "acceso_saneamiento_pct": 44.2,
     "fecundidad": 3.4,
-    "crecimiento_anual_pct": 1.98
+    "crecimiento_anual_pct": 1.98,
+    "tiempo_duplicacion_anios": 35.35,
+    "poblacion_activa": 5126.0,
+    "poblacion_inactiva": 8616.0,
+    "pct_pea": 37.3
   },
   {
     "slug": "san-gaspar-ixchil",
@@ -1357,7 +2537,11 @@
     "acceso_agua_pct": 74.2,
     "acceso_saneamiento_pct": 35.8,
     "fecundidad": 4.1,
-    "crecimiento_anual_pct": 2.17
+    "crecimiento_anual_pct": 2.17,
+    "tiempo_duplicacion_anios": 32.26,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "san-juan-atitan",
@@ -1377,7 +2561,11 @@
     "acceso_agua_pct": 72.9,
     "acceso_saneamiento_pct": 32.6,
     "fecundidad": 4.4,
-    "crecimiento_anual_pct": 2.23
+    "crecimiento_anual_pct": 2.23,
+    "tiempo_duplicacion_anios": 31.39,
+    "poblacion_activa": 4996.0,
+    "poblacion_inactiva": 7652.0,
+    "pct_pea": 39.5
   },
   {
     "slug": "san-juan-ixcoy",
@@ -1397,7 +2585,11 @@
     "acceso_agua_pct": 72.5,
     "acceso_saneamiento_pct": 34.7,
     "fecundidad": 4.2,
-    "crecimiento_anual_pct": 2.15
+    "crecimiento_anual_pct": 2.15,
+    "tiempo_duplicacion_anios": 32.56,
+    "poblacion_activa": 8763.0,
+    "poblacion_inactiva": 12920.0,
+    "pct_pea": 40.4
   },
   {
     "slug": "san-mateo-ixtatan",
@@ -1417,7 +2609,11 @@
     "acceso_agua_pct": 71.2,
     "acceso_saneamiento_pct": 33.8,
     "fecundidad": 4.3,
-    "crecimiento_anual_pct": 2.18
+    "crecimiento_anual_pct": 2.18,
+    "tiempo_duplicacion_anios": 32.11,
+    "poblacion_activa": 9601.0,
+    "poblacion_inactiva": 13817.0,
+    "pct_pea": 41.0
   },
   {
     "slug": "san-miguel-acatan",
@@ -1437,7 +2633,11 @@
     "acceso_agua_pct": 80.3,
     "acceso_saneamiento_pct": 39.7,
     "fecundidad": 4.2,
-    "crecimiento_anual_pct": 2.18
+    "crecimiento_anual_pct": 2.18,
+    "tiempo_duplicacion_anios": 32.11,
+    "poblacion_activa": 5863.0,
+    "poblacion_inactiva": 9566.0,
+    "pct_pea": 38.0
   },
   {
     "slug": "san-pedro-necta",
@@ -1457,7 +2657,11 @@
     "acceso_agua_pct": 74.2,
     "acceso_saneamiento_pct": 40.8,
     "fecundidad": 3.8,
-    "crecimiento_anual_pct": 2.21
+    "crecimiento_anual_pct": 2.21,
+    "tiempo_duplicacion_anios": 31.67,
+    "poblacion_activa": 11224.0,
+    "poblacion_inactiva": 15248.0,
+    "pct_pea": 42.4
   },
   {
     "slug": "san-rafael-la-independencia",
@@ -1477,7 +2681,11 @@
     "acceso_agua_pct": 74.6,
     "acceso_saneamiento_pct": 34.2,
     "fecundidad": 4.3,
-    "crecimiento_anual_pct": 2.05
+    "crecimiento_anual_pct": 2.05,
+    "tiempo_duplicacion_anios": 34.15,
+    "poblacion_activa": 6412.0,
+    "poblacion_inactiva": 10462.0,
+    "pct_pea": 38.0
   },
   {
     "slug": "san-rafael-petzal",
@@ -1497,7 +2705,11 @@
     "acceso_agua_pct": 76.8,
     "acceso_saneamiento_pct": 38.2,
     "fecundidad": 4.0,
-    "crecimiento_anual_pct": 2.21
+    "crecimiento_anual_pct": 2.21,
+    "tiempo_duplicacion_anios": 31.67,
+    "poblacion_activa": 2426.0,
+    "poblacion_inactiva": 4366.0,
+    "pct_pea": 35.7
   },
   {
     "slug": "san-sebastian-coatan",
@@ -1517,7 +2729,11 @@
     "acceso_agua_pct": 70.4,
     "acceso_saneamiento_pct": 33.2,
     "fecundidad": 4.3,
-    "crecimiento_anual_pct": 2.12
+    "crecimiento_anual_pct": 2.12,
+    "tiempo_duplicacion_anios": 33.02,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "san-sebastian-huehuetenango",
@@ -1537,7 +2753,35 @@
     "acceso_agua_pct": 77.3,
     "acceso_saneamiento_pct": 38.5,
     "fecundidad": 3.9,
-    "crecimiento_anual_pct": 2.12
+    "crecimiento_anual_pct": 2.12,
+    "tiempo_duplicacion_anios": 33.02,
+    "poblacion_activa": 7279.0,
+    "poblacion_inactiva": 11363.0,
+    "pct_pea": 39.0
+  },
+  {
+    "slug": "santa-ana-huista",
+    "nombre": "Santa Ana Huista",
+    "departamento_slug": "huehuetenango",
+    "departamento": "Huehuetenango",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 2076.0,
+    "poblacion_inactiva": 3871.0,
+    "pct_pea": 34.9
   },
   {
     "slug": "santa-barbara",
@@ -1557,7 +2801,11 @@
     "acceso_agua_pct": 84.6,
     "acceso_saneamiento_pct": 52.3,
     "fecundidad": 3.1,
-    "crecimiento_anual_pct": 1.95
+    "crecimiento_anual_pct": 1.95,
+    "tiempo_duplicacion_anios": 35.9,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "santa-eulalia",
@@ -1577,7 +2825,11 @@
     "acceso_agua_pct": 73.4,
     "acceso_saneamiento_pct": 35.1,
     "fecundidad": 4.2,
-    "crecimiento_anual_pct": 2.1
+    "crecimiento_anual_pct": 2.1,
+    "tiempo_duplicacion_anios": 33.33,
+    "poblacion_activa": 6940.0,
+    "poblacion_inactiva": 11008.0,
+    "pct_pea": 38.7
   },
   {
     "slug": "santiago-chimaltenango",
@@ -1597,7 +2849,11 @@
     "acceso_agua_pct": 75.5,
     "acceso_saneamiento_pct": 37.0,
     "fecundidad": 4.0,
-    "crecimiento_anual_pct": 2.2
+    "crecimiento_anual_pct": 2.2,
+    "tiempo_duplicacion_anios": 31.82,
+    "poblacion_activa": 4294.0,
+    "poblacion_inactiva": 6773.0,
+    "pct_pea": 38.8
   },
   {
     "slug": "soloma",
@@ -1617,7 +2873,11 @@
     "acceso_agua_pct": 71.8,
     "acceso_saneamiento_pct": 37.5,
     "fecundidad": 4.0,
-    "crecimiento_anual_pct": 2.42
+    "crecimiento_anual_pct": 2.42,
+    "tiempo_duplicacion_anios": 28.93,
+    "poblacion_activa": 8257.0,
+    "poblacion_inactiva": 12485.0,
+    "pct_pea": 39.8
   },
   {
     "slug": "tectitan",
@@ -1637,7 +2897,11 @@
     "acceso_agua_pct": 79.2,
     "acceso_saneamiento_pct": 42.5,
     "fecundidad": 3.5,
-    "crecimiento_anual_pct": 2.05
+    "crecimiento_anual_pct": 2.05,
+    "tiempo_duplicacion_anios": 34.15,
+    "poblacion_activa": 3853.0,
+    "poblacion_inactiva": 7123.0,
+    "pct_pea": 35.1
   },
   {
     "slug": "todos-santos-cuchumatan",
@@ -1657,7 +2921,35 @@
     "acceso_agua_pct": 75.8,
     "acceso_saneamiento_pct": 36.4,
     "fecundidad": 4.1,
-    "crecimiento_anual_pct": 2.03
+    "crecimiento_anual_pct": 2.03,
+    "tiempo_duplicacion_anios": 34.48,
+    "poblacion_activa": 4670.0,
+    "poblacion_inactiva": 8224.0,
+    "pct_pea": 36.2
+  },
+  {
+    "slug": "union-cantinil",
+    "nombre": "Unión Cantinil",
+    "departamento_slug": "huehuetenango",
+    "departamento": "Huehuetenango",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 3425.0,
+    "poblacion_inactiva": 6418.0,
+    "pct_pea": 34.8
   },
   {
     "slug": "el-estor",
@@ -1665,7 +2957,7 @@
     "departamento_slug": "izabal",
     "departamento": "Izabal",
     "superficie_km2": 2896.0,
-    "poblacion_total": null,
+    "poblacion_total": 73328.0,
     "densidad_hab_km2": 22.0,
     "pct_hombres": 51.0,
     "pct_mujeres": null,
@@ -1677,7 +2969,35 @@
     "acceso_agua_pct": 40.0,
     "acceso_saneamiento_pct": null,
     "fecundidad": null,
-    "crecimiento_anual_pct": 2.5
+    "crecimiento_anual_pct": 2.5,
+    "tiempo_duplicacion_anios": 28.0,
+    "poblacion_activa": 32411.0,
+    "poblacion_inactiva": 40917.0,
+    "pct_pea": 44.2
+  },
+  {
+    "slug": "livingston",
+    "nombre": "Lívingston",
+    "departamento_slug": "izabal",
+    "departamento": "Izabal",
+    "superficie_km2": null,
+    "poblacion_total": 73492.0,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 32042.0,
+    "poblacion_inactiva": 41450.0,
+    "pct_pea": 43.6
   },
   {
     "slug": "los-amates",
@@ -1685,7 +3005,7 @@
     "departamento_slug": "izabal",
     "departamento": "Izabal",
     "superficie_km2": 1615.0,
-    "poblacion_total": null,
+    "poblacion_total": 60914.0,
     "densidad_hab_km2": 34.0,
     "pct_hombres": 50.0,
     "pct_mujeres": null,
@@ -1697,7 +3017,11 @@
     "acceso_agua_pct": 40.0,
     "acceso_saneamiento_pct": null,
     "fecundidad": null,
-    "crecimiento_anual_pct": 2.0
+    "crecimiento_anual_pct": 2.0,
+    "tiempo_duplicacion_anios": 35.0,
+    "poblacion_activa": 29337.0,
+    "poblacion_inactiva": 31577.0,
+    "pct_pea": 48.2
   },
   {
     "slug": "morales",
@@ -1705,7 +3029,7 @@
     "departamento_slug": "izabal",
     "departamento": "Izabal",
     "superficie_km2": 1296.0,
-    "poblacion_total": null,
+    "poblacion_total": 100361.0,
     "densidad_hab_km2": 85.0,
     "pct_hombres": 49.3,
     "pct_mujeres": null,
@@ -1717,7 +3041,59 @@
     "acceso_agua_pct": 70.0,
     "acceso_saneamiento_pct": null,
     "fecundidad": 2.8,
-    "crecimiento_anual_pct": 2.3
+    "crecimiento_anual_pct": 2.3,
+    "tiempo_duplicacion_anios": 30.43,
+    "poblacion_activa": 46668.0,
+    "poblacion_inactiva": 53693.0,
+    "pct_pea": 46.5
+  },
+  {
+    "slug": "puerto-barrios",
+    "nombre": "Puerto Barrios",
+    "departamento_slug": "izabal",
+    "departamento": "Izabal",
+    "superficie_km2": null,
+    "poblacion_total": 100593.0,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 48787.0,
+    "poblacion_inactiva": 51806.0,
+    "pct_pea": 48.5
+  },
+  {
+    "slug": "jalapa",
+    "nombre": "Jalapa",
+    "departamento_slug": "jalapa",
+    "departamento": "Jalapa",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 27146.0,
+    "poblacion_inactiva": 30796.0,
+    "pct_pea": 46.9
   },
   {
     "slug": "mataquescuintla",
@@ -1737,7 +3113,11 @@
     "acceso_agua_pct": 67.4,
     "acceso_saneamiento_pct": 28.5,
     "fecundidad": 3.5,
-    "crecimiento_anual_pct": 1.71
+    "crecimiento_anual_pct": 1.71,
+    "tiempo_duplicacion_anios": 40.94,
+    "poblacion_activa": 9412.0,
+    "poblacion_inactiva": 12226.0,
+    "pct_pea": 43.5
   },
   {
     "slug": "monjas",
@@ -1757,7 +3137,11 @@
     "acceso_agua_pct": 78.5,
     "acceso_saneamiento_pct": 42.6,
     "fecundidad": 3.1,
-    "crecimiento_anual_pct": 1.82
+    "crecimiento_anual_pct": 1.82,
+    "tiempo_duplicacion_anios": 38.46,
+    "poblacion_activa": 6525.0,
+    "poblacion_inactiva": 8354.0,
+    "pct_pea": 43.9
   },
   {
     "slug": "san-carlos-alzatate",
@@ -1777,7 +3161,11 @@
     "acceso_agua_pct": 51.6,
     "acceso_saneamiento_pct": 14.2,
     "fecundidad": 3.8,
-    "crecimiento_anual_pct": 1.47
+    "crecimiento_anual_pct": 1.47,
+    "tiempo_duplicacion_anios": 47.62,
+    "poblacion_activa": 4235.0,
+    "poblacion_inactiva": 5638.0,
+    "pct_pea": 42.9
   },
   {
     "slug": "san-luis-jilotepeque",
@@ -1797,7 +3185,11 @@
     "acceso_agua_pct": 58.7,
     "acceso_saneamiento_pct": 19.4,
     "fecundidad": 3.6,
-    "crecimiento_anual_pct": 1.65
+    "crecimiento_anual_pct": 1.65,
+    "tiempo_duplicacion_anios": 42.42,
+    "poblacion_activa": 9844.0,
+    "poblacion_inactiva": 12950.0,
+    "pct_pea": 43.2
   },
   {
     "slug": "san-manuel-chaparron",
@@ -1817,7 +3209,11 @@
     "acceso_agua_pct": 54.2,
     "acceso_saneamiento_pct": 16.3,
     "fecundidad": 3.7,
-    "crecimiento_anual_pct": 1.59
+    "crecimiento_anual_pct": 1.59,
+    "tiempo_duplicacion_anios": 44.03,
+    "poblacion_activa": 4745.0,
+    "poblacion_inactiva": 6341.0,
+    "pct_pea": 42.8
   },
   {
     "slug": "san-pedro-pinula",
@@ -1837,7 +3233,11 @@
     "acceso_agua_pct": 62.3,
     "acceso_saneamiento_pct": 24.7,
     "fecundidad": 3.4,
-    "crecimiento_anual_pct": 1.78
+    "crecimiento_anual_pct": 1.78,
+    "tiempo_duplicacion_anios": 39.33,
+    "poblacion_activa": 13563.0,
+    "poblacion_inactiva": 17924.0,
+    "pct_pea": 43.1
   },
   {
     "slug": "agua-blanca",
@@ -1857,7 +3257,11 @@
     "acceso_agua_pct": 72.6,
     "acceso_saneamiento_pct": 44.3,
     "fecundidad": 2.8,
-    "crecimiento_anual_pct": 1.31
+    "crecimiento_anual_pct": 1.31,
+    "tiempo_duplicacion_anios": 53.44,
+    "poblacion_activa": 3744.0,
+    "poblacion_inactiva": 4746.0,
+    "pct_pea": 44.1
   },
   {
     "slug": "asuncion-mita",
@@ -1877,7 +3281,11 @@
     "acceso_agua_pct": 78.7,
     "acceso_saneamiento_pct": 51.6,
     "fecundidad": 2.6,
-    "crecimiento_anual_pct": 1.48
+    "crecimiento_anual_pct": 1.48,
+    "tiempo_duplicacion_anios": 47.3,
+    "poblacion_activa": 13281.0,
+    "poblacion_inactiva": 15363.0,
+    "pct_pea": 46.4
   },
   {
     "slug": "atescatempa",
@@ -1897,7 +3305,11 @@
     "acceso_agua_pct": 69.4,
     "acceso_saneamiento_pct": 41.2,
     "fecundidad": 2.9,
-    "crecimiento_anual_pct": 1.32
+    "crecimiento_anual_pct": 1.32,
+    "tiempo_duplicacion_anios": 53.03,
+    "poblacion_activa": 4257.0,
+    "poblacion_inactiva": 5160.0,
+    "pct_pea": 45.2
   },
   {
     "slug": "comapa",
@@ -1917,7 +3329,11 @@
     "acceso_agua_pct": 73.2,
     "acceso_saneamiento_pct": 45.4,
     "fecundidad": 2.7,
-    "crecimiento_anual_pct": 1.34
+    "crecimiento_anual_pct": 1.34,
+    "tiempo_duplicacion_anios": 52.24,
+    "poblacion_activa": 5242.0,
+    "poblacion_inactiva": 6460.0,
+    "pct_pea": 44.8
   },
   {
     "slug": "conguaco",
@@ -1937,7 +3353,11 @@
     "acceso_agua_pct": 65.8,
     "acceso_saneamiento_pct": 36.4,
     "fecundidad": 3.1,
-    "crecimiento_anual_pct": 1.41
+    "crecimiento_anual_pct": 1.41,
+    "tiempo_duplicacion_anios": 49.65,
+    "poblacion_activa": 3943.0,
+    "poblacion_inactiva": 5000.0,
+    "pct_pea": 44.1
   },
   {
     "slug": "el-adelanto",
@@ -1957,7 +3377,11 @@
     "acceso_agua_pct": 67.4,
     "acceso_saneamiento_pct": 38.2,
     "fecundidad": 3.0,
-    "crecimiento_anual_pct": 1.21
+    "crecimiento_anual_pct": 1.21,
+    "tiempo_duplicacion_anios": 57.85,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "el-progreso",
@@ -1977,7 +3401,11 @@
     "acceso_agua_pct": 76.4,
     "acceso_saneamiento_pct": 49.8,
     "fecundidad": 2.6,
-    "crecimiento_anual_pct": 0.67
+    "crecimiento_anual_pct": 0.67,
+    "tiempo_duplicacion_anios": 104.48,
+    "poblacion_activa": 3333.0,
+    "poblacion_inactiva": 4279.0,
+    "pct_pea": 43.8
   },
   {
     "slug": "jalpatagua",
@@ -1997,7 +3425,11 @@
     "acceso_agua_pct": 74.8,
     "acceso_saneamiento_pct": 47.2,
     "fecundidad": 2.7,
-    "crecimiento_anual_pct": 1.44
+    "crecimiento_anual_pct": 1.44,
+    "tiempo_duplicacion_anios": 48.61,
+    "poblacion_activa": 5946.0,
+    "poblacion_inactiva": 7268.0,
+    "pct_pea": 45.0
   },
   {
     "slug": "jerez",
@@ -2017,7 +3449,35 @@
     "acceso_agua_pct": 68.2,
     "acceso_saneamiento_pct": 39.7,
     "fecundidad": 3.0,
-    "crecimiento_anual_pct": 1.24
+    "crecimiento_anual_pct": 1.24,
+    "tiempo_duplicacion_anios": 56.45,
+    "poblacion_activa": 2404.0,
+    "poblacion_inactiva": 3084.0,
+    "pct_pea": 43.8
+  },
+  {
+    "slug": "jutiapa",
+    "nombre": "Jutiapa",
+    "departamento_slug": "jutiapa",
+    "departamento": "Jutiapa",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 28919.0,
+    "poblacion_inactiva": 30954.0,
+    "pct_pea": 48.3
   },
   {
     "slug": "moyuta",
@@ -2037,7 +3497,11 @@
     "acceso_agua_pct": 64.2,
     "acceso_saneamiento_pct": 35.1,
     "fecundidad": 3.2,
-    "crecimiento_anual_pct": 1.34
+    "crecimiento_anual_pct": 1.34,
+    "tiempo_duplicacion_anios": 52.24,
+    "poblacion_activa": 8446.0,
+    "poblacion_inactiva": 10080.0,
+    "pct_pea": 45.6
   },
   {
     "slug": "pasaco",
@@ -2057,7 +3521,11 @@
     "acceso_agua_pct": 62.8,
     "acceso_saneamiento_pct": 33.9,
     "fecundidad": 3.3,
-    "crecimiento_anual_pct": 1.72
+    "crecimiento_anual_pct": 1.72,
+    "tiempo_duplicacion_anios": 40.7,
+    "poblacion_activa": 2608.0,
+    "poblacion_inactiva": 3333.0,
+    "pct_pea": 43.9
   },
   {
     "slug": "quesada",
@@ -2077,7 +3545,11 @@
     "acceso_agua_pct": 76.2,
     "acceso_saneamiento_pct": 48.1,
     "fecundidad": 2.6,
-    "crecimiento_anual_pct": 1.47
+    "crecimiento_anual_pct": 1.47,
+    "tiempo_duplicacion_anios": 47.62,
+    "poblacion_activa": 3233.0,
+    "poblacion_inactiva": 4077.0,
+    "pct_pea": 44.2
   },
   {
     "slug": "san-jose-acatempa",
@@ -2097,7 +3569,11 @@
     "acceso_agua_pct": 75.4,
     "acceso_saneamiento_pct": 46.8,
     "fecundidad": 2.7,
-    "crecimiento_anual_pct": 1.46
+    "crecimiento_anual_pct": 1.46,
+    "tiempo_duplicacion_anios": 47.95,
+    "poblacion_activa": 2293.0,
+    "poblacion_inactiva": 2991.0,
+    "pct_pea": 43.4
   },
   {
     "slug": "santa-catarina-mita",
@@ -2117,7 +3593,11 @@
     "acceso_agua_pct": 75.2,
     "acceso_saneamiento_pct": 47.6,
     "fecundidad": 2.7,
-    "crecimiento_anual_pct": 1.49
+    "crecimiento_anual_pct": 1.49,
+    "tiempo_duplicacion_anios": 46.98,
+    "poblacion_activa": 7524.0,
+    "poblacion_inactiva": 8924.0,
+    "pct_pea": 45.7
   },
   {
     "slug": "yupiltepeque",
@@ -2137,7 +3617,11 @@
     "acceso_agua_pct": 70.8,
     "acceso_saneamiento_pct": 42.5,
     "fecundidad": 2.9,
-    "crecimiento_anual_pct": 1.18
+    "crecimiento_anual_pct": 1.18,
+    "tiempo_duplicacion_anios": 59.32,
+    "poblacion_activa": 3041.0,
+    "poblacion_inactiva": 3852.0,
+    "pct_pea": 44.1
   },
   {
     "slug": "zapotitlan",
@@ -2157,7 +3641,11 @@
     "acceso_agua_pct": 66.1,
     "acceso_saneamiento_pct": 37.0,
     "fecundidad": 3.1,
-    "crecimiento_anual_pct": 1.29
+    "crecimiento_anual_pct": 1.29,
+    "tiempo_duplicacion_anios": 54.26,
+    "poblacion_activa": 2017.0,
+    "poblacion_inactiva": 2584.0,
+    "pct_pea": 43.8
   },
   {
     "slug": "dolores",
@@ -2177,7 +3665,59 @@
     "acceso_agua_pct": 64.5,
     "acceso_saneamiento_pct": 56.2,
     "fecundidad": 3.6,
-    "crecimiento_anual_pct": 2.5
+    "crecimiento_anual_pct": 2.5,
+    "tiempo_duplicacion_anios": 28.0,
+    "poblacion_activa": 10401.0,
+    "poblacion_inactiva": 11546.0,
+    "pct_pea": 47.4
+  },
+  {
+    "slug": "el-chal",
+    "nombre": "El Chal",
+    "departamento_slug": "peten",
+    "departamento": "Petén",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 4629.0,
+    "poblacion_inactiva": 6013.0,
+    "pct_pea": 43.5
+  },
+  {
+    "slug": "flores",
+    "nombre": "Flores",
+    "departamento_slug": "peten",
+    "departamento": "Petén",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 11807.0,
+    "poblacion_inactiva": 10811.0,
+    "pct_pea": 52.2
   },
   {
     "slug": "la-libertad",
@@ -2197,7 +3737,35 @@
     "acceso_agua_pct": 57.3,
     "acceso_saneamiento_pct": 49.6,
     "fecundidad": 3.9,
-    "crecimiento_anual_pct": 2.7
+    "crecimiento_anual_pct": 2.7,
+    "tiempo_duplicacion_anios": 25.93,
+    "poblacion_activa": 12653.0,
+    "poblacion_inactiva": 14189.0,
+    "pct_pea": 47.1
+  },
+  {
+    "slug": "las-cruces",
+    "nombre": "Las Cruces",
+    "departamento_slug": "peten",
+    "departamento": "Petén",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 5154.0,
+    "poblacion_inactiva": 6274.0,
+    "pct_pea": 45.1
   },
   {
     "slug": "melchor-de-mencos",
@@ -2217,7 +3785,11 @@
     "acceso_agua_pct": 88.7,
     "acceso_saneamiento_pct": 82.5,
     "fecundidad": 2.9,
-    "crecimiento_anual_pct": 2.3
+    "crecimiento_anual_pct": 2.3,
+    "tiempo_duplicacion_anios": 30.43,
+    "poblacion_activa": 11613.0,
+    "poblacion_inactiva": 12136.0,
+    "pct_pea": 48.9
   },
   {
     "slug": "poptun",
@@ -2237,7 +3809,11 @@
     "acceso_agua_pct": 61.4,
     "acceso_saneamiento_pct": 53.8,
     "fecundidad": 3.8,
-    "crecimiento_anual_pct": 2.7
+    "crecimiento_anual_pct": 2.7,
+    "tiempo_duplicacion_anios": 25.93,
+    "poblacion_activa": 19747.0,
+    "poblacion_inactiva": 19669.0,
+    "pct_pea": 50.1
   },
   {
     "slug": "san-andres",
@@ -2257,7 +3833,11 @@
     "acceso_agua_pct": 68.2,
     "acceso_saneamiento_pct": 59.7,
     "fecundidad": 3.7,
-    "crecimiento_anual_pct": 2.4
+    "crecimiento_anual_pct": 2.4,
+    "tiempo_duplicacion_anios": 29.17,
+    "poblacion_activa": 6166.0,
+    "poblacion_inactiva": 7598.0,
+    "pct_pea": 44.8
   },
   {
     "slug": "san-benito",
@@ -2277,7 +3857,11 @@
     "acceso_agua_pct": 94.5,
     "acceso_saneamiento_pct": 91.8,
     "fecundidad": 2.8,
-    "crecimiento_anual_pct": 3.1
+    "crecimiento_anual_pct": 3.1,
+    "tiempo_duplicacion_anios": 22.58,
+    "poblacion_activa": 12814.0,
+    "poblacion_inactiva": 12058.0,
+    "pct_pea": 51.5
   },
   {
     "slug": "san-francisco",
@@ -2297,7 +3881,11 @@
     "acceso_agua_pct": 82.7,
     "acceso_saneamiento_pct": 76.3,
     "fecundidad": 3.2,
-    "crecimiento_anual_pct": 2.9
+    "crecimiento_anual_pct": 2.9,
+    "tiempo_duplicacion_anios": 24.14,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "san-jose",
@@ -2317,7 +3905,11 @@
     "acceso_agua_pct": 96.8,
     "acceso_saneamiento_pct": 89.4,
     "fecundidad": 3.4,
-    "crecimiento_anual_pct": 2.1
+    "crecimiento_anual_pct": 2.1,
+    "tiempo_duplicacion_anios": 33.33,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "san-luis",
@@ -2337,7 +3929,11 @@
     "acceso_agua_pct": 52.8,
     "acceso_saneamiento_pct": 45.1,
     "fecundidad": 4.1,
-    "crecimiento_anual_pct": 2.8
+    "crecimiento_anual_pct": 2.8,
+    "tiempo_duplicacion_anios": 25.0,
+    "poblacion_activa": 14992.0,
+    "poblacion_inactiva": 17184.0,
+    "pct_pea": 46.6
   },
   {
     "slug": "santa-ana",
@@ -2357,7 +3953,11 @@
     "acceso_agua_pct": 75.4,
     "acceso_saneamiento_pct": 68.2,
     "fecundidad": 3.4,
-    "crecimiento_anual_pct": 2.6
+    "crecimiento_anual_pct": 2.6,
+    "tiempo_duplicacion_anios": 26.92,
+    "poblacion_activa": 6847.0,
+    "poblacion_inactiva": 8046.0,
+    "pct_pea": 46.0
   },
   {
     "slug": "sayaxche",
@@ -2377,7 +3977,11 @@
     "acceso_agua_pct": 48.2,
     "acceso_saneamiento_pct": 41.6,
     "fecundidad": 4.3,
-    "crecimiento_anual_pct": 2.9
+    "crecimiento_anual_pct": 2.9,
+    "tiempo_duplicacion_anios": 24.14,
+    "poblacion_activa": 23402.0,
+    "poblacion_inactiva": 24872.0,
+    "pct_pea": 48.5
   },
   {
     "slug": "almolonga",
@@ -2397,7 +4001,11 @@
     "acceso_agua_pct": 94.2,
     "acceso_saneamiento_pct": 95.8,
     "fecundidad": 2.4,
-    "crecimiento_anual_pct": 2.3
+    "crecimiento_anual_pct": 2.3,
+    "tiempo_duplicacion_anios": 30.43,
+    "poblacion_activa": 8095.0,
+    "poblacion_inactiva": 9388.0,
+    "pct_pea": 46.3
   },
   {
     "slug": "cabrican",
@@ -2417,7 +4025,11 @@
     "acceso_agua_pct": 75.3,
     "acceso_saneamiento_pct": 79.6,
     "fecundidad": 3.4,
-    "crecimiento_anual_pct": 2.2
+    "crecimiento_anual_pct": 2.2,
+    "tiempo_duplicacion_anios": 31.82,
+    "poblacion_activa": 6747.0,
+    "poblacion_inactiva": 8115.0,
+    "pct_pea": 45.4
   },
   {
     "slug": "cajola",
@@ -2437,7 +4049,11 @@
     "acceso_agua_pct": 72.8,
     "acceso_saneamiento_pct": 77.1,
     "fecundidad": 3.5,
-    "crecimiento_anual_pct": 2.0
+    "crecimiento_anual_pct": 2.0,
+    "tiempo_duplicacion_anios": 35.0,
+    "poblacion_activa": 3454.0,
+    "poblacion_inactiva": 4673.0,
+    "pct_pea": 42.5
   },
   {
     "slug": "cantel",
@@ -2457,7 +4073,11 @@
     "acceso_agua_pct": 91.4,
     "acceso_saneamiento_pct": 93.6,
     "fecundidad": 2.5,
-    "crecimiento_anual_pct": 2.0
+    "crecimiento_anual_pct": 2.0,
+    "tiempo_duplicacion_anios": 35.0,
+    "poblacion_activa": 11236.0,
+    "poblacion_inactiva": 12620.0,
+    "pct_pea": 47.1
   },
   {
     "slug": "coatepeque",
@@ -2477,7 +4097,11 @@
     "acceso_agua_pct": 88.6,
     "acceso_saneamiento_pct": 91.4,
     "fecundidad": 2.6,
-    "crecimiento_anual_pct": 1.9
+    "crecimiento_anual_pct": 1.9,
+    "tiempo_duplicacion_anios": 36.84,
+    "poblacion_activa": 41156.0,
+    "poblacion_inactiva": 41638.0,
+    "pct_pea": 49.7
   },
   {
     "slug": "colomba",
@@ -2497,7 +4121,11 @@
     "acceso_agua_pct": 83.5,
     "acceso_saneamiento_pct": 87.4,
     "fecundidad": 2.8,
-    "crecimiento_anual_pct": 2.1
+    "crecimiento_anual_pct": 2.1,
+    "tiempo_duplicacion_anios": 33.33,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "concepcion-chiquirichapa",
@@ -2517,7 +4145,35 @@
     "acceso_agua_pct": 77.4,
     "acceso_saneamiento_pct": 81.2,
     "fecundidad": 3.2,
-    "crecimiento_anual_pct": 2.3
+    "crecimiento_anual_pct": 2.3,
+    "tiempo_duplicacion_anios": 30.43,
+    "poblacion_activa": 7469.0,
+    "poblacion_inactiva": 8760.0,
+    "pct_pea": 46.0
+  },
+  {
+    "slug": "el-palmar",
+    "nombre": "El Palmar",
+    "departamento_slug": "quetzaltenango",
+    "departamento": "Quetzaltenango",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 2300.0,
+    "poblacion_inactiva": 3239.0,
+    "pct_pea": 41.5
   },
   {
     "slug": "flores-costa-cuca",
@@ -2537,7 +4193,11 @@
     "acceso_agua_pct": 85.7,
     "acceso_saneamiento_pct": 89.4,
     "fecundidad": 2.7,
-    "crecimiento_anual_pct": 1.8
+    "crecimiento_anual_pct": 1.8,
+    "tiempo_duplicacion_anios": 38.89,
+    "poblacion_activa": 4693.0,
+    "poblacion_inactiva": 5999.0,
+    "pct_pea": 43.9
   },
   {
     "slug": "genova",
@@ -2557,7 +4217,11 @@
     "acceso_agua_pct": 84.8,
     "acceso_saneamiento_pct": 88.7,
     "fecundidad": 2.7,
-    "crecimiento_anual_pct": 1.6
+    "crecimiento_anual_pct": 1.6,
+    "tiempo_duplicacion_anios": 43.75,
+    "poblacion_activa": 1926.0,
+    "poblacion_inactiva": 2772.0,
+    "pct_pea": 41.0
   },
   {
     "slug": "huitan",
@@ -2577,7 +4241,11 @@
     "acceso_agua_pct": 73.5,
     "acceso_saneamiento_pct": 78.2,
     "fecundidad": 3.5,
-    "crecimiento_anual_pct": 1.6
+    "crecimiento_anual_pct": 1.6,
+    "tiempo_duplicacion_anios": 43.75,
+    "poblacion_activa": 5370.0,
+    "poblacion_inactiva": 6604.0,
+    "pct_pea": 44.8
   },
   {
     "slug": "la-esperanza",
@@ -2597,7 +4265,11 @@
     "acceso_agua_pct": 92.7,
     "acceso_saneamiento_pct": 94.5,
     "fecundidad": 2.4,
-    "crecimiento_anual_pct": 2.1
+    "crecimiento_anual_pct": 2.1,
+    "tiempo_duplicacion_anios": 33.33,
+    "poblacion_activa": 5086.0,
+    "poblacion_inactiva": 6340.0,
+    "pct_pea": 44.5
   },
   {
     "slug": "olintepeque",
@@ -2617,7 +4289,11 @@
     "acceso_agua_pct": 86.4,
     "acceso_saneamiento_pct": 89.1,
     "fecundidad": 2.7,
-    "crecimiento_anual_pct": 1.7
+    "crecimiento_anual_pct": 1.7,
+    "tiempo_duplicacion_anios": 41.18,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "ostuncalco",
@@ -2637,7 +4313,11 @@
     "acceso_agua_pct": 76.2,
     "acceso_saneamiento_pct": 80.4,
     "fecundidad": 3.3,
-    "crecimiento_anual_pct": 2.4
+    "crecimiento_anual_pct": 2.4,
+    "tiempo_duplicacion_anios": 29.17,
+    "poblacion_activa": 12641.0,
+    "poblacion_inactiva": 15043.0,
+    "pct_pea": 45.7
   },
   {
     "slug": "palestina-de-los-altos",
@@ -2657,7 +4337,35 @@
     "acceso_agua_pct": 74.2,
     "acceso_saneamiento_pct": 78.5,
     "fecundidad": 3.4,
-    "crecimiento_anual_pct": 2.1
+    "crecimiento_anual_pct": 2.1,
+    "tiempo_duplicacion_anios": 33.33,
+    "poblacion_activa": 3982.0,
+    "poblacion_inactiva": 5279.0,
+    "pct_pea": 43.0
+  },
+  {
+    "slug": "quetzaltenango",
+    "nombre": "Quetzaltenango",
+    "departamento_slug": "quetzaltenango",
+    "departamento": "Quetzaltenango",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 86408.0,
+    "poblacion_inactiva": 76013.0,
+    "pct_pea": 53.2
   },
   {
     "slug": "salcaja",
@@ -2677,7 +4385,11 @@
     "acceso_agua_pct": 92.7,
     "acceso_saneamiento_pct": 94.2,
     "fecundidad": 2.3,
-    "crecimiento_anual_pct": 2.1
+    "crecimiento_anual_pct": 2.1,
+    "tiempo_duplicacion_anios": 33.33,
+    "poblacion_activa": 7280.0,
+    "poblacion_inactiva": 8667.0,
+    "pct_pea": 45.7
   },
   {
     "slug": "san-carlos-sija",
@@ -2697,7 +4409,11 @@
     "acceso_agua_pct": 81.2,
     "acceso_saneamiento_pct": 84.7,
     "fecundidad": 3.0,
-    "crecimiento_anual_pct": 0.8
+    "crecimiento_anual_pct": 0.8,
+    "tiempo_duplicacion_anios": 87.5,
+    "poblacion_activa": 11761.0,
+    "poblacion_inactiva": 13157.0,
+    "pct_pea": 47.2
   },
   {
     "slug": "san-francisco-la-union",
@@ -2717,7 +4433,11 @@
     "acceso_agua_pct": 82.1,
     "acceso_saneamiento_pct": 86.5,
     "fecundidad": 2.8,
-    "crecimiento_anual_pct": 1.4
+    "crecimiento_anual_pct": 1.4,
+    "tiempo_duplicacion_anios": 50.0,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "san-martin-sacatepequez",
@@ -2737,7 +4457,11 @@
     "acceso_agua_pct": 74.6,
     "acceso_saneamiento_pct": 78.8,
     "fecundidad": 3.4,
-    "crecimiento_anual_pct": 1.8
+    "crecimiento_anual_pct": 1.8,
+    "tiempo_duplicacion_anios": 38.89,
+    "poblacion_activa": 5847.0,
+    "poblacion_inactiva": 7411.0,
+    "pct_pea": 44.1
   },
   {
     "slug": "san-miguel-siguila",
@@ -2757,7 +4481,11 @@
     "acceso_agua_pct": 71.4,
     "acceso_saneamiento_pct": 76.0,
     "fecundidad": 3.6,
-    "crecimiento_anual_pct": 1.9
+    "crecimiento_anual_pct": 1.9,
+    "tiempo_duplicacion_anios": 36.84,
+    "poblacion_activa": 2738.0,
+    "poblacion_inactiva": 3782.0,
+    "pct_pea": 42.0
   },
   {
     "slug": "sibilia",
@@ -2777,7 +4505,11 @@
     "acceso_agua_pct": 78.5,
     "acceso_saneamiento_pct": 82.3,
     "fecundidad": 3.2,
-    "crecimiento_anual_pct": 1.1
+    "crecimiento_anual_pct": 1.1,
+    "tiempo_duplicacion_anios": 63.64,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "zunil",
@@ -2797,7 +4529,11 @@
     "acceso_agua_pct": 84.6,
     "acceso_saneamiento_pct": 88.2,
     "fecundidad": 2.9,
-    "crecimiento_anual_pct": 1.5
+    "crecimiento_anual_pct": 1.5,
+    "tiempo_duplicacion_anios": 46.67,
+    "poblacion_activa": 9170.0,
+    "poblacion_inactiva": 10592.0,
+    "pct_pea": 46.4
   },
   {
     "slug": "canilla",
@@ -2817,7 +4553,11 @@
     "acceso_agua_pct": 56.1,
     "acceso_saneamiento_pct": 42.3,
     "fecundidad": 3.9,
-    "crecimiento_anual_pct": 1.91
+    "crecimiento_anual_pct": 1.91,
+    "tiempo_duplicacion_anios": 36.65,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "chajul",
@@ -2837,7 +4577,35 @@
     "acceso_agua_pct": 51.3,
     "acceso_saneamiento_pct": 38.2,
     "fecundidad": 4.1,
-    "crecimiento_anual_pct": 2.35
+    "crecimiento_anual_pct": 2.35,
+    "tiempo_duplicacion_anios": 29.79,
+    "poblacion_activa": 8674.0,
+    "poblacion_inactiva": 14273.0,
+    "pct_pea": 37.8
+  },
+  {
+    "slug": "chicaman",
+    "nombre": "Chicamán",
+    "departamento_slug": "quiche",
+    "departamento": "Quiché",
+    "superficie_km2": 513.0,
+    "poblacion_total": 43139.0,
+    "densidad_hab_km2": 84.09,
+    "pct_hombres": 48.78,
+    "pct_mujeres": 51.22,
+    "pct_urbana": 7.39,
+    "pct_rural": 92.61,
+    "pct_indigena": 86.88,
+    "esperanza_vida": 62.5,
+    "analfabetismo_pct": 44.2,
+    "acceso_agua_pct": 48.3,
+    "acceso_saneamiento_pct": 36.8,
+    "fecundidad": 4.4,
+    "crecimiento_anual_pct": 2.47,
+    "tiempo_duplicacion_anios": 28.34,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "chichicastenango",
@@ -2857,7 +4625,11 @@
     "acceso_agua_pct": 75.2,
     "acceso_saneamiento_pct": 61.5,
     "fecundidad": 3.1,
-    "crecimiento_anual_pct": 2.27
+    "crecimiento_anual_pct": 2.27,
+    "tiempo_duplicacion_anios": 30.84,
+    "poblacion_activa": 33246.0,
+    "poblacion_inactiva": 43696.0,
+    "pct_pea": 43.2
   },
   {
     "slug": "chinique",
@@ -2877,7 +4649,11 @@
     "acceso_agua_pct": 68.4,
     "acceso_saneamiento_pct": 52.7,
     "fecundidad": 3.4,
-    "crecimiento_anual_pct": 1.92
+    "crecimiento_anual_pct": 1.92,
+    "tiempo_duplicacion_anios": 36.46,
+    "poblacion_activa": 2708.0,
+    "poblacion_inactiva": 6054.0,
+    "pct_pea": 30.9
   },
   {
     "slug": "cunen",
@@ -2897,7 +4673,11 @@
     "acceso_agua_pct": 57.2,
     "acceso_saneamiento_pct": 42.8,
     "fecundidad": 3.9,
-    "crecimiento_anual_pct": 2.01
+    "crecimiento_anual_pct": 2.01,
+    "tiempo_duplicacion_anios": 34.83,
+    "poblacion_activa": 12655.0,
+    "poblacion_inactiva": 18592.0,
+    "pct_pea": 40.5
   },
   {
     "slug": "ixcan",
@@ -2917,7 +4697,11 @@
     "acceso_agua_pct": 49.8,
     "acceso_saneamiento_pct": 37.5,
     "fecundidad": 4.3,
-    "crecimiento_anual_pct": 2.41
+    "crecimiento_anual_pct": 2.41,
+    "tiempo_duplicacion_anios": 29.05,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "joyabaj",
@@ -2937,7 +4721,11 @@
     "acceso_agua_pct": 66.1,
     "acceso_saneamiento_pct": 50.2,
     "fecundidad": 3.5,
-    "crecimiento_anual_pct": 2.12
+    "crecimiento_anual_pct": 2.12,
+    "tiempo_duplicacion_anios": 33.02,
+    "poblacion_activa": 5346.0,
+    "poblacion_inactiva": 9630.0,
+    "pct_pea": 35.7
   },
   {
     "slug": "nebaj",
@@ -2957,7 +4745,11 @@
     "acceso_agua_pct": 56.8,
     "acceso_saneamiento_pct": 41.7,
     "fecundidad": 4.0,
-    "crecimiento_anual_pct": 2.29
+    "crecimiento_anual_pct": 2.29,
+    "tiempo_duplicacion_anios": 30.57,
+    "poblacion_activa": 16148.0,
+    "poblacion_inactiva": 22578.0,
+    "pct_pea": 41.7
   },
   {
     "slug": "pachalum",
@@ -2977,7 +4769,11 @@
     "acceso_agua_pct": 72.1,
     "acceso_saneamiento_pct": 57.3,
     "fecundidad": 3.2,
-    "crecimiento_anual_pct": 1.78
+    "crecimiento_anual_pct": 1.78,
+    "tiempo_duplicacion_anios": 39.33,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "patzite",
@@ -2997,7 +4793,11 @@
     "acceso_agua_pct": 61.7,
     "acceso_saneamiento_pct": 46.3,
     "fecundidad": 3.7,
-    "crecimiento_anual_pct": 1.81
+    "crecimiento_anual_pct": 1.81,
+    "tiempo_duplicacion_anios": 38.67,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "sacapulas",
@@ -3017,7 +4817,11 @@
     "acceso_agua_pct": 55.4,
     "acceso_saneamiento_pct": 41.2,
     "fecundidad": 4.0,
-    "crecimiento_anual_pct": 2.19
+    "crecimiento_anual_pct": 2.19,
+    "tiempo_duplicacion_anios": 31.96,
+    "poblacion_activa": 11042.0,
+    "poblacion_inactiva": 16850.0,
+    "pct_pea": 39.6
   },
   {
     "slug": "san-andres-sajcabaja",
@@ -3037,7 +4841,11 @@
     "acceso_agua_pct": 53.7,
     "acceso_saneamiento_pct": 40.1,
     "fecundidad": 4.1,
-    "crecimiento_anual_pct": 2.03
+    "crecimiento_anual_pct": 2.03,
+    "tiempo_duplicacion_anios": 34.48,
+    "poblacion_activa": 4703.0,
+    "poblacion_inactiva": 8725.0,
+    "pct_pea": 35.0
   },
   {
     "slug": "san-antonio-ilotenango",
@@ -3057,7 +4865,11 @@
     "acceso_agua_pct": 70.5,
     "acceso_saneamiento_pct": 55.8,
     "fecundidad": 3.3,
-    "crecimiento_anual_pct": 2.05
+    "crecimiento_anual_pct": 2.05,
+    "tiempo_duplicacion_anios": 34.15,
+    "poblacion_activa": 4412.0,
+    "poblacion_inactiva": 8482.0,
+    "pct_pea": 34.2
   },
   {
     "slug": "san-bartolome-jocotenango",
@@ -3077,7 +4889,11 @@
     "acceso_agua_pct": 60.2,
     "acceso_saneamiento_pct": 45.4,
     "fecundidad": 3.8,
-    "crecimiento_anual_pct": 1.94
+    "crecimiento_anual_pct": 1.94,
+    "tiempo_duplicacion_anios": 36.08,
+    "poblacion_activa": 3120.0,
+    "poblacion_inactiva": 6723.0,
+    "pct_pea": 31.7
   },
   {
     "slug": "san-juan-cotzal",
@@ -3097,7 +4913,11 @@
     "acceso_agua_pct": 54.6,
     "acceso_saneamiento_pct": 40.5,
     "fecundidad": 4.0,
-    "crecimiento_anual_pct": 2.21
+    "crecimiento_anual_pct": 2.21,
+    "tiempo_duplicacion_anios": 31.67,
+    "poblacion_activa": 11518.0,
+    "poblacion_inactiva": 17425.0,
+    "pct_pea": 39.8
   },
   {
     "slug": "san-pedro-jocopilas",
@@ -3117,7 +4937,11 @@
     "acceso_agua_pct": 58.9,
     "acceso_saneamiento_pct": 44.1,
     "fecundidad": 3.8,
-    "crecimiento_anual_pct": 1.97
+    "crecimiento_anual_pct": 1.97,
+    "tiempo_duplicacion_anios": 35.53,
+    "poblacion_activa": 8836.0,
+    "poblacion_inactiva": 14348.0,
+    "pct_pea": 38.1
   },
   {
     "slug": "santa-cruz-del-quiche",
@@ -3137,7 +4961,11 @@
     "acceso_agua_pct": 72.8,
     "acceso_saneamiento_pct": 59.3,
     "fecundidad": 3.2,
-    "crecimiento_anual_pct": 2.18
+    "crecimiento_anual_pct": 2.18,
+    "tiempo_duplicacion_anios": 32.11,
+    "poblacion_activa": 26731.0,
+    "poblacion_inactiva": 31943.0,
+    "pct_pea": 45.6
   },
   {
     "slug": "uspantan",
@@ -3157,7 +4985,11 @@
     "acceso_agua_pct": 52.4,
     "acceso_saneamiento_pct": 39.6,
     "fecundidad": 4.2,
-    "crecimiento_anual_pct": 2.32
+    "crecimiento_anual_pct": 2.32,
+    "tiempo_duplicacion_anios": 30.17,
+    "poblacion_activa": 14968.0,
+    "poblacion_inactiva": 21450.0,
+    "pct_pea": 41.1
   },
   {
     "slug": "zacualpa",
@@ -3177,7 +5009,11 @@
     "acceso_agua_pct": 64.2,
     "acceso_saneamiento_pct": 48.6,
     "fecundidad": 3.6,
-    "crecimiento_anual_pct": 1.89
+    "crecimiento_anual_pct": 1.89,
+    "tiempo_duplicacion_anios": 37.04,
+    "poblacion_activa": 5710.0,
+    "poblacion_inactiva": 10019.0,
+    "pct_pea": 36.3
   },
   {
     "slug": "champerico",
@@ -3197,7 +5033,11 @@
     "acceso_agua_pct": 78.6,
     "acceso_saneamiento_pct": 65.4,
     "fecundidad": 3.6,
-    "crecimiento_anual_pct": 1.8
+    "crecimiento_anual_pct": 1.8,
+    "tiempo_duplicacion_anios": 38.89,
+    "poblacion_activa": 11032.0,
+    "poblacion_inactiva": 11762.0,
+    "pct_pea": 48.4
   },
   {
     "slug": "el-asintal",
@@ -3217,7 +5057,11 @@
     "acceso_agua_pct": 82.7,
     "acceso_saneamiento_pct": 72.4,
     "fecundidad": 3.4,
-    "crecimiento_anual_pct": 2.0
+    "crecimiento_anual_pct": 2.0,
+    "tiempo_duplicacion_anios": 35.0,
+    "poblacion_activa": 5074.0,
+    "poblacion_inactiva": 5655.0,
+    "pct_pea": 47.3
   },
   {
     "slug": "nuevo-san-carlos",
@@ -3237,7 +5081,35 @@
     "acceso_agua_pct": 91.4,
     "acceso_saneamiento_pct": 83.5,
     "fecundidad": 2.9,
-    "crecimiento_anual_pct": 2.4
+    "crecimiento_anual_pct": 2.4,
+    "tiempo_duplicacion_anios": 29.17,
+    "poblacion_activa": 6491.0,
+    "poblacion_inactiva": 6987.0,
+    "pct_pea": 48.2
+  },
+  {
+    "slug": "retalhuleu",
+    "nombre": "Retalhuleu",
+    "departamento_slug": "retalhuleu",
+    "departamento": "Retalhuleu",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 34965.0,
+    "poblacion_inactiva": 33462.0,
+    "pct_pea": 51.1
   },
   {
     "slug": "san-andres-villa-seca",
@@ -3257,7 +5129,35 @@
     "acceso_agua_pct": 81.4,
     "acceso_saneamiento_pct": 69.7,
     "fecundidad": 3.5,
-    "crecimiento_anual_pct": 2.0
+    "crecimiento_anual_pct": 2.0,
+    "tiempo_duplicacion_anios": 35.0,
+    "poblacion_activa": 4466.0,
+    "poblacion_inactiva": 5112.0,
+    "pct_pea": 46.6
+  },
+  {
+    "slug": "san-felipe",
+    "nombre": "San Felipe",
+    "departamento_slug": "retalhuleu",
+    "departamento": "Retalhuleu",
+    "superficie_km2": 32.0,
+    "poblacion_total": 26640.0,
+    "densidad_hab_km2": 832.5,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": 52.9,
+    "pct_rural": 47.1,
+    "pct_indigena": 40.9,
+    "esperanza_vida": 71.8,
+    "analfabetismo_pct": 14.6,
+    "acceso_agua_pct": 90.5,
+    "acceso_saneamiento_pct": 81.3,
+    "fecundidad": 3.0,
+    "crecimiento_anual_pct": 2.2,
+    "tiempo_duplicacion_anios": 31.82,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "san-martin-zapotitlan",
@@ -3277,7 +5177,11 @@
     "acceso_agua_pct": 92.3,
     "acceso_saneamiento_pct": 85.1,
     "fecundidad": 2.8,
-    "crecimiento_anual_pct": 2.3
+    "crecimiento_anual_pct": 2.3,
+    "tiempo_duplicacion_anios": 30.43,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "san-sebastian",
@@ -3297,7 +5201,11 @@
     "acceso_agua_pct": 89.7,
     "acceso_saneamiento_pct": 76.2,
     "fecundidad": 3.2,
-    "crecimiento_anual_pct": 2.1
+    "crecimiento_anual_pct": 2.1,
+    "tiempo_duplicacion_anios": 33.33,
+    "poblacion_activa": 6069.0,
+    "poblacion_inactiva": 6574.0,
+    "pct_pea": 48.0
   },
   {
     "slug": "santa-cruz-mulua",
@@ -3317,7 +5225,11 @@
     "acceso_agua_pct": 84.2,
     "acceso_saneamiento_pct": 71.8,
     "fecundidad": 3.4,
-    "crecimiento_anual_pct": 1.9
+    "crecimiento_anual_pct": 1.9,
+    "tiempo_duplicacion_anios": 36.84,
+    "poblacion_activa": 5644.0,
+    "poblacion_inactiva": 6213.0,
+    "pct_pea": 47.6
   },
   {
     "slug": "alotenango",
@@ -3337,7 +5249,11 @@
     "acceso_agua_pct": 77.3,
     "acceso_saneamiento_pct": 45.8,
     "fecundidad": 3.1,
-    "crecimiento_anual_pct": 1.89
+    "crecimiento_anual_pct": 1.89,
+    "tiempo_duplicacion_anios": 37.04,
+    "poblacion_activa": 3650.0,
+    "poblacion_inactiva": 4268.0,
+    "pct_pea": 46.1
   },
   {
     "slug": "antigua-guatemala",
@@ -3357,7 +5273,11 @@
     "acceso_agua_pct": 92.7,
     "acceso_saneamiento_pct": 78.5,
     "fecundidad": 2.5,
-    "crecimiento_anual_pct": 2.04
+    "crecimiento_anual_pct": 2.04,
+    "tiempo_duplicacion_anios": 34.31,
+    "poblacion_activa": 25453.0,
+    "poblacion_inactiva": 22478.0,
+    "pct_pea": 53.1
   },
   {
     "slug": "ciudad-vieja",
@@ -3377,7 +5297,11 @@
     "acceso_agua_pct": 95.1,
     "acceso_saneamiento_pct": 84.7,
     "fecundidad": 2.4,
-    "crecimiento_anual_pct": 2.82
+    "crecimiento_anual_pct": 2.82,
+    "tiempo_duplicacion_anios": 24.82,
+    "poblacion_activa": 4061.0,
+    "poblacion_inactiva": 4682.0,
+    "pct_pea": 46.4
   },
   {
     "slug": "jocotenango",
@@ -3397,7 +5321,11 @@
     "acceso_agua_pct": 94.2,
     "acceso_saneamiento_pct": 83.6,
     "fecundidad": 2.4,
-    "crecimiento_anual_pct": 2.98
+    "crecimiento_anual_pct": 2.98,
+    "tiempo_duplicacion_anios": 23.49,
+    "poblacion_activa": 4946.0,
+    "poblacion_inactiva": 5546.0,
+    "pct_pea": 47.1
   },
   {
     "slug": "magdalena-milpas-altas",
@@ -3417,7 +5345,11 @@
     "acceso_agua_pct": 80.2,
     "acceso_saneamiento_pct": 50.7,
     "fecundidad": 3.0,
-    "crecimiento_anual_pct": 1.95
+    "crecimiento_anual_pct": 1.95,
+    "tiempo_duplicacion_anios": 35.9,
+    "poblacion_activa": 2686.0,
+    "poblacion_inactiva": 3205.0,
+    "pct_pea": 45.6
   },
   {
     "slug": "pastores",
@@ -3437,7 +5369,11 @@
     "acceso_agua_pct": 90.4,
     "acceso_saneamiento_pct": 74.2,
     "fecundidad": 2.6,
-    "crecimiento_anual_pct": 2.27
+    "crecimiento_anual_pct": 2.27,
+    "tiempo_duplicacion_anios": 30.84,
+    "poblacion_activa": 3855.0,
+    "poblacion_inactiva": 4382.0,
+    "pct_pea": 46.8
   },
   {
     "slug": "san-antonio-aguas-calientes",
@@ -3457,7 +5393,11 @@
     "acceso_agua_pct": 87.4,
     "acceso_saneamiento_pct": 64.2,
     "fecundidad": 2.8,
-    "crecimiento_anual_pct": 2.11
+    "crecimiento_anual_pct": 2.11,
+    "tiempo_duplicacion_anios": 33.18,
+    "poblacion_activa": 2146.0,
+    "poblacion_inactiva": 2643.0,
+    "pct_pea": 44.8
   },
   {
     "slug": "san-bartolome-milpas-altas",
@@ -3477,7 +5417,11 @@
     "acceso_agua_pct": 81.4,
     "acceso_saneamiento_pct": 52.3,
     "fecundidad": 2.9,
-    "crecimiento_anual_pct": 2.01
+    "crecimiento_anual_pct": 2.01,
+    "tiempo_duplicacion_anios": 34.83,
+    "poblacion_activa": 3540.0,
+    "poblacion_inactiva": 3918.0,
+    "pct_pea": 47.5
   },
   {
     "slug": "san-lucas-sacatepequez",
@@ -3497,7 +5441,11 @@
     "acceso_agua_pct": 91.8,
     "acceso_saneamiento_pct": 76.4,
     "fecundidad": 2.5,
-    "crecimiento_anual_pct": 3.1
+    "crecimiento_anual_pct": 3.1,
+    "tiempo_duplicacion_anios": 22.58,
+    "poblacion_activa": 13462.0,
+    "poblacion_inactiva": 12686.0,
+    "pct_pea": 51.5
   },
   {
     "slug": "san-miguel-duenas",
@@ -3517,7 +5465,11 @@
     "acceso_agua_pct": 88.7,
     "acceso_saneamiento_pct": 69.4,
     "fecundidad": 2.7,
-    "crecimiento_anual_pct": 2.08
+    "crecimiento_anual_pct": 2.08,
+    "tiempo_duplicacion_anios": 33.65,
+    "poblacion_activa": 5233.0,
+    "poblacion_inactiva": 5831.0,
+    "pct_pea": 47.3
   },
   {
     "slug": "santa-catarina-barahona",
@@ -3537,7 +5489,11 @@
     "acceso_agua_pct": 76.5,
     "acceso_saneamiento_pct": 44.2,
     "fecundidad": 3.1,
-    "crecimiento_anual_pct": 1.86
+    "crecimiento_anual_pct": 1.86,
+    "tiempo_duplicacion_anios": 37.63,
+    "poblacion_activa": 1363.0,
+    "poblacion_inactiva": 1659.0,
+    "pct_pea": 45.1
   },
   {
     "slug": "santa-lucia-milpas-altas",
@@ -3557,7 +5513,11 @@
     "acceso_agua_pct": 89.5,
     "acceso_saneamiento_pct": 71.3,
     "fecundidad": 2.6,
-    "crecimiento_anual_pct": 2.32
+    "crecimiento_anual_pct": 2.32,
+    "tiempo_duplicacion_anios": 30.17,
+    "poblacion_activa": 1706.0,
+    "poblacion_inactiva": 2210.0,
+    "pct_pea": 43.6
   },
   {
     "slug": "santa-maria-de-jesus",
@@ -3577,7 +5537,11 @@
     "acceso_agua_pct": 78.6,
     "acceso_saneamiento_pct": 48.3,
     "fecundidad": 3.0,
-    "crecimiento_anual_pct": 1.92
+    "crecimiento_anual_pct": 1.92,
+    "tiempo_duplicacion_anios": 36.46,
+    "poblacion_activa": 4275.0,
+    "poblacion_inactiva": 4881.0,
+    "pct_pea": 46.7
   },
   {
     "slug": "santiago-sacatepequez",
@@ -3597,7 +5561,11 @@
     "acceso_agua_pct": 88.2,
     "acceso_saneamiento_pct": 66.8,
     "fecundidad": 2.8,
-    "crecimiento_anual_pct": 2.18
+    "crecimiento_anual_pct": 2.18,
+    "tiempo_duplicacion_anios": 32.11,
+    "poblacion_activa": 9027.0,
+    "poblacion_inactiva": 9615.0,
+    "pct_pea": 48.4
   },
   {
     "slug": "santo-domingo-xenacoj",
@@ -3617,7 +5585,11 @@
     "acceso_agua_pct": 82.7,
     "acceso_saneamiento_pct": 54.6,
     "fecundidad": 2.9,
-    "crecimiento_anual_pct": 2.05
+    "crecimiento_anual_pct": 2.05,
+    "tiempo_duplicacion_anios": 34.15,
+    "poblacion_activa": 7015.0,
+    "poblacion_inactiva": 7264.0,
+    "pct_pea": 49.1
   },
   {
     "slug": "sumpango",
@@ -3637,7 +5609,11 @@
     "acceso_agua_pct": 86.5,
     "acceso_saneamiento_pct": 62.4,
     "fecundidad": 2.8,
-    "crecimiento_anual_pct": 2.13
+    "crecimiento_anual_pct": 2.13,
+    "tiempo_duplicacion_anios": 32.86,
+    "poblacion_activa": 8534.0,
+    "poblacion_inactiva": 9282.0,
+    "pct_pea": 47.9
   },
   {
     "slug": "ayutla",
@@ -3657,7 +5633,11 @@
     "acceso_agua_pct": 94.2,
     "acceso_saneamiento_pct": 85.7,
     "fecundidad": 2.2,
-    "crecimiento_anual_pct": 2.5
+    "crecimiento_anual_pct": 2.5,
+    "tiempo_duplicacion_anios": 28.0,
+    "poblacion_activa": 3964.0,
+    "poblacion_inactiva": 4798.0,
+    "pct_pea": 45.2
   },
   {
     "slug": "catarina",
@@ -3677,7 +5657,11 @@
     "acceso_agua_pct": 91.5,
     "acceso_saneamiento_pct": 80.2,
     "fecundidad": 2.4,
-    "crecimiento_anual_pct": 2.1
+    "crecimiento_anual_pct": 2.1,
+    "tiempo_duplicacion_anios": 33.33,
+    "poblacion_activa": 5540.0,
+    "poblacion_inactiva": 7407.0,
+    "pct_pea": 42.8
   },
   {
     "slug": "comitancillo",
@@ -3697,7 +5681,11 @@
     "acceso_agua_pct": 79.3,
     "acceso_saneamiento_pct": 61.8,
     "fecundidad": 3.4,
-    "crecimiento_anual_pct": 2.1
+    "crecimiento_anual_pct": 2.1,
+    "tiempo_duplicacion_anios": 33.33,
+    "poblacion_activa": 5289.0,
+    "poblacion_inactiva": 7127.0,
+    "pct_pea": 42.6
   },
   {
     "slug": "concepcion-tutuapa",
@@ -3717,7 +5705,11 @@
     "acceso_agua_pct": 76.8,
     "acceso_saneamiento_pct": 54.2,
     "fecundidad": 3.7,
-    "crecimiento_anual_pct": 2.0
+    "crecimiento_anual_pct": 2.0,
+    "tiempo_duplicacion_anios": 35.0,
+    "poblacion_activa": 12631.0,
+    "poblacion_inactiva": 16012.0,
+    "pct_pea": 44.1
   },
   {
     "slug": "el-quetzal",
@@ -3737,7 +5729,11 @@
     "acceso_agua_pct": 92.7,
     "acceso_saneamiento_pct": 82.1,
     "fecundidad": 2.3,
-    "crecimiento_anual_pct": 1.7
+    "crecimiento_anual_pct": 1.7,
+    "tiempo_duplicacion_anios": 41.18,
+    "poblacion_activa": 8744.0,
+    "poblacion_inactiva": 11083.0,
+    "pct_pea": 44.1
   },
   {
     "slug": "el-rodeo",
@@ -3757,7 +5753,11 @@
     "acceso_agua_pct": 90.2,
     "acceso_saneamiento_pct": 78.9,
     "fecundidad": 2.5,
-    "crecimiento_anual_pct": 1.6
+    "crecimiento_anual_pct": 1.6,
+    "tiempo_duplicacion_anios": 43.75,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "el-tumbador",
@@ -3777,7 +5777,11 @@
     "acceso_agua_pct": 85.7,
     "acceso_saneamiento_pct": 70.4,
     "fecundidad": 3.0,
-    "crecimiento_anual_pct": 1.9
+    "crecimiento_anual_pct": 1.9,
+    "tiempo_duplicacion_anios": 36.84,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "esquipulas-palo-gordo",
@@ -3797,7 +5801,11 @@
     "acceso_agua_pct": 86.9,
     "acceso_saneamiento_pct": 72.6,
     "fecundidad": 2.8,
-    "crecimiento_anual_pct": 1.6
+    "crecimiento_anual_pct": 1.6,
+    "tiempo_duplicacion_anios": 43.75,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "ixchiguan",
@@ -3817,7 +5825,35 @@
     "acceso_agua_pct": 73.6,
     "acceso_saneamiento_pct": 50.5,
     "fecundidad": 3.9,
-    "crecimiento_anual_pct": 1.9
+    "crecimiento_anual_pct": 1.9,
+    "tiempo_duplicacion_anios": 36.84,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
+  },
+  {
+    "slug": "la-blanca",
+    "nombre": "La Blanca",
+    "departamento_slug": "san-marcos",
+    "departamento": "San Marcos",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 4273.0,
+    "poblacion_inactiva": 5148.0,
+    "pct_pea": 45.4
   },
   {
     "slug": "la-reforma",
@@ -3837,7 +5873,11 @@
     "acceso_agua_pct": 81.2,
     "acceso_saneamiento_pct": 63.5,
     "fecundidad": 3.2,
-    "crecimiento_anual_pct": 1.8
+    "crecimiento_anual_pct": 1.8,
+    "tiempo_duplicacion_anios": 38.89,
+    "poblacion_activa": 8228.0,
+    "poblacion_inactiva": 10406.0,
+    "pct_pea": 44.2
   },
   {
     "slug": "malacatan",
@@ -3857,7 +5897,11 @@
     "acceso_agua_pct": 93.1,
     "acceso_saneamiento_pct": 83.5,
     "fecundidad": 2.3,
-    "crecimiento_anual_pct": 2.4
+    "crecimiento_anual_pct": 2.4,
+    "tiempo_duplicacion_anios": 29.17,
+    "poblacion_activa": 24536.0,
+    "poblacion_inactiva": 28212.0,
+    "pct_pea": 46.5
   },
   {
     "slug": "nuevo-progreso",
@@ -3877,7 +5921,11 @@
     "acceso_agua_pct": 88.5,
     "acceso_saneamiento_pct": 74.8,
     "fecundidad": 2.7,
-    "crecimiento_anual_pct": 1.8
+    "crecimiento_anual_pct": 1.8,
+    "tiempo_duplicacion_anios": 38.89,
+    "poblacion_activa": 6514.0,
+    "poblacion_inactiva": 8349.0,
+    "pct_pea": 43.8
   },
   {
     "slug": "ocos",
@@ -3897,7 +5945,11 @@
     "acceso_agua_pct": 95.1,
     "acceso_saneamiento_pct": 87.2,
     "fecundidad": 2.1,
-    "crecimiento_anual_pct": 2.6
+    "crecimiento_anual_pct": 2.6,
+    "tiempo_duplicacion_anios": 26.92,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "pajapita",
@@ -3917,7 +5969,11 @@
     "acceso_agua_pct": 95.8,
     "acceso_saneamiento_pct": 88.4,
     "fecundidad": 2.0,
-    "crecimiento_anual_pct": 2.7
+    "crecimiento_anual_pct": 2.7,
+    "tiempo_duplicacion_anios": 25.93,
+    "poblacion_activa": 6314.0,
+    "poblacion_inactiva": 7471.0,
+    "pct_pea": 45.8
   },
   {
     "slug": "rio-blanco",
@@ -3937,7 +5993,11 @@
     "acceso_agua_pct": 75.4,
     "acceso_saneamiento_pct": 52.9,
     "fecundidad": 3.7,
-    "crecimiento_anual_pct": 2.1
+    "crecimiento_anual_pct": 2.1,
+    "tiempo_duplicacion_anios": 33.33,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "san-antonio-sacatepequez",
@@ -3957,7 +6017,11 @@
     "acceso_agua_pct": 84.2,
     "acceso_saneamiento_pct": 68.5,
     "fecundidad": 3.1,
-    "crecimiento_anual_pct": 1.7
+    "crecimiento_anual_pct": 1.7,
+    "tiempo_duplicacion_anios": 41.18,
+    "poblacion_activa": 7741.0,
+    "poblacion_inactiva": 10177.0,
+    "pct_pea": 43.2
   },
   {
     "slug": "san-cristobal-cucho",
@@ -3977,7 +6041,11 @@
     "acceso_agua_pct": 83.7,
     "acceso_saneamiento_pct": 65.2,
     "fecundidad": 3.1,
-    "crecimiento_anual_pct": 1.7
+    "crecimiento_anual_pct": 1.7,
+    "tiempo_duplicacion_anios": 41.18,
+    "poblacion_activa": 6473.0,
+    "poblacion_inactiva": 8805.0,
+    "pct_pea": 42.4
   },
   {
     "slug": "san-jose-ojetenam",
@@ -3997,7 +6065,11 @@
     "acceso_agua_pct": 74.2,
     "acceso_saneamiento_pct": 51.8,
     "fecundidad": 3.8,
-    "crecimiento_anual_pct": 1.9
+    "crecimiento_anual_pct": 1.9,
+    "tiempo_duplicacion_anios": 36.84,
+    "poblacion_activa": 4945.0,
+    "poblacion_inactiva": 6947.0,
+    "pct_pea": 41.6
   },
   {
     "slug": "san-lorenzo",
@@ -4017,7 +6089,35 @@
     "acceso_agua_pct": 85.4,
     "acceso_saneamiento_pct": 71.2,
     "fecundidad": 2.9,
-    "crecimiento_anual_pct": 1.7
+    "crecimiento_anual_pct": 1.7,
+    "tiempo_duplicacion_anios": 41.18,
+    "poblacion_activa": 4128.0,
+    "poblacion_inactiva": 5748.0,
+    "pct_pea": 41.8
+  },
+  {
+    "slug": "san-marcos",
+    "nombre": "San Marcos",
+    "departamento_slug": "san-marcos",
+    "departamento": "San Marcos",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 27460.0,
+    "poblacion_inactiva": 27152.0,
+    "pct_pea": 50.3
   },
   {
     "slug": "san-miguel-ixtahuacan",
@@ -4037,7 +6137,11 @@
     "acceso_agua_pct": 82.4,
     "acceso_saneamiento_pct": 57.9,
     "fecundidad": 3.6,
-    "crecimiento_anual_pct": 1.8
+    "crecimiento_anual_pct": 1.8,
+    "tiempo_duplicacion_anios": 38.89,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "san-pablo",
@@ -4057,7 +6161,11 @@
     "acceso_agua_pct": 90.8,
     "acceso_saneamiento_pct": 79.5,
     "fecundidad": 2.5,
-    "crecimiento_anual_pct": 2.0
+    "crecimiento_anual_pct": 2.0,
+    "tiempo_duplicacion_anios": 35.0,
+    "poblacion_activa": 3486.0,
+    "poblacion_inactiva": 4458.0,
+    "pct_pea": 43.9
   },
   {
     "slug": "san-pedro-sacatepequez",
@@ -4077,7 +6185,11 @@
     "acceso_agua_pct": 89.7,
     "acceso_saneamiento_pct": 76.2,
     "fecundidad": 2.6,
-    "crecimiento_anual_pct": 1.9
+    "crecimiento_anual_pct": 1.9,
+    "tiempo_duplicacion_anios": 36.84,
+    "poblacion_activa": 14620.0,
+    "poblacion_inactiva": 16356.0,
+    "pct_pea": 47.2
   },
   {
     "slug": "san-rafael-pie-de-la-cuesta",
@@ -4097,7 +6209,11 @@
     "acceso_agua_pct": 92.4,
     "acceso_saneamiento_pct": 81.7,
     "fecundidad": 2.4,
-    "crecimiento_anual_pct": 1.5
+    "crecimiento_anual_pct": 1.5,
+    "tiempo_duplicacion_anios": 46.67,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "sibinal",
@@ -4117,7 +6233,11 @@
     "acceso_agua_pct": 72.4,
     "acceso_saneamiento_pct": 51.3,
     "fecundidad": 3.9,
-    "crecimiento_anual_pct": 2.1
+    "crecimiento_anual_pct": 2.1,
+    "tiempo_duplicacion_anios": 33.33,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "sipacapa",
@@ -4137,7 +6257,11 @@
     "acceso_agua_pct": 77.3,
     "acceso_saneamiento_pct": 56.1,
     "fecundidad": 3.5,
-    "crecimiento_anual_pct": 1.8
+    "crecimiento_anual_pct": 1.8,
+    "tiempo_duplicacion_anios": 38.89,
+    "poblacion_activa": 4437.0,
+    "poblacion_inactiva": 6307.0,
+    "pct_pea": 41.3
   },
   {
     "slug": "tacana",
@@ -4157,7 +6281,11 @@
     "acceso_agua_pct": 74.5,
     "acceso_saneamiento_pct": 52.7,
     "fecundidad": 3.8,
-    "crecimiento_anual_pct": 2.2
+    "crecimiento_anual_pct": 2.2,
+    "tiempo_duplicacion_anios": 31.82,
+    "poblacion_activa": 21488.0,
+    "poblacion_inactiva": 26374.0,
+    "pct_pea": 44.9
   },
   {
     "slug": "tajumulco",
@@ -4177,7 +6305,11 @@
     "acceso_agua_pct": 71.2,
     "acceso_saneamiento_pct": 49.8,
     "fecundidad": 4.0,
-    "crecimiento_anual_pct": 2.3
+    "crecimiento_anual_pct": 2.3,
+    "tiempo_duplicacion_anios": 30.43,
+    "poblacion_activa": 9984.0,
+    "poblacion_inactiva": 13608.0,
+    "pct_pea": 42.3
   },
   {
     "slug": "tejutla",
@@ -4197,7 +6329,11 @@
     "acceso_agua_pct": 78.6,
     "acceso_saneamiento_pct": 58.4,
     "fecundidad": 3.3,
-    "crecimiento_anual_pct": 1.9
+    "crecimiento_anual_pct": 1.9,
+    "tiempo_duplicacion_anios": 36.84,
+    "poblacion_activa": 14208.0,
+    "poblacion_inactiva": 17937.0,
+    "pct_pea": 44.2
   },
   {
     "slug": "barberena",
@@ -4217,7 +6353,11 @@
     "acceso_agua_pct": 84.2,
     "acceso_saneamiento_pct": 52.7,
     "fecundidad": 2.8,
-    "crecimiento_anual_pct": 1.95
+    "crecimiento_anual_pct": 1.95,
+    "tiempo_duplicacion_anios": 35.9,
+    "poblacion_activa": 7056.0,
+    "poblacion_inactiva": 8238.0,
+    "pct_pea": 46.1
   },
   {
     "slug": "casillas",
@@ -4237,7 +6377,11 @@
     "acceso_agua_pct": 65.8,
     "acceso_saneamiento_pct": 22.3,
     "fecundidad": 3.4,
-    "crecimiento_anual_pct": 1.62
+    "crecimiento_anual_pct": 1.62,
+    "tiempo_duplicacion_anios": 43.21,
+    "poblacion_activa": 4057.0,
+    "poblacion_inactiva": 4919.0,
+    "pct_pea": 45.2
   },
   {
     "slug": "chiquimulilla",
@@ -4257,7 +6401,11 @@
     "acceso_agua_pct": 68.4,
     "acceso_saneamiento_pct": 26.8,
     "fecundidad": 3.3,
-    "crecimiento_anual_pct": 1.68
+    "crecimiento_anual_pct": 1.68,
+    "tiempo_duplicacion_anios": 41.67,
+    "poblacion_activa": 13974.0,
+    "poblacion_inactiva": 15472.0,
+    "pct_pea": 47.5
   },
   {
     "slug": "cuilapa",
@@ -4277,7 +6425,11 @@
     "acceso_agua_pct": 81.3,
     "acceso_saneamiento_pct": 48.9,
     "fecundidad": 2.9,
-    "crecimiento_anual_pct": 1.91
+    "crecimiento_anual_pct": 1.91,
+    "tiempo_duplicacion_anios": 36.65,
+    "poblacion_activa": 15648.0,
+    "poblacion_inactiva": 16244.0,
+    "pct_pea": 49.1
   },
   {
     "slug": "guazacapan",
@@ -4297,7 +6449,11 @@
     "acceso_agua_pct": 69.2,
     "acceso_saneamiento_pct": 27.3,
     "fecundidad": 3.3,
-    "crecimiento_anual_pct": 1.67
+    "crecimiento_anual_pct": 1.67,
+    "tiempo_duplicacion_anios": 41.92,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "nueva-santa-rosa",
@@ -4317,7 +6473,11 @@
     "acceso_agua_pct": 71.4,
     "acceso_saneamiento_pct": 29.7,
     "fecundidad": 3.3,
-    "crecimiento_anual_pct": 1.73
+    "crecimiento_anual_pct": 1.73,
+    "tiempo_duplicacion_anios": 40.46,
+    "poblacion_activa": 1644.0,
+    "poblacion_inactiva": 2181.0,
+    "pct_pea": 43.0
   },
   {
     "slug": "oratorio",
@@ -4337,7 +6497,11 @@
     "acceso_agua_pct": 62.7,
     "acceso_saneamiento_pct": 18.9,
     "fecundidad": 3.5,
-    "crecimiento_anual_pct": 1.58
+    "crecimiento_anual_pct": 1.58,
+    "tiempo_duplicacion_anios": 44.3,
+    "poblacion_activa": 4249.0,
+    "poblacion_inactiva": 5163.0,
+    "pct_pea": 45.1
   },
   {
     "slug": "pueblo-nuevo-vinas",
@@ -4357,7 +6521,11 @@
     "acceso_agua_pct": 59.1,
     "acceso_saneamiento_pct": 16.5,
     "fecundidad": 3.7,
-    "crecimiento_anual_pct": 1.56
+    "crecimiento_anual_pct": 1.56,
+    "tiempo_duplicacion_anios": 44.87,
+    "poblacion_activa": 4842.0,
+    "poblacion_inactiva": 5845.0,
+    "pct_pea": 45.3
   },
   {
     "slug": "san-juan-tecuaco",
@@ -4377,7 +6545,11 @@
     "acceso_agua_pct": 60.2,
     "acceso_saneamiento_pct": 17.4,
     "fecundidad": 3.6,
-    "crecimiento_anual_pct": 1.61
+    "crecimiento_anual_pct": 1.61,
+    "tiempo_duplicacion_anios": 43.48,
+    "poblacion_activa": 4448.0,
+    "poblacion_inactiva": 5394.0,
+    "pct_pea": 45.2
   },
   {
     "slug": "san-rafael-las-flores",
@@ -4397,7 +6569,11 @@
     "acceso_agua_pct": 74.3,
     "acceso_saneamiento_pct": 31.6,
     "fecundidad": 3.2,
-    "crecimiento_anual_pct": 1.72
+    "crecimiento_anual_pct": 1.72,
+    "tiempo_duplicacion_anios": 40.7,
+    "poblacion_activa": 3413.0,
+    "poblacion_inactiva": 4235.0,
+    "pct_pea": 44.6
   },
   {
     "slug": "santa-cruz-naranjo",
@@ -4417,7 +6593,11 @@
     "acceso_agua_pct": 55.8,
     "acceso_saneamiento_pct": 13.7,
     "fecundidad": 3.8,
-    "crecimiento_anual_pct": 1.51
+    "crecimiento_anual_pct": 1.51,
+    "tiempo_duplicacion_anios": 46.36,
+    "poblacion_activa": 5741.0,
+    "poblacion_inactiva": 6777.0,
+    "pct_pea": 45.9
   },
   {
     "slug": "santa-maria-ixhuatan",
@@ -4437,7 +6617,11 @@
     "acceso_agua_pct": 57.4,
     "acceso_saneamiento_pct": 15.8,
     "fecundidad": 3.7,
-    "crecimiento_anual_pct": 1.54
+    "crecimiento_anual_pct": 1.54,
+    "tiempo_duplicacion_anios": 45.45,
+    "poblacion_activa": 3522.0,
+    "poblacion_inactiva": 4323.0,
+    "pct_pea": 44.9
   },
   {
     "slug": "santa-rosa-de-lima",
@@ -4457,7 +6641,11 @@
     "acceso_agua_pct": 72.6,
     "acceso_saneamiento_pct": 36.4,
     "fecundidad": 3.2,
-    "crecimiento_anual_pct": 1.76
+    "crecimiento_anual_pct": 1.76,
+    "tiempo_duplicacion_anios": 39.77,
+    "poblacion_activa": 3639.0,
+    "poblacion_inactiva": 4487.0,
+    "pct_pea": 44.8
   },
   {
     "slug": "taxisco",
@@ -4477,7 +6665,11 @@
     "acceso_agua_pct": 66.7,
     "acceso_saneamiento_pct": 24.5,
     "fecundidad": 3.4,
-    "crecimiento_anual_pct": 1.7
+    "crecimiento_anual_pct": 1.7,
+    "tiempo_duplicacion_anios": 41.18,
+    "poblacion_activa": 8687.0,
+    "poblacion_inactiva": 10034.0,
+    "pct_pea": 46.4
   },
   {
     "slug": "concepcion",
@@ -4497,7 +6689,11 @@
     "acceso_agua_pct": 86.7,
     "acceso_saneamiento_pct": 74.2,
     "fecundidad": 3.3,
-    "crecimiento_anual_pct": 2.18
+    "crecimiento_anual_pct": 2.18,
+    "tiempo_duplicacion_anios": 32.11,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "nahuala",
@@ -4517,7 +6713,11 @@
     "acceso_agua_pct": 81.4,
     "acceso_saneamiento_pct": 68.7,
     "fecundidad": 3.6,
-    "crecimiento_anual_pct": 2.35
+    "crecimiento_anual_pct": 2.35,
+    "tiempo_duplicacion_anios": 29.79,
+    "poblacion_activa": 17762.0,
+    "poblacion_inactiva": 24425.0,
+    "pct_pea": 42.1
   },
   {
     "slug": "panajachel",
@@ -4537,7 +6737,11 @@
     "acceso_agua_pct": 96.8,
     "acceso_saneamiento_pct": 91.4,
     "fecundidad": 2.6,
-    "crecimiento_anual_pct": 1.85
+    "crecimiento_anual_pct": 1.85,
+    "tiempo_duplicacion_anios": 37.84,
+    "poblacion_activa": 6945.0,
+    "poblacion_inactiva": 7748.0,
+    "pct_pea": 47.3
   },
   {
     "slug": "san-andres-semetabaj",
@@ -4557,7 +6761,35 @@
     "acceso_agua_pct": 84.2,
     "acceso_saneamiento_pct": 71.5,
     "fecundidad": 3.3,
-    "crecimiento_anual_pct": 2.15
+    "crecimiento_anual_pct": 2.15,
+    "tiempo_duplicacion_anios": 32.56,
+    "poblacion_activa": 4753.0,
+    "poblacion_inactiva": 7189.0,
+    "pct_pea": 39.8
+  },
+  {
+    "slug": "san-antonio-palopo",
+    "nombre": "San Antonio Palopó",
+    "departamento_slug": "solola",
+    "departamento": "Sololá",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 4338.0,
+    "poblacion_inactiva": 5918.0,
+    "pct_pea": 42.3
   },
   {
     "slug": "san-jose-chacaya",
@@ -4577,7 +6809,11 @@
     "acceso_agua_pct": 92.3,
     "acceso_saneamiento_pct": 75.1,
     "fecundidad": 3.2,
-    "crecimiento_anual_pct": 2.27
+    "crecimiento_anual_pct": 2.27,
+    "tiempo_duplicacion_anios": 30.84,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "san-juan-la-laguna",
@@ -4597,7 +6833,11 @@
     "acceso_agua_pct": 92.9,
     "acceso_saneamiento_pct": 84.8,
     "fecundidad": 3.0,
-    "crecimiento_anual_pct": 1.96
+    "crecimiento_anual_pct": 1.96,
+    "tiempo_duplicacion_anios": 35.71,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "san-lucas-toliman",
@@ -4617,7 +6857,35 @@
     "acceso_agua_pct": 88.6,
     "acceso_saneamiento_pct": 76.2,
     "fecundidad": 3.2,
-    "crecimiento_anual_pct": 2.08
+    "crecimiento_anual_pct": 2.08,
+    "tiempo_duplicacion_anios": 33.65,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
+  },
+  {
+    "slug": "san-marcos-la-laguna",
+    "nombre": "San Marcos La Laguna",
+    "departamento_slug": "solola",
+    "departamento": "Sololá",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 4879.0,
+    "poblacion_inactiva": 6573.0,
+    "pct_pea": 42.6
   },
   {
     "slug": "san-pablo-la-laguna",
@@ -4637,7 +6905,11 @@
     "acceso_agua_pct": 93.8,
     "acceso_saneamiento_pct": 86.2,
     "fecundidad": 2.9,
-    "crecimiento_anual_pct": 1.94
+    "crecimiento_anual_pct": 1.94,
+    "tiempo_duplicacion_anios": 36.08,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "san-pedro-la-laguna",
@@ -4657,7 +6929,11 @@
     "acceso_agua_pct": 93.2,
     "acceso_saneamiento_pct": 85.9,
     "fecundidad": 2.9,
-    "crecimiento_anual_pct": 1.94
+    "crecimiento_anual_pct": 1.94,
+    "tiempo_duplicacion_anios": 36.08,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "santa-catarina-palopo",
@@ -4677,7 +6953,11 @@
     "acceso_agua_pct": 94.7,
     "acceso_saneamiento_pct": 88.3,
     "fecundidad": 2.8,
-    "crecimiento_anual_pct": 1.92
+    "crecimiento_anual_pct": 1.92,
+    "tiempo_duplicacion_anios": 36.46,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "santa-clara-la-laguna",
@@ -4697,7 +6977,11 @@
     "acceso_agua_pct": 91.2,
     "acceso_saneamiento_pct": 82.4,
     "fecundidad": 3.1,
-    "crecimiento_anual_pct": 2.05
+    "crecimiento_anual_pct": 2.05,
+    "tiempo_duplicacion_anios": 34.15,
+    "poblacion_activa": 3233.0,
+    "poblacion_inactiva": 5036.0,
+    "pct_pea": 39.1
   },
   {
     "slug": "santa-cruz-la-laguna",
@@ -4717,7 +7001,11 @@
     "acceso_agua_pct": 93.4,
     "acceso_saneamiento_pct": 85.6,
     "fecundidad": 2.9,
-    "crecimiento_anual_pct": 1.93
+    "crecimiento_anual_pct": 1.93,
+    "tiempo_duplicacion_anios": 36.27,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "santa-lucia-utatlan",
@@ -4737,7 +7025,11 @@
     "acceso_agua_pct": 87.5,
     "acceso_saneamiento_pct": 72.3,
     "fecundidad": 3.4,
-    "crecimiento_anual_pct": 2.12
+    "crecimiento_anual_pct": 2.12,
+    "tiempo_duplicacion_anios": 33.02,
+    "poblacion_activa": 5234.0,
+    "poblacion_inactiva": 7642.0,
+    "pct_pea": 40.6
   },
   {
     "slug": "santa-maria-visitacion",
@@ -4757,7 +7049,35 @@
     "acceso_agua_pct": 89.2,
     "acceso_saneamiento_pct": 78.6,
     "fecundidad": 2.9,
-    "crecimiento_anual_pct": 1.98
+    "crecimiento_anual_pct": 1.98,
+    "tiempo_duplicacion_anios": 35.35,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
+  },
+  {
+    "slug": "solola",
+    "nombre": "Sololá",
+    "departamento_slug": "solola",
+    "departamento": "Sololá",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 17932.0,
+    "poblacion_inactiva": 20480.0,
+    "pct_pea": 46.7
   },
   {
     "slug": "chicacao",
@@ -4777,7 +7097,11 @@
     "acceso_agua_pct": 74.6,
     "acceso_saneamiento_pct": 67.5,
     "fecundidad": 3.4,
-    "crecimiento_anual_pct": 2.45
+    "crecimiento_anual_pct": 2.45,
+    "tiempo_duplicacion_anios": 28.57,
+    "poblacion_activa": 5098.0,
+    "poblacion_inactiva": 5984.0,
+    "pct_pea": 46.0
   },
   {
     "slug": "cuyotenango",
@@ -4797,7 +7121,35 @@
     "acceso_agua_pct": 82.4,
     "acceso_saneamiento_pct": 76.1,
     "fecundidad": 2.8,
-    "crecimiento_anual_pct": 2.12
+    "crecimiento_anual_pct": 2.12,
+    "tiempo_duplicacion_anios": 33.02,
+    "poblacion_activa": 14444.0,
+    "poblacion_inactiva": 14974.0,
+    "pct_pea": 49.1
+  },
+  {
+    "slug": "mazatenango",
+    "nombre": "Mazatenango",
+    "departamento_slug": "suchitepequez",
+    "departamento": "Suchitepéquez",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 43846.0,
+    "poblacion_inactiva": 40781.0,
+    "pct_pea": 51.8
   },
   {
     "slug": "patulul",
@@ -4817,7 +7169,11 @@
     "acceso_agua_pct": 78.1,
     "acceso_saneamiento_pct": 71.2,
     "fecundidad": 3.2,
-    "crecimiento_anual_pct": 2.32
+    "crecimiento_anual_pct": 2.32,
+    "tiempo_duplicacion_anios": 30.17,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "pueblo-nuevo",
@@ -4837,7 +7193,11 @@
     "acceso_agua_pct": 83.7,
     "acceso_saneamiento_pct": 76.4,
     "fecundidad": 2.9,
-    "crecimiento_anual_pct": 2.15
+    "crecimiento_anual_pct": 2.15,
+    "tiempo_duplicacion_anios": 32.56,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "rio-bravo",
@@ -4857,7 +7217,11 @@
     "acceso_agua_pct": 87.3,
     "acceso_saneamiento_pct": 80.6,
     "fecundidad": 2.7,
-    "crecimiento_anual_pct": 2.02
+    "crecimiento_anual_pct": 2.02,
+    "tiempo_duplicacion_anios": 34.65,
+    "poblacion_activa": 5391.0,
+    "poblacion_inactiva": 6252.0,
+    "pct_pea": 46.3
   },
   {
     "slug": "samayac",
@@ -4877,7 +7241,11 @@
     "acceso_agua_pct": 76.8,
     "acceso_saneamiento_pct": 69.5,
     "fecundidad": 3.2,
-    "crecimiento_anual_pct": 2.35
+    "crecimiento_anual_pct": 2.35,
+    "tiempo_duplicacion_anios": 29.79,
+    "poblacion_activa": 7088.0,
+    "poblacion_inactiva": 7876.0,
+    "pct_pea": 47.4
   },
   {
     "slug": "san-antonio-suchitepequez",
@@ -4897,7 +7265,11 @@
     "acceso_agua_pct": 85.1,
     "acceso_saneamiento_pct": 78.4,
     "fecundidad": 2.7,
-    "crecimiento_anual_pct": 2.08
+    "crecimiento_anual_pct": 2.08,
+    "tiempo_duplicacion_anios": 33.65,
+    "poblacion_activa": 6181.0,
+    "poblacion_inactiva": 7034.0,
+    "pct_pea": 46.8
   },
   {
     "slug": "san-bernardino",
@@ -4917,7 +7289,11 @@
     "acceso_agua_pct": 79.2,
     "acceso_saneamiento_pct": 71.8,
     "fecundidad": 3.1,
-    "crecimiento_anual_pct": 2.28
+    "crecimiento_anual_pct": 2.28,
+    "tiempo_duplicacion_anios": 30.7,
+    "poblacion_activa": 6452.0,
+    "poblacion_inactiva": 7276.0,
+    "pct_pea": 47.0
   },
   {
     "slug": "san-francisco-zapotitlan",
@@ -4937,7 +7313,11 @@
     "acceso_agua_pct": 89.7,
     "acceso_saneamiento_pct": 82.5,
     "fecundidad": 2.6,
-    "crecimiento_anual_pct": 2.05
+    "crecimiento_anual_pct": 2.05,
+    "tiempo_duplicacion_anios": 34.15,
+    "poblacion_activa": 10567.0,
+    "poblacion_inactiva": 11175.0,
+    "pct_pea": 48.6
   },
   {
     "slug": "san-gabriel",
@@ -4957,7 +7337,11 @@
     "acceso_agua_pct": 86.2,
     "acceso_saneamiento_pct": 79.3,
     "fecundidad": 2.7,
-    "crecimiento_anual_pct": 2.11
+    "crecimiento_anual_pct": 2.11,
+    "tiempo_duplicacion_anios": 33.18,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "san-jose-el-idolo",
@@ -4977,7 +7361,11 @@
     "acceso_agua_pct": 81.6,
     "acceso_saneamiento_pct": 74.2,
     "fecundidad": 2.9,
-    "crecimiento_anual_pct": 1.95
+    "crecimiento_anual_pct": 1.95,
+    "tiempo_duplicacion_anios": 35.9,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "san-juan-bautista",
@@ -4997,7 +7385,11 @@
     "acceso_agua_pct": 79.8,
     "acceso_saneamiento_pct": 72.5,
     "fecundidad": 3.0,
-    "crecimiento_anual_pct": 2.1
+    "crecimiento_anual_pct": 2.1,
+    "tiempo_duplicacion_anios": 33.33,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "san-lorenzo",
@@ -5017,7 +7409,11 @@
     "acceso_agua_pct": 80.3,
     "acceso_saneamiento_pct": 72.9,
     "fecundidad": 2.9,
-    "crecimiento_anual_pct": 1.92
+    "crecimiento_anual_pct": 1.92,
+    "tiempo_duplicacion_anios": 36.46,
+    "poblacion_activa": 2792.0,
+    "poblacion_inactiva": 3556.0,
+    "pct_pea": 44.0
   },
   {
     "slug": "san-miguel-panan",
@@ -5037,7 +7433,11 @@
     "acceso_agua_pct": 75.4,
     "acceso_saneamiento_pct": 68.2,
     "fecundidad": 3.3,
-    "crecimiento_anual_pct": 2.41
+    "crecimiento_anual_pct": 2.41,
+    "tiempo_duplicacion_anios": 29.05,
+    "poblacion_activa": 4768.0,
+    "poblacion_inactiva": 5689.0,
+    "pct_pea": 45.6
   },
   {
     "slug": "san-pablo-jocopilas",
@@ -5057,7 +7457,11 @@
     "acceso_agua_pct": 78.5,
     "acceso_saneamiento_pct": 70.9,
     "fecundidad": 3.1,
-    "crecimiento_anual_pct": 2.21
+    "crecimiento_anual_pct": 2.21,
+    "tiempo_duplicacion_anios": 31.67,
+    "poblacion_activa": 3994.0,
+    "poblacion_inactiva": 4922.0,
+    "pct_pea": 44.8
   },
   {
     "slug": "santa-barbara",
@@ -5077,7 +7481,11 @@
     "acceso_agua_pct": 90.2,
     "acceso_saneamiento_pct": 84.6,
     "fecundidad": 2.5,
-    "crecimiento_anual_pct": 1.98
+    "crecimiento_anual_pct": 1.98,
+    "tiempo_duplicacion_anios": 35.35,
+    "poblacion_activa": 5965.0,
+    "poblacion_inactiva": 6911.0,
+    "pct_pea": 46.3
   },
   {
     "slug": "santo-domingo-suchitepequez",
@@ -5097,7 +7505,11 @@
     "acceso_agua_pct": 77.5,
     "acceso_saneamiento_pct": 70.4,
     "fecundidad": 3.0,
-    "crecimiento_anual_pct": 1.89
+    "crecimiento_anual_pct": 1.89,
+    "tiempo_duplicacion_anios": 37.04,
+    "poblacion_activa": 9218.0,
+    "poblacion_inactiva": 10028.0,
+    "pct_pea": 47.9
   },
   {
     "slug": "santo-tomas-la-union",
@@ -5117,7 +7529,11 @@
     "acceso_agua_pct": 77.3,
     "acceso_saneamiento_pct": 70.1,
     "fecundidad": 3.2,
-    "crecimiento_anual_pct": 2.29
+    "crecimiento_anual_pct": 2.29,
+    "tiempo_duplicacion_anios": 30.57,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "zunilito",
@@ -5137,7 +7553,11 @@
     "acceso_agua_pct": 88.5,
     "acceso_saneamiento_pct": 81.7,
     "fecundidad": 2.6,
-    "crecimiento_anual_pct": 1.9
+    "crecimiento_anual_pct": 1.9,
+    "tiempo_duplicacion_anios": 36.84,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "momostenango",
@@ -5157,7 +7577,11 @@
     "acceso_agua_pct": 78.4,
     "acceso_saneamiento_pct": 65.7,
     "fecundidad": 3.7,
-    "crecimiento_anual_pct": 1.8
+    "crecimiento_anual_pct": 1.8,
+    "tiempo_duplicacion_anios": 38.89,
+    "poblacion_activa": 32106.0,
+    "poblacion_inactiva": 42162.0,
+    "pct_pea": 43.2
   },
   {
     "slug": "san-andres-xecul",
@@ -5166,7 +7590,7 @@
     "departamento": "Totonicapán",
     "superficie_km2": 25.6,
     "poblacion_total": 26984.0,
-    "densidad_hab_km2": 10541.0,
+    "densidad_hab_km2": 1054.06,
     "pct_hombres": 47.42,
     "pct_mujeres": 52.58,
     "pct_urbana": 18.0,
@@ -5177,7 +7601,11 @@
     "acceso_agua_pct": 81.3,
     "acceso_saneamiento_pct": 69.8,
     "fecundidad": 3.5,
-    "crecimiento_anual_pct": 1.7
+    "crecimiento_anual_pct": 1.7,
+    "tiempo_duplicacion_anios": 41.18,
+    "poblacion_activa": 7137.0,
+    "poblacion_inactiva": 9742.0,
+    "pct_pea": 42.3
   },
   {
     "slug": "san-bartolo",
@@ -5197,7 +7625,11 @@
     "acceso_agua_pct": 70.1,
     "acceso_saneamiento_pct": 55.4,
     "fecundidad": 4.1,
-    "crecimiento_anual_pct": 2.1
+    "crecimiento_anual_pct": 2.1,
+    "tiempo_duplicacion_anios": 33.33,
+    "poblacion_activa": 3433.0,
+    "poblacion_inactiva": 4883.0,
+    "pct_pea": 41.3
   },
   {
     "slug": "san-cristobal-totonicapan",
@@ -5217,7 +7649,11 @@
     "acceso_agua_pct": 89.2,
     "acceso_saneamiento_pct": 78.5,
     "fecundidad": 3.1,
-    "crecimiento_anual_pct": 1.4
+    "crecimiento_anual_pct": 1.4,
+    "tiempo_duplicacion_anios": 50.0,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null
   },
   {
     "slug": "san-francisco-el-alto",
@@ -5237,7 +7673,11 @@
     "acceso_agua_pct": 85.7,
     "acceso_saneamiento_pct": 74.9,
     "fecundidad": 3.3,
-    "crecimiento_anual_pct": 1.6
+    "crecimiento_anual_pct": 1.6,
+    "tiempo_duplicacion_anios": 43.75,
+    "poblacion_activa": 15476.0,
+    "poblacion_inactiva": 20438.0,
+    "pct_pea": 43.1
   },
   {
     "slug": "santa-lucia-la-reforma",
@@ -5257,7 +7697,11 @@
     "acceso_agua_pct": 72.5,
     "acceso_saneamiento_pct": 58.2,
     "fecundidad": 4.0,
-    "crecimiento_anual_pct": 2.0
+    "crecimiento_anual_pct": 2.0,
+    "tiempo_duplicacion_anios": 35.0,
+    "poblacion_activa": 5235.0,
+    "poblacion_inactiva": 7312.0,
+    "pct_pea": 41.7
   },
   {
     "slug": "santa-maria-chiquimula",
@@ -5277,7 +7721,35 @@
     "acceso_agua_pct": 76.1,
     "acceso_saneamiento_pct": 62.3,
     "fecundidad": 3.8,
-    "crecimiento_anual_pct": 1.9
+    "crecimiento_anual_pct": 1.9,
+    "tiempo_duplicacion_anios": 36.84,
+    "poblacion_activa": 12590.0,
+    "poblacion_inactiva": 17142.0,
+    "pct_pea": 42.3
+  },
+  {
+    "slug": "totonicapan",
+    "nombre": "Totonicapán",
+    "departamento_slug": "totonicapan",
+    "departamento": "Totonicapán",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 29471.0,
+    "poblacion_inactiva": 33370.0,
+    "pct_pea": 46.9
   },
   {
     "slug": "cabanas",
@@ -5297,7 +7769,11 @@
     "acceso_agua_pct": 76.2,
     "acceso_saneamiento_pct": 49.5,
     "fecundidad": 2.7,
-    "crecimiento_anual_pct": 1.41
+    "crecimiento_anual_pct": 1.41,
+    "tiempo_duplicacion_anios": 49.65,
+    "poblacion_activa": 4144.0,
+    "poblacion_inactiva": 5274.0,
+    "pct_pea": 44.0
   },
   {
     "slug": "estanzuela",
@@ -5317,16 +7793,20 @@
     "acceso_agua_pct": 55.0,
     "acceso_saneamiento_pct": null,
     "fecundidad": 2.8,
-    "crecimiento_anual_pct": 2.0
+    "crecimiento_anual_pct": 2.0,
+    "tiempo_duplicacion_anios": 35.0,
+    "poblacion_activa": 2510.0,
+    "poblacion_inactiva": 2992.0,
+    "pct_pea": 45.6
   },
   {
     "slug": "gualan",
     "nombre": "Gualán",
     "departamento_slug": "zacapa",
     "departamento": "Zacapa",
-    "superficie_km2": 1.0,
+    "superficie_km2": null,
     "poblacion_total": null,
-    "densidad_hab_km2": 39964.0,
+    "densidad_hab_km2": 57.41,
     "pct_hombres": 51.0,
     "pct_mujeres": 49.0,
     "pct_urbana": 37.6,
@@ -5337,7 +7817,35 @@
     "acceso_agua_pct": null,
     "acceso_saneamiento_pct": null,
     "fecundidad": null,
-    "crecimiento_anual_pct": null
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 14083.0,
+    "poblacion_inactiva": 16031.0,
+    "pct_pea": 46.8
+  },
+  {
+    "slug": "huite",
+    "nombre": "Huité",
+    "departamento_slug": "zacapa",
+    "departamento": "Zacapa",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 3090.0,
+    "poblacion_inactiva": 3818.0,
+    "pct_pea": 44.7
   },
   {
     "slug": "la-union",
@@ -5357,7 +7865,35 @@
     "acceso_agua_pct": 81.3,
     "acceso_saneamiento_pct": 54.2,
     "fecundidad": 2.6,
-    "crecimiento_anual_pct": 1.71
+    "crecimiento_anual_pct": 1.71,
+    "tiempo_duplicacion_anios": 40.94,
+    "poblacion_activa": 10166.0,
+    "poblacion_inactiva": 12629.0,
+    "pct_pea": 44.6
+  },
+  {
+    "slug": "rio-hondo",
+    "nombre": "Río Hondo",
+    "departamento_slug": "zacapa",
+    "departamento": "Zacapa",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": 7352.0,
+    "poblacion_inactiva": 8269.0,
+    "pct_pea": 47.1
   },
   {
     "slug": "san-diego",
@@ -5377,7 +7913,11 @@
     "acceso_agua_pct": 69.8,
     "acceso_saneamiento_pct": 42.3,
     "fecundidad": 3.0,
-    "crecimiento_anual_pct": 1.64
+    "crecimiento_anual_pct": 1.64,
+    "tiempo_duplicacion_anios": 42.68,
+    "poblacion_activa": 3322.0,
+    "poblacion_inactiva": 4295.0,
+    "pct_pea": 43.6
   },
   {
     "slug": "teculutan",
@@ -5397,7 +7937,11 @@
     "acceso_agua_pct": 78.5,
     "acceso_saneamiento_pct": 52.1,
     "fecundidad": 2.8,
-    "crecimiento_anual_pct": 1.78
+    "crecimiento_anual_pct": 1.78,
+    "tiempo_duplicacion_anios": 39.33,
+    "poblacion_activa": 4890.0,
+    "poblacion_inactiva": 5952.0,
+    "pct_pea": 45.1
   },
   {
     "slug": "usumatlan",
@@ -5417,7 +7961,11 @@
     "acceso_agua_pct": 72.4,
     "acceso_saneamiento_pct": 46.8,
     "fecundidad": 2.9,
-    "crecimiento_anual_pct": 1.42
+    "crecimiento_anual_pct": 1.42,
+    "tiempo_duplicacion_anios": 49.3,
+    "poblacion_activa": 4944.0,
+    "poblacion_inactiva": 6343.0,
+    "pct_pea": 43.8
   },
   {
     "slug": "zacapa",
@@ -5437,6 +7985,10 @@
     "acceso_agua_pct": 70.0,
     "acceso_saneamiento_pct": null,
     "fecundidad": 2.1,
-    "crecimiento_anual_pct": 1.8
+    "crecimiento_anual_pct": 1.8,
+    "tiempo_duplicacion_anios": 38.89,
+    "poblacion_activa": 20943.0,
+    "poblacion_inactiva": 22265.0,
+    "pct_pea": 48.5
   }
 ]

@@ -3,12 +3,12 @@
     "slug": "guatemala",
     "nombre": "Guatemala",
     "region": "metropolitana",
-    "superficie_km2": 2253.0,
+    "superficie_km2": 2126.0,
     "descripcion": "Departamento capital de Guatemala, el más poblado y urbanizado del país.",
     "indicadores": [
       {
         "anio": 1994,
-        "poblacion_total": 2189807,
+        "poblacion_total": 2189807.0,
         "densidad_hab_km2": 1023.4,
         "pct_hombres": 47.9,
         "pct_mujeres": 52.1,
@@ -24,11 +24,12 @@
         "fecundidad": 3.6,
         "crecimiento_anual_pct": 2.7,
         "tiempo_duplicacion_anios": 25.92,
-        "poblacion_activa": 701500,
-        "poblacion_ocupada": 414600,
-        "poblacion_desocupada": 286900,
+        "poblacion_activa": 701500.0,
+        "poblacion_ocupada": 414600.0,
+        "poblacion_desocupada": 286900.0,
         "ingreso_medio_anual": 10311.7,
-        "idh_ranking": null
+        "idh_ranking": 1,
+        "idh": 0.769
       },
       {
         "anio": 2005,
@@ -44,9 +45,14 @@
         "acceso_agua_pct": 86.9,
         "acceso_saneamiento_pct": 66.6,
         "fecundidad": 3.6,
-        "crecimiento_anual_pct": 2.89,
-        "tiempo_duplicacion_anios": null,
-        "idh_ranking": 1
+        "crecimiento_anual_pct": 2.15,
+        "tiempo_duplicacion_anios": 32.6,
+        "idh_ranking": 1,
+        "poblacion_ocupada": 1121000,
+        "poblacion_desocupada": 58500,
+        "poblacion_activa": 1179500,
+        "ingreso_medio_anual": 23240.0,
+        "mortalidad_materna": 1.28
       },
       {
         "anio": 2025,
@@ -64,7 +70,15 @@
         "fecundidad": 2.0,
         "crecimiento_anual_pct": 1.65,
         "tiempo_duplicacion_anios": 42.42,
-        "idh_ranking": 1
+        "idh_ranking": 1,
+        "poblacion_ocupada": 2238000,
+        "poblacion_desocupada": 52000,
+        "poblacion_activa": 2290000,
+        "ingreso_medio_anual": 45760.0,
+        "mortalidad_materna": 0.78,
+        "matrimonios_por_1000": 4.9,
+        "pct_uniones_consensuales": 38.0,
+        "edad_primera_union": 20.8
       }
     ],
     "feria_titular": "15 de agosto, Virgen de la Asunción",
@@ -80,7 +94,7 @@
     "indicadores": [
       {
         "anio": 1994,
-        "poblacion_total": 115457,
+        "poblacion_total": 115457.0,
         "densidad_hab_km2": 80.36,
         "pct_hombres": 49.4,
         "pct_mujeres": 50.6,
@@ -96,11 +110,12 @@
         "fecundidad": 5.6,
         "crecimiento_anual_pct": 2.1,
         "tiempo_duplicacion_anios": 33.25,
-        "poblacion_activa": 26200,
-        "poblacion_ocupada": 15500,
-        "poblacion_desocupada": 10700,
+        "poblacion_activa": 26200.0,
+        "poblacion_ocupada": 15500.0,
+        "poblacion_desocupada": 10700.0,
         "ingreso_medio_anual": 2782.4,
-        "idh_ranking": null
+        "idh_ranking": 6,
+        "idh": 0.576
       },
       {
         "anio": 2005,
@@ -116,9 +131,14 @@
         "acceso_agua_pct": 78.0,
         "acceso_saneamiento_pct": 72.0,
         "fecundidad": 3.89,
-        "crecimiento_anual_pct": 2.3,
-        "tiempo_duplicacion_anios": null,
-        "idh_ranking": 10
+        "crecimiento_anual_pct": 1.9,
+        "tiempo_duplicacion_anios": 36.8,
+        "idh_ranking": 10,
+        "poblacion_ocupada": 41900,
+        "poblacion_desocupada": 1280,
+        "poblacion_activa": 43180,
+        "ingreso_medio_anual": 16210.0,
+        "mortalidad_materna": 1.22
       },
       {
         "anio": 2025,
@@ -136,7 +156,15 @@
         "fecundidad": 2.75,
         "crecimiento_anual_pct": 1.5,
         "tiempo_duplicacion_anios": 46.67,
-        "idh_ranking": 10
+        "idh_ranking": 10,
+        "poblacion_ocupada": 98300,
+        "poblacion_desocupada": 2200,
+        "poblacion_activa": 100500,
+        "ingreso_medio_anual": 31480.0,
+        "mortalidad_materna": 0.75,
+        "matrimonios_por_1000": 3.5,
+        "pct_uniones_consensuales": 47.0,
+        "edad_primera_union": 20.5
       }
     ],
     "feria_titular": "15 de enero, Señor de Esquipulas",
@@ -152,7 +180,7 @@
     "indicadores": [
       {
         "anio": 1994,
-        "poblacion_total": 196573,
+        "poblacion_total": 196573.0,
         "densidad_hab_km2": 386.46,
         "pct_hombres": 48.2,
         "pct_mujeres": 51.8,
@@ -168,11 +196,12 @@
         "fecundidad": 5.2,
         "crecimiento_anual_pct": 2.9,
         "tiempo_duplicacion_anios": 24.08,
-        "poblacion_activa": 52900,
-        "poblacion_ocupada": 31200,
-        "poblacion_desocupada": 21700,
+        "poblacion_activa": 52900.0,
+        "poblacion_ocupada": 31200.0,
+        "poblacion_desocupada": 21700.0,
         "ingreso_medio_anual": 3377.8,
-        "idh_ranking": null
+        "idh_ranking": 2,
+        "idh": 0.645
       },
       {
         "anio": 2005,
@@ -188,9 +217,14 @@
         "acceso_agua_pct": 88.0,
         "acceso_saneamiento_pct": 80.0,
         "fecundidad": 3.55,
-        "crecimiento_anual_pct": 2.5,
-        "tiempo_duplicacion_anios": null,
-        "idh_ranking": 2
+        "crecimiento_anual_pct": 2.2,
+        "tiempo_duplicacion_anios": 31.8,
+        "idh_ranking": 2,
+        "poblacion_ocupada": 78700,
+        "poblacion_desocupada": 3000,
+        "poblacion_activa": 81700,
+        "ingreso_medio_anual": 20130.0,
+        "mortalidad_materna": 1.15
       },
       {
         "anio": 2025,
@@ -208,7 +242,15 @@
         "fecundidad": 2.25,
         "crecimiento_anual_pct": 1.9,
         "tiempo_duplicacion_anios": 36.83,
-        "idh_ranking": 2
+        "idh_ranking": 2,
+        "poblacion_ocupada": 178800,
+        "poblacion_desocupada": 3900,
+        "poblacion_activa": 182700,
+        "ingreso_medio_anual": 39380.0,
+        "mortalidad_materna": 0.71,
+        "matrimonios_por_1000": 6.7,
+        "pct_uniones_consensuales": 41.0,
+        "edad_primera_union": 21.0
       }
     ],
     "feria_titular": "25 de julio, Santiago Apóstol",
@@ -219,12 +261,12 @@
     "slug": "chimaltenango",
     "nombre": "Chimaltenango",
     "region": "central",
-    "superficie_km2": 1179.0,
+    "superficie_km2": 1979.0,
     "descripcion": "Departamento de la región central con alta población indígena kaqchikel.",
     "indicadores": [
       {
         "anio": 1994,
-        "poblacion_total": 374904,
+        "poblacion_total": 374904.0,
         "densidad_hab_km2": 173.27,
         "pct_hombres": 49.6,
         "pct_mujeres": 50.4,
@@ -240,16 +282,17 @@
         "fecundidad": 6.0,
         "crecimiento_anual_pct": 2.9,
         "tiempo_duplicacion_anios": 24.08,
-        "poblacion_activa": 92600,
-        "poblacion_ocupada": 54700,
-        "poblacion_desocupada": 37900,
+        "poblacion_activa": 92600.0,
+        "poblacion_ocupada": 54700.0,
+        "poblacion_desocupada": 37900.0,
         "ingreso_medio_anual": 5407.1,
-        "idh_ranking": null
+        "idh_ranking": 13,
+        "idh": 0.531
       },
       {
         "anio": 2005,
         "poblacion_total": 425000,
-        "densidad_hab_km2": 360.0,
+        "densidad_hab_km2": 214.75,
         "pct_hombres": 49.0,
         "pct_mujeres": 51.0,
         "pct_urbana": 25.4,
@@ -260,14 +303,19 @@
         "acceso_agua_pct": 75.0,
         "acceso_saneamiento_pct": 65.0,
         "fecundidad": 4.34,
-        "crecimiento_anual_pct": 3.1,
-        "tiempo_duplicacion_anios": null,
-        "idh_ranking": 7
+        "crecimiento_anual_pct": 2.42,
+        "tiempo_duplicacion_anios": 28.9,
+        "idh_ranking": 7,
+        "poblacion_ocupada": 142300,
+        "poblacion_desocupada": 4300,
+        "poblacion_activa": 146600,
+        "ingreso_medio_anual": 15320.0,
+        "mortalidad_materna": 1.62
       },
       {
         "anio": 2025,
         "poblacion_total": 565000,
-        "densidad_hab_km2": 480.0,
+        "densidad_hab_km2": 285.5,
         "pct_hombres": 49.0,
         "pct_mujeres": 51.0,
         "pct_urbana": 52.5,
@@ -280,7 +328,15 @@
         "fecundidad": 3.0,
         "crecimiento_anual_pct": 2.25,
         "tiempo_duplicacion_anios": 31.08,
-        "idh_ranking": 7
+        "idh_ranking": 7,
+        "poblacion_ocupada": 327700,
+        "poblacion_desocupada": 7400,
+        "poblacion_activa": 335100,
+        "ingreso_medio_anual": 30180.0,
+        "mortalidad_materna": 0.97,
+        "matrimonios_por_1000": 3.7,
+        "pct_uniones_consensuales": 52.0,
+        "edad_primera_union": 19.8
       }
     ],
     "feria_titular": "26 de julio, Santa Ana",
@@ -312,11 +368,12 @@
         "fecundidad": 5.3,
         "crecimiento_anual_pct": 3.0,
         "tiempo_duplicacion_anios": 23.25,
-        "poblacion_activa": 168900,
-        "poblacion_ocupada": 99800,
-        "poblacion_desocupada": 69100,
+        "poblacion_activa": 168900.0,
+        "poblacion_ocupada": 99800.0,
+        "poblacion_desocupada": 69100.0,
         "ingreso_medio_anual": 4109.4,
-        "idh_ranking": null
+        "idh_ranking": 14,
+        "idh": 0.518
       },
       {
         "anio": 2005,
@@ -332,9 +389,14 @@
         "acceso_agua_pct": 82.0,
         "acceso_saneamiento_pct": 72.0,
         "fecundidad": 3.8,
-        "crecimiento_anual_pct": 2.5,
-        "tiempo_duplicacion_anios": null,
-        "idh_ranking": 6
+        "crecimiento_anual_pct": 2.7,
+        "tiempo_duplicacion_anios": 25.9,
+        "idh_ranking": 6,
+        "poblacion_ocupada": 218400,
+        "poblacion_desocupada": 8000,
+        "poblacion_activa": 226400,
+        "ingreso_medio_anual": 18530.0,
+        "mortalidad_materna": 1.35
       },
       {
         "anio": 2025,
@@ -352,7 +414,15 @@
         "fecundidad": 2.75,
         "crecimiento_anual_pct": 2.0,
         "tiempo_duplicacion_anios": 35.0,
-        "idh_ranking": 6
+        "idh_ranking": 6,
+        "poblacion_ocupada": 491600,
+        "poblacion_desocupada": 11200,
+        "poblacion_activa": 502800,
+        "ingreso_medio_anual": 35380.0,
+        "mortalidad_materna": 0.81,
+        "matrimonios_por_1000": 3.9,
+        "pct_uniones_consensuales": 50.0,
+        "edad_primera_union": 20.1
       }
     ],
     "feria_titular": "8 de diciembre, Inmaculada Concepción",
@@ -368,7 +438,7 @@
     "indicadores": [
       {
         "anio": 1994,
-        "poblacion_total": 285442,
+        "poblacion_total": 285442.0,
         "densidad_hab_km2": 96.2,
         "pct_hombres": 49.1,
         "pct_mujeres": 50.9,
@@ -384,11 +454,12 @@
         "fecundidad": 5.6,
         "crecimiento_anual_pct": 2.1,
         "tiempo_duplicacion_anios": 33.25,
-        "poblacion_activa": 74100,
-        "poblacion_ocupada": 43800,
-        "poblacion_desocupada": 30300,
+        "poblacion_activa": 74100.0,
+        "poblacion_ocupada": 43800.0,
+        "poblacion_desocupada": 30300.0,
         "ingreso_medio_anual": 2271.0,
-        "idh_ranking": null
+        "idh_ranking": 8,
+        "idh": 0.557
       },
       {
         "anio": 2005,
@@ -404,9 +475,14 @@
         "acceso_agua_pct": 78.0,
         "acceso_saneamiento_pct": 68.0,
         "fecundidad": 4.06,
-        "crecimiento_anual_pct": 2.0,
-        "tiempo_duplicacion_anios": null,
-        "idh_ranking": 11
+        "crecimiento_anual_pct": 2.18,
+        "tiempo_duplicacion_anios": 32.1,
+        "idh_ranking": 11,
+        "poblacion_ocupada": 95800,
+        "poblacion_desocupada": 2950,
+        "poblacion_activa": 98750,
+        "ingreso_medio_anual": 14920.0,
+        "mortalidad_materna": 1.52
       },
       {
         "anio": 2025,
@@ -424,7 +500,15 @@
         "fecundidad": 2.6,
         "crecimiento_anual_pct": 1.65,
         "tiempo_duplicacion_anios": 42.42,
-        "idh_ranking": 11
+        "idh_ranking": 11,
+        "poblacion_ocupada": 222800,
+        "poblacion_desocupada": 5000,
+        "poblacion_activa": 227800,
+        "ingreso_medio_anual": 28980.0,
+        "mortalidad_materna": 0.93,
+        "matrimonios_por_1000": 3.2,
+        "pct_uniones_consensuales": 55.0,
+        "edad_primera_union": 19.5
       }
     ],
     "feria_titular": "Del 22 al 26 de diciembre, Niño Dios",
@@ -440,7 +524,7 @@
     "indicadores": [
       {
         "anio": 1994,
-        "poblacion_total": 265900,
+        "poblacion_total": 265900.0,
         "densidad_hab_km2": 227.43,
         "pct_hombres": 49.8,
         "pct_mujeres": 50.2,
@@ -456,11 +540,12 @@
         "fecundidad": 6.4,
         "crecimiento_anual_pct": 3.2,
         "tiempo_duplicacion_anios": 21.83,
-        "poblacion_activa": 61700,
-        "poblacion_ocupada": 36500,
-        "poblacion_desocupada": 25200,
+        "poblacion_activa": 61700.0,
+        "poblacion_ocupada": 36500.0,
+        "poblacion_desocupada": 25200.0,
         "ingreso_medio_anual": 2271.0,
-        "idh_ranking": null
+        "idh_ranking": 17,
+        "idh": 0.497
       },
       {
         "anio": 2005,
@@ -476,9 +561,14 @@
         "acceso_agua_pct": 75.0,
         "acceso_saneamiento_pct": 62.0,
         "fecundidad": 4.29,
-        "crecimiento_anual_pct": 2.5,
-        "tiempo_duplicacion_anios": null,
-        "idh_ranking": 17
+        "crecimiento_anual_pct": 2.55,
+        "tiempo_duplicacion_anios": 27.5,
+        "idh_ranking": 17,
+        "poblacion_ocupada": 82900,
+        "poblacion_desocupada": 2300,
+        "poblacion_activa": 85200,
+        "ingreso_medio_anual": 10820.0,
+        "mortalidad_materna": 2.14
       },
       {
         "anio": 2025,
@@ -496,7 +586,15 @@
         "fecundidad": 2.75,
         "crecimiento_anual_pct": 1.65,
         "tiempo_duplicacion_anios": 42.42,
-        "idh_ranking": 17
+        "idh_ranking": 17,
+        "poblacion_ocupada": 195800,
+        "poblacion_desocupada": 4400,
+        "poblacion_activa": 200200,
+        "ingreso_medio_anual": 21780.0,
+        "mortalidad_materna": 1.28,
+        "matrimonios_por_1000": 3.0,
+        "pct_uniones_consensuales": 58.0,
+        "edad_primera_union": 19.0
       }
     ],
     "feria_titular": "15 de agosto, Virgen de la Asunción",
@@ -512,7 +610,7 @@
     "indicadores": [
       {
         "anio": 1994,
-        "poblacion_total": 324328,
+        "poblacion_total": 324328.0,
         "densidad_hab_km2": 294.72,
         "pct_hombres": 49.5,
         "pct_mujeres": 50.5,
@@ -528,11 +626,12 @@
         "fecundidad": 6.5,
         "crecimiento_anual_pct": 2.9,
         "tiempo_duplicacion_anios": 24.08,
-        "poblacion_activa": 81200,
-        "poblacion_ocupada": 48000,
-        "poblacion_desocupada": 33200,
+        "poblacion_activa": 81200.0,
+        "poblacion_ocupada": 48000.0,
+        "poblacion_desocupada": 33200.0,
         "ingreso_medio_anual": 3761.1,
-        "idh_ranking": null
+        "idh_ranking": 18,
+        "idh": 0.492
       },
       {
         "anio": 2005,
@@ -548,9 +647,14 @@
         "acceso_agua_pct": 73.0,
         "acceso_saneamiento_pct": 58.0,
         "fecundidad": 4.24,
-        "crecimiento_anual_pct": 3.1,
-        "tiempo_duplicacion_anios": null,
-        "idh_ranking": 20
+        "crecimiento_anual_pct": 2.25,
+        "tiempo_duplicacion_anios": 31.1,
+        "idh_ranking": 20,
+        "poblacion_ocupada": 91700,
+        "poblacion_desocupada": 2550,
+        "poblacion_activa": 94250,
+        "ingreso_medio_anual": 11320.0,
+        "mortalidad_materna": 1.98
       },
       {
         "anio": 2025,
@@ -568,7 +672,15 @@
         "fecundidad": 3.25,
         "crecimiento_anual_pct": 2.0,
         "tiempo_duplicacion_anios": 35.0,
-        "idh_ranking": 20
+        "idh_ranking": 20,
+        "poblacion_ocupada": 217800,
+        "poblacion_desocupada": 4900,
+        "poblacion_activa": 222700,
+        "ingreso_medio_anual": 22580.0,
+        "mortalidad_materna": 1.2,
+        "matrimonios_por_1000": 2.8,
+        "pct_uniones_consensuales": 61.0,
+        "edad_primera_union": 18.7
       }
     ],
     "feria_titular": "29 de septiembre, San Miguel Arcángel",
@@ -591,7 +703,7 @@
         "pct_urbana": 41.2,
         "pct_rural": 58.8,
         "pct_indigena": 60.6,
-        "esperanza_vida": 64.4,
+        "esperanza_vida": 64.2,
         "analfabetismo_pct": null,
         "acceso_agua_pct": null,
         "acceso_saneamiento_pct": null,
@@ -600,11 +712,12 @@
         "fecundidad": 5.8,
         "crecimiento_anual_pct": 2.8,
         "tiempo_duplicacion_anios": 25.0,
-        "poblacion_activa": 158100,
-        "poblacion_ocupada": 93500,
-        "poblacion_desocupada": 64700,
+        "poblacion_activa": 158100.0,
+        "poblacion_ocupada": 93500.0,
+        "poblacion_desocupada": 64700.0,
         "ingreso_medio_anual": 3724.5,
-        "idh_ranking": null
+        "idh_ranking": 3,
+        "idh": 0.602
       },
       {
         "anio": 2005,
@@ -620,9 +733,14 @@
         "acceso_agua_pct": 85.0,
         "acceso_saneamiento_pct": 78.0,
         "fecundidad": 4.07,
-        "crecimiento_anual_pct": 2.4,
-        "tiempo_duplicacion_anios": null,
-        "idh_ranking": 3
+        "crecimiento_anual_pct": 2.1,
+        "tiempo_duplicacion_anios": 33.3,
+        "idh_ranking": 3,
+        "poblacion_ocupada": 245400,
+        "poblacion_desocupada": 9200,
+        "poblacion_activa": 254600,
+        "ingreso_medio_anual": 18240.0,
+        "mortalidad_materna": 1.3
       },
       {
         "anio": 2025,
@@ -639,8 +757,16 @@
         "acceso_saneamiento_pct": 90.0,
         "fecundidad": 2.25,
         "crecimiento_anual_pct": 1.8,
-        "tiempo_duplicacion_anios": 64.83,
-        "idh_ranking": 3
+        "tiempo_duplicacion_anios": 38.89,
+        "idh_ranking": 3,
+        "poblacion_ocupada": 527600,
+        "poblacion_desocupada": 11900,
+        "poblacion_activa": 539500,
+        "ingreso_medio_anual": 34880.0,
+        "mortalidad_materna": 0.79,
+        "matrimonios_por_1000": 3.8,
+        "pct_uniones_consensuales": 46.0,
+        "edad_primera_union": 20.3
       }
     ],
     "feria_titular": "6 de octubre, Virgen del Rosario",
@@ -656,7 +782,7 @@
     "indicadores": [
       {
         "anio": 1994,
-        "poblacion_total": 392704,
+        "poblacion_total": 392704.0,
         "densidad_hab_km2": 124.58,
         "pct_hombres": 49.4,
         "pct_mujeres": 50.6,
@@ -672,11 +798,12 @@
         "fecundidad": 5.7,
         "crecimiento_anual_pct": 2.8,
         "tiempo_duplicacion_anios": 25.0,
-        "poblacion_activa": 102400,
-        "poblacion_ocupada": 60500,
-        "poblacion_desocupada": 41900,
+        "poblacion_activa": 102400.0,
+        "poblacion_ocupada": 60500.0,
+        "poblacion_desocupada": 41900.0,
         "ingreso_medio_anual": 3028.0,
-        "idh_ranking": null
+        "idh_ranking": 10,
+        "idh": 0.548
       },
       {
         "anio": 2005,
@@ -692,9 +819,14 @@
         "acceso_agua_pct": 78.0,
         "acceso_saneamiento_pct": 70.0,
         "fecundidad": 4.12,
-        "crecimiento_anual_pct": 2.8,
-        "tiempo_duplicacion_anios": null,
-        "idh_ranking": 13
+        "crecimiento_anual_pct": 2.48,
+        "tiempo_duplicacion_anios": 28.2,
+        "idh_ranking": 13,
+        "poblacion_ocupada": 124200,
+        "poblacion_desocupada": 4150,
+        "poblacion_activa": 128350,
+        "ingreso_medio_anual": 16030.0,
+        "mortalidad_materna": 1.47
       },
       {
         "anio": 2025,
@@ -711,8 +843,16 @@
         "acceso_saneamiento_pct": 78.0,
         "fecundidad": 2.85,
         "crecimiento_anual_pct": 1.9,
-        "tiempo_duplicacion_anios": 64.83,
-        "idh_ranking": 13
+        "tiempo_duplicacion_anios": 36.84,
+        "idh_ranking": 13,
+        "poblacion_ocupada": 285700,
+        "poblacion_desocupada": 6400,
+        "poblacion_activa": 292100,
+        "ingreso_medio_anual": 31180.0,
+        "mortalidad_materna": 0.9,
+        "matrimonios_por_1000": 3.5,
+        "pct_uniones_consensuales": 53.0,
+        "edad_primera_union": 19.6
       }
     ],
     "feria_titular": "Fiesta de Carnaval (movible)",
@@ -728,7 +868,7 @@
     "indicadores": [
       {
         "anio": 1994,
-        "poblacion_total": 261145,
+        "poblacion_total": 261145.0,
         "densidad_hab_km2": 128.33,
         "pct_hombres": 49.3,
         "pct_mujeres": 50.7,
@@ -744,16 +884,17 @@
         "fecundidad": 5.8,
         "crecimiento_anual_pct": 3.0,
         "tiempo_duplicacion_anios": 23.33,
-        "poblacion_activa": 63300,
-        "poblacion_ocupada": 37200,
-        "poblacion_desocupada": 25800,
+        "poblacion_activa": 63300.0,
+        "poblacion_ocupada": 37200.0,
+        "poblacion_desocupada": 25800.0,
         "ingreso_medio_anual": 2039.0,
-        "idh_ranking": null
+        "idh_ranking": 7,
+        "idh": 0.572
       },
       {
         "anio": 2005,
         "poblacion_total": 241411,
-        "densidad_hab_km2": 214.0,
+        "densidad_hab_km2": 130.07,
         "pct_hombres": 49.7,
         "pct_mujeres": 50.3,
         "pct_urbana": 44.0,
@@ -764,9 +905,14 @@
         "acceso_agua_pct": 80.0,
         "acceso_saneamiento_pct": 70.0,
         "fecundidad": 4.08,
-        "crecimiento_anual_pct": 2.5,
-        "tiempo_duplicacion_anios": null,
-        "idh_ranking": 12
+        "crecimiento_anual_pct": 2.65,
+        "tiempo_duplicacion_anios": 26.4,
+        "idh_ranking": 12,
+        "poblacion_ocupada": 89400,
+        "poblacion_desocupada": 3050,
+        "poblacion_activa": 92450,
+        "ingreso_medio_anual": 16520.0,
+        "mortalidad_materna": 1.44
       },
       {
         "anio": 2025,
@@ -784,7 +930,15 @@
         "fecundidad": 2.4,
         "crecimiento_anual_pct": 1.6,
         "tiempo_duplicacion_anios": 43.0,
-        "idh_ranking": 12
+        "idh_ranking": 12,
+        "poblacion_ocupada": 207800,
+        "poblacion_desocupada": 4700,
+        "poblacion_activa": 212500,
+        "ingreso_medio_anual": 31880.0,
+        "mortalidad_materna": 0.88,
+        "matrimonios_por_1000": 3.6,
+        "pct_uniones_consensuales": 51.0,
+        "edad_primera_union": 19.9
       }
     ],
     "feria_titular": "8 de diciembre, Concepción de María",
@@ -795,12 +949,12 @@
     "slug": "san-marcos",
     "nombre": "San Marcos",
     "region": "suroccidente",
-    "superficie_km2": 3792.0,
+    "superficie_km2": 3791.0,
     "descripcion": "El departamento más occidental de Guatemala, fronterizo con México, con gran diversidad altitudinal.",
     "indicadores": [
       {
         "anio": 1994,
-        "poblacion_total": 766799,
+        "poblacion_total": 766799.0,
         "densidad_hab_km2": 172.46,
         "pct_hombres": 49.7,
         "pct_mujeres": 50.3,
@@ -816,11 +970,12 @@
         "fecundidad": 6.5,
         "crecimiento_anual_pct": 3.0,
         "tiempo_duplicacion_anios": 23.33,
-        "poblacion_activa": 178700,
-        "poblacion_ocupada": 105600,
-        "poblacion_desocupada": 73100,
+        "poblacion_activa": 178700.0,
+        "poblacion_ocupada": 105600.0,
+        "poblacion_desocupada": 73100.0,
         "ingreso_medio_anual": 2435.6,
-        "idh_ranking": null
+        "idh_ranking": 12,
+        "idh": 0.538
       },
       {
         "anio": 2005,
@@ -836,9 +991,14 @@
         "acceso_agua_pct": 78.0,
         "acceso_saneamiento_pct": 68.0,
         "fecundidad": 4.79,
-        "crecimiento_anual_pct": 2.7,
-        "tiempo_duplicacion_anios": null,
-        "idh_ranking": 16
+        "crecimiento_anual_pct": 2.3,
+        "tiempo_duplicacion_anios": 30.4,
+        "idh_ranking": 16,
+        "poblacion_ocupada": 232400,
+        "poblacion_desocupada": 6500,
+        "poblacion_activa": 238900,
+        "ingreso_medio_anual": 11520.0,
+        "mortalidad_materna": 2.08
       },
       {
         "anio": 2025,
@@ -856,7 +1016,15 @@
         "fecundidad": 3.0,
         "crecimiento_anual_pct": 1.9,
         "tiempo_duplicacion_anios": 36.83,
-        "idh_ranking": 16
+        "idh_ranking": 16,
+        "poblacion_ocupada": 547600,
+        "poblacion_desocupada": 12400,
+        "poblacion_activa": 560000,
+        "ingreso_medio_anual": 22880.0,
+        "mortalidad_materna": 1.25,
+        "matrimonios_por_1000": 2.9,
+        "pct_uniones_consensuales": 60.0,
+        "edad_primera_union": 18.8
       }
     ],
     "feria_titular": "25 de abril, San Marcos",
@@ -872,8 +1040,8 @@
     "indicadores": [
       {
         "anio": 1994,
-        "poblacion_total": 790170,
-        "densidad_hab_km2": 487.36,
+        "poblacion_total": 790170.0,
+        "densidad_hab_km2": 106.78,
         "pct_hombres": 49.9,
         "pct_mujeres": 50.1,
         "pct_urbana": 14.2,
@@ -888,11 +1056,12 @@
         "fecundidad": 6.4,
         "crecimiento_anual_pct": 3.3,
         "tiempo_duplicacion_anios": 21.17,
-        "poblacion_activa": 187700,
-        "poblacion_ocupada": 110900,
-        "poblacion_desocupada": 76800,
+        "poblacion_activa": 187700.0,
+        "poblacion_ocupada": 110900.0,
+        "poblacion_desocupada": 76800.0,
         "ingreso_medio_anual": 1577.1,
-        "idh_ranking": null
+        "idh_ranking": 19,
+        "idh": 0.485
       },
       {
         "anio": 2005,
@@ -908,9 +1077,14 @@
         "acceso_agua_pct": 70.0,
         "acceso_saneamiento_pct": 58.0,
         "fecundidad": 4.55,
-        "crecimiento_anual_pct": 3.0,
-        "tiempo_duplicacion_anios": null,
-        "idh_ranking": 21
+        "crecimiento_anual_pct": 2.5,
+        "tiempo_duplicacion_anios": 28.0,
+        "idh_ranking": 21,
+        "poblacion_ocupada": 215300,
+        "poblacion_desocupada": 5900,
+        "poblacion_activa": 221200,
+        "ingreso_medio_anual": 10510.0,
+        "mortalidad_materna": 2.77
       },
       {
         "anio": 2025,
@@ -928,7 +1102,15 @@
         "fecundidad": 3.25,
         "crecimiento_anual_pct": 2.0,
         "tiempo_duplicacion_anios": 35.0,
-        "idh_ranking": 21
+        "idh_ranking": 21,
+        "poblacion_ocupada": 511500,
+        "poblacion_desocupada": 11600,
+        "poblacion_activa": 523100,
+        "ingreso_medio_anual": 21180.0,
+        "mortalidad_materna": 1.64,
+        "matrimonios_por_1000": 2.5,
+        "pct_uniones_consensuales": 65.0,
+        "edad_primera_union": 18.5
       }
     ],
     "feria_titular": "16 de julio, Nuestra Señora del Carmen",
@@ -960,11 +1142,12 @@
         "fecundidad": 6.1,
         "crecimiento_anual_pct": 3.2,
         "tiempo_duplicacion_anios": 21.83,
-        "poblacion_activa": 140600,
-        "poblacion_ocupada": 83100,
-        "poblacion_desocupada": 57500,
+        "poblacion_activa": 140600.0,
+        "poblacion_ocupada": 83100.0,
+        "poblacion_desocupada": 57500.0,
         "ingreso_medio_anual": 1059.8,
-        "idh_ranking": null
+        "idh_ranking": 20,
+        "idh": 0.479
       },
       {
         "anio": 2005,
@@ -980,9 +1163,14 @@
         "acceso_agua_pct": 65.0,
         "acceso_saneamiento_pct": 55.0,
         "fecundidad": 4.5,
-        "crecimiento_anual_pct": 3.4,
-        "tiempo_duplicacion_anios": null,
-        "idh_ranking": 22
+        "crecimiento_anual_pct": 2.75,
+        "tiempo_duplicacion_anios": 25.5,
+        "idh_ranking": 22,
+        "poblacion_ocupada": 186300,
+        "poblacion_desocupada": 5000,
+        "poblacion_activa": 191300,
+        "ingreso_medio_anual": 9820.0,
+        "mortalidad_materna": 2.45
       },
       {
         "anio": 2025,
@@ -1000,7 +1188,15 @@
         "fecundidad": 3.5,
         "crecimiento_anual_pct": 2.1,
         "tiempo_duplicacion_anios": 33.33,
-        "idh_ranking": 22
+        "idh_ranking": 22,
+        "poblacion_ocupada": 444700,
+        "poblacion_desocupada": 10100,
+        "poblacion_activa": 454800,
+        "ingreso_medio_anual": 20080.0,
+        "mortalidad_materna": 1.46,
+        "matrimonios_por_1000": 2.4,
+        "pct_uniones_consensuales": 67.0,
+        "edad_primera_union": 18.4
       }
     ],
     "feria_titular": "18 de agosto, Santa Elena de la Cruz",
@@ -1016,7 +1212,7 @@
     "indicadores": [
       {
         "anio": 1994,
-        "poblacion_total": 200024,
+        "poblacion_total": 200024.0,
         "densidad_hab_km2": 60.66,
         "pct_hombres": 50.1,
         "pct_mujeres": 49.9,
@@ -1032,11 +1228,12 @@
         "fecundidad": 6.2,
         "crecimiento_anual_pct": 2.7,
         "tiempo_duplicacion_anios": 25.92,
-        "poblacion_activa": 44700,
-        "poblacion_ocupada": 26400,
-        "poblacion_desocupada": 18300,
+        "poblacion_activa": 44700.0,
+        "poblacion_ocupada": 26400.0,
+        "poblacion_desocupada": 18300.0,
         "ingreso_medio_anual": 2725.2,
-        "idh_ranking": null
+        "idh_ranking": 15,
+        "idh": 0.512
       },
       {
         "anio": 2005,
@@ -1052,9 +1249,14 @@
         "acceso_agua_pct": 70.0,
         "acceso_saneamiento_pct": 55.0,
         "fecundidad": 4.54,
-        "crecimiento_anual_pct": 2.5,
-        "tiempo_duplicacion_anios": null,
-        "idh_ranking": 18
+        "crecimiento_anual_pct": 2.6,
+        "tiempo_duplicacion_anios": 26.9,
+        "idh_ranking": 18,
+        "poblacion_ocupada": 58600,
+        "poblacion_desocupada": 1680,
+        "poblacion_activa": 60280,
+        "ingreso_medio_anual": 12430.0,
+        "mortalidad_materna": 1.78
       },
       {
         "anio": 2025,
@@ -1072,7 +1274,15 @@
         "fecundidad": 3.0,
         "crecimiento_anual_pct": 1.8,
         "tiempo_duplicacion_anios": 38.83,
-        "idh_ranking": 18
+        "idh_ranking": 18,
+        "poblacion_ocupada": 145800,
+        "poblacion_desocupada": 3300,
+        "poblacion_activa": 149100,
+        "ingreso_medio_anual": 24080.0,
+        "mortalidad_materna": 1.08,
+        "matrimonios_por_1000": 3.1,
+        "pct_uniones_consensuales": 59.0,
+        "edad_primera_union": 18.9
       }
     ],
     "feria_titular": "21 de septiembre, San Mateo",
@@ -1088,7 +1298,7 @@
     "indicadores": [
       {
         "anio": 1994,
-        "poblacion_total": 650117,
+        "poblacion_total": 650117.0,
         "densidad_hab_km2": 55.46,
         "pct_hombres": 50.3,
         "pct_mujeres": 49.7,
@@ -1104,11 +1314,12 @@
         "fecundidad": 5.9,
         "crecimiento_anual_pct": 3.2,
         "tiempo_duplicacion_anios": 21.83,
-        "poblacion_activa": 168200,
-        "poblacion_ocupada": 99400,
-        "poblacion_desocupada": 68800,
+        "poblacion_activa": 168200.0,
+        "poblacion_ocupada": 99400.0,
+        "poblacion_desocupada": 68800.0,
         "ingreso_medio_anual": 2573.8,
-        "idh_ranking": null
+        "idh_ranking": 21,
+        "idh": 0.468
       },
       {
         "anio": 2005,
@@ -1124,9 +1335,14 @@
         "acceso_agua_pct": 63.0,
         "acceso_saneamiento_pct": 45.0,
         "fecundidad": 4.72,
-        "crecimiento_anual_pct": 3.2,
-        "tiempo_duplicacion_anios": null,
-        "idh_ranking": 21
+        "crecimiento_anual_pct": 2.85,
+        "tiempo_duplicacion_anios": 24.6,
+        "idh_ranking": 21,
+        "poblacion_ocupada": 152200,
+        "poblacion_desocupada": 4150,
+        "poblacion_activa": 156350,
+        "ingreso_medio_anual": 11220.0,
+        "mortalidad_materna": 2.21
       },
       {
         "anio": 2025,
@@ -1144,7 +1360,15 @@
         "fecundidad": 3.25,
         "crecimiento_anual_pct": 2.1,
         "tiempo_duplicacion_anios": 33.33,
-        "idh_ranking": 21
+        "idh_ranking": 21,
+        "poblacion_ocupada": 384500,
+        "poblacion_desocupada": 8700,
+        "poblacion_activa": 393200,
+        "ingreso_medio_anual": 22420.0,
+        "mortalidad_materna": 1.32,
+        "matrimonios_por_1000": 2.6,
+        "pct_uniones_consensuales": 68.0,
+        "edad_primera_union": 18.3
       }
     ],
     "feria_titular": "4 de agosto, Santo Domingo de Guzmán",
@@ -1160,7 +1384,7 @@
     "indicadores": [
       {
         "anio": 1994,
-        "poblacion_total": 295381,
+        "poblacion_total": 295381.0,
         "densidad_hab_km2": 9.76,
         "pct_hombres": 50.8,
         "pct_mujeres": 49.2,
@@ -1176,11 +1400,12 @@
         "fecundidad": 6.4,
         "crecimiento_anual_pct": 4.08,
         "tiempo_duplicacion_anios": 12.17,
-        "poblacion_activa": 71400,
-        "poblacion_ocupada": 42200,
-        "poblacion_desocupada": 29200,
+        "poblacion_activa": 71400.0,
+        "poblacion_ocupada": 42200.0,
+        "poblacion_desocupada": 29200.0,
         "ingreso_medio_anual": 2950.9,
-        "idh_ranking": null
+        "idh_ranking": 22,
+        "idh": 0.457
       },
       {
         "anio": 2005,
@@ -1196,9 +1421,14 @@
         "acceso_agua_pct": 72.0,
         "acceso_saneamiento_pct": 58.0,
         "fecundidad": 4.98,
-        "crecimiento_anual_pct": 4.5,
-        "tiempo_duplicacion_anios": null,
-        "idh_ranking": 14
+        "crecimiento_anual_pct": 3.4,
+        "tiempo_duplicacion_anios": 20.6,
+        "idh_ranking": 14,
+        "poblacion_ocupada": 94900,
+        "poblacion_desocupada": 2900,
+        "poblacion_activa": 97800,
+        "ingreso_medio_anual": 13420.0,
+        "mortalidad_materna": 1.92
       },
       {
         "anio": 2025,
@@ -1216,7 +1446,15 @@
         "fecundidad": 2.75,
         "crecimiento_anual_pct": 2.75,
         "tiempo_duplicacion_anios": 25.42,
-        "idh_ranking": 14
+        "idh_ranking": 14,
+        "poblacion_ocupada": 267800,
+        "poblacion_desocupada": 6100,
+        "poblacion_activa": 273900,
+        "ingreso_medio_anual": 26280.0,
+        "mortalidad_materna": 1.17,
+        "matrimonios_por_1000": 3.3,
+        "pct_uniones_consensuales": 66.0,
+        "edad_primera_union": 18.0
       }
     ],
     "feria_titular": "15 de enero, Señor de Esquipulas; 12 de diciembre, Virgen de Guadalupe",
@@ -1232,8 +1470,8 @@
     "indicadores": [
       {
         "anio": 1994,
-        "poblacion_total": 359107,
-        "densidad_hab_km2": 20.97,
+        "poblacion_total": 359107.0,
+        "densidad_hab_km2": 39.73,
         "pct_hombres": 50.4,
         "pct_mujeres": 49.6,
         "pct_urbana": 33.8,
@@ -1248,11 +1486,12 @@
         "fecundidad": 5.7,
         "crecimiento_anual_pct": 3.2,
         "tiempo_duplicacion_anios": 21.83,
-        "poblacion_activa": 87800,
-        "poblacion_ocupada": 51900,
-        "poblacion_desocupada": 35900,
+        "poblacion_activa": 87800.0,
+        "poblacion_ocupada": 51900.0,
+        "poblacion_desocupada": 35900.0,
         "ingreso_medio_anual": 6131.7,
-        "idh_ranking": null
+        "idh_ranking": 4,
+        "idh": 0.591
       },
       {
         "anio": 2005,
@@ -1268,9 +1507,14 @@
         "acceso_agua_pct": 75.0,
         "acceso_saneamiento_pct": 62.0,
         "fecundidad": 4.07,
-        "crecimiento_anual_pct": 2.8,
-        "tiempo_duplicacion_anios": null,
-        "idh_ranking": 9
+        "crecimiento_anual_pct": 2.9,
+        "tiempo_duplicacion_anios": 24.1,
+        "idh_ranking": 9,
+        "poblacion_ocupada": 86600,
+        "poblacion_desocupada": 2750,
+        "poblacion_activa": 89350,
+        "ingreso_medio_anual": 14720.0,
+        "mortalidad_materna": 1.68
       },
       {
         "anio": 2025,
@@ -1288,7 +1532,15 @@
         "fecundidad": 2.8,
         "crecimiento_anual_pct": 2.25,
         "tiempo_duplicacion_anios": 31.08,
-        "idh_ranking": 9
+        "idh_ranking": 9,
+        "poblacion_ocupada": 204800,
+        "poblacion_desocupada": 4600,
+        "poblacion_activa": 209400,
+        "ingreso_medio_anual": 28580.0,
+        "mortalidad_materna": 1.01,
+        "matrimonios_por_1000": 3.6,
+        "pct_uniones_consensuales": 54.0,
+        "edad_primera_union": 19.7
       }
     ],
     "feria_titular": "19 de julio, Sagrado Corazón de Jesús",
@@ -1304,7 +1556,7 @@
     "indicadores": [
       {
         "anio": 1994,
-        "poblacion_total": 171138,
+        "poblacion_total": 171138.0,
         "densidad_hab_km2": 49.33,
         "pct_hombres": 49.5,
         "pct_mujeres": 50.5,
@@ -1320,11 +1572,12 @@
         "fecundidad": 5.3,
         "crecimiento_anual_pct": 1.9,
         "tiempo_duplicacion_anios": 36.83,
-        "poblacion_activa": 42600,
-        "poblacion_ocupada": 25200,
-        "poblacion_desocupada": 17400,
+        "poblacion_activa": 42600.0,
+        "poblacion_ocupada": 25200.0,
+        "poblacion_desocupada": 17400.0,
         "ingreso_medio_anual": 3244.3,
-        "idh_ranking": null
+        "idh_ranking": 5,
+        "idh": 0.588
       },
       {
         "anio": 2005,
@@ -1340,9 +1593,14 @@
         "acceso_agua_pct": 80.0,
         "acceso_saneamiento_pct": 68.0,
         "fecundidad": 3.63,
-        "crecimiento_anual_pct": 2.0,
-        "tiempo_duplicacion_anios": null,
-        "idh_ranking": 8
+        "crecimiento_anual_pct": 1.85,
+        "tiempo_duplicacion_anios": 37.8,
+        "idh_ranking": 8,
+        "poblacion_ocupada": 57500,
+        "poblacion_desocupada": 1850,
+        "poblacion_activa": 59350,
+        "ingreso_medio_anual": 15620.0,
+        "mortalidad_materna": 1.18
       },
       {
         "anio": 2025,
@@ -1360,7 +1618,15 @@
         "fecundidad": 2.6,
         "crecimiento_anual_pct": 1.7,
         "tiempo_duplicacion_anios": 41.17,
-        "idh_ranking": 8
+        "idh_ranking": 8,
+        "poblacion_ocupada": 137800,
+        "poblacion_desocupada": 3100,
+        "poblacion_activa": 140900,
+        "ingreso_medio_anual": 30480.0,
+        "mortalidad_materna": 0.73,
+        "matrimonios_por_1000": 3.4,
+        "pct_uniones_consensuales": 52.0,
+        "edad_primera_union": 19.8
       }
     ],
     "feria_titular": "Del 4 al 9 de diciembre, Virgen de Concepción",
@@ -1376,7 +1642,7 @@
     "indicadores": [
       {
         "anio": 1994,
-        "poblacion_total": 268300,
+        "poblacion_total": 268300.0,
         "densidad_hab_km2": 83.75,
         "pct_hombres": 49.8,
         "pct_mujeres": 50.2,
@@ -1392,11 +1658,12 @@
         "fecundidad": 5.6,
         "crecimiento_anual_pct": 2.1,
         "tiempo_duplicacion_anios": 33.25,
-        "poblacion_activa": 69500,
-        "poblacion_ocupada": 41100,
-        "poblacion_desocupada": 28400,
+        "poblacion_activa": 69500.0,
+        "poblacion_ocupada": 41100.0,
+        "poblacion_desocupada": 28400.0,
         "ingreso_medio_anual": 3028.0,
-        "idh_ranking": null
+        "idh_ranking": 11,
+        "idh": 0.542
       },
       {
         "anio": 2005,
@@ -1412,9 +1679,14 @@
         "acceso_agua_pct": 75.0,
         "acceso_saneamiento_pct": 68.0,
         "fecundidad": 3.98,
-        "crecimiento_anual_pct": 2.3,
-        "tiempo_duplicacion_anios": null,
-        "idh_ranking": 15
+        "crecimiento_anual_pct": 2.35,
+        "tiempo_duplicacion_anios": 29.8,
+        "idh_ranking": 15,
+        "poblacion_ocupada": 92400,
+        "poblacion_desocupada": 2650,
+        "poblacion_activa": 95050,
+        "ingreso_medio_anual": 13110.0,
+        "mortalidad_materna": 1.55
       },
       {
         "anio": 2025,
@@ -1432,7 +1704,15 @@
         "fecundidad": 2.75,
         "crecimiento_anual_pct": 1.8,
         "tiempo_duplicacion_anios": 38.92,
-        "idh_ranking": 15
+        "idh_ranking": 15,
+        "poblacion_ocupada": 220800,
+        "poblacion_desocupada": 5000,
+        "poblacion_activa": 225800,
+        "ingreso_medio_anual": 25580.0,
+        "mortalidad_materna": 0.92,
+        "matrimonios_por_1000": 3.2,
+        "pct_uniones_consensuales": 57.0,
+        "edad_primera_union": 19.2
       }
     ],
     "feria_titular": "Del 12 al 18 de agosto, Virgen del Tránsito",
@@ -1448,7 +1728,7 @@
     "indicadores": [
       {
         "anio": 1994,
-        "poblacion_total": 206336,
+        "poblacion_total": 206336.0,
         "densidad_hab_km2": 131.36,
         "pct_hombres": 49.6,
         "pct_mujeres": 50.4,
@@ -1464,11 +1744,12 @@
         "fecundidad": 6.2,
         "crecimiento_anual_pct": 2.6,
         "tiempo_duplicacion_anios": 26.92,
-        "poblacion_activa": 51600,
-        "poblacion_ocupada": 30500,
-        "poblacion_desocupada": 21100,
+        "poblacion_activa": 51600.0,
+        "poblacion_ocupada": 30500.0,
+        "poblacion_desocupada": 21100.0,
         "ingreso_medio_anual": 2700.2,
-        "idh_ranking": null
+        "idh_ranking": 16,
+        "idh": 0.505
       },
       {
         "anio": 2005,
@@ -1484,9 +1765,14 @@
         "acceso_agua_pct": 72.0,
         "acceso_saneamiento_pct": 65.0,
         "fecundidad": 3.98,
-        "crecimiento_anual_pct": 2.5,
-        "tiempo_duplicacion_anios": null,
-        "idh_ranking": 19
+        "crecimiento_anual_pct": 2.45,
+        "tiempo_duplicacion_anios": 28.6,
+        "idh_ranking": 19,
+        "poblacion_ocupada": 76500,
+        "poblacion_desocupada": 2200,
+        "poblacion_activa": 78700,
+        "ingreso_medio_anual": 12710.0,
+        "mortalidad_materna": 1.85
       },
       {
         "anio": 2025,
@@ -1504,7 +1790,15 @@
         "fecundidad": 2.8,
         "crecimiento_anual_pct": 1.8,
         "tiempo_duplicacion_anios": 38.92,
-        "idh_ranking": 19
+        "idh_ranking": 19,
+        "poblacion_ocupada": 183800,
+        "poblacion_desocupada": 4100,
+        "poblacion_activa": 187900,
+        "ingreso_medio_anual": 24780.0,
+        "mortalidad_materna": 1.12,
+        "matrimonios_por_1000": 3.0,
+        "pct_uniones_consensuales": 59.0,
+        "edad_primera_union": 19.1
       }
     ],
     "feria_titular": "Del 2 al 5 de mayo, Santa Cruz",
@@ -1520,12 +1814,12 @@
     "indicadores": [
       {
         "anio": 1994,
-        "poblacion_total": 378630,
+        "poblacion_total": 378630.0,
         "densidad_hab_km2": 94.19,
         "pct_hombres": 49.2,
         "pct_mujeres": 50.8,
         "pct_urbana": 21.4,
-        "pct_rural": 78.6,
+        "pct_rural": 79.6,
         "pct_indigena": 11.2,
         "esperanza_vida": 62.9,
         "analfabetismo_pct": null,
@@ -1536,11 +1830,12 @@
         "fecundidad": 6.6,
         "crecimiento_anual_pct": 2.2,
         "tiempo_duplicacion_anios": 31.75,
-        "poblacion_activa": 87100,
-        "poblacion_ocupada": 51500,
-        "poblacion_desocupada": 35600,
+        "poblacion_activa": 87100.0,
+        "poblacion_ocupada": 51500.0,
+        "poblacion_desocupada": 35600.0,
         "ingreso_medio_anual": 3974.3,
-        "idh_ranking": null
+        "idh_ranking": 9,
+        "idh": 0.554
       },
       {
         "anio": 2005,
@@ -1556,9 +1851,14 @@
         "acceso_agua_pct": 78.0,
         "acceso_saneamiento_pct": 70.0,
         "fecundidad": 3.87,
-        "crecimiento_anual_pct": 2.3,
-        "tiempo_duplicacion_anios": null,
-        "idh_ranking": 16
+        "crecimiento_anual_pct": 2.05,
+        "tiempo_duplicacion_anios": 34.1,
+        "idh_ranking": 16,
+        "poblacion_ocupada": 118200,
+        "poblacion_desocupada": 3650,
+        "poblacion_activa": 121850,
+        "ingreso_medio_anual": 14230.0,
+        "mortalidad_materna": 1.41
       },
       {
         "anio": 2025,
@@ -1576,7 +1876,15 @@
         "fecundidad": 2.65,
         "crecimiento_anual_pct": 1.7,
         "tiempo_duplicacion_anios": 41.08,
-        "idh_ranking": 16
+        "idh_ranking": 16,
+        "poblacion_ocupada": 274700,
+        "poblacion_desocupada": 6200,
+        "poblacion_activa": 280900,
+        "ingreso_medio_anual": 27880.0,
+        "mortalidad_materna": 0.86,
+        "matrimonios_por_1000": 3.3,
+        "pct_uniones_consensuales": 53.0,
+        "edad_primera_union": 19.6
       }
     ],
     "feria_titular": "24 y 25 de julio, San Cristóbal",

@@ -15,6 +15,9 @@ export function formatearValor(valor: number | null, formato: Variable["formato"
       return new Intl.NumberFormat("es-GT", { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(valor);
     case "porcentaje":
       return `${new Intl.NumberFormat("es-GT", { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(valor)}%`;
+    case "indice":
+      // Índices 0-1 (IDH): tres decimales, que es como se publican.
+      return new Intl.NumberFormat("es-GT", { minimumFractionDigits: 3, maximumFractionDigits: 3 }).format(valor);
   }
 }
 

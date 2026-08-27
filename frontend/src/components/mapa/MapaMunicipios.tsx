@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useGeoMunicipios } from "@/api/geo";
 import { useMunicipios, municipiosDominio } from "@/api/municipios";
 import { useFiltros } from "@/store/filtros";
@@ -29,16 +29,31 @@ export default function MapaMunicipios() {
   const { data: geoData, isLoading, isError } = useGeoMunicipios();
   const { data: municipios } = useMunicipios();
   const variableActiva = useFiltros((s) => s.variableActiva);
-  const { municipioActivo, setMunicipioActivo } = useSeleccion();
+  const { municipioActivo, municipioDeptActivo, setMunicipioActivo } = useSeleccion();
   const [tooltip, setTooltip] = useState<TooltipState | null>(null);
 
   const variableInfo = VARIABLES.find((v) => v.key === variableActiva);
 
+  // Six municipio slugs repeat across departments (La Libertad, San Lorenzo…), so
+  // records are keyed "departamento/municipio". The bare slug is kept as a fallback
+  // for the few shapes the GeoJSON files under a different department than the data.
   const muniMap = useMemo(() => {
     const map = new Map<string, Municipio>();
-    municipios?.forEach((m) => map.set(m.slug, m));
+    const repetidos = new Set<string>();
+    municipios?.forEach((m) => {
+      map.set(`${m.departamento_slug}/${m.slug}`, m);
+      if (map.has(m.slug)) repetidos.add(m.slug);
+      else map.set(m.slug, m);
+    });
+    repetidos.forEach((slug) => map.delete(slug));
     return map;
   }, [municipios]);
+
+  const buscarMuni = useCallback(
+    (deptSlug: string, muniSlug: string) =>
+      muniMap.get(`${deptSlug}/${muniSlug}`) ?? muniMap.get(muniSlug),
+    [muniMap]
+  );
 
   // Precompute slug → hex color for the active variable (same ramp as departamentos).
   // Municipios without a value for the variable fall back to COLOR_SIN_DATO (gray).
@@ -49,10 +64,9 @@ export default function MapaMunicipios() {
     const [min, max] = dominio;
     for (const m of municipios ?? []) {
       const raw = (m as unknown as Record<string, unknown>)[variableActiva];
-      result.set(
-        m.slug,
-        typeof raw === "number" ? getColorForValue(variableActiva, raw, min, max) : COLOR_SIN_DATO
-      );
+      const color =
+        typeof raw === "number" ? getColorForValue(variableActiva, raw, min, max) : COLOR_SIN_DATO;
+      result.set(`${m.departamento_slug}/${m.slug}`, color);
     }
     return result;
   }, [municipios, variableActiva]);
@@ -100,12 +114,17 @@ export default function MapaMunicipios() {
           const { municipio, departamento } = propsOf(feature);
           const deptSlug = slugify(departamento);
           const muniSlug = slugify(municipio);
-          const isActive = !!muniSlug && muniSlug === municipioActivo;
+          const muni = buscarMuni(deptSlug, muniSlug);
+          const isActive =
+            !!muniSlug &&
+            muniSlug === municipioActivo &&
+            (!municipioDeptActivo || municipioDeptActivo === muni?.departamento_slug);
 
           const pathD = featureToSvgPath(feature);
           if (!pathD) return null;
 
-          const baseFill = fillMap.get(muniSlug) ?? COLOR_SIN_DATO;
+          const baseFill =
+            (muni && fillMap.get(`${muni.departamento_slug}/${muni.slug}`)) ?? COLOR_SIN_DATO;
           const computedFill = isActive ? COLOR_SELECCIONADO : baseFill;
           const opacity = municipioActivo && !isActive ? 0.72 : 1;
 
@@ -123,9 +142,9 @@ export default function MapaMunicipios() {
                 const container = e.currentTarget.closest(".map-container") as HTMLElement;
                 if (!container) return;
                 const rect = container.getBoundingClientRect();
-                const raw = (
-                  muniMap.get(muniSlug) as unknown as Record<string, unknown> | undefined
-                )?.[variableActiva];
+                const raw = (muni as unknown as Record<string, unknown> | undefined)?.[
+                  variableActiva
+                ];
                 setTooltip({
                   x: e.clientX - rect.left,
                   y: e.clientY - rect.top,
@@ -139,8 +158,11 @@ export default function MapaMunicipios() {
               }}
               onMouseLeave={() => setTooltip(null)}
               onClick={() => {
-                const deseleccionar = muniSlug === municipioActivo;
-                setMunicipioActivo(deseleccionar ? null : muniSlug);
+                const deseleccionar = isActive;
+                setMunicipioActivo(
+                  deseleccionar ? null : muniSlug,
+                  muni?.departamento_slug ?? deptSlug
+                );
                 if (!deseleccionar) {
                   track("mapa_municipio_click", {
                     municipio: muniSlug,

@@ -42,6 +42,8 @@ const KPIS: Array<{
   { key: "esperanza_vida", label: "Esperanza de vida", formato: "decimal", unit: "años" },
   { key: "fecundidad", label: "Tasa de fecundidad", formato: "decimal" },
   { key: "crecimiento_anual_pct", label: "Crecimiento anual", formato: "porcentaje" },
+  { key: "tiempo_duplicacion_anios", label: "Tiempo de duplicación", formato: "decimal", unit: "años" },
+  { key: "poblacion_activa", label: "Población económicamente activa", formato: "numero" },
 ];
 
 // % variables to compare against the parent department in the bar chart

@@ -26,11 +26,16 @@ class IndicadorSchema(BaseModel):
     crecimiento_anual_pct: float | None = None
     tiempo_duplicacion_anios: float | None = None
 
+    matrimonios_por_1000: float | None = None
+    pct_uniones_consensuales: float | None = None
+    edad_primera_union: float | None = None
+
     poblacion_activa: int | None = None
     poblacion_ocupada: int | None = None
     poblacion_desocupada: int | None = None
     ingreso_medio_anual: float | None = None
 
+    idh: float | None = None
     idh_ranking: int | None = None
 
     model_config = {"from_attributes": True}

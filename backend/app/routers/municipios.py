@@ -32,8 +32,10 @@ async def list_municipios(departamento: str | None = Query(None)):
 
 
 @router.get("/{slug}")
-async def get_municipio(slug: str):
+async def get_municipio(slug: str, departamento: str | None = Query(None)):
+    """A handful of slugs repeat across departments (La Libertad, San Lorenzo…),
+    so `departamento` disambiguates; without it the first match wins."""
     for m in _load():
-        if m["slug"] == slug:
+        if m["slug"] == slug and (departamento is None or m["departamento_slug"] == departamento):
             return m
     raise HTTPException(status_code=404, detail="Municipio no encontrado")

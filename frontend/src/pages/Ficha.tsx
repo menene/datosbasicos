@@ -21,7 +21,7 @@ import { formatearValor } from "@/lib/utils";
 import { track } from "@/lib/analytics";
 import { agregarNacional } from "@/lib/totales";
 import { VARIABLES, VARIABLES_ALERTA } from "@/types/departamento";
-import type { VariableKey, Indicadores } from "@/types/departamento";
+import type { Variable, VariableKey, Indicadores } from "@/types/departamento";
 import TarjetaNacional from "@/components/TarjetaNacional";
 import DepartamentoShape from "@/components/ficha/DepartamentoShape";
 import KpiCard from "@/components/ficha/KpiCard";
@@ -48,7 +48,7 @@ const colorPromedioPorAnio = (anio: number, idx: number): string =>
 const KPIS: Array<{
   key: VariableKey;
   label: string;
-  formato: "numero" | "decimal" | "porcentaje";
+  formato: Variable["formato"];
   unit?: string;
 }> = [
   { key: "poblacion_total", label: "Población total", formato: "numero" },
@@ -65,6 +65,16 @@ const KPIS: Array<{
   { key: "fecundidad", label: "Tasa de fecundidad", formato: "decimal" },
   { key: "crecimiento_anual_pct", label: "Crecimiento anual", formato: "porcentaje" },
   { key: "tiempo_duplicacion_anios", label: "Tiempo de duplicación", formato: "decimal", unit: "años" },
+  { key: "mortalidad_general", label: "Mortalidad general", formato: "decimal", unit: "×1000 hab." },
+  { key: "mortalidad_materna", label: "Mortalidad materna", formato: "decimal", unit: "×1000 n.v." },
+  { key: "matrimonios_por_1000", label: "Matrimonios", formato: "decimal", unit: "×1000 hab." },
+  { key: "edad_primera_union", label: "Edad 1ª unión (mujeres)", formato: "decimal", unit: "años" },
+  { key: "pct_uniones_consensuales", label: "Uniones de hecho", formato: "porcentaje" },
+  { key: "poblacion_activa", label: "Población activa (PEA)", formato: "numero" },
+  { key: "poblacion_ocupada", label: "Población ocupada", formato: "numero" },
+  { key: "poblacion_desocupada", label: "Población desocupada", formato: "numero" },
+  { key: "ingreso_medio_anual", label: "Ingreso medio anual", formato: "decimal", unit: "Q." },
+  { key: "idh", label: "IDH", formato: "indice" },
   { key: "idh_ranking", label: "Ranking IDH", formato: "numero" },
 ];
 
@@ -338,17 +348,17 @@ export default function FichaPage() {
           }`}
         >
           {KPIS.map(({ key, label, formato, unit }) => {
-            const valores = anios.map((anio) => {
-              const ind = indicadoresPorAnio.get(anio);
-              const raw = ind?.[key];
-              return {
-                anio,
-                texto: formatearValor(
-                  typeof raw === "number" ? raw : null,
-                  formato
-                ),
-              };
+            const crudos = anios.map((anio) => {
+              const raw = indicadoresPorAnio.get(anio)?.[key];
+              return typeof raw === "number" ? raw : null;
             });
+            // Un indicador sin dato en ninguno de los años elegidos no aporta:
+            // se omite en lugar de dibujar una tarjeta llena de guiones.
+            if (crudos.every((v) => v === null)) return null;
+            const valores = anios.map((anio, i) => ({
+              anio,
+              texto: formatearValor(crudos[i], formato),
+            }));
             return (
               <KpiCard
                 key={key}

@@ -25,10 +25,14 @@ CAMPOS_NUMERICOS = [
     "fecundidad",
     "crecimiento_anual_pct",
     "tiempo_duplicacion_anios",
+    "matrimonios_por_1000",
+    "pct_uniones_consensuales",
+    "edad_primera_union",
     "poblacion_activa",
     "poblacion_ocupada",
     "poblacion_desocupada",
     "ingreso_medio_anual",
+    "idh",
     "idh_ranking",
 ]
 

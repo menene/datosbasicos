@@ -20,7 +20,7 @@ import {
 import { useFiltros } from "@/store/filtros";
 import SelectorAniosMulti from "@/components/SelectorAniosMulti";
 import { VARIABLES, VARIABLES_ALERTA } from "@/types/departamento";
-import type { VariableKey } from "@/types/departamento";
+import type { Variable, VariableKey } from "@/types/departamento";
 import { formatearValor } from "@/lib/utils";
 import { track } from "@/lib/analytics";
 import { agregarNacional, esAditiva } from "@/lib/totales";
@@ -95,11 +95,7 @@ function RankingTooltipMulti({
 }: {
   active?: boolean;
   payload?: { dataKey: string; value: number }[];
-  formato: VariableKey extends infer K
-    ? K extends VariableKey
-      ? "numero" | "decimal" | "porcentaje"
-      : never
-    : never;
+  formato: Variable["formato"];
 }) {
   if (!active || !payload?.length) return null;
   const first = payload[0] as unknown as RankingTooltipMultiPayload;
@@ -490,9 +486,7 @@ export default function GraficasPage() {
               <Tooltip
                 content={
                   <RankingTooltipMulti
-                    formato={
-                      varInfo.formato as "numero" | "decimal" | "porcentaje"
-                    }
+                    formato={varInfo.formato}
                   />
                 }
                 cursor={{ fill: "rgba(0,0,0,0.04)" }}

@@ -19,10 +19,14 @@ export interface Indicadores {
   fecundidad: number | null;
   crecimiento_anual_pct: number | null;
   tiempo_duplicacion_anios: number | null;
+  matrimonios_por_1000: number | null;
+  pct_uniones_consensuales: number | null;
+  edad_primera_union: number | null;
   poblacion_activa: number | null;
   poblacion_ocupada: number | null;
   poblacion_desocupada: number | null;
   ingreso_medio_anual: number | null;
+  idh: number | null;
   idh_ranking: number | null;
 }
 
@@ -54,7 +58,7 @@ export type VariableKey = keyof Omit<Indicadores, "id" | "departamento_id" | "an
 export interface Variable {
   key: VariableKey;
   label: string;
-  formato: "numero" | "decimal" | "porcentaje";
+  formato: "numero" | "decimal" | "porcentaje" | "indice";
 }
 
 export const VARIABLES: Variable[] = [
@@ -72,12 +76,16 @@ export const VARIABLES: Variable[] = [
   { key: "fecundidad", label: "Tasa de fecundidad", formato: "decimal" },
   { key: "crecimiento_anual_pct", label: "Crecimiento anual (%)", formato: "porcentaje" },
   { key: "tiempo_duplicacion_anios", label: "Tiempo de duplicación (años)", formato: "decimal" },
+  { key: "matrimonios_por_1000", label: "Matrimonios (×1000 hab.)", formato: "decimal" },
+  { key: "edad_primera_union", label: "Edad 1ª unión, mujeres (años)", formato: "decimal" },
+  { key: "pct_uniones_consensuales", label: "Uniones de hecho (%)", formato: "porcentaje" },
   { key: "mortalidad_general", label: "Mortalidad general (×1000 hab.)", formato: "decimal" },
   { key: "mortalidad_materna", label: "Mortalidad materna (×1000 n.v.)", formato: "decimal" },
   { key: "poblacion_activa", label: "Población activa", formato: "numero" },
   { key: "poblacion_ocupada", label: "Población ocupada", formato: "numero" },
   { key: "poblacion_desocupada", label: "Población desocupada", formato: "numero" },
   { key: "ingreso_medio_anual", label: "Ingreso medio anual (Q.)", formato: "decimal" },
+  { key: "idh", label: "IDH", formato: "indice" },
   { key: "idh_ranking", label: "Ranking IDH", formato: "numero" },
 ] as const;
 

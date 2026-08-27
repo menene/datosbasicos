@@ -25,6 +25,9 @@ const KPIS: Array<{
   { key: "acceso_saneamiento_pct", label: "Saneamiento", formato: "porcentaje" },
   { key: "fecundidad", label: "Fecundidad", formato: "decimal" },
   { key: "crecimiento_anual_pct", label: "Crecimiento anual", formato: "porcentaje" },
+  { key: "tiempo_duplicacion_anios", label: "Duplicación", formato: "decimal", unit: "años" },
+  { key: "poblacion_activa", label: "PEA", formato: "numero" },
+  { key: "pct_pea", label: "PEA sobre 15+", formato: "porcentaje" },
 ];
 
 function KpiCard({ label, value, unit }: { label: string; value: string; unit?: string }) {
@@ -54,8 +57,8 @@ function Skeleton() {
 }
 
 export default function PanelMunicipio() {
-  const { municipioActivo, setMunicipioActivo } = useSeleccion();
-  const { data: muni, isLoading, isError } = useMunicipio(municipioActivo);
+  const { municipioActivo, municipioDeptActivo, setMunicipioActivo } = useSeleccion();
+  const { data: muni, isLoading, isError } = useMunicipio(municipioActivo, municipioDeptActivo);
 
   if (!municipioActivo) return null;
 

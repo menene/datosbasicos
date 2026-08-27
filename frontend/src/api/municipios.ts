@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import type { Municipio } from "@/types/municipio";
 import type { VariableKey } from "@/types/departamento";
+import { completarMunicipio } from "@/lib/derivados";
 
 const API = import.meta.env.VITE_API_URL || "/api/v1";
 
@@ -10,10 +11,12 @@ async function fetchJson<T>(url: string): Promise<T> {
   return res.json() as Promise<T>;
 }
 
-export function useMunicipio(slug: string | null) {
+export function useMunicipio(slug: string | null, departamento?: string | null) {
+  const qs = departamento ? `?departamento=${departamento}` : "";
   return useQuery({
-    queryKey: ["municipio", slug],
-    queryFn: () => fetchJson<Municipio>(`${API}/municipios/${slug}`),
+    queryKey: ["municipio", slug, departamento ?? null],
+    queryFn: async () =>
+      completarMunicipio(await fetchJson<Municipio>(`${API}/municipios/${slug}${qs}`)),
     enabled: !!slug,
     staleTime: Infinity,
   });
@@ -22,7 +25,8 @@ export function useMunicipio(slug: string | null) {
 export function useMunicipios() {
   return useQuery({
     queryKey: ["municipios"],
-    queryFn: () => fetchJson<Municipio[]>(`${API}/municipios`),
+    queryFn: async () =>
+      (await fetchJson<Municipio[]>(`${API}/municipios`)).map(completarMunicipio),
     staleTime: Infinity,
   });
 }

@@ -7,6 +7,7 @@ export interface Municipio {
   departamento: string;
   superficie_km2: number | null;
   poblacion_total: number | null;
+  /** Población / extensión territorial; ver `lib/derivados.ts`. */
   densidad_hab_km2: number | null;
   pct_hombres: number | null;
   pct_mujeres: number | null;
@@ -19,4 +20,10 @@ export interface Municipio {
   acceso_saneamiento_pct: number | null;
   fecundidad: number | null;
   crecimiento_anual_pct: number | null;
+  /** Regla del 70 (70 / tasa de crecimiento anual); ver `lib/derivados.ts`. */
+  tiempo_duplicacion_anios: number | null;
+  /** PEA / PEI del Censo 2018, base población de 15 años y más. */
+  poblacion_activa: number | null;
+  poblacion_inactiva: number | null;
+  pct_pea: number | null;
 }

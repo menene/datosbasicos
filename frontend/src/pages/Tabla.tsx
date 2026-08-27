@@ -54,6 +54,8 @@ const MUNI_KEYS = new Set<VariableKey>([
   "esperanza_vida",
   "fecundidad",
   "crecimiento_anual_pct",
+  "tiempo_duplicacion_anios",
+  "poblacion_activa",
 ]);
 
 interface Row {
@@ -95,9 +97,10 @@ export default function TablaPage() {
   const esMunicipios = vista === "municipios";
   const aniosEfectivos = esMunicipios ? [ANIO_MUNI] : anios;
   const multiAnio = !esMunicipios && anios.length > 1;
-  const variablesActivas: Variable[] = esMunicipios
-    ? VARIABLES.filter((v) => MUNI_KEYS.has(v.key))
-    : VARIABLES;
+  const variablesPosibles = useMemo<Variable[]>(
+    () => (esMunicipios ? VARIABLES.filter((v) => MUNI_KEYS.has(v.key)) : VARIABLES),
+    [esMunicipios]
+  );
 
   const { data: porAnio, isLoading: deptLoading } = useDepartamentosMulti(anios);
   const { data: municipios, isLoading: muniLoading } = useMunicipios();
@@ -144,6 +147,16 @@ export default function TablaPage() {
   );
 
   const data = esMunicipios ? dataMunis : dataDeptos;
+
+  // Un indicador sin un solo dato en los años elegidos se omite: una columna entera
+  // de guiones no informa y empuja fuera de pantalla a las que sí tienen datos.
+  const variablesActivas = useMemo(
+    () =>
+      variablesPosibles.filter((v) =>
+        data.some((r) => aniosEfectivos.some((a) => valorDe(r, v.key, a) !== null))
+      ),
+    [variablesPosibles, data, aniosEfectivos]
+  );
 
   // National total per year (sum for additive keys, simple average otherwise).
   // Computed over the full dataset — the country total is independent of search.

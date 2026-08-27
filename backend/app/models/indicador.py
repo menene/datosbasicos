@@ -46,6 +46,11 @@ class Indicador(Base):
     crecimiento_anual_pct: Mapped[float | None] = mapped_column(Numeric(4, 2))
     tiempo_duplicacion_anios: Mapped[float | None] = mapped_column(Numeric(5, 2))
 
+    # Nupcialidad (determinante próximo de la fecundidad)
+    matrimonios_por_1000: Mapped[float | None] = mapped_column(Numeric(4, 2))
+    pct_uniones_consensuales: Mapped[float | None] = mapped_column(Numeric(5, 2))
+    edad_primera_union: Mapped[float | None] = mapped_column(Numeric(4, 1))
+
     # Actividad económica
     poblacion_activa: Mapped[int | None] = mapped_column(Integer)
     poblacion_ocupada: Mapped[int | None] = mapped_column(Integer)
@@ -53,6 +58,7 @@ class Indicador(Base):
     ingreso_medio_anual: Mapped[float | None] = mapped_column(Numeric(12, 2))
 
     # Desarrollo
+    idh: Mapped[float | None] = mapped_column(Numeric(4, 3))
     idh_ranking: Mapped[int | None] = mapped_column(SmallInteger)
 
     created_at: Mapped[datetime] = mapped_column(TIMESTAMP(timezone=True), server_default=func.now())

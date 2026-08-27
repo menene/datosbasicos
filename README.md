@@ -133,10 +133,15 @@ guatemala-datos/
 │       ├── crud/
 │       │   └── departamento.py
 │       └── seed/
-│           ├── seed.py           # Script de carga inicial
+│           ├── seed.py                    # Carga inicial (upsert) a PostgreSQL
+│           ├── derivados.py               # Fórmulas de densidad y duplicación
+│           ├── enrich_departamentos.py    # Rellena departamentos.json desde /docs
+│           ├── extract_municipios.py      # Genera municipios.json desde /docs
 │           └── data/
 │               ├── departamentos.json
-│               └── guatemala.geojson
+│               ├── municipios.json
+│               ├── guatemala.geojson
+│               └── guatemala_municipios.geojson
 │
 └── frontend/
     ├── Dockerfile
@@ -655,7 +660,57 @@ El script `backend/app/seed/seed.py` carga:
 2. Los 22 departamentos con su descripción narrativa
 3. Los indicadores 2025 de cada departamento
 
-Los datos fuente están en `backend/app/seed/data/departamentos.json` extraídos del documento `GUATEMALA_DATOS_BÁSICOS_2026.docx`.
+Los datos fuente están en `backend/app/seed/data/departamentos.json`, construidos a
+partir de los documentos de `/docs`. Los municipios no pasan por la base de datos: se
+sirven directamente desde `backend/app/seed/data/municipios.json`.
+
+### Regenerar los datos desde `/docs`
+
+Ambos JSON se derivan de los `.docx` originales con dos scripts idempotentes, que
+imprimen un informe de cobertura al terminar:
+
+```bash
+# Departamentos: PEA e ingresos, mortalidad materna, duplicación, nupcialidad, IDH 1994
+python backend/app/seed/enrich_departamentos.py
+
+# Municipios: perfiles por departamento + tabla de Guatemala + PEA/PEI del Censo 2018
+python backend/app/seed/extract_municipios.py
+
+# Cargar el resultado en PostgreSQL (los municipios no lo necesitan)
+docker compose exec backend python -m app.seed.seed
+```
+
+Cobertura actual: 22/22 departamentos en los tres cortes (1994, 2005, 2025) y 333 de
+los 340 municipios. El script imprime los huecos que vienen de la fuente:
+`mortalidad_general` solo existe para 1994, `analfabetismo_pct` no existe para 1994 (el
+libro de ese año no trae indicadores educativos) y Quetzaltenango 1994 no tiene
+población porque el libro omite esa línea.
+
+Las 22 extensiones territoriales salen del libro de 1994 y suman exactamente los
+108,889 km² oficiales del país, lo que sirve de comprobación de la carga.
+
+### Indicadores derivados
+
+Dos indicadores no se copian del documento: se calculan.
+
+```
+densidad_hab_km2         = población total / extensión territorial (km²)
+tiempo_duplicacion_anios = 70 / tasa de crecimiento anual (%)      ← regla del 70
+```
+
+La regla vive en `backend/app/seed/derivados.py` (se aplica al generar los JSON) y en
+`frontend/src/lib/derivados.ts` (se aplica a lo que llega por API, de modo que vale en
+tabla, mapa, ficha, gráficas, panel y exportación). En ambos lados:
+
+1. Si falta el valor y hay insumos, se calcula.
+2. Si el valor publicado contradice a la fórmula por más de 1.5x, gana la fórmula: el
+   número venía atado a una población anterior o es una errata del documento.
+3. Si faltan los insumos, se conserva lo publicado (58 municipios sin extensión
+   territorial y 54 sin tasa de crecimiento siguen sin estos dos indicadores).
+
+El total nacional de la tabla también usa las fórmulas en vez de promediar: la densidad
+es población sumada / superficie sumada (promediar las 22 densidades daba 318 hab/km²
+en 2025, cuando la real ronda 165) y la duplicación sale de la tasa nacional.
 
 El GeoJSON de los departamentos debe obtenerse de GADM (https://gadm.org) nivel ADM1 para Guatemala y colocarse en `backend/app/seed/data/guatemala.geojson`.
 
