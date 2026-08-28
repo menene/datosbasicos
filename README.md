@@ -18,8 +18,9 @@ Plataforma web de análisis e investigación sobre los 22 departamentos de Guate
 10. [Variables de entorno](#variables-de-entorno)
 11. [Comandos de desarrollo](#comandos-de-desarrollo)
 12. [Datos iniciales (seed)](#datos-iniciales-seed)
-13. [Analítica (Umami)](#analítica-umami)
-14. [Convenciones de código](#convenciones-de-código)
+13. [Despliegue](#despliegue)
+14. [Analítica (Umami)](#analítica-umami)
+15. [Convenciones de código](#convenciones-de-código)
 
 ---
 
@@ -724,6 +725,49 @@ es población sumada / superficie sumada (promediar las 22 densidades daba 318 h
 en 2025, cuando la real ronda 165) y la duplicación sale de la tasa nacional.
 
 El GeoJSON de los departamentos debe obtenerse de GADM (https://gadm.org) nivel ADM1 para Guatemala y colocarse en `backend/app/seed/data/guatemala.geojson`.
+
+---
+
+## Despliegue
+
+En producción corre el mismo `docker compose` (con los puertos en loopback, detrás de
+Caddy) y el código está montado por volumen, así que **desplegar es hacer `git pull` en
+el servidor** más lo que la base de datos necesite.
+
+Después del pull, en este orden:
+
+```bash
+docker compose exec backend alembic upgrade head      # 1. migraciones pendientes
+docker compose exec backend python -m app.seed.seed   # 2. recargar departamentos
+docker compose restart backend                        # 3. asegurar el reinicio
+```
+
+**El orden importa.** El backend arranca con `--reload`, así que se reinicia solo en
+cuanto el pull cambia un `.py`, y si el modelo ya trae columnas que la base todavía no
+tiene, la API responde 500. Corre `alembic upgrade head` inmediatamente después del pull
+para que esa ventana dure segundos.
+
+El seed hace upsert por `(departamento, año)`: es idempotente, se puede repetir y no
+borra nada. Los municipios **no** pasan por la base —se sirven desde
+`seed/data/municipios.json`— y su caché lleva la fecha del archivo en la llave, así que
+un cambio que solo toque ese JSON surte efecto sin reiniciar nada.
+
+No hace falta `docker compose build` ni `npm install` salvo que hayan cambiado
+`requirements.txt`, `package.json` o los Dockerfiles. Recordá que `docker-compose.yml` y
+`.env` están en `.gitignore`: si cambia `docker-compose.yml.example`, hay que aplicar la
+diferencia a mano en el servidor.
+
+Comprobación después de desplegar:
+
+```bash
+# 22 departamentos con padrón electoral
+curl -s 'https://TUDOMINIO/api/v1/departamentos?anio=2025' \
+  | python3 -c "import sys,json; d=json.load(sys.stdin); print(sum(1 for x in d if x['indicadores']['padron_electoral']), 'de', len(d))"
+
+# 339 municipios
+curl -s https://TUDOMINIO/api/v1/municipios \
+  | python3 -c "import sys,json; print(len(json.load(sys.stdin)))"
+```
 
 ---
 

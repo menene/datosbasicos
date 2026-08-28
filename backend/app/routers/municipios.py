@@ -16,11 +16,20 @@ router = APIRouter(prefix="/municipios", tags=["municipios"])
 DATA_PATH = Path(__file__).parent.parent / "seed" / "data" / "municipios.json"
 
 
-@lru_cache(maxsize=1)
+@lru_cache(maxsize=2)
+def _leer(mtime: float) -> list[dict]:
+    return json.loads(DATA_PATH.read_text(encoding="utf-8"))
+
+
 def _load() -> list[dict]:
+    """Cachea el JSON, pero con la fecha del archivo como parte de la llave.
+
+    Así un despliegue que solo actualiza `municipios.json` (los municipios no pasan
+    por la base de datos) surte efecto sin reiniciar el backend.
+    """
     if not DATA_PATH.exists():
         return []
-    return json.loads(DATA_PATH.read_text(encoding="utf-8"))
+    return _leer(DATA_PATH.stat().st_mtime)
 
 
 @router.get("")
