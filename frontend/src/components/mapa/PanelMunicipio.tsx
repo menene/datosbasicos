@@ -28,6 +28,8 @@ const KPIS: Array<{
   { key: "tiempo_duplicacion_anios", label: "Duplicación", formato: "decimal", unit: "años" },
   { key: "poblacion_activa", label: "PEA", formato: "numero" },
   { key: "pct_pea", label: "PEA sobre 15+", formato: "porcentaje" },
+  { key: "padron_electoral", label: "Padrón 2023", formato: "numero" },
+  { key: "participacion_pct", label: "Participación 2023", formato: "porcentaje" },
 ];
 
 function KpiCard({ label, value, unit }: { label: string; value: string; unit?: string }) {

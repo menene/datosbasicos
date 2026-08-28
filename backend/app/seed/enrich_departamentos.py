@@ -11,7 +11,9 @@ per indicator with a row per departamento:
   · TASA DE MORTALIDAD MATERNA POR CADA 1,000 NACIDOS VIVOS, 2005 Y 2025
   · TASA DE DUPLICACIÓN DE LA POBLACIÓN … AÑO 2005 → tasa anual + tiempo de duplicación
   · TASA GLOBAL DE FECUNDIDAD Y MATRIMONIOS → nupcialidad 2021-2025 + TGF 2022
-  · IDH Guatemala 1994 → índice y ranking departamental de 1994
+  · IDH Guatemala 1994 → índice, componentes (salud, educación, ingresos) y ranking
+  · VOTANTES DEPTOS REP. DE GUATEMALA → padrón, votos emitidos, abstencionismo y
+    participación de las Elecciones Generales 2023 (primera vuelta)
   · GUATEMALA DATOS BASICOS 1994 → el corte completo de 1994, un bloque de prosa por
     departamento (extensión, población, mortalidad general y materna, PEA, ingreso…)
 
@@ -84,6 +86,35 @@ def docx_lines(path: Path) -> list[str]:
     return lineas
 
 
+def docx_secciones(path: Path, patron_titulo: str) -> list[tuple[str, list[list[str]]]]:
+    """Recorre el cuerpo en orden y devuelve (título vigente, filas) por cada tabla.
+
+    Los documentos temáticos encabezan cada sección con un párrafo ("… Departamento de
+    Santa Rosa y sus municipios …") y luego intercalan varias tablas. Recorrer el XML en
+    orden es la única forma de saber a qué departamento pertenece cada tabla; los títulos
+    de las tablas por sí solos no lo dicen.
+    """
+    root = ET.fromstring(zipfile.ZipFile(path).read("word/document.xml"))
+    body = root.find(f"{W}body")
+    titulo = ""
+    salida: list[tuple[str, list[list[str]]]] = []
+    for hijo in body if body is not None else []:
+        if hijo.tag == f"{W}p":
+            texto = re.sub(r"\s+", " ", "".join(t.text or "" for t in hijo.iter(f"{W}t"))).strip()
+            m = re.search(patron_titulo, texto, re.I)
+            if m:
+                titulo = m.group(1).strip()
+        elif hijo.tag == f"{W}tbl":
+            filas = []
+            for tr in hijo.findall(f"{W}tr"):
+                filas.append([
+                    re.sub(r"\s+", " ", "".join(t.text or "" for t in tc.iter(f"{W}t"))).strip()
+                    for tc in tr.findall(f"{W}tc")
+                ])
+            salida.append((titulo, filas))
+    return salida
+
+
 def num(cell: str) -> float | None:
     """Parse a number written Guatemalan-style (1.234,5 / 1,234.5 / ~12.3)."""
     tok = re.search(r"-?\d[\d.,]*", cell.replace(" ", ""))
@@ -109,7 +140,7 @@ def num(cell: str) -> float | None:
 
 
 # Department name as written in the tables ("7. Guatemala", "El Petén", "Quiché") → slug.
-ALIAS = {"el-peten": "peten", "peten": "peten", "el-progreso": "el-progreso"}
+ALIAS = {"el-peten": "peten", "peten": "peten", "el-quiche": "quiche", "el-progreso": "el-progreso"}
 
 
 def dept_slug(cell: str, valid: set[str]) -> str | None:
@@ -129,6 +160,7 @@ def load_docs() -> dict[str, Path]:
         "fecundidad": "TASA GLOBAL DE FECUNDIDAD",
         "idh1994": "IDH GUATEMALA 1994",
         "libro1994": "GUATEMALA DATOS BASICOS 1994",
+        "votantes": "VOTANTES DEPTOS REP DE GUATEMALA",
     }
     found: dict[str, Path] = {}
     for path in DOCS_DIR.glob("*.docx"):
@@ -247,7 +279,11 @@ def parse_nupcialidad(path: Path, valid: set[str]) -> dict[str, dict[int, dict]]
 
 
 def parse_idh1994(path: Path, valid: set[str]) -> dict[str, dict[int, dict]]:
-    """IDH 1994 by departamento; the table is already sorted best → worst."""
+    """IDH 1994 y sus tres componentes; la tabla ya viene ordenada de mayor a menor.
+
+    Columnas: Departamento | IDH | Salud | Educación | Ingresos.
+    """
+    componentes = ["idh", "idh_salud", "idh_educacion", "idh_ingresos"]
     out: dict[str, dict[int, dict]] = {}
     rank = 0
     for rows in docx_tables(path):
@@ -255,11 +291,52 @@ def parse_idh1994(path: Path, valid: set[str]) -> dict[str, dict[int, dict]]:
             if len(row) < 2:
                 continue
             slug = dept_slug(row[0], valid)
-            idh = num(row[1])
-            if not slug or idh is None or not (0.2 <= idh <= 1):
+            valores = [num(c) for c in row[1:5]]
+            if not slug or valores[0] is None or not (0.2 <= valores[0] <= 1):
                 continue
             rank += 1
-            out[slug] = {1994: {"idh": idh, "idh_ranking": rank}}
+            campos = {
+                clave: v for clave, v in zip(componentes, valores)
+                if v is not None and 0.2 <= v <= 1
+            }
+            out[slug] = {1994: {**campos, "idh_ranking": rank}}
+    return out
+
+
+def parse_votantes(path: Path, valid: set[str]) -> dict[str, dict[int, dict]]:
+    """Padrón, votos, abstencionismo y participación — Elecciones Generales 2023.
+
+    Se toma la fila "Total Departamento" de la primera tabla por municipio de cada
+    sección, que es la de primera vuelta (las secciones que traen segunda vuelta la
+    repiten después, y se ignora). Columnas: Municipio | Padrón | Votos Emitidos |
+    Abstencionismo | % Abstencionismo | % Participación.
+
+    Los resultados se cuelgan del corte de 2025, el más cercano a la elección.
+    """
+    out: dict[str, dict[int, dict]] = {}
+    patron = r"Departamento de\s+(.+?)\s+y sus municipios"
+    for titulo, filas in docx_secciones(path, patron):
+        slug = dept_slug(titulo, valid) if titulo else None
+        if not slug or slug in out:
+            continue
+        for fila in filas:
+            if not fila or not re.match(r"^total departamento", fila[0].strip(), re.I):
+                continue
+            if len(fila) < 6:
+                continue
+            padron, votos = num(fila[1]), num(fila[2])
+            abst, part = num(fila[4]), num(fila[5])
+            if padron is None or votos is None or not (0 < votos <= padron):
+                continue
+            out[slug] = {
+                2025: {
+                    "padron_electoral": int(padron),
+                    "votos_emitidos": int(votos),
+                    "abstencionismo_pct": abst if abst and 0 <= abst <= 100 else None,
+                    "participacion_pct": part if part and 0 <= part <= 100 else None,
+                }
+            }
+            break
     return out
 
 
@@ -424,7 +501,8 @@ def main() -> None:
         ("Mortalidad materna 2005 y 2025", parse_materna(docs["materna"], valid)),
         ("Duplicación de la población 2005", parse_duplicacion(docs["duplicacion"], valid)),
         ("Nupcialidad y TGF (2025)", parse_nupcialidad(docs["fecundidad"], valid)),
-        ("IDH 1994", parse_idh1994(docs["idh1994"], valid)),
+        ("IDH 1994 y componentes", parse_idh1994(docs["idh1994"], valid)),
+        ("Votantes 2023 (1a vuelta)", parse_votantes(docs["votantes"], valid)),
     ]
 
     por_depto = {d["slug"]: {i["anio"]: i for i in d["indicadores"]} for d in data}
@@ -488,7 +566,8 @@ def main() -> None:
         "ingreso_medio_anual", "mortalidad_general", "mortalidad_materna",
         "fecundidad", "crecimiento_anual_pct", "tiempo_duplicacion_anios",
         "matrimonios_por_1000", "pct_uniones_consensuales", "edad_primera_union",
-        "idh", "idh_ranking",
+        "idh", "idh_salud", "idh_educacion", "idh_ingresos", "idh_ranking",
+        "padron_electoral", "votos_emitidos", "abstencionismo_pct", "participacion_pct",
     ]
     anios = sorted({i["anio"] for d in data for i in d["indicadores"]})
     print(f"  {'campo':26}" + "".join(f"{a:>7}" for a in anios))

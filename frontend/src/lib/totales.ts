@@ -27,12 +27,16 @@ export const CLAVES_ADITIVAS: ReadonlySet<VariableKey> = new Set<VariableKey>([
   "poblacion_activa",
   "poblacion_ocupada",
   "poblacion_desocupada",
+  "padron_electoral",
+  "votos_emitidos",
 ]);
 
 /** Keys computed from the aggregate with their own formula (ver lib/derivados). */
 export const CLAVES_DERIVADAS: ReadonlySet<VariableKey> = new Set<VariableKey>([
   "densidad_hab_km2",
   "tiempo_duplicacion_anios",
+  "participacion_pct",
+  "abstencionismo_pct",
 ]);
 
 /** Keys we never aggregate — a ranking can't be summed or averaged. */
@@ -100,6 +104,12 @@ export function agregarNacional(filas: FilaAgregable[]): AgregadoNacional {
 
   const superficie = supN === 0 ? null : sup;
   valores.densidad_hab_km2 = calcularDensidad(pobPareada, supPareada);
+  // Participación nacional = votos emitidos / padrón, no el promedio de 22 porcentajes.
+  const padron = valores.padron_electoral;
+  const votos = valores.votos_emitidos;
+  valores.participacion_pct = padron && votos ? (votos / padron) * 100 : null;
+  valores.abstencionismo_pct =
+    valores.participacion_pct === null ? null : 100 - valores.participacion_pct;
   // La tasa nacional es el promedio simple de las entidades, así que el tiempo de
   // duplicación que sale de ella también es aproximado.
   valores.tiempo_duplicacion_anios = calcularDuplicacion(valores.crecimiento_anual_pct);

@@ -75,7 +75,14 @@ const KPIS: Array<{
   { key: "poblacion_desocupada", label: "Población desocupada", formato: "numero" },
   { key: "ingreso_medio_anual", label: "Ingreso medio anual", formato: "decimal", unit: "Q." },
   { key: "idh", label: "IDH", formato: "indice" },
+  { key: "idh_salud", label: "IDH · Salud", formato: "indice" },
+  { key: "idh_educacion", label: "IDH · Educación", formato: "indice" },
+  { key: "idh_ingresos", label: "IDH · Ingresos", formato: "indice" },
   { key: "idh_ranking", label: "Ranking IDH", formato: "numero" },
+  { key: "padron_electoral", label: "Padrón electoral (2023)", formato: "numero" },
+  { key: "votos_emitidos", label: "Votos emitidos (2023)", formato: "numero" },
+  { key: "participacion_pct", label: "Participación electoral (2023)", formato: "porcentaje" },
+  { key: "abstencionismo_pct", label: "Abstencionismo (2023)", formato: "porcentaje" },
 ];
 
 interface ChartEntrySolo {

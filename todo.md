@@ -40,6 +40,12 @@ indicators like a departamento.
       mortalidad general y materna, PEA/ocupada/desocupada, ingreso medio, agua y
       saneamiento (el libro los publica en personas; se convierten a %). Verificado
       indicador por indicador contra el documento.
+- [x] IDH 1994 con sus tres componentes (salud, educación e ingresos) para los 22
+      departamentos, del documento de IDH 1994.
+- [x] Participación electoral (padrón, votos emitidos, abstencionismo y participación,
+      Elecciones Generales 2023 primera vuelta) para los 22 departamentos y 328
+      municipios, del documento de votantes. Migración `b8e5c02f7d19`.
+- [x] Cobertura de municipios: 339 de 340 (solo falta San José La Máquina).
 - [x] Extensión territorial corregida con el libro de 1994: Guatemala 2,253 → 2,126,
       Chimaltenango 1,179 → 1,979 y San Marcos 3,792 → 3,791 km². Las 22 ahora suman
       exactamente los 108,889 km² oficiales del país (antes 108,217).
@@ -56,8 +62,13 @@ indicators like a departamento.
       1991 = 473,800 y 2000 = 609,590), así que tampoco tiene densidad ni % de agua y
       saneamiento. No se interpoló porque las cifras de 1994 del libro no son
       consistentes con sus propias series 1991-2000. El censo de 1994 da ~503,900.
-- [ ] 7 municipios sin dato: Chiché, Petatán, San Jorge, San José La Máquina, San Mateo,
-      Santa Catarina Ixtahuacán, Santiago Atitlán.
+- [ ] 1 municipio sin ningún dato: San José La Máquina (Suchitepéquez), que no aparece
+      en ningún documento.
+- [ ] El padrón de los municipios no cuadra con el del departamento en 7 casos
+      (Retalhuleu -26 %, Suchitepéquez, Quetzaltenango, San Marcos, Quiché, Petén,
+      Sololá): el documento de votantes omite municipios o los da como aproximados
+      ("~11,430", "18, approx."), y esos valores no se cargan. Las filas de Petén
+      además suman 2.8 % más que su propio total y omiten Sayaxché.
 - [ ] El GeoJSON ubica Chicamán en Alta Verapaz y San Felipe en Quetzaltenango
       (pertenecen a Quiché y Retalhuleu). El dato conserva el departamento correcto y
       la forma se localiza por nombre; conviene corregir el GeoJSON.
@@ -82,9 +93,15 @@ indicators like a departamento.
 - [ ] Visual QA of the map + panel in the running app.
 - [ ] Commit the feature.
 
+- [ ] Varios municipios traen su IDH municipal en la prosa (Mixco 0.792, Villa Nueva
+      0.765, Chuarrancho ~0.45-0.605…), pero casi siempre como rango. Se podrían
+      extraer los que dan un valor único.
+
 ## Datos nuevos aún sin usar
 - `Proyecciones Demográficas por Departamento en Guatemala.pdf`: población proyectada
   2030 / 2040 / 2050 por departamento. Encaja como cortes futuros del selector de años.
 - `TASA GLOBAL DE FECUNDIDAD Y MATROMONIOS. 130826.docx`: matrimonios registrados
   2021-2025 por año (nacional) y la matriz de correlaciones.
+- Documento de votantes: las tablas de **segunda vuelta** (20 ago 2023) están cargadas
+  en el documento pero no en la base; hoy solo se guarda la primera vuelta.
 - `docs/INFOGRAFÍAS GUATEMALA DATOS BÁSICOS/`: 65 imágenes sin catalogar.

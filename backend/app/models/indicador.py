@@ -57,9 +57,18 @@ class Indicador(Base):
     poblacion_desocupada: Mapped[int | None] = mapped_column(Integer)
     ingreso_medio_anual: Mapped[float | None] = mapped_column(Numeric(12, 2))
 
-    # Desarrollo
+    # Desarrollo — IDH y sus tres componentes (salud, educación, ingresos)
     idh: Mapped[float | None] = mapped_column(Numeric(4, 3))
+    idh_salud: Mapped[float | None] = mapped_column(Numeric(4, 3))
+    idh_educacion: Mapped[float | None] = mapped_column(Numeric(4, 3))
+    idh_ingresos: Mapped[float | None] = mapped_column(Numeric(4, 3))
     idh_ranking: Mapped[int | None] = mapped_column(SmallInteger)
+
+    # Participación electoral
+    padron_electoral: Mapped[int | None] = mapped_column(Integer)
+    votos_emitidos: Mapped[int | None] = mapped_column(Integer)
+    abstencionismo_pct: Mapped[float | None] = mapped_column(Numeric(5, 2))
+    participacion_pct: Mapped[float | None] = mapped_column(Numeric(5, 2))
 
     created_at: Mapped[datetime] = mapped_column(TIMESTAMP(timezone=True), server_default=func.now())
 

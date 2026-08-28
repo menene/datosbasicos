@@ -36,7 +36,15 @@ class IndicadorSchema(BaseModel):
     ingreso_medio_anual: float | None = None
 
     idh: float | None = None
+    idh_salud: float | None = None
+    idh_educacion: float | None = None
+    idh_ingresos: float | None = None
     idh_ranking: int | None = None
+
+    padron_electoral: int | None = None
+    votos_emitidos: int | None = None
+    abstencionismo_pct: float | None = None
+    participacion_pct: float | None = None
 
     model_config = {"from_attributes": True}
 

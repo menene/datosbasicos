@@ -33,7 +33,14 @@ CAMPOS_NUMERICOS = [
     "poblacion_desocupada",
     "ingreso_medio_anual",
     "idh",
+    "idh_salud",
+    "idh_educacion",
+    "idh_ingresos",
     "idh_ranking",
+    "padron_electoral",
+    "votos_emitidos",
+    "abstencionismo_pct",
+    "participacion_pct",
 ]
 
 

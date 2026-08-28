@@ -44,6 +44,10 @@ const KPIS: Array<{
   { key: "crecimiento_anual_pct", label: "Crecimiento anual", formato: "porcentaje" },
   { key: "tiempo_duplicacion_anios", label: "Tiempo de duplicación", formato: "decimal", unit: "años" },
   { key: "poblacion_activa", label: "Población económicamente activa", formato: "numero" },
+  { key: "padron_electoral", label: "Padrón electoral (2023)", formato: "numero" },
+  { key: "votos_emitidos", label: "Votos emitidos (2023)", formato: "numero" },
+  { key: "participacion_pct", label: "Participación electoral (2023)", formato: "porcentaje" },
+  { key: "abstencionismo_pct", label: "Abstencionismo (2023)", formato: "porcentaje" },
 ];
 
 // % variables to compare against the parent department in the bar chart

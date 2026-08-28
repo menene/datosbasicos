@@ -26,4 +26,9 @@ export interface Municipio {
   poblacion_activa: number | null;
   poblacion_inactiva: number | null;
   pct_pea: number | null;
+  /** Elecciones Generales 2023, primera vuelta (TSE). */
+  padron_electoral: number | null;
+  votos_emitidos: number | null;
+  abstencionismo_pct: number | null;
+  participacion_pct: number | null;
 }

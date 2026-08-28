@@ -670,24 +670,35 @@ Ambos JSON se derivan de los `.docx` originales con dos scripts idempotentes, qu
 imprimen un informe de cobertura al terminar:
 
 ```bash
-# Departamentos: PEA e ingresos, mortalidad materna, duplicación, nupcialidad, IDH 1994
+# Departamentos: corte de 1994, PEA e ingresos, mortalidad materna, duplicación,
+# nupcialidad, IDH 1994 con componentes y participación electoral 2023
 python backend/app/seed/enrich_departamentos.py
 
-# Municipios: perfiles por departamento + tabla de Guatemala + PEA/PEI del Censo 2018
+# Municipios: perfiles por departamento + tabla de Guatemala + PEA/PEI 2018 + votantes 2023
 python backend/app/seed/extract_municipios.py
 
 # Cargar el resultado en PostgreSQL (los municipios no lo necesitan)
 docker compose exec backend python -m app.seed.seed
 ```
 
-Cobertura actual: 22/22 departamentos en los tres cortes (1994, 2005, 2025) y 333 de
+Cobertura actual: 22/22 departamentos en los tres cortes (1994, 2005, 2025) y 339 de
 los 340 municipios. El script imprime los huecos que vienen de la fuente:
 `mortalidad_general` solo existe para 1994, `analfabetismo_pct` no existe para 1994 (el
 libro de ese año no trae indicadores educativos) y Quetzaltenango 1994 no tiene
 población porque el libro omite esa línea.
 
-Las 22 extensiones territoriales salen del libro de 1994 y suman exactamente los
-108,889 km² oficiales del país, lo que sirve de comprobación de la carga.
+Dos comprobaciones cruzadas avisan si una carga sale mal, y ambas se imprimen al
+correr los scripts:
+
+- Las 22 extensiones territoriales salen del libro de 1994 y suman exactamente los
+  108,889 km² oficiales del país.
+- El padrón electoral de los municipios suma el del departamento en 15 de 22 casos;
+  en los otros 7 el propio documento omite municipios o los da aproximados, y el
+  script imprime cuánto falta en cada uno.
+
+Los indicadores electorales son de las Elecciones Generales 2023 (primera vuelta, TSE
+procesado por FOCO Guatemala) y cuelgan del corte de 2025, el más cercano; las
+etiquetas de la interfaz llevan el año 2023 para que no se confundan.
 
 ### Indicadores derivados
 

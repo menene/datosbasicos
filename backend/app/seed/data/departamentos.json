@@ -29,7 +29,10 @@
         "poblacion_desocupada": 286900.0,
         "ingreso_medio_anual": 10311.7,
         "idh_ranking": 1,
-        "idh": 0.769
+        "idh": 0.769,
+        "idh_salud": 0.817,
+        "idh_educacion": 0.785,
+        "idh_ingresos": 0.706
       },
       {
         "anio": 2005,
@@ -78,7 +81,11 @@
         "mortalidad_materna": 0.78,
         "matrimonios_por_1000": 4.9,
         "pct_uniones_consensuales": 38.0,
-        "edad_primera_union": 20.8
+        "edad_primera_union": 20.8,
+        "padron_electoral": 2115260,
+        "votos_emitidos": 1235708,
+        "abstencionismo_pct": 41.58,
+        "participacion_pct": 58.42
       }
     ],
     "feria_titular": "15 de agosto, Virgen de la Asunción",
@@ -115,7 +122,10 @@
         "poblacion_desocupada": 10700.0,
         "ingreso_medio_anual": 2782.4,
         "idh_ranking": 6,
-        "idh": 0.576
+        "idh": 0.576,
+        "idh_salud": 0.553,
+        "idh_educacion": 0.608,
+        "idh_ingresos": 0.568
       },
       {
         "anio": 2005,
@@ -164,7 +174,11 @@
         "mortalidad_materna": 0.75,
         "matrimonios_por_1000": 3.5,
         "pct_uniones_consensuales": 47.0,
-        "edad_primera_union": 20.5
+        "edad_primera_union": 20.5,
+        "padron_electoral": 126904,
+        "votos_emitidos": 82321,
+        "abstencionismo_pct": 35.13,
+        "participacion_pct": 64.87
       }
     ],
     "feria_titular": "15 de enero, Señor de Esquipulas",
@@ -201,7 +215,10 @@
         "poblacion_desocupada": 21700.0,
         "ingreso_medio_anual": 3377.8,
         "idh_ranking": 2,
-        "idh": 0.645
+        "idh": 0.645,
+        "idh_salud": 0.668,
+        "idh_educacion": 0.68,
+        "idh_ingresos": 0.586
       },
       {
         "anio": 2005,
@@ -250,7 +267,11 @@
         "mortalidad_materna": 0.71,
         "matrimonios_por_1000": 6.7,
         "pct_uniones_consensuales": 41.0,
-        "edad_primera_union": 21.0
+        "edad_primera_union": 21.0,
+        "padron_electoral": 213990,
+        "votos_emitidos": 144852,
+        "abstencionismo_pct": 32.31,
+        "participacion_pct": 67.69
       }
     ],
     "feria_titular": "25 de julio, Santiago Apóstol",
@@ -287,7 +308,10 @@
         "poblacion_desocupada": 37900.0,
         "ingreso_medio_anual": 5407.1,
         "idh_ranking": 13,
-        "idh": 0.531
+        "idh": 0.531,
+        "idh_salud": 0.545,
+        "idh_educacion": 0.518,
+        "idh_ingresos": 0.53
       },
       {
         "anio": 2005,
@@ -336,7 +360,11 @@
         "mortalidad_materna": 0.97,
         "matrimonios_por_1000": 3.7,
         "pct_uniones_consensuales": 52.0,
-        "edad_primera_union": 19.8
+        "edad_primera_union": 19.8,
+        "padron_electoral": 351057,
+        "votos_emitidos": 218011,
+        "abstencionismo_pct": 37.9,
+        "participacion_pct": 62.1
       }
     ],
     "feria_titular": "26 de julio, Santa Ana",
@@ -373,7 +401,10 @@
         "poblacion_desocupada": 69100.0,
         "ingreso_medio_anual": 4109.4,
         "idh_ranking": 14,
-        "idh": 0.518
+        "idh": 0.518,
+        "idh_salud": 0.537,
+        "idh_educacion": 0.495,
+        "idh_ingresos": 0.522
       },
       {
         "anio": 2005,
@@ -422,7 +453,11 @@
         "mortalidad_materna": 0.81,
         "matrimonios_por_1000": 3.9,
         "pct_uniones_consensuales": 50.0,
-        "edad_primera_union": 20.1
+        "edad_primera_union": 20.1,
+        "padron_electoral": 457179,
+        "votos_emitidos": 280276,
+        "abstencionismo_pct": 38.69,
+        "participacion_pct": 61.31
       }
     ],
     "feria_titular": "8 de diciembre, Inmaculada Concepción",
@@ -459,7 +494,10 @@
         "poblacion_desocupada": 30300.0,
         "ingreso_medio_anual": 2271.0,
         "idh_ranking": 8,
-        "idh": 0.557
+        "idh": 0.557,
+        "idh_salud": 0.574,
+        "idh_educacion": 0.543,
+        "idh_ingresos": 0.554
       },
       {
         "anio": 2005,
@@ -508,7 +546,11 @@
         "mortalidad_materna": 0.93,
         "matrimonios_por_1000": 3.2,
         "pct_uniones_consensuales": 55.0,
-        "edad_primera_union": 19.5
+        "edad_primera_union": 19.5,
+        "padron_electoral": 263731,
+        "votos_emitidos": 158148,
+        "abstencionismo_pct": 40.03,
+        "participacion_pct": 59.97
       }
     ],
     "feria_titular": "Del 22 al 26 de diciembre, Niño Dios",
@@ -545,7 +587,10 @@
         "poblacion_desocupada": 25200.0,
         "ingreso_medio_anual": 2271.0,
         "idh_ranking": 17,
-        "idh": 0.497
+        "idh": 0.497,
+        "idh_salud": 0.514,
+        "idh_educacion": 0.476,
+        "idh_ingresos": 0.501
       },
       {
         "anio": 2005,
@@ -594,7 +639,11 @@
         "mortalidad_materna": 1.28,
         "matrimonios_por_1000": 3.0,
         "pct_uniones_consensuales": 58.0,
-        "edad_primera_union": 19.0
+        "edad_primera_union": 19.0,
+        "padron_electoral": 262591,
+        "votos_emitidos": 198123,
+        "abstencionismo_pct": 24.55,
+        "participacion_pct": 75.45
       }
     ],
     "feria_titular": "15 de agosto, Virgen de la Asunción",
@@ -631,7 +680,10 @@
         "poblacion_desocupada": 33200.0,
         "ingreso_medio_anual": 3761.1,
         "idh_ranking": 18,
-        "idh": 0.492
+        "idh": 0.492,
+        "idh_salud": 0.508,
+        "idh_educacion": 0.472,
+        "idh_ingresos": 0.496
       },
       {
         "anio": 2005,
@@ -680,7 +732,11 @@
         "mortalidad_materna": 1.2,
         "matrimonios_por_1000": 2.8,
         "pct_uniones_consensuales": 61.0,
-        "edad_primera_union": 18.7
+        "edad_primera_union": 18.7,
+        "padron_electoral": 245861,
+        "votos_emitidos": 141669,
+        "abstencionismo_pct": 42.38,
+        "participacion_pct": 57.62
       }
     ],
     "feria_titular": "29 de septiembre, San Miguel Arcángel",
@@ -717,7 +773,10 @@
         "poblacion_desocupada": 64700.0,
         "ingreso_medio_anual": 3724.5,
         "idh_ranking": 3,
-        "idh": 0.602
+        "idh": 0.602,
+        "idh_salud": 0.632,
+        "idh_educacion": 0.618,
+        "idh_ingresos": 0.556
       },
       {
         "anio": 2005,
@@ -766,7 +825,11 @@
         "mortalidad_materna": 0.79,
         "matrimonios_por_1000": 3.8,
         "pct_uniones_consensuales": 46.0,
-        "edad_primera_union": 20.3
+        "edad_primera_union": 20.3,
+        "padron_electoral": 505737,
+        "votos_emitidos": 299763,
+        "abstencionismo_pct": 40.73,
+        "participacion_pct": 59.27
       }
     ],
     "feria_titular": "6 de octubre, Virgen del Rosario",
@@ -803,7 +866,10 @@
         "poblacion_desocupada": 41900.0,
         "ingreso_medio_anual": 3028.0,
         "idh_ranking": 10,
-        "idh": 0.548
+        "idh": 0.548,
+        "idh_salud": 0.566,
+        "idh_educacion": 0.529,
+        "idh_ingresos": 0.549
       },
       {
         "anio": 2005,
@@ -852,7 +918,11 @@
         "mortalidad_materna": 0.9,
         "matrimonios_por_1000": 3.5,
         "pct_uniones_consensuales": 53.0,
-        "edad_primera_union": 19.6
+        "edad_primera_union": 19.6,
+        "padron_electoral": 328349,
+        "votos_emitidos": 201874,
+        "abstencionismo_pct": 38.52,
+        "participacion_pct": 61.48
       }
     ],
     "feria_titular": "Fiesta de Carnaval (movible)",
@@ -889,7 +959,10 @@
         "poblacion_desocupada": 25800.0,
         "ingreso_medio_anual": 2039.0,
         "idh_ranking": 7,
-        "idh": 0.572
+        "idh": 0.572,
+        "idh_salud": 0.605,
+        "idh_educacion": 0.551,
+        "idh_ingresos": 0.56
       },
       {
         "anio": 2005,
@@ -938,7 +1011,11 @@
         "mortalidad_materna": 0.88,
         "matrimonios_por_1000": 3.6,
         "pct_uniones_consensuales": 51.0,
-        "edad_primera_union": 19.9
+        "edad_primera_union": 19.9,
+        "padron_electoral": 204558,
+        "votos_emitidos": 122000,
+        "abstencionismo_pct": 40.3,
+        "participacion_pct": 59.7
       }
     ],
     "feria_titular": "8 de diciembre, Concepción de María",
@@ -975,7 +1052,10 @@
         "poblacion_desocupada": 73100.0,
         "ingreso_medio_anual": 2435.6,
         "idh_ranking": 12,
-        "idh": 0.538
+        "idh": 0.538,
+        "idh_salud": 0.552,
+        "idh_educacion": 0.522,
+        "idh_ingresos": 0.539
       },
       {
         "anio": 2005,
@@ -1024,7 +1104,11 @@
         "mortalidad_materna": 1.25,
         "matrimonios_por_1000": 2.9,
         "pct_uniones_consensuales": 60.0,
-        "edad_primera_union": 18.8
+        "edad_primera_union": 18.8,
+        "padron_electoral": 615116,
+        "votos_emitidos": 342970,
+        "abstencionismo_pct": 44.24,
+        "participacion_pct": 55.76
       }
     ],
     "feria_titular": "25 de abril, San Marcos",
@@ -1061,7 +1145,10 @@
         "poblacion_desocupada": 76800.0,
         "ingreso_medio_anual": 1577.1,
         "idh_ranking": 19,
-        "idh": 0.485
+        "idh": 0.485,
+        "idh_salud": 0.501,
+        "idh_educacion": 0.465,
+        "idh_ingresos": 0.489
       },
       {
         "anio": 2005,
@@ -1110,7 +1197,11 @@
         "mortalidad_materna": 1.64,
         "matrimonios_por_1000": 2.5,
         "pct_uniones_consensuales": 65.0,
-        "edad_primera_union": 18.5
+        "edad_primera_union": 18.5,
+        "padron_electoral": 702953,
+        "votos_emitidos": 386520,
+        "abstencionismo_pct": 45.01,
+        "participacion_pct": 54.99
       }
     ],
     "feria_titular": "16 de julio, Nuestra Señora del Carmen",
@@ -1147,7 +1238,10 @@
         "poblacion_desocupada": 57500.0,
         "ingreso_medio_anual": 1059.8,
         "idh_ranking": 20,
-        "idh": 0.479
+        "idh": 0.479,
+        "idh_salud": 0.494,
+        "idh_educacion": 0.46,
+        "idh_ingresos": 0.483
       },
       {
         "anio": 2005,
@@ -1196,7 +1290,11 @@
         "mortalidad_materna": 1.46,
         "matrimonios_por_1000": 2.4,
         "pct_uniones_consensuales": 67.0,
-        "edad_primera_union": 18.4
+        "edad_primera_union": 18.4,
+        "padron_electoral": 535214,
+        "votos_emitidos": 339066,
+        "abstencionismo_pct": 36.65,
+        "participacion_pct": 63.35
       }
     ],
     "feria_titular": "18 de agosto, Santa Elena de la Cruz",
@@ -1233,7 +1331,10 @@
         "poblacion_desocupada": 18300.0,
         "ingreso_medio_anual": 2725.2,
         "idh_ranking": 15,
-        "idh": 0.512
+        "idh": 0.512,
+        "idh_salud": 0.528,
+        "idh_educacion": 0.49,
+        "idh_ingresos": 0.518
       },
       {
         "anio": 2005,
@@ -1282,7 +1383,11 @@
         "mortalidad_materna": 1.08,
         "matrimonios_por_1000": 3.1,
         "pct_uniones_consensuales": 59.0,
-        "edad_primera_union": 18.9
+        "edad_primera_union": 18.9,
+        "padron_electoral": 175312,
+        "votos_emitidos": 106244,
+        "abstencionismo_pct": 39.4,
+        "participacion_pct": 60.6
       }
     ],
     "feria_titular": "21 de septiembre, San Mateo",
@@ -1319,7 +1424,10 @@
         "poblacion_desocupada": 68800.0,
         "ingreso_medio_anual": 2573.8,
         "idh_ranking": 21,
-        "idh": 0.468
+        "idh": 0.468,
+        "idh_salud": 0.482,
+        "idh_educacion": 0.449,
+        "idh_ingresos": 0.473
       },
       {
         "anio": 2005,
@@ -1368,7 +1476,11 @@
         "mortalidad_materna": 1.32,
         "matrimonios_por_1000": 2.6,
         "pct_uniones_consensuales": 68.0,
-        "edad_primera_union": 18.3
+        "edad_primera_union": 18.3,
+        "padron_electoral": 643396,
+        "votos_emitidos": 422410,
+        "abstencionismo_pct": 34.35,
+        "participacion_pct": 65.65
       }
     ],
     "feria_titular": "4 de agosto, Santo Domingo de Guzmán",
@@ -1405,7 +1517,10 @@
         "poblacion_desocupada": 29200.0,
         "ingreso_medio_anual": 2950.9,
         "idh_ranking": 22,
-        "idh": 0.457
+        "idh": 0.457,
+        "idh_salud": 0.47,
+        "idh_educacion": 0.438,
+        "idh_ingresos": 0.462
       },
       {
         "anio": 2005,
@@ -1454,7 +1569,11 @@
         "mortalidad_materna": 1.17,
         "matrimonios_por_1000": 3.3,
         "pct_uniones_consensuales": 66.0,
-        "edad_primera_union": 18.0
+        "edad_primera_union": 18.0,
+        "padron_electoral": 325253,
+        "votos_emitidos": 171500,
+        "abstencionismo_pct": 47.25,
+        "participacion_pct": 52.75
       }
     ],
     "feria_titular": "15 de enero, Señor de Esquipulas; 12 de diciembre, Virgen de Guadalupe",
@@ -1491,7 +1610,10 @@
         "poblacion_desocupada": 35900.0,
         "ingreso_medio_anual": 6131.7,
         "idh_ranking": 4,
-        "idh": 0.591
+        "idh": 0.591,
+        "idh_salud": 0.625,
+        "idh_educacion": 0.562,
+        "idh_ingresos": 0.587
       },
       {
         "anio": 2005,
@@ -1540,7 +1662,11 @@
         "mortalidad_materna": 1.01,
         "matrimonios_por_1000": 3.6,
         "pct_uniones_consensuales": 54.0,
-        "edad_primera_union": 19.7
+        "edad_primera_union": 19.7,
+        "padron_electoral": 251000,
+        "votos_emitidos": 142698,
+        "abstencionismo_pct": 43.15,
+        "participacion_pct": 56.85
       }
     ],
     "feria_titular": "19 de julio, Sagrado Corazón de Jesús",
@@ -1577,7 +1703,10 @@
         "poblacion_desocupada": 17400.0,
         "ingreso_medio_anual": 3244.3,
         "idh_ranking": 5,
-        "idh": 0.588
+        "idh": 0.588,
+        "idh_salud": 0.619,
+        "idh_educacion": 0.57,
+        "idh_ingresos": 0.575
       },
       {
         "anio": 2005,
@@ -1626,7 +1755,11 @@
         "mortalidad_materna": 0.73,
         "matrimonios_por_1000": 3.4,
         "pct_uniones_consensuales": 52.0,
-        "edad_primera_union": 19.8
+        "edad_primera_union": 19.8,
+        "padron_electoral": 172379,
+        "votos_emitidos": 107463,
+        "abstencionismo_pct": 37.66,
+        "participacion_pct": 62.34
       }
     ],
     "feria_titular": "Del 4 al 9 de diciembre, Virgen de Concepción",
@@ -1663,7 +1796,10 @@
         "poblacion_desocupada": 28400.0,
         "ingreso_medio_anual": 3028.0,
         "idh_ranking": 11,
-        "idh": 0.542
+        "idh": 0.542,
+        "idh_salud": 0.558,
+        "idh_educacion": 0.525,
+        "idh_ingresos": 0.543
       },
       {
         "anio": 2005,
@@ -1712,7 +1848,11 @@
         "mortalidad_materna": 0.92,
         "matrimonios_por_1000": 3.2,
         "pct_uniones_consensuales": 57.0,
-        "edad_primera_union": 19.2
+        "edad_primera_union": 19.2,
+        "padron_electoral": 260952,
+        "votos_emitidos": 153067,
+        "abstencionismo_pct": 41.34,
+        "participacion_pct": 58.66
       }
     ],
     "feria_titular": "Del 12 al 18 de agosto, Virgen del Tránsito",
@@ -1749,7 +1889,10 @@
         "poblacion_desocupada": 21100.0,
         "ingreso_medio_anual": 2700.2,
         "idh_ranking": 16,
-        "idh": 0.505
+        "idh": 0.505,
+        "idh_salud": 0.52,
+        "idh_educacion": 0.483,
+        "idh_ingresos": 0.512
       },
       {
         "anio": 2005,
@@ -1798,7 +1941,11 @@
         "mortalidad_materna": 1.12,
         "matrimonios_por_1000": 3.0,
         "pct_uniones_consensuales": 59.0,
-        "edad_primera_union": 19.1
+        "edad_primera_union": 19.1,
+        "padron_electoral": 192094,
+        "votos_emitidos": 109451,
+        "abstencionismo_pct": 43.02,
+        "participacion_pct": 56.98
       }
     ],
     "feria_titular": "Del 2 al 5 de mayo, Santa Cruz",
@@ -1835,7 +1982,10 @@
         "poblacion_desocupada": 35600.0,
         "ingreso_medio_anual": 3974.3,
         "idh_ranking": 9,
-        "idh": 0.554
+        "idh": 0.554,
+        "idh_salud": 0.571,
+        "idh_educacion": 0.538,
+        "idh_ingresos": 0.553
       },
       {
         "anio": 2005,
@@ -1884,7 +2034,11 @@
         "mortalidad_materna": 0.86,
         "matrimonios_por_1000": 3.3,
         "pct_uniones_consensuales": 53.0,
-        "edad_primera_union": 19.6
+        "edad_primera_union": 19.6,
+        "padron_electoral": 321474,
+        "votos_emitidos": 195637,
+        "abstencionismo_pct": 39.14,
+        "participacion_pct": 60.86
       }
     ],
     "feria_titular": "24 y 25 de julio, San Cristóbal",

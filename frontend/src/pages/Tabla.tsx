@@ -56,6 +56,10 @@ const MUNI_KEYS = new Set<VariableKey>([
   "crecimiento_anual_pct",
   "tiempo_duplicacion_anios",
   "poblacion_activa",
+  "padron_electoral",
+  "votos_emitidos",
+  "participacion_pct",
+  "abstencionismo_pct",
 ]);
 
 interface Row {

@@ -27,7 +27,14 @@ export interface Indicadores {
   poblacion_desocupada: number | null;
   ingreso_medio_anual: number | null;
   idh: number | null;
+  idh_salud: number | null;
+  idh_educacion: number | null;
+  idh_ingresos: number | null;
   idh_ranking: number | null;
+  padron_electoral: number | null;
+  votos_emitidos: number | null;
+  abstencionismo_pct: number | null;
+  participacion_pct: number | null;
 }
 
 export interface Departamento {
@@ -86,7 +93,14 @@ export const VARIABLES: Variable[] = [
   { key: "poblacion_desocupada", label: "Población desocupada", formato: "numero" },
   { key: "ingreso_medio_anual", label: "Ingreso medio anual (Q.)", formato: "decimal" },
   { key: "idh", label: "IDH", formato: "indice" },
+  { key: "idh_salud", label: "IDH · Salud", formato: "indice" },
+  { key: "idh_educacion", label: "IDH · Educación", formato: "indice" },
+  { key: "idh_ingresos", label: "IDH · Ingresos", formato: "indice" },
   { key: "idh_ranking", label: "Ranking IDH", formato: "numero" },
+  { key: "padron_electoral", label: "Padrón electoral (2023)", formato: "numero" },
+  { key: "votos_emitidos", label: "Votos emitidos (2023)", formato: "numero" },
+  { key: "participacion_pct", label: "Participación electoral 2023 (%)", formato: "porcentaje" },
+  { key: "abstencionismo_pct", label: "Abstencionismo 2023 (%)", formato: "porcentaje" },
 ] as const;
 
 export const VARIABLES_ALERTA: VariableKey[] = [
@@ -94,4 +108,5 @@ export const VARIABLES_ALERTA: VariableKey[] = [
   "mortalidad_general",
   "mortalidad_materna",
   "poblacion_desocupada",
+  "abstencionismo_pct",
 ];

@@ -10,6 +10,8 @@ Two kinds of source coexist:
      the only source covering the 17 municipios of the capital department.
    · "POBLACIÓN ECONÓMICAMENTE ACTIVA E INACTIVA POR DEPARTAMENTOS", which adds
      PEA / PEI (Censo 2018, base 15 años y más) to municipios country-wide.
+   · "VOTANTES DEPTOS REP. DE GUATEMALA", padrón, votos emitidos, abstencionismo y
+     participación de las Elecciones Generales 2023 (primera vuelta).
 
 The PEA tables carry stray rows (municipios listed under the wrong department, and
 names that are not municipios at all), so each table's department is decided by
@@ -169,6 +171,10 @@ BOUNDS: dict[str, tuple[float, float]] = {
     "poblacion_activa": (200, 1_500_000),
     "poblacion_inactiva": (200, 1_500_000),
     "pct_pea": (20, 80),
+    "padron_electoral": (500, 3_000_000),
+    "votos_emitidos": (100, 3_000_000),
+    "abstencionismo_pct": (5, 95),
+    "participacion_pct": (5, 95),
 }
 
 # Keys sourced from the table docs rather than from the prose LABELS.
@@ -177,6 +183,10 @@ EXTRA_KEYS = [
     "poblacion_activa",
     "poblacion_inactiva",
     "pct_pea",
+    "padron_electoral",
+    "votos_emitidos",
+    "abstencionismo_pct",
+    "participacion_pct",
 ]
 
 
@@ -318,6 +328,7 @@ def match_geo_nacional(geo: dict, mslug: str) -> tuple[str, str] | None:
 TABLE_DOCS = {
     "guatemala": "municipios del departamento de guatemala datos demograficos",
     "pea": "poblacion economicamente activa e inactiva por departamentos",
+    "votantes": "votantes deptos rep de guatemala",
 }
 
 
@@ -342,14 +353,18 @@ def docx_tables(path: Path) -> list[list[list[str]]]:
     return tables
 
 
+def _nombre_plano(path: Path) -> str:
+    """Nombre de archivo sin acentos ni puntuación, para comparar con TABLE_DOCS."""
+    return slugify(path.stem).replace("-", " ")
+
+
 def is_table_doc(path: Path) -> bool:
-    stem = norm(path.stem).replace("-", " ")
-    return any(frag in stem for frag in TABLE_DOCS.values())
+    return any(frag in _nombre_plano(path) for frag in TABLE_DOCS.values())
 
 
 def find_doc(fragment: str) -> Path | None:
     for path in sorted(DOCS_DIR.glob("*.docx")):
-        if fragment in norm(path.stem).replace("-", " "):
+        if fragment in _nombre_plano(path):
             return path
     return None
 
@@ -367,6 +382,31 @@ def clean_row_name(cell: str) -> str | None:
     if not name or NOT_A_MUNICIPIO.match(name) or re.search(r"\d", name):
         return None
     return name
+
+
+def nombres_fila(cell: str) -> list[str]:
+    """Nombres candidatos de una celda: el texto y, si lo hay, el paréntesis.
+
+    El padrón capitalino aparece como "Distrito Central (Guatemala)": ahí el municipio
+    es justamente lo que va entre paréntesis.
+    """
+    candidatos = []
+    base = clean_row_name(cell)
+    if base:
+        candidatos.append(base)
+    for dentro in re.findall(r"\(([^)]+)\)", cell):
+        limpio = clean_row_name(dentro)
+        if limpio and limpio not in candidatos:
+            candidatos.append(limpio)
+    return candidatos
+
+
+def emparejar(geo: dict, dslug: str, cell: str) -> str | None:
+    for nombre in nombres_fila(cell):
+        geo_name = match_geo(geo, dslug, slugify(nombre))
+        if geo_name:
+            return geo_name
+    return None
 
 
 def vote_department(geo: dict, names: list[str]) -> str | None:
@@ -497,7 +537,7 @@ def pea_tables(geo: dict) -> dict[tuple[str, str], dict]:
             name = clean_row_name(row[0]) if row else None
             if not name:
                 continue
-            geo_name = match_geo(geo, dslug, slugify(name))
+            geo_name = emparejar(geo, dslug, row[0])
             key = (dslug, slugify(geo_name)) if geo_name else None
             if key is None or key in out:               # first row for a municipio wins
                 continue
@@ -534,6 +574,62 @@ DEPT_NAME = {slugify(d): d for d in DEPARTAMENTOS}
 ALL_KEYS = [k for k, _, _ in LABELS] + EXTRA_KEYS
 
 
+def votantes_tablas(geo: dict) -> dict[tuple[str, str], dict]:
+    """Padrón y participación por municipio — Elecciones Generales 2023, 1ª vuelta.
+
+    Columnas: Municipio | Padrón | Votos Emitidos | Abstencionismo | % Abstencionismo |
+    % Participación. Cada departamento trae primero la tabla de primera vuelta y algunos
+    repiten después la de segunda: como el primer registro de cada municipio gana, se
+    queda la primera vuelta. El departamento sale de los propios nombres de las filas.
+    """
+    path = find_doc(TABLE_DOCS["votantes"])
+    if path is None:
+        return {}
+    out: dict[tuple[str, str], dict] = {}
+    for rows in docx_tables(path):
+        if len(rows) < 4:
+            continue
+        cabecera = [norm(c) for c in rows[0]]
+        if not cabecera or "municipio" not in cabecera[0] or len(cabecera) < 6:
+            continue
+        if not any("padron" in c for c in cabecera):
+            continue
+        nombres = [n for r in rows[1:] if r and (n := clean_row_name(r[0]))]
+        dslug = vote_department(geo, nombres)
+        if dslug is None:
+            continue
+        for row in rows[1:]:
+            nombre = clean_row_name(row[0]) if row else None
+            if not nombre or len(row) < 6:
+                continue
+            geo_name = emparejar(geo, dslug, row[0])
+            clave = (dslug, slugify(geo_name)) if geo_name else None
+            if clave is None or clave in out:
+                continue
+            # Varias filas traen la cifra marcada como aproximada ("~11,430",
+            # "18, approx.", "(repetición)"). El padrón y los votos son registros
+            # exactos por naturaleza: si el documento los estima, no se guardan.
+            exacto = lambda c: None if re.search(r"[~]|aprox|approx|repetici", c, re.I) else parse_num(c)
+            padron, votos = exacto(row[1]), exacto(row[2])
+            if padron is None:
+                continue
+            if votos is not None and not (0 < votos <= padron):
+                votos = None    # San José del Golfo aparece con 0 votos emitidos
+            campos = {
+                "padron_electoral": padron,
+                "votos_emitidos": votos,
+                "abstencionismo_pct": exacto(row[4]) if votos else None,
+                "participacion_pct": exacto(row[5]) if votos else None,
+            }
+            campos = {
+                k: v for k, v in campos.items()
+                if v is not None and BOUNDS[k][0] <= v <= BOUNDS[k][1]
+            }
+            if "padron_electoral" in campos:
+                out[clave] = campos
+    return out
+
+
 def main() -> None:
     geo = geojson_index()
     fields_by_muni: dict[tuple[str, str], dict] = {}
@@ -560,7 +656,11 @@ def main() -> None:
 
     # 2. Table docs. The Guatemala table is the only source for the capital
     #    department, so it also creates records; PEA adds columns to any municipio.
-    fuentes = [("tabla Guatemala", guatemala_table(geo)), ("PEA/PEI 2018", pea_tables(geo))]
+    fuentes = [
+        ("tabla Guatemala", guatemala_table(geo)),
+        ("PEA/PEI 2018", pea_tables(geo)),
+        ("Votantes 2023", votantes_tablas(geo)),
+    ]
     aportes = []
     for label, parsed in fuentes:
         nuevos = sum(1 for k in parsed if k not in fields_by_muni)
@@ -627,6 +727,30 @@ def main() -> None:
     print(f"  {'derivados':16} {derivados['calculado']:3} calculados, "
           f"{derivados['corregido']:3} corregidos (densidad y duplicación)")
     print(f"  {'descartados':16} {incoherentes:3} PEA/PEI incoherentes (PEA+PEI > población)")
+
+    # Comprobación cruzada: el padrón de los municipios debe sumar el del departamento.
+    deptos = json.loads((DATA_DIR / "departamentos.json").read_text(encoding="utf-8"))
+    total_depto = {
+        d["slug"]: next(
+            (i.get("padron_electoral") for i in d["indicadores"] if i["anio"] == 2025), None
+        )
+        for d in deptos
+    }
+    suma: dict[str, float] = {}
+    for r in out:
+        if r.get("padron_electoral"):
+            suma[r["departamento_slug"]] = suma.get(r["departamento_slug"], 0) + r["padron_electoral"]
+    cuadran = [k for k, v in suma.items() if total_depto.get(k) and abs(v - total_depto[k]) / total_depto[k] < 0.0005]
+    print(f"  {'padrón':16} {len(cuadran):3} de {len(suma)} departamentos cuadran exactamente "
+          f"con la suma de sus municipios")
+    descuadres = sorted(
+        ((k, v, total_depto[k]) for k, v in suma.items()
+         if total_depto.get(k) and k not in cuadran),
+        key=lambda x: abs(x[1] - x[2]) / x[2], reverse=True,
+    )
+    for k, v, t in descuadres:
+        print(f"       {k:16} {v:>10,.0f} vs {t:>10,}  ({(v - t) / t * 100:+.1f}%, "
+              f"el documento omite o aproxima municipios)")
     print("\nField fill rate (of matched):")
     for k in field_keys:
         print(f"  {k:24} {filled[k]:3}/{matched}")

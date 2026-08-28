@@ -40,6 +40,8 @@ async def get_departamentos(
         "esperanza_vida", "analfabetismo_pct", "acceso_agua_pct", "fecundidad",
         "crecimiento_anual_pct", "tiempo_duplicacion_anios", "idh", "idh_ranking",
         "matrimonios_por_1000", "pct_uniones_consensuales", "edad_primera_union",
+        "idh_salud", "idh_educacion", "idh_ingresos",
+        "padron_electoral", "votos_emitidos", "abstencionismo_pct", "participacion_pct",
         "mortalidad_general", "mortalidad_materna",
         "poblacion_activa", "poblacion_ocupada", "poblacion_desocupada",
         "ingreso_medio_anual",

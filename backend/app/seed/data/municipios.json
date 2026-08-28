@@ -21,7 +21,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 10200.0,
     "poblacion_inactiva": 9300.0,
-    "pct_pea": 52.3
+    "pct_pea": 52.3,
+    "padron_electoral": 41806.0,
+    "votos_emitidos": 28305.0,
+    "abstencionismo_pct": 32.29,
+    "participacion_pct": 67.71
   },
   {
     "slug": "chahal",
@@ -45,7 +49,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 7500.0,
     "poblacion_inactiva": 6500.0,
-    "pct_pea": 53.6
+    "pct_pea": 53.6,
+    "padron_electoral": 14478.0,
+    "votos_emitidos": 9652.0,
+    "abstencionismo_pct": 33.33,
+    "participacion_pct": 66.67
   },
   {
     "slug": "chisec",
@@ -69,7 +77,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 25000.0,
     "poblacion_inactiva": 21000.0,
-    "pct_pea": 54.3
+    "pct_pea": 54.3,
+    "padron_electoral": 44067.0,
+    "votos_emitidos": 31886.0,
+    "abstencionismo_pct": 27.64,
+    "participacion_pct": 72.36
   },
   {
     "slug": "coban",
@@ -93,7 +105,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 72000.0,
     "poblacion_inactiva": 56000.0,
-    "pct_pea": 56.3
+    "pct_pea": 56.3,
+    "padron_electoral": 113296.0,
+    "votos_emitidos": 68084.0,
+    "abstencionismo_pct": 39.91,
+    "participacion_pct": 60.09
   },
   {
     "slug": "fray-bartolome-de-las-casas",
@@ -117,7 +133,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 13500.0,
     "poblacion_inactiva": 11500.0,
-    "pct_pea": 54.0
+    "pct_pea": 54.0,
+    "padron_electoral": 32145.0,
+    "votos_emitidos": 16894.0,
+    "abstencionismo_pct": 47.44,
+    "participacion_pct": 52.56
   },
   {
     "slug": "lanquin",
@@ -141,7 +161,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 9000.0,
     "poblacion_inactiva": 8000.0,
-    "pct_pea": 52.9
+    "pct_pea": 52.9,
+    "padron_electoral": 15072.0,
+    "votos_emitidos": 11298.0,
+    "abstencionismo_pct": 25.04,
+    "participacion_pct": 74.96
   },
   {
     "slug": "panzos",
@@ -165,7 +189,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 20500.0,
     "poblacion_inactiva": 18500.0,
-    "pct_pea": 52.6
+    "pct_pea": 52.6,
+    "padron_electoral": 36444.0,
+    "votos_emitidos": 23296.0,
+    "abstencionismo_pct": 36.08,
+    "participacion_pct": 63.92
   },
   {
     "slug": "raxruha",
@@ -189,7 +217,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 11000.0,
     "poblacion_inactiva": 9500.0,
-    "pct_pea": 53.7
+    "pct_pea": 53.7,
+    "padron_electoral": 18126.0,
+    "votos_emitidos": 10623.0,
+    "abstencionismo_pct": 41.39,
+    "participacion_pct": 58.61
   },
   {
     "slug": "san-cristobal-verapaz",
@@ -213,7 +245,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 22000.0,
     "poblacion_inactiva": 17500.0,
-    "pct_pea": 55.7
+    "pct_pea": 55.7,
+    "padron_electoral": 37134.0,
+    "votos_emitidos": 25995.0,
+    "abstencionismo_pct": 30.0,
+    "participacion_pct": 70.0
   },
   {
     "slug": "san-juan-chamelco",
@@ -237,7 +273,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 21000.0,
     "poblacion_inactiva": 18000.0,
-    "pct_pea": 53.8
+    "pct_pea": 53.8,
+    "padron_electoral": 32351.0,
+    "votos_emitidos": 24781.0,
+    "abstencionismo_pct": 23.4,
+    "participacion_pct": 76.6
   },
   {
     "slug": "san-pedro-carcha",
@@ -261,7 +301,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 70000.0,
     "poblacion_inactiva": 62000.0,
-    "pct_pea": 53.0
+    "pct_pea": 53.0,
+    "padron_electoral": 113565.0,
+    "votos_emitidos": 68425.0,
+    "abstencionismo_pct": 39.75,
+    "participacion_pct": 60.25
   },
   {
     "slug": "santa-catalina-la-tinta",
@@ -285,7 +329,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 8000.0,
     "poblacion_inactiva": 7000.0,
-    "pct_pea": 53.3
+    "pct_pea": 53.3,
+    "padron_electoral": 23328.0,
+    "votos_emitidos": 16655.0,
+    "abstencionismo_pct": 28.61,
+    "participacion_pct": 71.39
   },
   {
     "slug": "santa-cruz-verapaz",
@@ -309,7 +357,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 10800.0,
     "poblacion_inactiva": 8200.0,
-    "pct_pea": 56.8
+    "pct_pea": 56.8,
+    "padron_electoral": 17357.0,
+    "votos_emitidos": 12439.0,
+    "abstencionismo_pct": 28.33,
+    "participacion_pct": 71.67
   },
   {
     "slug": "senahu",
@@ -333,7 +385,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 26000.0,
     "poblacion_inactiva": 24000.0,
-    "pct_pea": 52.0
+    "pct_pea": 52.0,
+    "padron_electoral": 47515.0,
+    "votos_emitidos": 31794.0,
+    "abstencionismo_pct": 33.09,
+    "participacion_pct": 66.91
   },
   {
     "slug": "tactic",
@@ -357,7 +413,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 12500.0,
     "poblacion_inactiva": 9500.0,
-    "pct_pea": 56.8
+    "pct_pea": 56.8,
+    "padron_electoral": 21354.0,
+    "votos_emitidos": 14977.0,
+    "abstencionismo_pct": 29.86,
+    "participacion_pct": 70.14
   },
   {
     "slug": "tamahu",
@@ -381,7 +441,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 6800.0,
     "poblacion_inactiva": 5700.0,
-    "pct_pea": 54.4
+    "pct_pea": 54.4,
+    "padron_electoral": 11534.0,
+    "votos_emitidos": 9398.0,
+    "abstencionismo_pct": 18.52,
+    "participacion_pct": 81.48
   },
   {
     "slug": "tucuru",
@@ -405,7 +469,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 17000.0,
     "poblacion_inactiva": 15000.0,
-    "pct_pea": 53.1
+    "pct_pea": 53.1,
+    "padron_electoral": 23824.0,
+    "votos_emitidos": 17908.0,
+    "abstencionismo_pct": 24.83,
+    "participacion_pct": 75.17
   },
   {
     "slug": "cubulco",
@@ -429,7 +497,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 17500.0,
     "poblacion_inactiva": 17500.0,
-    "pct_pea": 50.0
+    "pct_pea": 50.0,
+    "padron_electoral": 33585.0,
+    "votos_emitidos": 18482.0,
+    "abstencionismo_pct": 44.97,
+    "participacion_pct": 55.03
   },
   {
     "slug": "el-chol",
@@ -453,7 +525,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 3000.0,
     "poblacion_inactiva": 3000.0,
-    "pct_pea": 50.0
+    "pct_pea": 50.0,
+    "padron_electoral": 7201.0,
+    "votos_emitidos": 4919.0,
+    "abstencionismo_pct": 31.69,
+    "participacion_pct": 68.31
   },
   {
     "slug": "granados",
@@ -477,7 +553,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 4200.0,
     "poblacion_inactiva": 4300.0,
-    "pct_pea": 49.4
+    "pct_pea": 49.4,
+    "padron_electoral": 10864.0,
+    "votos_emitidos": 7177.0,
+    "abstencionismo_pct": 33.94,
+    "participacion_pct": 66.06
   },
   {
     "slug": "purulha",
@@ -501,7 +581,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 18000.0,
     "poblacion_inactiva": 18000.0,
-    "pct_pea": 50.0
+    "pct_pea": 50.0,
+    "padron_electoral": 28211.0,
+    "votos_emitidos": 19861.0,
+    "abstencionismo_pct": 29.6,
+    "participacion_pct": 70.4
   },
   {
     "slug": "rabinal",
@@ -525,7 +609,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 13200.0,
     "poblacion_inactiva": 13300.0,
-    "pct_pea": 49.8
+    "pct_pea": 49.8,
+    "padron_electoral": 23399.0,
+    "votos_emitidos": 13807.0,
+    "abstencionismo_pct": 40.99,
+    "participacion_pct": 59.01
   },
   {
     "slug": "salama",
@@ -549,7 +637,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 22000.0,
     "poblacion_inactiva": 20500.0,
-    "pct_pea": 51.8
+    "pct_pea": 51.8,
+    "padron_electoral": 39922.0,
+    "votos_emitidos": 21299.0,
+    "abstencionismo_pct": 46.65,
+    "participacion_pct": 53.35
   },
   {
     "slug": "san-jeronimo",
@@ -573,7 +665,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 6500.0,
     "poblacion_inactiva": 6500.0,
-    "pct_pea": 50.0
+    "pct_pea": 50.0,
+    "padron_electoral": 14365.0,
+    "votos_emitidos": 8422.0,
+    "abstencionismo_pct": 41.37,
+    "participacion_pct": 58.63
   },
   {
     "slug": "san-miguel-chicaj",
@@ -597,7 +693,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 10500.0,
     "poblacion_inactiva": 10500.0,
-    "pct_pea": 50.0
+    "pct_pea": 50.0,
+    "padron_electoral": 17765.0,
+    "votos_emitidos": 12277.0,
+    "abstencionismo_pct": 30.89,
+    "participacion_pct": 69.11
   },
   {
     "slug": "acatenango",
@@ -621,7 +721,11 @@
     "tiempo_duplicacion_anios": 30.17,
     "poblacion_activa": 12014.0,
     "poblacion_inactiva": 13699.0,
-    "pct_pea": 46.7
+    "pct_pea": 46.7,
+    "padron_electoral": 14229.0,
+    "votos_emitidos": 10050.0,
+    "abstencionismo_pct": 29.37,
+    "participacion_pct": 70.63
   },
   {
     "slug": "chimaltenango",
@@ -645,7 +749,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 27084.0,
     "poblacion_inactiva": 25100.0,
-    "pct_pea": 51.9
+    "pct_pea": 51.9,
+    "padron_electoral": 57726.0,
+    "votos_emitidos": 35945.0,
+    "abstencionismo_pct": 37.73,
+    "participacion_pct": 62.27
   },
   {
     "slug": "comalapa",
@@ -669,7 +777,11 @@
     "tiempo_duplicacion_anios": 26.12,
     "poblacion_activa": 17474.0,
     "poblacion_inactiva": 20767.0,
-    "pct_pea": 45.7
+    "pct_pea": 45.7,
+    "padron_electoral": 25227.0,
+    "votos_emitidos": 17307.0,
+    "abstencionismo_pct": 31.39,
+    "participacion_pct": 68.61
   },
   {
     "slug": "el-tejar",
@@ -693,7 +805,11 @@
     "tiempo_duplicacion_anios": 24.14,
     "poblacion_activa": 7809.0,
     "poblacion_inactiva": 5892.0,
-    "pct_pea": 57.0
+    "pct_pea": 57.0,
+    "padron_electoral": 15590.0,
+    "votos_emitidos": 9560.0,
+    "abstencionismo_pct": 38.68,
+    "participacion_pct": 61.32
   },
   {
     "slug": "parramos",
@@ -717,7 +833,11 @@
     "tiempo_duplicacion_anios": 22.95,
     "poblacion_activa": 6117.0,
     "poblacion_inactiva": 6827.0,
-    "pct_pea": 47.3
+    "pct_pea": 47.3,
+    "padron_electoral": 10167.0,
+    "votos_emitidos": 7156.0,
+    "abstencionismo_pct": 29.62,
+    "participacion_pct": 70.38
   },
   {
     "slug": "patzicia",
@@ -741,7 +861,11 @@
     "tiempo_duplicacion_anios": 24.56,
     "poblacion_activa": 5343.0,
     "poblacion_inactiva": 6246.0,
-    "pct_pea": 46.1
+    "pct_pea": 46.1,
+    "padron_electoral": 20327.0,
+    "votos_emitidos": 14636.0,
+    "abstencionismo_pct": 28.0,
+    "participacion_pct": 72.0
   },
   {
     "slug": "patzun",
@@ -765,7 +889,11 @@
     "tiempo_duplicacion_anios": 25.09,
     "poblacion_activa": 15032.0,
     "poblacion_inactiva": 17865.0,
-    "pct_pea": 45.7
+    "pct_pea": 45.7,
+    "padron_electoral": 34321.0,
+    "votos_emitidos": 22921.0,
+    "abstencionismo_pct": 33.22,
+    "participacion_pct": 66.78
   },
   {
     "slug": "pochuta",
@@ -789,7 +917,11 @@
     "tiempo_duplicacion_anios": 32.11,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 6251.0,
+    "votos_emitidos": 4098.0,
+    "abstencionismo_pct": 34.44,
+    "participacion_pct": 65.56
   },
   {
     "slug": "san-andres-itzapa",
@@ -813,7 +945,11 @@
     "tiempo_duplicacion_anios": 23.97,
     "poblacion_activa": 5460.0,
     "poblacion_inactiva": 6392.0,
-    "pct_pea": 46.1
+    "pct_pea": 46.1,
+    "padron_electoral": 18111.0,
+    "votos_emitidos": 11102.0,
+    "abstencionismo_pct": 38.7,
+    "participacion_pct": 61.3
   },
   {
     "slug": "san-jose-poaquil",
@@ -837,7 +973,11 @@
     "tiempo_duplicacion_anios": 23.73,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 16132.0,
+    "votos_emitidos": 12690.0,
+    "abstencionismo_pct": 21.34,
+    "participacion_pct": 78.66
   },
   {
     "slug": "san-martin-jilotepeque",
@@ -861,7 +1001,11 @@
     "tiempo_duplicacion_anios": 25.74,
     "poblacion_activa": 19646.0,
     "poblacion_inactiva": 22330.0,
-    "pct_pea": 46.8
+    "pct_pea": 46.8,
+    "padron_electoral": 41283.0,
+    "votos_emitidos": 23666.0,
+    "abstencionismo_pct": 42.67,
+    "participacion_pct": 57.33
   },
   {
     "slug": "santa-apolonia",
@@ -885,7 +1029,11 @@
     "tiempo_duplicacion_anios": 28.57,
     "poblacion_activa": 2052.0,
     "poblacion_inactiva": 2495.0,
-    "pct_pea": 45.1
+    "pct_pea": 45.1,
+    "padron_electoral": 10971.0,
+    "votos_emitidos": 9018.0,
+    "abstencionismo_pct": 17.8,
+    "participacion_pct": 82.2
   },
   {
     "slug": "santa-cruz-balanya",
@@ -909,7 +1057,11 @@
     "tiempo_duplicacion_anios": 27.67,
     "poblacion_activa": 3570.0,
     "poblacion_inactiva": 4276.0,
-    "pct_pea": 45.5
+    "pct_pea": 45.5,
+    "padron_electoral": 6267.0,
+    "votos_emitidos": 4825.0,
+    "abstencionismo_pct": 23.01,
+    "participacion_pct": 76.99
   },
   {
     "slug": "tecpan-guatemala",
@@ -933,7 +1085,11 @@
     "tiempo_duplicacion_anios": 24.91,
     "poblacion_activa": 14626.0,
     "poblacion_inactiva": 16826.0,
-    "pct_pea": 46.5
+    "pct_pea": 46.5,
+    "padron_electoral": 41073.0,
+    "votos_emitidos": 23034.0,
+    "abstencionismo_pct": 43.92,
+    "participacion_pct": 56.08
   },
   {
     "slug": "yepocapa",
@@ -957,7 +1113,11 @@
     "tiempo_duplicacion_anios": 31.11,
     "poblacion_activa": 3352.0,
     "poblacion_inactiva": 4060.0,
-    "pct_pea": 45.2
+    "pct_pea": 45.2,
+    "padron_electoral": 19022.0,
+    "votos_emitidos": 2793.0,
+    "abstencionismo_pct": 85.32,
+    "participacion_pct": 14.68
   },
   {
     "slug": "zaragoza",
@@ -981,7 +1141,11 @@
     "tiempo_duplicacion_anios": 23.49,
     "poblacion_activa": 6003.0,
     "poblacion_inactiva": 6624.0,
-    "pct_pea": 47.5
+    "pct_pea": 47.5,
+    "padron_electoral": 14360.0,
+    "votos_emitidos": 9210.0,
+    "abstencionismo_pct": 35.86,
+    "participacion_pct": 64.14
   },
   {
     "slug": "camotan",
@@ -1005,7 +1169,11 @@
     "tiempo_duplicacion_anios": 46.98,
     "poblacion_activa": 10298.0,
     "poblacion_inactiva": 14809.0,
-    "pct_pea": 41.0
+    "pct_pea": 41.0,
+    "padron_electoral": 31252.0,
+    "votos_emitidos": 20759.0,
+    "abstencionismo_pct": 33.58,
+    "participacion_pct": 66.42
   },
   {
     "slug": "chiquimula",
@@ -1029,7 +1197,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 31953.0,
     "poblacion_inactiva": 36261.0,
-    "pct_pea": 46.8
+    "pct_pea": 46.8,
+    "padron_electoral": 65904.0,
+    "votos_emitidos": 31933.0,
+    "abstencionismo_pct": 51.55,
+    "participacion_pct": 48.45
   },
   {
     "slug": "concepcion-las-minas",
@@ -1053,7 +1225,11 @@
     "tiempo_duplicacion_anios": 67.31,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 11208.0,
+    "votos_emitidos": 5765.0,
+    "abstencionismo_pct": 48.56,
+    "participacion_pct": 51.44
   },
   {
     "slug": "esquipulas",
@@ -1077,7 +1253,11 @@
     "tiempo_duplicacion_anios": 41.67,
     "poblacion_activa": 18728.0,
     "poblacion_inactiva": 22704.0,
-    "pct_pea": 45.2
+    "pct_pea": 45.2,
+    "padron_electoral": 31198.0,
+    "votos_emitidos": 18071.0,
+    "abstencionismo_pct": 42.08,
+    "participacion_pct": 57.92
   },
   {
     "slug": "ipala",
@@ -1101,7 +1281,11 @@
     "tiempo_duplicacion_anios": 47.3,
     "poblacion_activa": 4729.0,
     "poblacion_inactiva": 6187.0,
-    "pct_pea": 43.3
+    "pct_pea": 43.3,
+    "padron_electoral": 16767.0,
+    "votos_emitidos": 9120.0,
+    "abstencionismo_pct": 45.61,
+    "participacion_pct": 54.39
   },
   {
     "slug": "jocotan",
@@ -1125,7 +1309,11 @@
     "tiempo_duplicacion_anios": 46.05,
     "poblacion_activa": 11947.0,
     "poblacion_inactiva": 16678.0,
-    "pct_pea": 41.7
+    "pct_pea": 41.7,
+    "padron_electoral": 38807.0,
+    "votos_emitidos": 22146.0,
+    "abstencionismo_pct": 42.93,
+    "participacion_pct": 57.07
   },
   {
     "slug": "olopa",
@@ -1149,7 +1337,11 @@
     "tiempo_duplicacion_anios": 47.62,
     "poblacion_activa": 5762.0,
     "poblacion_inactiva": 7999.0,
-    "pct_pea": 41.9
+    "pct_pea": 41.9,
+    "padron_electoral": 15800.0,
+    "votos_emitidos": 10938.0,
+    "abstencionismo_pct": 30.77,
+    "participacion_pct": 69.23
   },
   {
     "slug": "quezaltepeque",
@@ -1173,7 +1365,11 @@
     "tiempo_duplicacion_anios": 48.28,
     "poblacion_activa": 4640.0,
     "poblacion_inactiva": 5981.0,
-    "pct_pea": 43.7
+    "pct_pea": 43.7,
+    "padron_electoral": 21863.0,
+    "votos_emitidos": 15218.0,
+    "abstencionismo_pct": 30.39,
+    "participacion_pct": 69.61
   },
   {
     "slug": "san-jacinto",
@@ -1197,7 +1393,11 @@
     "tiempo_duplicacion_anios": 48.61,
     "poblacion_activa": 3677.0,
     "poblacion_inactiva": 4718.0,
-    "pct_pea": 43.8
+    "pct_pea": 43.8,
+    "padron_electoral": 9348.0,
+    "votos_emitidos": 6490.0,
+    "abstencionismo_pct": 30.57,
+    "participacion_pct": 69.43
   },
   {
     "slug": "san-jose-la-arada",
@@ -1221,7 +1421,11 @@
     "tiempo_duplicacion_anios": 59.32,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 7737.0,
+    "votos_emitidos": 5101.0,
+    "abstencionismo_pct": 34.07,
+    "participacion_pct": 65.93
   },
   {
     "slug": "san-juan-ermita",
@@ -1245,7 +1449,11 @@
     "tiempo_duplicacion_anios": 53.03,
     "poblacion_activa": 5143.0,
     "poblacion_inactiva": 6761.0,
-    "pct_pea": 43.2
+    "pct_pea": 43.2,
+    "padron_electoral": 11068.0,
+    "votos_emitidos": 7526.0,
+    "abstencionismo_pct": 32.0,
+    "participacion_pct": 68.0
   },
   {
     "slug": "el-jicaro",
@@ -1269,7 +1477,11 @@
     "tiempo_duplicacion_anios": 53.03,
     "poblacion_activa": 3949.0,
     "poblacion_inactiva": 4693.0,
-    "pct_pea": 45.7
+    "pct_pea": 45.7,
+    "padron_electoral": 9982.0,
+    "votos_emitidos": 6312.0,
+    "abstencionismo_pct": 36.77,
+    "participacion_pct": 63.23
   },
   {
     "slug": "guastatoya",
@@ -1293,7 +1505,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 8915.0,
     "poblacion_inactiva": 9512.0,
-    "pct_pea": 48.4
+    "pct_pea": 48.4,
+    "padron_electoral": 22558.0,
+    "votos_emitidos": 14957.0,
+    "abstencionismo_pct": 33.7,
+    "participacion_pct": 66.3
   },
   {
     "slug": "morazan",
@@ -1317,7 +1533,11 @@
     "tiempo_duplicacion_anios": 47.3,
     "poblacion_activa": 3340.0,
     "poblacion_inactiva": 4088.0,
-    "pct_pea": 45.0
+    "pct_pea": 45.0,
+    "padron_electoral": 9991.0,
+    "votos_emitidos": 6125.0,
+    "abstencionismo_pct": 38.69,
+    "participacion_pct": 61.31
   },
   {
     "slug": "san-agustin-acasaguastlan",
@@ -1341,7 +1561,11 @@
     "tiempo_duplicacion_anios": 40.94,
     "poblacion_activa": 3061.0,
     "poblacion_inactiva": 3839.0,
-    "pct_pea": 44.4
+    "pct_pea": 44.4,
+    "padron_electoral": 26669.0,
+    "votos_emitidos": 16914.0,
+    "abstencionismo_pct": 36.58,
+    "participacion_pct": 63.42
   },
   {
     "slug": "san-antonio-la-paz",
@@ -1365,7 +1589,11 @@
     "tiempo_duplicacion_anios": 49.3,
     "poblacion_activa": 5548.0,
     "poblacion_inactiva": 6656.0,
-    "pct_pea": 45.5
+    "pct_pea": 45.5,
+    "padron_electoral": 13983.0,
+    "votos_emitidos": 8336.0,
+    "abstencionismo_pct": 40.38,
+    "participacion_pct": 59.62
   },
   {
     "slug": "san-cristobal-acasaguastlan",
@@ -1389,7 +1617,11 @@
     "tiempo_duplicacion_anios": 53.85,
     "poblacion_activa": 3111.0,
     "poblacion_inactiva": 3835.0,
-    "pct_pea": 44.8
+    "pct_pea": 44.8,
+    "padron_electoral": 5932.0,
+    "votos_emitidos": 3970.0,
+    "abstencionismo_pct": 33.07,
+    "participacion_pct": 66.93
   },
   {
     "slug": "sanarate",
@@ -1413,7 +1645,11 @@
     "tiempo_duplicacion_anios": 43.21,
     "poblacion_activa": 12472.0,
     "poblacion_inactiva": 14419.0,
-    "pct_pea": 46.4
+    "pct_pea": 46.4,
+    "padron_electoral": 27716.0,
+    "votos_emitidos": 18824.0,
+    "abstencionismo_pct": 32.08,
+    "participacion_pct": 67.92
   },
   {
     "slug": "sansare",
@@ -1437,7 +1673,11 @@
     "tiempo_duplicacion_anios": 53.03,
     "poblacion_activa": 4403.0,
     "poblacion_inactiva": 5313.0,
-    "pct_pea": 45.3
+    "pct_pea": 45.3,
+    "padron_electoral": 10073.0,
+    "votos_emitidos": 6883.0,
+    "abstencionismo_pct": 31.67,
+    "participacion_pct": 68.33
   },
   {
     "slug": "escuintla",
@@ -1461,7 +1701,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 62511.0,
     "poblacion_inactiva": 56976.0,
-    "pct_pea": 52.3
+    "pct_pea": 52.3,
+    "padron_electoral": 85934.0,
+    "votos_emitidos": 47659.0,
+    "abstencionismo_pct": 44.54,
+    "participacion_pct": 55.46
   },
   {
     "slug": "guanagazapa",
@@ -1485,7 +1729,11 @@
     "tiempo_duplicacion_anios": 38.89,
     "poblacion_activa": 6884.0,
     "poblacion_inactiva": 6995.0,
-    "pct_pea": 49.6
+    "pct_pea": 49.6,
+    "padron_electoral": 16697.0,
+    "votos_emitidos": 10114.0,
+    "abstencionismo_pct": 39.43,
+    "participacion_pct": 60.57
   },
   {
     "slug": "iztapa",
@@ -1509,7 +1757,11 @@
     "tiempo_duplicacion_anios": 36.84,
     "poblacion_activa": 6246.0,
     "poblacion_inactiva": 6172.0,
-    "pct_pea": 50.3
+    "pct_pea": 50.3,
+    "padron_electoral": 16379.0,
+    "votos_emitidos": 12254.0,
+    "abstencionismo_pct": 25.18,
+    "participacion_pct": 74.82
   },
   {
     "slug": "la-democracia",
@@ -1533,7 +1785,11 @@
     "tiempo_duplicacion_anios": 33.33,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 19982.0,
+    "votos_emitidos": 12326.0,
+    "abstencionismo_pct": 38.31,
+    "participacion_pct": 61.69
   },
   {
     "slug": "la-gomera",
@@ -1557,7 +1813,11 @@
     "tiempo_duplicacion_anios": 35.0,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 25526.0,
+    "votos_emitidos": 15364.0,
+    "abstencionismo_pct": 39.81,
+    "participacion_pct": 60.19
   },
   {
     "slug": "masagua",
@@ -1581,7 +1841,11 @@
     "tiempo_duplicacion_anios": 31.82,
     "poblacion_activa": 11440.0,
     "poblacion_inactiva": 11324.0,
-    "pct_pea": 50.3
+    "pct_pea": 50.3,
+    "padron_electoral": 31423.0,
+    "votos_emitidos": 20956.0,
+    "abstencionismo_pct": 33.31,
+    "participacion_pct": 66.69
   },
   {
     "slug": "nueva-concepcion",
@@ -1605,7 +1869,11 @@
     "tiempo_duplicacion_anios": 30.43,
     "poblacion_activa": 5260.0,
     "poblacion_inactiva": 5474.0,
-    "pct_pea": 49.0
+    "pct_pea": 49.0,
+    "padron_electoral": 41832.0,
+    "votos_emitidos": 22777.0,
+    "abstencionismo_pct": 45.55,
+    "participacion_pct": 54.45
   },
   {
     "slug": "palin",
@@ -1629,7 +1897,11 @@
     "tiempo_duplicacion_anios": 22.58,
     "poblacion_activa": 18771.0,
     "poblacion_inactiva": 18141.0,
-    "pct_pea": 50.8
+    "pct_pea": 50.8,
+    "padron_electoral": 36670.0,
+    "votos_emitidos": 25770.0,
+    "abstencionismo_pct": 29.72,
+    "participacion_pct": 70.28
   },
   {
     "slug": "san-jose",
@@ -1653,7 +1925,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 11894.0,
     "poblacion_inactiva": 11753.0,
-    "pct_pea": 50.3
+    "pct_pea": 50.3,
+    "padron_electoral": 38934.0,
+    "votos_emitidos": 24887.0,
+    "abstencionismo_pct": 36.08,
+    "participacion_pct": 63.92
   },
   {
     "slug": "san-vicente-pacaya",
@@ -1677,7 +1953,11 @@
     "tiempo_duplicacion_anios": 41.18,
     "poblacion_activa": 5533.0,
     "poblacion_inactiva": 5713.0,
-    "pct_pea": 49.2
+    "pct_pea": 49.2,
+    "padron_electoral": 12457.0,
+    "votos_emitidos": 9168.0,
+    "abstencionismo_pct": 26.4,
+    "participacion_pct": 73.6
   },
   {
     "slug": "santa-lucia-cotzumalguapa",
@@ -1701,7 +1981,11 @@
     "tiempo_duplicacion_anios": 24.14,
     "poblacion_activa": 38160.0,
     "poblacion_inactiva": 36663.0,
-    "pct_pea": 51.0
+    "pct_pea": 51.0,
+    "padron_electoral": 66139.0,
+    "votos_emitidos": 40524.0,
+    "abstencionismo_pct": 38.73,
+    "participacion_pct": 61.27
   },
   {
     "slug": "sipacate",
@@ -1725,7 +2009,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 3370.0,
     "poblacion_inactiva": 3638.0,
-    "pct_pea": 48.1
+    "pct_pea": 48.1,
+    "padron_electoral": 12305.0,
+    "votos_emitidos": 8607.0,
+    "abstencionismo_pct": 30.05,
+    "participacion_pct": 69.95
   },
   {
     "slug": "siquinala",
@@ -1749,7 +2037,11 @@
     "tiempo_duplicacion_anios": 29.17,
     "poblacion_activa": 7242.0,
     "poblacion_inactiva": 7290.0,
-    "pct_pea": 49.8
+    "pct_pea": 49.8,
+    "padron_electoral": 17079.0,
+    "votos_emitidos": 11409.0,
+    "abstencionismo_pct": 33.2,
+    "participacion_pct": 66.8
   },
   {
     "slug": "tiquisate",
@@ -1773,7 +2065,11 @@
     "tiempo_duplicacion_anios": 28.0,
     "poblacion_activa": 19989.0,
     "poblacion_inactiva": 19752.0,
-    "pct_pea": 50.3
+    "pct_pea": 50.3,
+    "padron_electoral": 35822.0,
+    "votos_emitidos": 18461.0,
+    "abstencionismo_pct": 48.46,
+    "participacion_pct": 51.54
   },
   {
     "slug": "amatitlan",
@@ -1797,7 +2093,11 @@
     "tiempo_duplicacion_anios": 39.0,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 78651.0,
+    "votos_emitidos": 45035.0,
+    "abstencionismo_pct": 42.74,
+    "participacion_pct": 57.26
   },
   {
     "slug": "chinautla",
@@ -1821,7 +2121,11 @@
     "tiempo_duplicacion_anios": 24.0,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 81668.0,
+    "votos_emitidos": 40157.0,
+    "abstencionismo_pct": 50.83,
+    "participacion_pct": 49.17
   },
   {
     "slug": "chuarrancho",
@@ -1845,7 +2149,11 @@
     "tiempo_duplicacion_anios": 46.0,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 12624.0,
+    "votos_emitidos": 9086.0,
+    "abstencionismo_pct": 28.03,
+    "participacion_pct": 71.97
   },
   {
     "slug": "fraijanes",
@@ -1869,7 +2177,11 @@
     "tiempo_duplicacion_anios": 28.0,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 32091.0,
+    "votos_emitidos": 22988.0,
+    "abstencionismo_pct": 28.37,
+    "participacion_pct": 71.63
   },
   {
     "slug": "guatemala",
@@ -1893,7 +2205,11 @@
     "tiempo_duplicacion_anios": 56.0,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 831462.0,
+    "votos_emitidos": 467135.0,
+    "abstencionismo_pct": 43.82,
+    "participacion_pct": 56.18
   },
   {
     "slug": "mixco",
@@ -1917,7 +2233,11 @@
     "tiempo_duplicacion_anios": 27.0,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 297506.0,
+    "votos_emitidos": 186687.0,
+    "abstencionismo_pct": 37.25,
+    "participacion_pct": 62.75
   },
   {
     "slug": "palencia",
@@ -1941,7 +2261,11 @@
     "tiempo_duplicacion_anios": 36.0,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 37775.0,
+    "votos_emitidos": 19865.0,
+    "abstencionismo_pct": 47.41,
+    "participacion_pct": 52.59
   },
   {
     "slug": "petapa",
@@ -1965,7 +2289,11 @@
     "tiempo_duplicacion_anios": 25.0,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 82611.0,
+    "votos_emitidos": 51497.0,
+    "abstencionismo_pct": 37.66,
+    "participacion_pct": 62.34
   },
   {
     "slug": "san-jose-del-golfo",
@@ -1989,7 +2317,11 @@
     "tiempo_duplicacion_anios": 38.0,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 8733.0,
+    "votos_emitidos": null,
+    "abstencionismo_pct": null,
+    "participacion_pct": null
   },
   {
     "slug": "san-jose-pinula",
@@ -2013,7 +2345,11 @@
     "tiempo_duplicacion_anios": 28.0,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 46334.0,
+    "votos_emitidos": 29380.0,
+    "abstencionismo_pct": 36.59,
+    "participacion_pct": 63.41
   },
   {
     "slug": "san-juan-sacatepequez",
@@ -2037,7 +2373,11 @@
     "tiempo_duplicacion_anios": 25.0,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 124115.0,
+    "votos_emitidos": 70281.0,
+    "abstencionismo_pct": 43.37,
+    "participacion_pct": 56.63
   },
   {
     "slug": "san-pedro-ayampuc",
@@ -2061,7 +2401,11 @@
     "tiempo_duplicacion_anios": 22.0,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 33942.0,
+    "votos_emitidos": 18994.0,
+    "abstencionismo_pct": 44.04,
+    "participacion_pct": 55.96
   },
   {
     "slug": "san-pedro-sacatepequez",
@@ -2085,7 +2429,11 @@
     "tiempo_duplicacion_anios": 42.0,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 28302.0,
+    "votos_emitidos": 21827.0,
+    "abstencionismo_pct": 22.88,
+    "participacion_pct": 77.12
   },
   {
     "slug": "san-raimundo",
@@ -2109,7 +2457,11 @@
     "tiempo_duplicacion_anios": 33.0,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 19956.0,
+    "votos_emitidos": 12628.0,
+    "abstencionismo_pct": 36.72,
+    "participacion_pct": 63.28
   },
   {
     "slug": "santa-catarina-pinula",
@@ -2133,7 +2485,11 @@
     "tiempo_duplicacion_anios": 32.0,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 56702.0,
+    "votos_emitidos": 38213.0,
+    "abstencionismo_pct": 32.61,
+    "participacion_pct": 67.39
   },
   {
     "slug": "villa-canales",
@@ -2157,7 +2513,11 @@
     "tiempo_duplicacion_anios": 24.0,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 88301.0,
+    "votos_emitidos": 52548.0,
+    "abstencionismo_pct": 40.49,
+    "participacion_pct": 59.51
   },
   {
     "slug": "villa-nueva",
@@ -2181,7 +2541,11 @@
     "tiempo_duplicacion_anios": 23.0,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 254487.0,
+    "votos_emitidos": 149387.0,
+    "abstencionismo_pct": 41.3,
+    "participacion_pct": 58.7
   },
   {
     "slug": "aguacatan",
@@ -2205,7 +2569,11 @@
     "tiempo_duplicacion_anios": 32.71,
     "poblacion_activa": 9257.0,
     "poblacion_inactiva": 12889.0,
-    "pct_pea": 41.8
+    "pct_pea": 41.8,
+    "padron_electoral": 32958.0,
+    "votos_emitidos": 15103.0,
+    "abstencionismo_pct": 54.18,
+    "participacion_pct": 45.82
   },
   {
     "slug": "barillas",
@@ -2229,7 +2597,11 @@
     "tiempo_duplicacion_anios": 30.97,
     "poblacion_activa": 10301.0,
     "poblacion_inactiva": 14462.0,
-    "pct_pea": 41.6
+    "pct_pea": 41.6,
+    "padron_electoral": 55528.0,
+    "votos_emitidos": 25377.0,
+    "abstencionismo_pct": 54.3,
+    "participacion_pct": 45.7
   },
   {
     "slug": "chiantla",
@@ -2253,7 +2625,11 @@
     "tiempo_duplicacion_anios": 33.02,
     "poblacion_activa": 18141.0,
     "poblacion_inactiva": 24048.0,
-    "pct_pea": 43.0
+    "pct_pea": 43.0,
+    "padron_electoral": 45765.0,
+    "votos_emitidos": 21027.0,
+    "abstencionismo_pct": 54.05,
+    "participacion_pct": 45.95
   },
   {
     "slug": "colotenango",
@@ -2277,7 +2653,11 @@
     "tiempo_duplicacion_anios": 31.11,
     "poblacion_activa": 7811.0,
     "poblacion_inactiva": 12065.0,
-    "pct_pea": 39.3
+    "pct_pea": 39.3,
+    "padron_electoral": 20651.0,
+    "votos_emitidos": 12378.0,
+    "abstencionismo_pct": 40.06,
+    "participacion_pct": 59.94
   },
   {
     "slug": "concepcion-huista",
@@ -2301,7 +2681,11 @@
     "tiempo_duplicacion_anios": 34.65,
     "poblacion_activa": 6313.0,
     "poblacion_inactiva": 9429.0,
-    "pct_pea": 40.1
+    "pct_pea": 40.1,
+    "padron_electoral": 11569.0,
+    "votos_emitidos": 6914.0,
+    "abstencionismo_pct": 40.24,
+    "participacion_pct": 59.76
   },
   {
     "slug": "cuilco",
@@ -2325,7 +2709,11 @@
     "tiempo_duplicacion_anios": 33.65,
     "poblacion_activa": 10882.0,
     "poblacion_inactiva": 14965.0,
-    "pct_pea": 42.1
+    "pct_pea": 42.1,
+    "padron_electoral": 29651.0,
+    "votos_emitidos": 11977.0,
+    "abstencionismo_pct": 59.61,
+    "participacion_pct": 40.39
   },
   {
     "slug": "huehuetenango",
@@ -2349,7 +2737,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 43453.0,
     "poblacion_inactiva": 45793.0,
-    "pct_pea": 48.7
+    "pct_pea": 48.7,
+    "padron_electoral": 70479.0,
+    "votos_emitidos": 39299.0,
+    "abstencionismo_pct": 44.24,
+    "participacion_pct": 55.76
   },
   {
     "slug": "ixtahuacan",
@@ -2373,7 +2765,11 @@
     "tiempo_duplicacion_anios": 30.7,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 25563.0,
+    "votos_emitidos": 16447.0,
+    "abstencionismo_pct": 35.66,
+    "participacion_pct": 64.34
   },
   {
     "slug": "jacaltenango",
@@ -2397,7 +2793,11 @@
     "tiempo_duplicacion_anios": 29.79,
     "poblacion_activa": 5620.0,
     "poblacion_inactiva": 9343.0,
-    "pct_pea": 37.6
+    "pct_pea": 37.6,
+    "padron_electoral": 25921.0,
+    "votos_emitidos": 14371.0,
+    "abstencionismo_pct": 44.56,
+    "participacion_pct": 55.44
   },
   {
     "slug": "la-democracia",
@@ -2421,7 +2821,11 @@
     "tiempo_duplicacion_anios": 34.83,
     "poblacion_activa": 2856.0,
     "poblacion_inactiva": 4968.0,
-    "pct_pea": 36.5
+    "pct_pea": 36.5,
+    "padron_electoral": 35353.0,
+    "votos_emitidos": 14738.0,
+    "abstencionismo_pct": 58.31,
+    "participacion_pct": 41.69
   },
   {
     "slug": "la-libertad",
@@ -2445,7 +2849,11 @@
     "tiempo_duplicacion_anios": 36.46,
     "poblacion_activa": 9375.0,
     "poblacion_inactiva": 13599.0,
-    "pct_pea": 40.8
+    "pct_pea": 40.8,
+    "padron_electoral": 24582.0,
+    "votos_emitidos": 11184.0,
+    "abstencionismo_pct": 54.5,
+    "participacion_pct": 45.5
   },
   {
     "slug": "malacatancito",
@@ -2469,7 +2877,11 @@
     "tiempo_duplicacion_anios": 37.43,
     "poblacion_activa": 7551.0,
     "poblacion_inactiva": 10728.0,
-    "pct_pea": 41.3
+    "pct_pea": 41.3,
+    "padron_electoral": 11796.0,
+    "votos_emitidos": 6978.0,
+    "abstencionismo_pct": 40.84,
+    "participacion_pct": 59.16
   },
   {
     "slug": "nenton",
@@ -2493,7 +2905,39 @@
     "tiempo_duplicacion_anios": 32.56,
     "poblacion_activa": 4877.0,
     "poblacion_inactiva": 8340.0,
-    "pct_pea": 36.9
+    "pct_pea": 36.9,
+    "padron_electoral": 25947.0,
+    "votos_emitidos": 16285.0,
+    "abstencionismo_pct": 37.24,
+    "participacion_pct": 62.76
+  },
+  {
+    "slug": "petatan",
+    "nombre": "Petatán",
+    "departamento_slug": "huehuetenango",
+    "departamento": "Huehuetenango",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null,
+    "padron_electoral": 3606.0,
+    "votos_emitidos": 2410.0,
+    "abstencionismo_pct": 33.17,
+    "participacion_pct": 66.83
   },
   {
     "slug": "san-antonio-huista",
@@ -2517,7 +2961,11 @@
     "tiempo_duplicacion_anios": 35.35,
     "poblacion_activa": 5126.0,
     "poblacion_inactiva": 8616.0,
-    "pct_pea": 37.3
+    "pct_pea": 37.3,
+    "padron_electoral": 10257.0,
+    "votos_emitidos": 6064.0,
+    "abstencionismo_pct": 40.88,
+    "participacion_pct": 59.12
   },
   {
     "slug": "san-gaspar-ixchil",
@@ -2541,7 +2989,11 @@
     "tiempo_duplicacion_anios": 32.26,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 5548.0,
+    "votos_emitidos": 3523.0,
+    "abstencionismo_pct": 36.5,
+    "participacion_pct": 63.5
   },
   {
     "slug": "san-juan-atitan",
@@ -2565,7 +3017,11 @@
     "tiempo_duplicacion_anios": 31.39,
     "poblacion_activa": 4996.0,
     "poblacion_inactiva": 7652.0,
-    "pct_pea": 39.5
+    "pct_pea": 39.5,
+    "padron_electoral": 14898.0,
+    "votos_emitidos": 10859.0,
+    "abstencionismo_pct": 27.11,
+    "participacion_pct": 72.89
   },
   {
     "slug": "san-juan-ixcoy",
@@ -2589,7 +3045,11 @@
     "tiempo_duplicacion_anios": 32.56,
     "poblacion_activa": 8763.0,
     "poblacion_inactiva": 12920.0,
-    "pct_pea": 40.4
+    "pct_pea": 40.4,
+    "padron_electoral": 13573.0,
+    "votos_emitidos": 6274.0,
+    "abstencionismo_pct": 53.78,
+    "participacion_pct": 46.22
   },
   {
     "slug": "san-mateo-ixtatan",
@@ -2613,7 +3073,11 @@
     "tiempo_duplicacion_anios": 32.11,
     "poblacion_activa": 9601.0,
     "poblacion_inactiva": 13817.0,
-    "pct_pea": 41.0
+    "pct_pea": 41.0,
+    "padron_electoral": 25674.0,
+    "votos_emitidos": 15852.0,
+    "abstencionismo_pct": 38.26,
+    "participacion_pct": 61.74
   },
   {
     "slug": "san-miguel-acatan",
@@ -2637,7 +3101,11 @@
     "tiempo_duplicacion_anios": 32.11,
     "poblacion_activa": 5863.0,
     "poblacion_inactiva": 9566.0,
-    "pct_pea": 38.0
+    "pct_pea": 38.0,
+    "padron_electoral": 17394.0,
+    "votos_emitidos": 10037.0,
+    "abstencionismo_pct": 42.3,
+    "participacion_pct": 57.7
   },
   {
     "slug": "san-pedro-necta",
@@ -2661,7 +3129,11 @@
     "tiempo_duplicacion_anios": 31.67,
     "poblacion_activa": 11224.0,
     "poblacion_inactiva": 15248.0,
-    "pct_pea": 42.4
+    "pct_pea": 42.4,
+    "padron_electoral": 22003.0,
+    "votos_emitidos": 12913.0,
+    "abstencionismo_pct": 41.31,
+    "participacion_pct": 58.69
   },
   {
     "slug": "san-rafael-la-independencia",
@@ -2685,7 +3157,11 @@
     "tiempo_duplicacion_anios": 34.15,
     "poblacion_activa": 6412.0,
     "poblacion_inactiva": 10462.0,
-    "pct_pea": 38.0
+    "pct_pea": 38.0,
+    "padron_electoral": 9934.0,
+    "votos_emitidos": 6389.0,
+    "abstencionismo_pct": 35.69,
+    "participacion_pct": 64.31
   },
   {
     "slug": "san-rafael-petzal",
@@ -2709,7 +3185,11 @@
     "tiempo_duplicacion_anios": 31.67,
     "poblacion_activa": 2426.0,
     "poblacion_inactiva": 4366.0,
-    "pct_pea": 35.7
+    "pct_pea": 35.7,
+    "padron_electoral": 7812.0,
+    "votos_emitidos": 6219.0,
+    "abstencionismo_pct": 20.39,
+    "participacion_pct": 79.61
   },
   {
     "slug": "san-sebastian-coatan",
@@ -2733,7 +3213,11 @@
     "tiempo_duplicacion_anios": 33.02,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 14417.0,
+    "votos_emitidos": 9898.0,
+    "abstencionismo_pct": 31.34,
+    "participacion_pct": 68.66
   },
   {
     "slug": "san-sebastian-huehuetenango",
@@ -2757,7 +3241,11 @@
     "tiempo_duplicacion_anios": 33.02,
     "poblacion_activa": 7279.0,
     "poblacion_inactiva": 11363.0,
-    "pct_pea": 39.0
+    "pct_pea": 39.0,
+    "padron_electoral": 20642.0,
+    "votos_emitidos": 15470.0,
+    "abstencionismo_pct": 25.06,
+    "participacion_pct": 74.94
   },
   {
     "slug": "santa-ana-huista",
@@ -2781,7 +3269,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 2076.0,
     "poblacion_inactiva": 3871.0,
-    "pct_pea": 34.9
+    "pct_pea": 34.9,
+    "padron_electoral": 6557.0,
+    "votos_emitidos": 4187.0,
+    "abstencionismo_pct": 36.14,
+    "participacion_pct": 63.86
   },
   {
     "slug": "santa-barbara",
@@ -2805,7 +3297,11 @@
     "tiempo_duplicacion_anios": 35.9,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 18886.0,
+    "votos_emitidos": 13084.0,
+    "abstencionismo_pct": 30.72,
+    "participacion_pct": 69.28
   },
   {
     "slug": "santa-eulalia",
@@ -2829,7 +3325,11 @@
     "tiempo_duplicacion_anios": 33.33,
     "poblacion_activa": 6940.0,
     "poblacion_inactiva": 11008.0,
-    "pct_pea": 38.7
+    "pct_pea": 38.7,
+    "padron_electoral": 22477.0,
+    "votos_emitidos": 12729.0,
+    "abstencionismo_pct": 43.37,
+    "participacion_pct": 56.63
   },
   {
     "slug": "santiago-chimaltenango",
@@ -2853,7 +3353,11 @@
     "tiempo_duplicacion_anios": 31.82,
     "poblacion_activa": 4294.0,
     "poblacion_inactiva": 6773.0,
-    "pct_pea": 38.8
+    "pct_pea": 38.8,
+    "padron_electoral": 7490.0,
+    "votos_emitidos": 5569.0,
+    "abstencionismo_pct": 25.65,
+    "participacion_pct": 74.35
   },
   {
     "slug": "soloma",
@@ -2877,7 +3381,11 @@
     "tiempo_duplicacion_anios": 28.93,
     "poblacion_activa": 8257.0,
     "poblacion_inactiva": 12485.0,
-    "pct_pea": 39.8
+    "pct_pea": 39.8,
+    "padron_electoral": 29355.0,
+    "votos_emitidos": 12235.0,
+    "abstencionismo_pct": 58.32,
+    "participacion_pct": 41.68
   },
   {
     "slug": "tectitan",
@@ -2901,7 +3409,11 @@
     "tiempo_duplicacion_anios": 34.15,
     "poblacion_activa": 3853.0,
     "poblacion_inactiva": 7123.0,
-    "pct_pea": 35.1
+    "pct_pea": 35.1,
+    "padron_electoral": 6734.0,
+    "votos_emitidos": 4655.0,
+    "abstencionismo_pct": 30.87,
+    "participacion_pct": 69.13
   },
   {
     "slug": "todos-santos-cuchumatan",
@@ -2925,7 +3437,11 @@
     "tiempo_duplicacion_anios": 34.48,
     "poblacion_activa": 4670.0,
     "poblacion_inactiva": 8224.0,
-    "pct_pea": 36.2
+    "pct_pea": 36.2,
+    "padron_electoral": 21117.0,
+    "votos_emitidos": 12194.0,
+    "abstencionismo_pct": 42.26,
+    "participacion_pct": 57.74
   },
   {
     "slug": "union-cantinil",
@@ -2949,7 +3465,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 3425.0,
     "poblacion_inactiva": 6418.0,
-    "pct_pea": 34.8
+    "pct_pea": 34.8,
+    "padron_electoral": 8816.0,
+    "votos_emitidos": 3881.0,
+    "abstencionismo_pct": 55.98,
+    "participacion_pct": 44.02
   },
   {
     "slug": "el-estor",
@@ -2973,7 +3493,11 @@
     "tiempo_duplicacion_anios": 28.0,
     "poblacion_activa": 32411.0,
     "poblacion_inactiva": 40917.0,
-    "pct_pea": 44.2
+    "pct_pea": 44.2,
+    "padron_electoral": 39487.0,
+    "votos_emitidos": 27336.0,
+    "abstencionismo_pct": 30.77,
+    "participacion_pct": 69.23
   },
   {
     "slug": "livingston",
@@ -2997,7 +3521,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 32042.0,
     "poblacion_inactiva": 41450.0,
-    "pct_pea": 43.6
+    "pct_pea": 43.6,
+    "padron_electoral": 45860.0,
+    "votos_emitidos": 25169.0,
+    "abstencionismo_pct": 45.12,
+    "participacion_pct": 54.88
   },
   {
     "slug": "los-amates",
@@ -3021,7 +3549,11 @@
     "tiempo_duplicacion_anios": 35.0,
     "poblacion_activa": 29337.0,
     "poblacion_inactiva": 31577.0,
-    "pct_pea": 48.2
+    "pct_pea": 48.2,
+    "padron_electoral": 36452.0,
+    "votos_emitidos": 19243.0,
+    "abstencionismo_pct": 47.21,
+    "participacion_pct": 52.79
   },
   {
     "slug": "morales",
@@ -3045,7 +3577,11 @@
     "tiempo_duplicacion_anios": 30.43,
     "poblacion_activa": 46668.0,
     "poblacion_inactiva": 53693.0,
-    "pct_pea": 46.5
+    "pct_pea": 46.5,
+    "padron_electoral": 61158.0,
+    "votos_emitidos": 34333.0,
+    "abstencionismo_pct": 43.86,
+    "participacion_pct": 56.14
   },
   {
     "slug": "puerto-barrios",
@@ -3069,7 +3605,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 48787.0,
     "poblacion_inactiva": 51806.0,
-    "pct_pea": 48.5
+    "pct_pea": 48.5,
+    "padron_electoral": 68043.0,
+    "votos_emitidos": 36617.0,
+    "abstencionismo_pct": 46.19,
+    "participacion_pct": 53.81
   },
   {
     "slug": "jalapa",
@@ -3093,7 +3633,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 27146.0,
     "poblacion_inactiva": 30796.0,
-    "pct_pea": 46.9
+    "pct_pea": 46.9,
+    "padron_electoral": 79314.0,
+    "votos_emitidos": 41848.0,
+    "abstencionismo_pct": 47.24,
+    "participacion_pct": 52.76
   },
   {
     "slug": "mataquescuintla",
@@ -3117,7 +3661,11 @@
     "tiempo_duplicacion_anios": 40.94,
     "poblacion_activa": 9412.0,
     "poblacion_inactiva": 12226.0,
-    "pct_pea": 43.5
+    "pct_pea": 43.5,
+    "padron_electoral": 23367.0,
+    "votos_emitidos": 12438.0,
+    "abstencionismo_pct": 46.77,
+    "participacion_pct": 53.23
   },
   {
     "slug": "monjas",
@@ -3141,7 +3689,11 @@
     "tiempo_duplicacion_anios": 38.46,
     "poblacion_activa": 6525.0,
     "poblacion_inactiva": 8354.0,
-    "pct_pea": 43.9
+    "pct_pea": 43.9,
+    "padron_electoral": 20428.0,
+    "votos_emitidos": 12617.0,
+    "abstencionismo_pct": 38.24,
+    "participacion_pct": 61.76
   },
   {
     "slug": "san-carlos-alzatate",
@@ -3165,7 +3717,11 @@
     "tiempo_duplicacion_anios": 47.62,
     "poblacion_activa": 4235.0,
     "poblacion_inactiva": 5638.0,
-    "pct_pea": 42.9
+    "pct_pea": 42.9,
+    "padron_electoral": 12035.0,
+    "votos_emitidos": 9201.0,
+    "abstencionismo_pct": 23.55,
+    "participacion_pct": 76.45
   },
   {
     "slug": "san-luis-jilotepeque",
@@ -3189,7 +3745,11 @@
     "tiempo_duplicacion_anios": 42.42,
     "poblacion_activa": 9844.0,
     "poblacion_inactiva": 12950.0,
-    "pct_pea": 43.2
+    "pct_pea": 43.2,
+    "padron_electoral": 17896.0,
+    "votos_emitidos": 12135.0,
+    "abstencionismo_pct": 32.19,
+    "participacion_pct": 67.81
   },
   {
     "slug": "san-manuel-chaparron",
@@ -3213,7 +3773,11 @@
     "tiempo_duplicacion_anios": 44.03,
     "poblacion_activa": 4745.0,
     "poblacion_inactiva": 6341.0,
-    "pct_pea": 42.8
+    "pct_pea": 42.8,
+    "padron_electoral": 6918.0,
+    "votos_emitidos": 4793.0,
+    "abstencionismo_pct": 30.72,
+    "participacion_pct": 69.28
   },
   {
     "slug": "san-pedro-pinula",
@@ -3237,7 +3801,11 @@
     "tiempo_duplicacion_anios": 39.33,
     "poblacion_activa": 13563.0,
     "poblacion_inactiva": 17924.0,
-    "pct_pea": 43.1
+    "pct_pea": 43.1,
+    "padron_electoral": 32136.0,
+    "votos_emitidos": 16419.0,
+    "abstencionismo_pct": 48.91,
+    "participacion_pct": 51.09
   },
   {
     "slug": "agua-blanca",
@@ -3261,7 +3829,11 @@
     "tiempo_duplicacion_anios": 53.44,
     "poblacion_activa": 3744.0,
     "poblacion_inactiva": 4746.0,
-    "pct_pea": 44.1
+    "pct_pea": 44.1,
+    "padron_electoral": 14397.0,
+    "votos_emitidos": 8318.0,
+    "abstencionismo_pct": 42.22,
+    "participacion_pct": 57.78
   },
   {
     "slug": "asuncion-mita",
@@ -3285,7 +3857,11 @@
     "tiempo_duplicacion_anios": 47.3,
     "poblacion_activa": 13281.0,
     "poblacion_inactiva": 15363.0,
-    "pct_pea": 46.4
+    "pct_pea": 46.4,
+    "padron_electoral": 33332.0,
+    "votos_emitidos": 18267.0,
+    "abstencionismo_pct": 45.2,
+    "participacion_pct": 54.8
   },
   {
     "slug": "atescatempa",
@@ -3309,7 +3885,11 @@
     "tiempo_duplicacion_anios": 53.03,
     "poblacion_activa": 4257.0,
     "poblacion_inactiva": 5160.0,
-    "pct_pea": 45.2
+    "pct_pea": 45.2,
+    "padron_electoral": 14430.0,
+    "votos_emitidos": 10304.0,
+    "abstencionismo_pct": 28.59,
+    "participacion_pct": 71.41
   },
   {
     "slug": "comapa",
@@ -3333,7 +3913,11 @@
     "tiempo_duplicacion_anios": 52.24,
     "poblacion_activa": 5242.0,
     "poblacion_inactiva": 6460.0,
-    "pct_pea": 44.8
+    "pct_pea": 44.8,
+    "padron_electoral": 20102.0,
+    "votos_emitidos": 14722.0,
+    "abstencionismo_pct": 26.76,
+    "participacion_pct": 73.24
   },
   {
     "slug": "conguaco",
@@ -3357,7 +3941,11 @@
     "tiempo_duplicacion_anios": 49.65,
     "poblacion_activa": 3943.0,
     "poblacion_inactiva": 5000.0,
-    "pct_pea": 44.1
+    "pct_pea": 44.1,
+    "padron_electoral": 15419.0,
+    "votos_emitidos": 10762.0,
+    "abstencionismo_pct": 30.2,
+    "participacion_pct": 69.8
   },
   {
     "slug": "el-adelanto",
@@ -3381,7 +3969,11 @@
     "tiempo_duplicacion_anios": 57.85,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 6389.0,
+    "votos_emitidos": 4193.0,
+    "abstencionismo_pct": 34.37,
+    "participacion_pct": 65.63
   },
   {
     "slug": "el-progreso",
@@ -3405,7 +3997,11 @@
     "tiempo_duplicacion_anios": 104.48,
     "poblacion_activa": 3333.0,
     "poblacion_inactiva": 4279.0,
-    "pct_pea": 43.8
+    "pct_pea": 43.8,
+    "padron_electoral": 17762.0,
+    "votos_emitidos": 10562.0,
+    "abstencionismo_pct": 40.54,
+    "participacion_pct": 59.46
   },
   {
     "slug": "jalpatagua",
@@ -3429,7 +4025,11 @@
     "tiempo_duplicacion_anios": 48.61,
     "poblacion_activa": 5946.0,
     "poblacion_inactiva": 7268.0,
-    "pct_pea": 45.0
+    "pct_pea": 45.0,
+    "padron_electoral": 21637.0,
+    "votos_emitidos": 13043.0,
+    "abstencionismo_pct": 39.72,
+    "participacion_pct": 60.28
   },
   {
     "slug": "jerez",
@@ -3453,7 +4053,11 @@
     "tiempo_duplicacion_anios": 56.45,
     "poblacion_activa": 2404.0,
     "poblacion_inactiva": 3084.0,
-    "pct_pea": 43.8
+    "pct_pea": 43.8,
+    "padron_electoral": 5592.0,
+    "votos_emitidos": 3891.0,
+    "abstencionismo_pct": 30.42,
+    "participacion_pct": 69.58
   },
   {
     "slug": "jutiapa",
@@ -3477,7 +4081,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 28919.0,
     "poblacion_inactiva": 30954.0,
-    "pct_pea": 48.3
+    "pct_pea": 48.3,
+    "padron_electoral": 71283.0,
+    "votos_emitidos": 35129.0,
+    "abstencionismo_pct": 50.72,
+    "participacion_pct": 49.28
   },
   {
     "slug": "moyuta",
@@ -3501,7 +4109,11 @@
     "tiempo_duplicacion_anios": 52.24,
     "poblacion_activa": 8446.0,
     "poblacion_inactiva": 10080.0,
-    "pct_pea": 45.6
+    "pct_pea": 45.6,
+    "padron_electoral": 26370.0,
+    "votos_emitidos": 16106.0,
+    "abstencionismo_pct": 38.92,
+    "participacion_pct": 61.08
   },
   {
     "slug": "pasaco",
@@ -3525,7 +4137,11 @@
     "tiempo_duplicacion_anios": 40.7,
     "poblacion_activa": 2608.0,
     "poblacion_inactiva": 3333.0,
-    "pct_pea": 43.9
+    "pct_pea": 43.9,
+    "padron_electoral": 9066.0,
+    "votos_emitidos": 6245.0,
+    "abstencionismo_pct": 31.12,
+    "participacion_pct": 68.88
   },
   {
     "slug": "quesada",
@@ -3549,7 +4165,11 @@
     "tiempo_duplicacion_anios": 47.62,
     "poblacion_activa": 3233.0,
     "poblacion_inactiva": 4077.0,
-    "pct_pea": 44.2
+    "pct_pea": 44.2,
+    "padron_electoral": 17163.0,
+    "votos_emitidos": 11659.0,
+    "abstencionismo_pct": 32.07,
+    "participacion_pct": 67.93
   },
   {
     "slug": "san-jose-acatempa",
@@ -3573,7 +4193,11 @@
     "tiempo_duplicacion_anios": 47.95,
     "poblacion_activa": 2293.0,
     "poblacion_inactiva": 2991.0,
-    "pct_pea": 43.4
+    "pct_pea": 43.4,
+    "padron_electoral": 9784.0,
+    "votos_emitidos": 6873.0,
+    "abstencionismo_pct": 29.75,
+    "participacion_pct": 70.25
   },
   {
     "slug": "santa-catarina-mita",
@@ -3597,7 +4221,11 @@
     "tiempo_duplicacion_anios": 46.98,
     "poblacion_activa": 7524.0,
     "poblacion_inactiva": 8924.0,
-    "pct_pea": 45.7
+    "pct_pea": 45.7,
+    "padron_electoral": 20321.0,
+    "votos_emitidos": 12907.0,
+    "abstencionismo_pct": 36.48,
+    "participacion_pct": 63.52
   },
   {
     "slug": "yupiltepeque",
@@ -3621,7 +4249,11 @@
     "tiempo_duplicacion_anios": 59.32,
     "poblacion_activa": 3041.0,
     "poblacion_inactiva": 3852.0,
-    "pct_pea": 44.1
+    "pct_pea": 44.1,
+    "padron_electoral": 10619.0,
+    "votos_emitidos": 7204.0,
+    "abstencionismo_pct": 32.16,
+    "participacion_pct": 67.84
   },
   {
     "slug": "zapotitlan",
@@ -3645,7 +4277,11 @@
     "tiempo_duplicacion_anios": 54.26,
     "poblacion_activa": 2017.0,
     "poblacion_inactiva": 2584.0,
-    "pct_pea": 43.8
+    "pct_pea": 43.8,
+    "padron_electoral": 7808.0,
+    "votos_emitidos": 5452.0,
+    "abstencionismo_pct": 30.17,
+    "participacion_pct": 69.83
   },
   {
     "slug": "dolores",
@@ -3669,7 +4305,11 @@
     "tiempo_duplicacion_anios": 28.0,
     "poblacion_activa": 10401.0,
     "poblacion_inactiva": 11546.0,
-    "pct_pea": 47.4
+    "pct_pea": 47.4,
+    "padron_electoral": 18245.0,
+    "votos_emitidos": 9856.0,
+    "abstencionismo_pct": 45.98,
+    "participacion_pct": 54.02
   },
   {
     "slug": "el-chal",
@@ -3693,7 +4333,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 4629.0,
     "poblacion_inactiva": 6013.0,
-    "pct_pea": 43.5
+    "pct_pea": 43.5,
+    "padron_electoral": 10234.0,
+    "votos_emitidos": 5124.0,
+    "abstencionismo_pct": 49.93,
+    "participacion_pct": 50.07
   },
   {
     "slug": "flores",
@@ -3717,7 +4361,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 11807.0,
     "poblacion_inactiva": 10811.0,
-    "pct_pea": 52.2
+    "pct_pea": 52.2,
+    "padron_electoral": 38567.0,
+    "votos_emitidos": 22145.0,
+    "abstencionismo_pct": 42.58,
+    "participacion_pct": 57.42
   },
   {
     "slug": "la-libertad",
@@ -3741,7 +4389,11 @@
     "tiempo_duplicacion_anios": 25.93,
     "poblacion_activa": 12653.0,
     "poblacion_inactiva": 14189.0,
-    "pct_pea": 47.1
+    "pct_pea": 47.1,
+    "padron_electoral": 68912.0,
+    "votos_emitidos": 32456.0,
+    "abstencionismo_pct": 52.9,
+    "participacion_pct": 47.1
   },
   {
     "slug": "las-cruces",
@@ -3765,7 +4417,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 5154.0,
     "poblacion_inactiva": 6274.0,
-    "pct_pea": 45.1
+    "pct_pea": 45.1,
+    "padron_electoral": 22189.0,
+    "votos_emitidos": 11234.0,
+    "abstencionismo_pct": 49.37,
+    "participacion_pct": 50.63
   },
   {
     "slug": "melchor-de-mencos",
@@ -3789,7 +4445,11 @@
     "tiempo_duplicacion_anios": 30.43,
     "poblacion_activa": 11613.0,
     "poblacion_inactiva": 12136.0,
-    "pct_pea": 48.9
+    "pct_pea": 48.9,
+    "padron_electoral": 15678.0,
+    "votos_emitidos": 9845.0,
+    "abstencionismo_pct": 37.21,
+    "participacion_pct": 62.79
   },
   {
     "slug": "poptun",
@@ -3813,7 +4473,11 @@
     "tiempo_duplicacion_anios": 25.93,
     "poblacion_activa": 19747.0,
     "poblacion_inactiva": 19669.0,
-    "pct_pea": 50.1
+    "pct_pea": 50.1,
+    "padron_electoral": 45678.0,
+    "votos_emitidos": 24567.0,
+    "abstencionismo_pct": 46.22,
+    "participacion_pct": 53.78
   },
   {
     "slug": "san-andres",
@@ -3837,7 +4501,11 @@
     "tiempo_duplicacion_anios": 29.17,
     "poblacion_activa": 6166.0,
     "poblacion_inactiva": 7598.0,
-    "pct_pea": 44.8
+    "pct_pea": 44.8,
+    "padron_electoral": 28456.0,
+    "votos_emitidos": 14789.0,
+    "abstencionismo_pct": 48.03,
+    "participacion_pct": 51.97
   },
   {
     "slug": "san-benito",
@@ -3861,7 +4529,11 @@
     "tiempo_duplicacion_anios": 22.58,
     "poblacion_activa": 12814.0,
     "poblacion_inactiva": 12058.0,
-    "pct_pea": 51.5
+    "pct_pea": 51.5,
+    "padron_electoral": 32145.0,
+    "votos_emitidos": 18234.0,
+    "abstencionismo_pct": 43.28,
+    "participacion_pct": 56.72
   },
   {
     "slug": "san-francisco",
@@ -3885,7 +4557,11 @@
     "tiempo_duplicacion_anios": 24.14,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 12567.0,
+    "votos_emitidos": 7123.0,
+    "abstencionismo_pct": 43.32,
+    "participacion_pct": 56.68
   },
   {
     "slug": "san-jose",
@@ -3909,7 +4585,11 @@
     "tiempo_duplicacion_anios": 33.33,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 14890.0,
+    "votos_emitidos": 8456.0,
+    "abstencionismo_pct": 43.21,
+    "participacion_pct": 56.79
   },
   {
     "slug": "san-luis",
@@ -3933,7 +4613,11 @@
     "tiempo_duplicacion_anios": 25.0,
     "poblacion_activa": 14992.0,
     "poblacion_inactiva": 17184.0,
-    "pct_pea": 46.6
+    "pct_pea": 46.6,
+    "padron_electoral": 18234.0,
+    "votos_emitidos": 9678.0,
+    "abstencionismo_pct": 46.92,
+    "participacion_pct": 53.08
   },
   {
     "slug": "santa-ana",
@@ -3957,7 +4641,11 @@
     "tiempo_duplicacion_anios": 26.92,
     "poblacion_activa": 6847.0,
     "poblacion_inactiva": 8046.0,
-    "pct_pea": 46.0
+    "pct_pea": 46.0,
+    "padron_electoral": 8456.0,
+    "votos_emitidos": 4567.0,
+    "abstencionismo_pct": 46.0,
+    "participacion_pct": 54.0
   },
   {
     "slug": "sayaxche",
@@ -3981,7 +4669,11 @@
     "tiempo_duplicacion_anios": 24.14,
     "poblacion_activa": 23402.0,
     "poblacion_inactiva": 24872.0,
-    "pct_pea": 48.5
+    "pct_pea": 48.5,
+    "padron_electoral": null,
+    "votos_emitidos": null,
+    "abstencionismo_pct": null,
+    "participacion_pct": null
   },
   {
     "slug": "almolonga",
@@ -4005,7 +4697,11 @@
     "tiempo_duplicacion_anios": 30.43,
     "poblacion_activa": 8095.0,
     "poblacion_inactiva": 9388.0,
-    "pct_pea": 46.3
+    "pct_pea": 46.3,
+    "padron_electoral": 12530.0,
+    "votos_emitidos": 10466.0,
+    "abstencionismo_pct": 16.47,
+    "participacion_pct": 83.53
   },
   {
     "slug": "cabrican",
@@ -4029,7 +4725,11 @@
     "tiempo_duplicacion_anios": 31.82,
     "poblacion_activa": 6747.0,
     "poblacion_inactiva": 8115.0,
-    "pct_pea": 45.4
+    "pct_pea": 45.4,
+    "padron_electoral": 14485.0,
+    "votos_emitidos": 9796.0,
+    "abstencionismo_pct": 32.37,
+    "participacion_pct": 67.63
   },
   {
     "slug": "cajola",
@@ -4053,7 +4753,11 @@
     "tiempo_duplicacion_anios": 35.0,
     "poblacion_activa": 3454.0,
     "poblacion_inactiva": 4673.0,
-    "pct_pea": 42.5
+    "pct_pea": 42.5,
+    "padron_electoral": 8522.0,
+    "votos_emitidos": 5628.0,
+    "abstencionismo_pct": 33.96,
+    "participacion_pct": 66.04
   },
   {
     "slug": "cantel",
@@ -4077,7 +4781,11 @@
     "tiempo_duplicacion_anios": 35.0,
     "poblacion_activa": 11236.0,
     "poblacion_inactiva": 12620.0,
-    "pct_pea": 47.1
+    "pct_pea": 47.1,
+    "padron_electoral": 22673.0,
+    "votos_emitidos": 15412.0,
+    "abstencionismo_pct": 32.02,
+    "participacion_pct": 67.98
   },
   {
     "slug": "coatepeque",
@@ -4101,7 +4809,11 @@
     "tiempo_duplicacion_anios": 36.84,
     "poblacion_activa": 41156.0,
     "poblacion_inactiva": 41638.0,
-    "pct_pea": 49.7
+    "pct_pea": 49.7,
+    "padron_electoral": 68528.0,
+    "votos_emitidos": 31876.0,
+    "abstencionismo_pct": 53.48,
+    "participacion_pct": 46.52
   },
   {
     "slug": "colomba",
@@ -4125,7 +4837,11 @@
     "tiempo_duplicacion_anios": 33.33,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 33533.0,
+    "votos_emitidos": 16999.0,
+    "abstencionismo_pct": 49.31,
+    "participacion_pct": 50.69
   },
   {
     "slug": "concepcion-chiquirichapa",
@@ -4149,7 +4865,11 @@
     "tiempo_duplicacion_anios": 30.43,
     "poblacion_activa": 7469.0,
     "poblacion_inactiva": 8760.0,
-    "pct_pea": 46.0
+    "pct_pea": 46.0,
+    "padron_electoral": 9742.0,
+    "votos_emitidos": 5108.0,
+    "abstencionismo_pct": 47.57,
+    "participacion_pct": 52.43
   },
   {
     "slug": "el-palmar",
@@ -4173,7 +4893,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 2300.0,
     "poblacion_inactiva": 3239.0,
-    "pct_pea": 41.5
+    "pct_pea": 41.5,
+    "padron_electoral": 17952.0,
+    "votos_emitidos": 11865.0,
+    "abstencionismo_pct": 33.91,
+    "participacion_pct": 66.09
   },
   {
     "slug": "flores-costa-cuca",
@@ -4197,7 +4921,11 @@
     "tiempo_duplicacion_anios": 38.89,
     "poblacion_activa": 4693.0,
     "poblacion_inactiva": 5999.0,
-    "pct_pea": 43.9
+    "pct_pea": 43.9,
+    "padron_electoral": 14462.0,
+    "votos_emitidos": 8883.0,
+    "abstencionismo_pct": 38.58,
+    "participacion_pct": 61.42
   },
   {
     "slug": "genova",
@@ -4221,7 +4949,11 @@
     "tiempo_duplicacion_anios": 43.75,
     "poblacion_activa": 1926.0,
     "poblacion_inactiva": 2772.0,
-    "pct_pea": 41.0
+    "pct_pea": 41.0,
+    "padron_electoral": 12312.0,
+    "votos_emitidos": 7145.0,
+    "abstencionismo_pct": 41.97,
+    "participacion_pct": 58.03
   },
   {
     "slug": "huitan",
@@ -4245,7 +4977,11 @@
     "tiempo_duplicacion_anios": 43.75,
     "poblacion_activa": 5370.0,
     "poblacion_inactiva": 6604.0,
-    "pct_pea": 44.8
+    "pct_pea": 44.8,
+    "padron_electoral": 5937.0,
+    "votos_emitidos": 3812.0,
+    "abstencionismo_pct": 35.79,
+    "participacion_pct": 64.21
   },
   {
     "slug": "la-esperanza",
@@ -4269,7 +5005,11 @@
     "tiempo_duplicacion_anios": 33.33,
     "poblacion_activa": 5086.0,
     "poblacion_inactiva": 6340.0,
-    "pct_pea": 44.5
+    "pct_pea": 44.5,
+    "padron_electoral": 12845.0,
+    "votos_emitidos": 8912.0,
+    "abstencionismo_pct": 30.62,
+    "participacion_pct": 69.38
   },
   {
     "slug": "olintepeque",
@@ -4293,7 +5033,11 @@
     "tiempo_duplicacion_anios": 41.18,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 15029.0,
+    "votos_emitidos": 9678.0,
+    "abstencionismo_pct": 35.6,
+    "participacion_pct": 64.4
   },
   {
     "slug": "ostuncalco",
@@ -4317,7 +5061,11 @@
     "tiempo_duplicacion_anios": 29.17,
     "poblacion_activa": 12641.0,
     "poblacion_inactiva": 15043.0,
-    "pct_pea": 45.7
+    "pct_pea": 45.7,
+    "padron_electoral": null,
+    "votos_emitidos": null,
+    "abstencionismo_pct": null,
+    "participacion_pct": null
   },
   {
     "slug": "palestina-de-los-altos",
@@ -4341,7 +5089,11 @@
     "tiempo_duplicacion_anios": 33.33,
     "poblacion_activa": 3982.0,
     "poblacion_inactiva": 5279.0,
-    "pct_pea": 43.0
+    "pct_pea": 43.0,
+    "padron_electoral": 9785.0,
+    "votos_emitidos": 5729.0,
+    "abstencionismo_pct": 41.45,
+    "participacion_pct": 58.55
   },
   {
     "slug": "quetzaltenango",
@@ -4365,7 +5117,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 86408.0,
     "poblacion_inactiva": 76013.0,
-    "pct_pea": 53.2
+    "pct_pea": 53.2,
+    "padron_electoral": 120663.0,
+    "votos_emitidos": 70867.0,
+    "abstencionismo_pct": 41.27,
+    "participacion_pct": 58.73
   },
   {
     "slug": "salcaja",
@@ -4389,7 +5145,11 @@
     "tiempo_duplicacion_anios": 33.33,
     "poblacion_activa": 7280.0,
     "poblacion_inactiva": 8667.0,
-    "pct_pea": 45.7
+    "pct_pea": 45.7,
+    "padron_electoral": 13454.0,
+    "votos_emitidos": 8867.0,
+    "abstencionismo_pct": 34.09,
+    "participacion_pct": 65.91
   },
   {
     "slug": "san-carlos-sija",
@@ -4413,7 +5173,11 @@
     "tiempo_duplicacion_anios": 87.5,
     "poblacion_activa": 11761.0,
     "poblacion_inactiva": 13157.0,
-    "pct_pea": 47.2
+    "pct_pea": 47.2,
+    "padron_electoral": 17478.0,
+    "votos_emitidos": 7632.0,
+    "abstencionismo_pct": 56.33,
+    "participacion_pct": 43.67
   },
   {
     "slug": "san-francisco-la-union",
@@ -4437,7 +5201,11 @@
     "tiempo_duplicacion_anios": 50.0,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 4781.0,
+    "votos_emitidos": 3054.0,
+    "abstencionismo_pct": 36.12,
+    "participacion_pct": 63.88
   },
   {
     "slug": "san-martin-sacatepequez",
@@ -4461,7 +5229,39 @@
     "tiempo_duplicacion_anios": 38.89,
     "poblacion_activa": 5847.0,
     "poblacion_inactiva": 7411.0,
-    "pct_pea": 44.1
+    "pct_pea": 44.1,
+    "padron_electoral": 16938.0,
+    "votos_emitidos": 11513.0,
+    "abstencionismo_pct": 32.03,
+    "participacion_pct": 67.97
+  },
+  {
+    "slug": "san-mateo",
+    "nombre": "San Mateo",
+    "departamento_slug": "quetzaltenango",
+    "departamento": "Quetzaltenango",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null,
+    "padron_electoral": 5518.0,
+    "votos_emitidos": 4066.0,
+    "abstencionismo_pct": 26.31,
+    "participacion_pct": 73.69
   },
   {
     "slug": "san-miguel-siguila",
@@ -4485,7 +5285,11 @@
     "tiempo_duplicacion_anios": 36.84,
     "poblacion_activa": 2738.0,
     "poblacion_inactiva": 3782.0,
-    "pct_pea": 42.0
+    "pct_pea": 42.0,
+    "padron_electoral": 5006.0,
+    "votos_emitidos": 3443.0,
+    "abstencionismo_pct": 31.22,
+    "participacion_pct": 68.78
   },
   {
     "slug": "sibilia",
@@ -4509,7 +5313,11 @@
     "tiempo_duplicacion_anios": 63.64,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 6604.0,
+    "votos_emitidos": 3796.0,
+    "abstencionismo_pct": 42.52,
+    "participacion_pct": 57.48
   },
   {
     "slug": "zunil",
@@ -4533,7 +5341,11 @@
     "tiempo_duplicacion_anios": 46.67,
     "poblacion_activa": 9170.0,
     "poblacion_inactiva": 10592.0,
-    "pct_pea": 46.4
+    "pct_pea": 46.4,
+    "padron_electoral": 9978.0,
+    "votos_emitidos": 7989.0,
+    "abstencionismo_pct": 19.93,
+    "participacion_pct": 80.07
   },
   {
     "slug": "canilla",
@@ -4557,7 +5369,11 @@
     "tiempo_duplicacion_anios": 36.65,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 8372.0,
+    "votos_emitidos": 4972.0,
+    "abstencionismo_pct": 40.61,
+    "participacion_pct": 59.39
   },
   {
     "slug": "chajul",
@@ -4581,7 +5397,11 @@
     "tiempo_duplicacion_anios": 29.79,
     "poblacion_activa": 8674.0,
     "poblacion_inactiva": 14273.0,
-    "pct_pea": 37.8
+    "pct_pea": 37.8,
+    "padron_electoral": 25460.0,
+    "votos_emitidos": 19633.0,
+    "abstencionismo_pct": 22.89,
+    "participacion_pct": 77.11
   },
   {
     "slug": "chicaman",
@@ -4605,7 +5425,39 @@
     "tiempo_duplicacion_anios": 28.34,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": null,
+    "votos_emitidos": null,
+    "abstencionismo_pct": null,
+    "participacion_pct": null
+  },
+  {
+    "slug": "chiche",
+    "nombre": "Chiché",
+    "departamento_slug": "quiche",
+    "departamento": "Quiché",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null,
+    "padron_electoral": 15227.0,
+    "votos_emitidos": 9452.0,
+    "abstencionismo_pct": 37.93,
+    "participacion_pct": 62.07
   },
   {
     "slug": "chichicastenango",
@@ -4629,7 +5481,11 @@
     "tiempo_duplicacion_anios": 30.84,
     "poblacion_activa": 33246.0,
     "poblacion_inactiva": 43696.0,
-    "pct_pea": 43.2
+    "pct_pea": 43.2,
+    "padron_electoral": 77695.0,
+    "votos_emitidos": 49537.0,
+    "abstencionismo_pct": 36.24,
+    "participacion_pct": 63.76
   },
   {
     "slug": "chinique",
@@ -4653,7 +5509,11 @@
     "tiempo_duplicacion_anios": 36.46,
     "poblacion_activa": 2708.0,
     "poblacion_inactiva": 6054.0,
-    "pct_pea": 30.9
+    "pct_pea": 30.9,
+    "padron_electoral": 8106.0,
+    "votos_emitidos": 5125.0,
+    "abstencionismo_pct": 36.78,
+    "participacion_pct": 63.22
   },
   {
     "slug": "cunen",
@@ -4677,7 +5537,11 @@
     "tiempo_duplicacion_anios": 34.83,
     "poblacion_activa": 12655.0,
     "poblacion_inactiva": 18592.0,
-    "pct_pea": 40.5
+    "pct_pea": 40.5,
+    "padron_electoral": 22682.0,
+    "votos_emitidos": 14703.0,
+    "abstencionismo_pct": 35.18,
+    "participacion_pct": 64.82
   },
   {
     "slug": "ixcan",
@@ -4701,7 +5565,11 @@
     "tiempo_duplicacion_anios": 29.05,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 44970.0,
+    "votos_emitidos": 22226.0,
+    "abstencionismo_pct": 50.58,
+    "participacion_pct": 49.42
   },
   {
     "slug": "joyabaj",
@@ -4725,7 +5593,11 @@
     "tiempo_duplicacion_anios": 33.02,
     "poblacion_activa": 5346.0,
     "poblacion_inactiva": 9630.0,
-    "pct_pea": 35.7
+    "pct_pea": 35.7,
+    "padron_electoral": 45663.0,
+    "votos_emitidos": 25040.0,
+    "abstencionismo_pct": 45.16,
+    "participacion_pct": 54.84
   },
   {
     "slug": "nebaj",
@@ -4749,7 +5621,11 @@
     "tiempo_duplicacion_anios": 30.57,
     "poblacion_activa": 16148.0,
     "poblacion_inactiva": 22578.0,
-    "pct_pea": 41.7
+    "pct_pea": 41.7,
+    "padron_electoral": 41492.0,
+    "votos_emitidos": 29141.0,
+    "abstencionismo_pct": 29.77,
+    "participacion_pct": 70.23
   },
   {
     "slug": "pachalum",
@@ -4773,7 +5649,11 @@
     "tiempo_duplicacion_anios": 39.33,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 7213.0,
+    "votos_emitidos": 4583.0,
+    "abstencionismo_pct": 36.46,
+    "participacion_pct": 63.54
   },
   {
     "slug": "patzite",
@@ -4797,7 +5677,11 @@
     "tiempo_duplicacion_anios": 38.67,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 4418.0,
+    "votos_emitidos": 3198.0,
+    "abstencionismo_pct": 27.61,
+    "participacion_pct": 72.39
   },
   {
     "slug": "sacapulas",
@@ -4821,7 +5705,11 @@
     "tiempo_duplicacion_anios": 31.96,
     "poblacion_activa": 11042.0,
     "poblacion_inactiva": 16850.0,
-    "pct_pea": 39.6
+    "pct_pea": 39.6,
+    "padron_electoral": 31196.0,
+    "votos_emitidos": 19380.0,
+    "abstencionismo_pct": 37.88,
+    "participacion_pct": 62.12
   },
   {
     "slug": "san-andres-sajcabaja",
@@ -4845,7 +5733,11 @@
     "tiempo_duplicacion_anios": 34.48,
     "poblacion_activa": 4703.0,
     "poblacion_inactiva": 8725.0,
-    "pct_pea": 35.0
+    "pct_pea": 35.0,
+    "padron_electoral": 14948.0,
+    "votos_emitidos": 9662.0,
+    "abstencionismo_pct": 35.36,
+    "participacion_pct": 64.64
   },
   {
     "slug": "san-antonio-ilotenango",
@@ -4869,7 +5761,11 @@
     "tiempo_duplicacion_anios": 34.15,
     "poblacion_activa": 4412.0,
     "poblacion_inactiva": 8482.0,
-    "pct_pea": 34.2
+    "pct_pea": 34.2,
+    "padron_electoral": 15728.0,
+    "votos_emitidos": 12910.0,
+    "abstencionismo_pct": 17.92,
+    "participacion_pct": 82.08
   },
   {
     "slug": "san-bartolome-jocotenango",
@@ -4893,7 +5789,11 @@
     "tiempo_duplicacion_anios": 36.08,
     "poblacion_activa": 3120.0,
     "poblacion_inactiva": 6723.0,
-    "pct_pea": 31.7
+    "pct_pea": 31.7,
+    "padron_electoral": 9108.0,
+    "votos_emitidos": 3368.0,
+    "abstencionismo_pct": 63.02,
+    "participacion_pct": 36.98
   },
   {
     "slug": "san-juan-cotzal",
@@ -4917,7 +5817,11 @@
     "tiempo_duplicacion_anios": 31.67,
     "poblacion_activa": 11518.0,
     "poblacion_inactiva": 17425.0,
-    "pct_pea": 39.8
+    "pct_pea": 39.8,
+    "padron_electoral": 17887.0,
+    "votos_emitidos": 14422.0,
+    "abstencionismo_pct": 19.37,
+    "participacion_pct": 80.63
   },
   {
     "slug": "san-pedro-jocopilas",
@@ -4941,7 +5845,11 @@
     "tiempo_duplicacion_anios": 35.53,
     "poblacion_activa": 8836.0,
     "poblacion_inactiva": 14348.0,
-    "pct_pea": 38.1
+    "pct_pea": 38.1,
+    "padron_electoral": 19594.0,
+    "votos_emitidos": 12967.0,
+    "abstencionismo_pct": 33.82,
+    "participacion_pct": 66.18
   },
   {
     "slug": "santa-cruz-del-quiche",
@@ -4965,7 +5873,11 @@
     "tiempo_duplicacion_anios": 32.11,
     "poblacion_activa": 26731.0,
     "poblacion_inactiva": 31943.0,
-    "pct_pea": 45.6
+    "pct_pea": 45.6,
+    "padron_electoral": 49446.0,
+    "votos_emitidos": 30478.0,
+    "abstencionismo_pct": 38.36,
+    "participacion_pct": 61.64
   },
   {
     "slug": "uspantan",
@@ -4989,7 +5901,11 @@
     "tiempo_duplicacion_anios": 30.17,
     "poblacion_activa": 14968.0,
     "poblacion_inactiva": 21450.0,
-    "pct_pea": 41.1
+    "pct_pea": 41.1,
+    "padron_electoral": 34661.0,
+    "votos_emitidos": 19932.0,
+    "abstencionismo_pct": 42.49,
+    "participacion_pct": 57.51
   },
   {
     "slug": "zacualpa",
@@ -5013,7 +5929,11 @@
     "tiempo_duplicacion_anios": 37.04,
     "poblacion_activa": 5710.0,
     "poblacion_inactiva": 10019.0,
-    "pct_pea": 36.3
+    "pct_pea": 36.3,
+    "padron_electoral": 21679.0,
+    "votos_emitidos": 15691.0,
+    "abstencionismo_pct": 27.62,
+    "participacion_pct": 72.38
   },
   {
     "slug": "champerico",
@@ -5037,7 +5957,11 @@
     "tiempo_duplicacion_anios": 38.89,
     "poblacion_activa": 11032.0,
     "poblacion_inactiva": 11762.0,
-    "pct_pea": 48.4
+    "pct_pea": 48.4,
+    "padron_electoral": 21598.0,
+    "votos_emitidos": 12733.0,
+    "abstencionismo_pct": 41.05,
+    "participacion_pct": 58.95
   },
   {
     "slug": "el-asintal",
@@ -5061,7 +5985,11 @@
     "tiempo_duplicacion_anios": 35.0,
     "poblacion_activa": 5074.0,
     "poblacion_inactiva": 5655.0,
-    "pct_pea": 47.3
+    "pct_pea": 47.3,
+    "padron_electoral": 23210.0,
+    "votos_emitidos": 14146.0,
+    "abstencionismo_pct": 39.05,
+    "participacion_pct": 60.95
   },
   {
     "slug": "nuevo-san-carlos",
@@ -5085,7 +6013,11 @@
     "tiempo_duplicacion_anios": 29.17,
     "poblacion_activa": 6491.0,
     "poblacion_inactiva": 6987.0,
-    "pct_pea": 48.2
+    "pct_pea": 48.2,
+    "padron_electoral": 24713.0,
+    "votos_emitidos": 11423.0,
+    "abstencionismo_pct": 53.78,
+    "participacion_pct": 46.22
   },
   {
     "slug": "retalhuleu",
@@ -5109,7 +6041,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 34965.0,
     "poblacion_inactiva": 33462.0,
-    "pct_pea": 51.1
+    "pct_pea": 51.1,
+    "padron_electoral": 56448.0,
+    "votos_emitidos": 35297.0,
+    "abstencionismo_pct": 37.47,
+    "participacion_pct": 62.53
   },
   {
     "slug": "san-andres-villa-seca",
@@ -5133,7 +6069,11 @@
     "tiempo_duplicacion_anios": 35.0,
     "poblacion_activa": 4466.0,
     "poblacion_inactiva": 5112.0,
-    "pct_pea": 46.6
+    "pct_pea": 46.6,
+    "padron_electoral": 25266.0,
+    "votos_emitidos": 13671.0,
+    "abstencionismo_pct": 45.89,
+    "participacion_pct": 54.11
   },
   {
     "slug": "san-felipe",
@@ -5157,7 +6097,11 @@
     "tiempo_duplicacion_anios": 31.82,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": null,
+    "votos_emitidos": null,
+    "abstencionismo_pct": null,
+    "participacion_pct": null
   },
   {
     "slug": "san-martin-zapotitlan",
@@ -5181,7 +6125,11 @@
     "tiempo_duplicacion_anios": 30.43,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": null,
+    "votos_emitidos": null,
+    "abstencionismo_pct": null,
+    "participacion_pct": null
   },
   {
     "slug": "san-sebastian",
@@ -5205,7 +6153,11 @@
     "tiempo_duplicacion_anios": 33.33,
     "poblacion_activa": 6069.0,
     "poblacion_inactiva": 6574.0,
-    "pct_pea": 48.0
+    "pct_pea": 48.0,
+    "padron_electoral": null,
+    "votos_emitidos": null,
+    "abstencionismo_pct": null,
+    "participacion_pct": null
   },
   {
     "slug": "santa-cruz-mulua",
@@ -5229,7 +6181,11 @@
     "tiempo_duplicacion_anios": 36.84,
     "poblacion_activa": 5644.0,
     "poblacion_inactiva": 6213.0,
-    "pct_pea": 47.6
+    "pct_pea": 47.6,
+    "padron_electoral": null,
+    "votos_emitidos": null,
+    "abstencionismo_pct": null,
+    "participacion_pct": null
   },
   {
     "slug": "alotenango",
@@ -5253,7 +6209,11 @@
     "tiempo_duplicacion_anios": 37.04,
     "poblacion_activa": 3650.0,
     "poblacion_inactiva": 4268.0,
-    "pct_pea": 46.1
+    "pct_pea": 46.1,
+    "padron_electoral": 12853.0,
+    "votos_emitidos": 8810.0,
+    "abstencionismo_pct": 31.46,
+    "participacion_pct": 68.54
   },
   {
     "slug": "antigua-guatemala",
@@ -5277,7 +6237,11 @@
     "tiempo_duplicacion_anios": 34.31,
     "poblacion_activa": 25453.0,
     "poblacion_inactiva": 22478.0,
-    "pct_pea": 53.1
+    "pct_pea": 53.1,
+    "padron_electoral": 39099.0,
+    "votos_emitidos": 27113.0,
+    "abstencionismo_pct": 30.66,
+    "participacion_pct": 69.34
   },
   {
     "slug": "ciudad-vieja",
@@ -5301,7 +6265,11 @@
     "tiempo_duplicacion_anios": 24.82,
     "poblacion_activa": 4061.0,
     "poblacion_inactiva": 4682.0,
-    "pct_pea": 46.4
+    "pct_pea": 46.4,
+    "padron_electoral": 19012.0,
+    "votos_emitidos": 12021.0,
+    "abstencionismo_pct": 36.77,
+    "participacion_pct": 63.23
   },
   {
     "slug": "jocotenango",
@@ -5325,7 +6293,11 @@
     "tiempo_duplicacion_anios": 23.49,
     "poblacion_activa": 4946.0,
     "poblacion_inactiva": 5546.0,
-    "pct_pea": 47.1
+    "pct_pea": 47.1,
+    "padron_electoral": 14776.0,
+    "votos_emitidos": 10843.0,
+    "abstencionismo_pct": 26.62,
+    "participacion_pct": 73.38
   },
   {
     "slug": "magdalena-milpas-altas",
@@ -5349,7 +6321,11 @@
     "tiempo_duplicacion_anios": 35.9,
     "poblacion_activa": 2686.0,
     "poblacion_inactiva": 3205.0,
-    "pct_pea": 45.6
+    "pct_pea": 45.6,
+    "padron_electoral": 7190.0,
+    "votos_emitidos": 5282.0,
+    "abstencionismo_pct": 26.54,
+    "participacion_pct": 73.46
   },
   {
     "slug": "pastores",
@@ -5373,7 +6349,11 @@
     "tiempo_duplicacion_anios": 30.84,
     "poblacion_activa": 3855.0,
     "poblacion_inactiva": 4382.0,
-    "pct_pea": 46.8
+    "pct_pea": 46.8,
+    "padron_electoral": 10808.0,
+    "votos_emitidos": 8226.0,
+    "abstencionismo_pct": 23.89,
+    "participacion_pct": 76.11
   },
   {
     "slug": "san-antonio-aguas-calientes",
@@ -5397,7 +6377,11 @@
     "tiempo_duplicacion_anios": 33.18,
     "poblacion_activa": 2146.0,
     "poblacion_inactiva": 2643.0,
-    "pct_pea": 44.8
+    "pct_pea": 44.8,
+    "padron_electoral": 7430.0,
+    "votos_emitidos": 5476.0,
+    "abstencionismo_pct": 26.3,
+    "participacion_pct": 73.7
   },
   {
     "slug": "san-bartolome-milpas-altas",
@@ -5421,7 +6405,11 @@
     "tiempo_duplicacion_anios": 34.83,
     "poblacion_activa": 3540.0,
     "poblacion_inactiva": 3918.0,
-    "pct_pea": 47.5
+    "pct_pea": 47.5,
+    "padron_electoral": 5324.0,
+    "votos_emitidos": 3574.0,
+    "abstencionismo_pct": 32.87,
+    "participacion_pct": 67.13
   },
   {
     "slug": "san-lucas-sacatepequez",
@@ -5445,7 +6433,11 @@
     "tiempo_duplicacion_anios": 22.58,
     "poblacion_activa": 13462.0,
     "poblacion_inactiva": 12686.0,
-    "pct_pea": 51.5
+    "pct_pea": 51.5,
+    "padron_electoral": 17281.0,
+    "votos_emitidos": 11511.0,
+    "abstencionismo_pct": 33.39,
+    "participacion_pct": 66.61
   },
   {
     "slug": "san-miguel-duenas",
@@ -5469,7 +6461,11 @@
     "tiempo_duplicacion_anios": 33.65,
     "poblacion_activa": 5233.0,
     "poblacion_inactiva": 5831.0,
-    "pct_pea": 47.3
+    "pct_pea": 47.3,
+    "padron_electoral": 7437.0,
+    "votos_emitidos": 4460.0,
+    "abstencionismo_pct": 40.03,
+    "participacion_pct": 59.97
   },
   {
     "slug": "santa-catarina-barahona",
@@ -5493,7 +6489,11 @@
     "tiempo_duplicacion_anios": 37.63,
     "poblacion_activa": 1363.0,
     "poblacion_inactiva": 1659.0,
-    "pct_pea": 45.1
+    "pct_pea": 45.1,
+    "padron_electoral": 3666.0,
+    "votos_emitidos": 3009.0,
+    "abstencionismo_pct": 17.92,
+    "participacion_pct": 82.08
   },
   {
     "slug": "santa-lucia-milpas-altas",
@@ -5517,7 +6517,11 @@
     "tiempo_duplicacion_anios": 30.17,
     "poblacion_activa": 1706.0,
     "poblacion_inactiva": 2210.0,
-    "pct_pea": 43.6
+    "pct_pea": 43.6,
+    "padron_electoral": 10092.0,
+    "votos_emitidos": 7509.0,
+    "abstencionismo_pct": 25.59,
+    "participacion_pct": 74.41
   },
   {
     "slug": "santa-maria-de-jesus",
@@ -5541,7 +6545,11 @@
     "tiempo_duplicacion_anios": 36.46,
     "poblacion_activa": 4275.0,
     "poblacion_inactiva": 4881.0,
-    "pct_pea": 46.7
+    "pct_pea": 46.7,
+    "padron_electoral": 12809.0,
+    "votos_emitidos": 7628.0,
+    "abstencionismo_pct": 40.45,
+    "participacion_pct": 59.55
   },
   {
     "slug": "santiago-sacatepequez",
@@ -5565,7 +6573,11 @@
     "tiempo_duplicacion_anios": 32.11,
     "poblacion_activa": 9027.0,
     "poblacion_inactiva": 9615.0,
-    "pct_pea": 48.4
+    "pct_pea": 48.4,
+    "padron_electoral": 18000.0,
+    "votos_emitidos": 10830.0,
+    "abstencionismo_pct": 39.83,
+    "participacion_pct": 60.17
   },
   {
     "slug": "santo-domingo-xenacoj",
@@ -5589,7 +6601,11 @@
     "tiempo_duplicacion_anios": 34.15,
     "poblacion_activa": 7015.0,
     "poblacion_inactiva": 7264.0,
-    "pct_pea": 49.1
+    "pct_pea": 49.1,
+    "padron_electoral": 7609.0,
+    "votos_emitidos": 6158.0,
+    "abstencionismo_pct": 19.07,
+    "participacion_pct": 80.93
   },
   {
     "slug": "sumpango",
@@ -5613,7 +6629,11 @@
     "tiempo_duplicacion_anios": 32.86,
     "poblacion_activa": 8534.0,
     "poblacion_inactiva": 9282.0,
-    "pct_pea": 47.9
+    "pct_pea": 47.9,
+    "padron_electoral": 20604.0,
+    "votos_emitidos": 12402.0,
+    "abstencionismo_pct": 39.81,
+    "participacion_pct": 60.19
   },
   {
     "slug": "ayutla",
@@ -5637,7 +6657,11 @@
     "tiempo_duplicacion_anios": 28.0,
     "poblacion_activa": 3964.0,
     "poblacion_inactiva": 4798.0,
-    "pct_pea": 45.2
+    "pct_pea": 45.2,
+    "padron_electoral": 22037.0,
+    "votos_emitidos": 11378.0,
+    "abstencionismo_pct": 48.37,
+    "participacion_pct": 51.63
   },
   {
     "slug": "catarina",
@@ -5661,7 +6685,11 @@
     "tiempo_duplicacion_anios": 33.33,
     "poblacion_activa": 5540.0,
     "poblacion_inactiva": 7407.0,
-    "pct_pea": 42.8
+    "pct_pea": 42.8,
+    "padron_electoral": 20883.0,
+    "votos_emitidos": 12903.0,
+    "abstencionismo_pct": 38.21,
+    "participacion_pct": 61.79
   },
   {
     "slug": "comitancillo",
@@ -5685,7 +6713,11 @@
     "tiempo_duplicacion_anios": 33.33,
     "poblacion_activa": 5289.0,
     "poblacion_inactiva": 7127.0,
-    "pct_pea": 42.6
+    "pct_pea": 42.6,
+    "padron_electoral": 31570.0,
+    "votos_emitidos": 17834.0,
+    "abstencionismo_pct": 43.51,
+    "participacion_pct": 56.49
   },
   {
     "slug": "concepcion-tutuapa",
@@ -5709,7 +6741,11 @@
     "tiempo_duplicacion_anios": 35.0,
     "poblacion_activa": 12631.0,
     "poblacion_inactiva": 16012.0,
-    "pct_pea": 44.1
+    "pct_pea": 44.1,
+    "padron_electoral": 35226.0,
+    "votos_emitidos": 18721.0,
+    "abstencionismo_pct": 46.85,
+    "participacion_pct": 53.15
   },
   {
     "slug": "el-quetzal",
@@ -5733,7 +6769,11 @@
     "tiempo_duplicacion_anios": 41.18,
     "poblacion_activa": 8744.0,
     "poblacion_inactiva": 11083.0,
-    "pct_pea": 44.1
+    "pct_pea": 44.1,
+    "padron_electoral": 14257.0,
+    "votos_emitidos": 8012.0,
+    "abstencionismo_pct": 43.8,
+    "participacion_pct": 56.2
   },
   {
     "slug": "el-rodeo",
@@ -5757,7 +6797,11 @@
     "tiempo_duplicacion_anios": 43.75,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 12392.0,
+    "votos_emitidos": 6601.0,
+    "abstencionismo_pct": 46.73,
+    "participacion_pct": 53.27
   },
   {
     "slug": "el-tumbador",
@@ -5781,7 +6825,11 @@
     "tiempo_duplicacion_anios": 36.84,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 26438.0,
+    "votos_emitidos": 13991.0,
+    "abstencionismo_pct": 47.08,
+    "participacion_pct": 52.92
   },
   {
     "slug": "esquipulas-palo-gordo",
@@ -5805,7 +6853,11 @@
     "tiempo_duplicacion_anios": 43.75,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 8928.0,
+    "votos_emitidos": 6178.0,
+    "abstencionismo_pct": 30.8,
+    "participacion_pct": 69.2
   },
   {
     "slug": "ixchiguan",
@@ -5829,7 +6881,11 @@
     "tiempo_duplicacion_anios": 36.84,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 10784.0,
+    "votos_emitidos": 5263.0,
+    "abstencionismo_pct": 51.2,
+    "participacion_pct": 48.8
   },
   {
     "slug": "la-blanca",
@@ -5853,7 +6909,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 4273.0,
     "poblacion_inactiva": 5148.0,
-    "pct_pea": 45.4
+    "pct_pea": 45.4,
+    "padron_electoral": null,
+    "votos_emitidos": null,
+    "abstencionismo_pct": null,
+    "participacion_pct": null
   },
   {
     "slug": "la-reforma",
@@ -5877,7 +6937,11 @@
     "tiempo_duplicacion_anios": 38.89,
     "poblacion_activa": 8228.0,
     "poblacion_inactiva": 10406.0,
-    "pct_pea": 44.2
+    "pct_pea": 44.2,
+    "padron_electoral": 6912.0,
+    "votos_emitidos": 4512.0,
+    "abstencionismo_pct": 34.72,
+    "participacion_pct": 65.28
   },
   {
     "slug": "malacatan",
@@ -5901,7 +6965,11 @@
     "tiempo_duplicacion_anios": 29.17,
     "poblacion_activa": 24536.0,
     "poblacion_inactiva": 28212.0,
-    "pct_pea": 46.5
+    "pct_pea": 46.5,
+    "padron_electoral": 45892.0,
+    "votos_emitidos": 24567.0,
+    "abstencionismo_pct": 46.47,
+    "participacion_pct": 53.53
   },
   {
     "slug": "nuevo-progreso",
@@ -5925,7 +6993,11 @@
     "tiempo_duplicacion_anios": 38.89,
     "poblacion_activa": 6514.0,
     "poblacion_inactiva": 8349.0,
-    "pct_pea": 43.8
+    "pct_pea": 43.8,
+    "padron_electoral": 13845.0,
+    "votos_emitidos": 7892.0,
+    "abstencionismo_pct": 43.0,
+    "participacion_pct": 57.0
   },
   {
     "slug": "ocos",
@@ -5949,7 +7021,11 @@
     "tiempo_duplicacion_anios": 26.92,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 8956.0,
+    "votos_emitidos": 5678.0,
+    "abstencionismo_pct": 36.6,
+    "participacion_pct": 63.4
   },
   {
     "slug": "pajapita",
@@ -5973,7 +7049,11 @@
     "tiempo_duplicacion_anios": 25.93,
     "poblacion_activa": 6314.0,
     "poblacion_inactiva": 7471.0,
-    "pct_pea": 45.8
+    "pct_pea": 45.8,
+    "padron_electoral": 11234.0,
+    "votos_emitidos": 6945.0,
+    "abstencionismo_pct": 38.17,
+    "participacion_pct": 61.83
   },
   {
     "slug": "rio-blanco",
@@ -5997,7 +7077,11 @@
     "tiempo_duplicacion_anios": 33.33,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 7892.0,
+    "votos_emitidos": 5123.0,
+    "abstencionismo_pct": 35.09,
+    "participacion_pct": 64.91
   },
   {
     "slug": "san-antonio-sacatepequez",
@@ -6021,7 +7105,11 @@
     "tiempo_duplicacion_anios": 41.18,
     "poblacion_activa": 7741.0,
     "poblacion_inactiva": 10177.0,
-    "pct_pea": 43.2
+    "pct_pea": 43.2,
+    "padron_electoral": 9456.0,
+    "votos_emitidos": 6234.0,
+    "abstencionismo_pct": 34.07,
+    "participacion_pct": 65.93
   },
   {
     "slug": "san-cristobal-cucho",
@@ -6045,7 +7133,11 @@
     "tiempo_duplicacion_anios": 41.18,
     "poblacion_activa": 6473.0,
     "poblacion_inactiva": 8805.0,
-    "pct_pea": 42.4
+    "pct_pea": 42.4,
+    "padron_electoral": 12678.0,
+    "votos_emitidos": 8456.0,
+    "abstencionismo_pct": 33.3,
+    "participacion_pct": 66.7
   },
   {
     "slug": "san-jose-ojetenam",
@@ -6069,7 +7161,11 @@
     "tiempo_duplicacion_anios": 36.84,
     "poblacion_activa": 4945.0,
     "poblacion_inactiva": 6947.0,
-    "pct_pea": 41.6
+    "pct_pea": 41.6,
+    "padron_electoral": null,
+    "votos_emitidos": null,
+    "abstencionismo_pct": null,
+    "participacion_pct": null
   },
   {
     "slug": "san-lorenzo",
@@ -6093,7 +7189,11 @@
     "tiempo_duplicacion_anios": 41.18,
     "poblacion_activa": 4128.0,
     "poblacion_inactiva": 5748.0,
-    "pct_pea": 41.8
+    "pct_pea": 41.8,
+    "padron_electoral": 15678.0,
+    "votos_emitidos": 9845.0,
+    "abstencionismo_pct": 37.21,
+    "participacion_pct": 62.79
   },
   {
     "slug": "san-marcos",
@@ -6117,7 +7217,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 27460.0,
     "poblacion_inactiva": 27152.0,
-    "pct_pea": 50.3
+    "pct_pea": 50.3,
+    "padron_electoral": 30187.0,
+    "votos_emitidos": 18849.0,
+    "abstencionismo_pct": 37.56,
+    "participacion_pct": 62.44
   },
   {
     "slug": "san-miguel-ixtahuacan",
@@ -6141,7 +7245,11 @@
     "tiempo_duplicacion_anios": 38.89,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 24668.0,
+    "votos_emitidos": 16720.0,
+    "abstencionismo_pct": 32.22,
+    "participacion_pct": 67.78
   },
   {
     "slug": "san-pablo",
@@ -6165,7 +7273,11 @@
     "tiempo_duplicacion_anios": 35.0,
     "poblacion_activa": 3486.0,
     "poblacion_inactiva": 4458.0,
-    "pct_pea": 43.9
+    "pct_pea": 43.9,
+    "padron_electoral": 28283.0,
+    "votos_emitidos": 16667.0,
+    "abstencionismo_pct": 41.07,
+    "participacion_pct": 58.93
   },
   {
     "slug": "san-pedro-sacatepequez",
@@ -6189,7 +7301,11 @@
     "tiempo_duplicacion_anios": 36.84,
     "poblacion_activa": 14620.0,
     "poblacion_inactiva": 16356.0,
-    "pct_pea": 47.2
+    "pct_pea": 47.2,
+    "padron_electoral": 45560.0,
+    "votos_emitidos": 25052.0,
+    "abstencionismo_pct": 45.01,
+    "participacion_pct": 55.0
   },
   {
     "slug": "san-rafael-pie-de-la-cuesta",
@@ -6213,7 +7329,11 @@
     "tiempo_duplicacion_anios": 46.67,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 12830.0,
+    "votos_emitidos": 9465.0,
+    "abstencionismo_pct": 26.23,
+    "participacion_pct": 73.77
   },
   {
     "slug": "sibinal",
@@ -6237,7 +7357,11 @@
     "tiempo_duplicacion_anios": 33.33,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 9941.0,
+    "votos_emitidos": 6311.0,
+    "abstencionismo_pct": 36.52,
+    "participacion_pct": 63.48
   },
   {
     "slug": "sipacapa",
@@ -6261,7 +7385,11 @@
     "tiempo_duplicacion_anios": 38.89,
     "poblacion_activa": 4437.0,
     "poblacion_inactiva": 6307.0,
-    "pct_pea": 41.3
+    "pct_pea": 41.3,
+    "padron_electoral": 11475.0,
+    "votos_emitidos": 6999.0,
+    "abstencionismo_pct": 39.01,
+    "participacion_pct": 60.99
   },
   {
     "slug": "tacana",
@@ -6285,7 +7413,11 @@
     "tiempo_duplicacion_anios": 31.82,
     "poblacion_activa": 21488.0,
     "poblacion_inactiva": 26374.0,
-    "pct_pea": 44.9
+    "pct_pea": 44.9,
+    "padron_electoral": 40987.0,
+    "votos_emitidos": 17424.0,
+    "abstencionismo_pct": 57.49,
+    "participacion_pct": 42.51
   },
   {
     "slug": "tajumulco",
@@ -6309,7 +7441,11 @@
     "tiempo_duplicacion_anios": 30.43,
     "poblacion_activa": 9984.0,
     "poblacion_inactiva": 13608.0,
-    "pct_pea": 42.3
+    "pct_pea": 42.3,
+    "padron_electoral": 25822.0,
+    "votos_emitidos": 13245.0,
+    "abstencionismo_pct": 48.71,
+    "participacion_pct": 51.29
   },
   {
     "slug": "tejutla",
@@ -6333,7 +7469,11 @@
     "tiempo_duplicacion_anios": 36.84,
     "poblacion_activa": 14208.0,
     "poblacion_inactiva": 17937.0,
-    "pct_pea": 44.2
+    "pct_pea": 44.2,
+    "padron_electoral": 19901.0,
+    "votos_emitidos": 9181.0,
+    "abstencionismo_pct": 53.87,
+    "participacion_pct": 46.13
   },
   {
     "slug": "barberena",
@@ -6357,7 +7497,11 @@
     "tiempo_duplicacion_anios": 35.9,
     "poblacion_activa": 7056.0,
     "poblacion_inactiva": 8238.0,
-    "pct_pea": 46.1
+    "pct_pea": 46.1,
+    "padron_electoral": 37089.0,
+    "votos_emitidos": 22358.0,
+    "abstencionismo_pct": 39.72,
+    "participacion_pct": 60.28
   },
   {
     "slug": "casillas",
@@ -6381,7 +7525,11 @@
     "tiempo_duplicacion_anios": 43.21,
     "poblacion_activa": 4057.0,
     "poblacion_inactiva": 4919.0,
-    "pct_pea": 45.2
+    "pct_pea": 45.2,
+    "padron_electoral": 15087.0,
+    "votos_emitidos": 7873.0,
+    "abstencionismo_pct": 47.82,
+    "participacion_pct": 52.18
   },
   {
     "slug": "chiquimulilla",
@@ -6405,7 +7553,11 @@
     "tiempo_duplicacion_anios": 41.67,
     "poblacion_activa": 13974.0,
     "poblacion_inactiva": 15472.0,
-    "pct_pea": 47.5
+    "pct_pea": 47.5,
+    "padron_electoral": 38583.0,
+    "votos_emitidos": 23207.0,
+    "abstencionismo_pct": 39.85,
+    "participacion_pct": 60.15
   },
   {
     "slug": "cuilapa",
@@ -6429,7 +7581,11 @@
     "tiempo_duplicacion_anios": 36.65,
     "poblacion_activa": 15648.0,
     "poblacion_inactiva": 16244.0,
-    "pct_pea": 49.1
+    "pct_pea": 49.1,
+    "padron_electoral": 27336.0,
+    "votos_emitidos": 14385.0,
+    "abstencionismo_pct": 47.38,
+    "participacion_pct": 52.62
   },
   {
     "slug": "guazacapan",
@@ -6453,7 +7609,11 @@
     "tiempo_duplicacion_anios": 41.92,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 12454.0,
+    "votos_emitidos": 8672.0,
+    "abstencionismo_pct": 30.37,
+    "participacion_pct": 69.63
   },
   {
     "slug": "nueva-santa-rosa",
@@ -6477,7 +7637,11 @@
     "tiempo_duplicacion_anios": 40.46,
     "poblacion_activa": 1644.0,
     "poblacion_inactiva": 2181.0,
-    "pct_pea": 43.0
+    "pct_pea": 43.0,
+    "padron_electoral": 23084.0,
+    "votos_emitidos": 11857.0,
+    "abstencionismo_pct": 48.64,
+    "participacion_pct": 51.36
   },
   {
     "slug": "oratorio",
@@ -6501,7 +7665,11 @@
     "tiempo_duplicacion_anios": 44.3,
     "poblacion_activa": 4249.0,
     "poblacion_inactiva": 5163.0,
-    "pct_pea": 45.1
+    "pct_pea": 45.1,
+    "padron_electoral": 15988.0,
+    "votos_emitidos": 9427.0,
+    "abstencionismo_pct": 41.04,
+    "participacion_pct": 58.96
   },
   {
     "slug": "pueblo-nuevo-vinas",
@@ -6525,7 +7693,11 @@
     "tiempo_duplicacion_anios": 44.87,
     "poblacion_activa": 4842.0,
     "poblacion_inactiva": 5845.0,
-    "pct_pea": 45.3
+    "pct_pea": 45.3,
+    "padron_electoral": 16633.0,
+    "votos_emitidos": 10620.0,
+    "abstencionismo_pct": 36.15,
+    "participacion_pct": 63.85
   },
   {
     "slug": "san-juan-tecuaco",
@@ -6549,7 +7721,11 @@
     "tiempo_duplicacion_anios": 43.48,
     "poblacion_activa": 4448.0,
     "poblacion_inactiva": 5394.0,
-    "pct_pea": 45.2
+    "pct_pea": 45.2,
+    "padron_electoral": 7751.0,
+    "votos_emitidos": 5997.0,
+    "abstencionismo_pct": 22.63,
+    "participacion_pct": 77.37
   },
   {
     "slug": "san-rafael-las-flores",
@@ -6573,7 +7749,11 @@
     "tiempo_duplicacion_anios": 40.7,
     "poblacion_activa": 3413.0,
     "poblacion_inactiva": 4235.0,
-    "pct_pea": 44.6
+    "pct_pea": 44.6,
+    "padron_electoral": 9648.0,
+    "votos_emitidos": 6178.0,
+    "abstencionismo_pct": 35.97,
+    "participacion_pct": 64.03
   },
   {
     "slug": "santa-cruz-naranjo",
@@ -6597,7 +7777,11 @@
     "tiempo_duplicacion_anios": 46.36,
     "poblacion_activa": 5741.0,
     "poblacion_inactiva": 6777.0,
-    "pct_pea": 45.9
+    "pct_pea": 45.9,
+    "padron_electoral": 10647.0,
+    "votos_emitidos": 7368.0,
+    "abstencionismo_pct": 30.8,
+    "participacion_pct": 69.2
   },
   {
     "slug": "santa-maria-ixhuatan",
@@ -6621,7 +7805,11 @@
     "tiempo_duplicacion_anios": 45.45,
     "poblacion_activa": 3522.0,
     "poblacion_inactiva": 4323.0,
-    "pct_pea": 44.9
+    "pct_pea": 44.9,
+    "padron_electoral": 14834.0,
+    "votos_emitidos": 8949.0,
+    "abstencionismo_pct": 39.67,
+    "participacion_pct": 60.33
   },
   {
     "slug": "santa-rosa-de-lima",
@@ -6645,7 +7833,11 @@
     "tiempo_duplicacion_anios": 39.77,
     "poblacion_activa": 3639.0,
     "poblacion_inactiva": 4487.0,
-    "pct_pea": 44.8
+    "pct_pea": 44.8,
+    "padron_electoral": 13572.0,
+    "votos_emitidos": 8004.0,
+    "abstencionismo_pct": 41.03,
+    "participacion_pct": 58.97
   },
   {
     "slug": "taxisco",
@@ -6669,7 +7861,11 @@
     "tiempo_duplicacion_anios": 41.18,
     "poblacion_activa": 8687.0,
     "poblacion_inactiva": 10034.0,
-    "pct_pea": 46.4
+    "pct_pea": 46.4,
+    "padron_electoral": 21025.0,
+    "votos_emitidos": 13253.0,
+    "abstencionismo_pct": 36.97,
+    "participacion_pct": 63.03
   },
   {
     "slug": "concepcion",
@@ -6693,7 +7889,11 @@
     "tiempo_duplicacion_anios": 32.11,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 4140.0,
+    "votos_emitidos": 3465.0,
+    "abstencionismo_pct": 16.3,
+    "participacion_pct": 83.7
   },
   {
     "slug": "nahuala",
@@ -6717,7 +7917,11 @@
     "tiempo_duplicacion_anios": 29.79,
     "poblacion_activa": 17762.0,
     "poblacion_inactiva": 24425.0,
-    "pct_pea": 42.1
+    "pct_pea": 42.1,
+    "padron_electoral": 46814.0,
+    "votos_emitidos": 35003.0,
+    "abstencionismo_pct": 25.23,
+    "participacion_pct": 74.77
   },
   {
     "slug": "panajachel",
@@ -6741,7 +7945,11 @@
     "tiempo_duplicacion_anios": 37.84,
     "poblacion_activa": 6945.0,
     "poblacion_inactiva": 7748.0,
-    "pct_pea": 47.3
+    "pct_pea": 47.3,
+    "padron_electoral": 9667.0,
+    "votos_emitidos": 7103.0,
+    "abstencionismo_pct": 26.52,
+    "participacion_pct": 73.48
   },
   {
     "slug": "san-andres-semetabaj",
@@ -6765,7 +7973,11 @@
     "tiempo_duplicacion_anios": 32.56,
     "poblacion_activa": 4753.0,
     "poblacion_inactiva": 7189.0,
-    "pct_pea": 39.8
+    "pct_pea": 39.8,
+    "padron_electoral": 8023.0,
+    "votos_emitidos": 5988.0,
+    "abstencionismo_pct": 25.36,
+    "participacion_pct": 74.64
   },
   {
     "slug": "san-antonio-palopo",
@@ -6789,7 +8001,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 4338.0,
     "poblacion_inactiva": 5918.0,
-    "pct_pea": 42.3
+    "pct_pea": 42.3,
+    "padron_electoral": 8676.0,
+    "votos_emitidos": 5999.0,
+    "abstencionismo_pct": 30.86,
+    "participacion_pct": 69.14
   },
   {
     "slug": "san-jose-chacaya",
@@ -6813,7 +8029,11 @@
     "tiempo_duplicacion_anios": 30.84,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 3266.0,
+    "votos_emitidos": 2499.0,
+    "abstencionismo_pct": 23.48,
+    "participacion_pct": 76.52
   },
   {
     "slug": "san-juan-la-laguna",
@@ -6837,7 +8057,11 @@
     "tiempo_duplicacion_anios": 35.71,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 8436.0,
+    "votos_emitidos": 7301.0,
+    "abstencionismo_pct": 13.45,
+    "participacion_pct": 86.55
   },
   {
     "slug": "san-lucas-toliman",
@@ -6861,7 +8085,11 @@
     "tiempo_duplicacion_anios": 33.65,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 19179.0,
+    "votos_emitidos": 15022.0,
+    "abstencionismo_pct": 21.67,
+    "participacion_pct": 78.33
   },
   {
     "slug": "san-marcos-la-laguna",
@@ -6885,7 +8113,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 4879.0,
     "poblacion_inactiva": 6573.0,
-    "pct_pea": 42.6
+    "pct_pea": 42.6,
+    "padron_electoral": 2000.0,
+    "votos_emitidos": 1740.0,
+    "abstencionismo_pct": 13.0,
+    "participacion_pct": 87.0
   },
   {
     "slug": "san-pablo-la-laguna",
@@ -6909,7 +8141,11 @@
     "tiempo_duplicacion_anios": 36.08,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 3787.0,
+    "votos_emitidos": 3154.0,
+    "abstencionismo_pct": 16.72,
+    "participacion_pct": 83.28
   },
   {
     "slug": "san-pedro-la-laguna",
@@ -6933,7 +8169,39 @@
     "tiempo_duplicacion_anios": 36.08,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 6100.0,
+    "votos_emitidos": 4942.0,
+    "abstencionismo_pct": 18.98,
+    "participacion_pct": 81.02
+  },
+  {
+    "slug": "santa-catarina-ixtahuacan",
+    "nombre": "Santa Catarina Ixtahuacán",
+    "departamento_slug": "solola",
+    "departamento": "Sololá",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null,
+    "padron_electoral": 31273.0,
+    "votos_emitidos": 22832.0,
+    "abstencionismo_pct": 26.99,
+    "participacion_pct": 73.01
   },
   {
     "slug": "santa-catarina-palopo",
@@ -6957,7 +8225,11 @@
     "tiempo_duplicacion_anios": 36.46,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 3136.0,
+    "votos_emitidos": 2679.0,
+    "abstencionismo_pct": 14.57,
+    "participacion_pct": 85.43
   },
   {
     "slug": "santa-clara-la-laguna",
@@ -6981,7 +8253,11 @@
     "tiempo_duplicacion_anios": 34.15,
     "poblacion_activa": 3233.0,
     "poblacion_inactiva": 5036.0,
-    "pct_pea": 39.1
+    "pct_pea": 39.1,
+    "padron_electoral": 6100.0,
+    "votos_emitidos": 4942.0,
+    "abstencionismo_pct": 18.98,
+    "participacion_pct": 81.02
   },
   {
     "slug": "santa-cruz-la-laguna",
@@ -7005,7 +8281,11 @@
     "tiempo_duplicacion_anios": 36.27,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 3787.0,
+    "votos_emitidos": 3154.0,
+    "abstencionismo_pct": 16.72,
+    "participacion_pct": 83.28
   },
   {
     "slug": "santa-lucia-utatlan",
@@ -7029,7 +8309,11 @@
     "tiempo_duplicacion_anios": 33.02,
     "poblacion_activa": 5234.0,
     "poblacion_inactiva": 7642.0,
-    "pct_pea": 40.6
+    "pct_pea": 40.6,
+    "padron_electoral": 13239.0,
+    "votos_emitidos": 9343.0,
+    "abstencionismo_pct": 29.43,
+    "participacion_pct": 70.57
   },
   {
     "slug": "santa-maria-visitacion",
@@ -7053,7 +8337,39 @@
     "tiempo_duplicacion_anios": 35.35,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 1777.0,
+    "votos_emitidos": 1495.0,
+    "abstencionismo_pct": 15.87,
+    "participacion_pct": 84.13
+  },
+  {
+    "slug": "santiago-atitlan",
+    "nombre": "Santiago Atitlán",
+    "departamento_slug": "solola",
+    "departamento": "Sololá",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null,
+    "padron_electoral": 26720.0,
+    "votos_emitidos": 20736.0,
+    "abstencionismo_pct": 22.4,
+    "participacion_pct": 77.6
   },
   {
     "slug": "solola",
@@ -7077,7 +8393,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 17932.0,
     "poblacion_inactiva": 20480.0,
-    "pct_pea": 46.7
+    "pct_pea": 46.7,
+    "padron_electoral": 52409.0,
+    "votos_emitidos": 36966.0,
+    "abstencionismo_pct": 29.47,
+    "participacion_pct": 70.53
   },
   {
     "slug": "chicacao",
@@ -7101,7 +8421,11 @@
     "tiempo_duplicacion_anios": 28.57,
     "poblacion_activa": 5098.0,
     "poblacion_inactiva": 5984.0,
-    "pct_pea": 46.0
+    "pct_pea": 46.0,
+    "padron_electoral": 31254.0,
+    "votos_emitidos": 19754.0,
+    "abstencionismo_pct": 36.8,
+    "participacion_pct": 63.2
   },
   {
     "slug": "cuyotenango",
@@ -7125,7 +8449,11 @@
     "tiempo_duplicacion_anios": 33.02,
     "poblacion_activa": 14444.0,
     "poblacion_inactiva": 14974.0,
-    "pct_pea": 49.1
+    "pct_pea": 49.1,
+    "padron_electoral": 19655.0,
+    "votos_emitidos": 11238.0,
+    "abstencionismo_pct": 42.82,
+    "participacion_pct": 57.18
   },
   {
     "slug": "mazatenango",
@@ -7149,7 +8477,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 43846.0,
     "poblacion_inactiva": 40781.0,
-    "pct_pea": 51.8
+    "pct_pea": 51.8,
+    "padron_electoral": 46387.0,
+    "votos_emitidos": 25422.0,
+    "abstencionismo_pct": 45.2,
+    "participacion_pct": 54.8
   },
   {
     "slug": "patulul",
@@ -7173,7 +8505,11 @@
     "tiempo_duplicacion_anios": 30.17,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 22202.0,
+    "votos_emitidos": 13752.0,
+    "abstencionismo_pct": 38.06,
+    "participacion_pct": 61.94
   },
   {
     "slug": "pueblo-nuevo",
@@ -7197,7 +8533,11 @@
     "tiempo_duplicacion_anios": 32.56,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 7734.0,
+    "votos_emitidos": 5869.0,
+    "abstencionismo_pct": 24.11,
+    "participacion_pct": 75.89
   },
   {
     "slug": "rio-bravo",
@@ -7221,7 +8561,11 @@
     "tiempo_duplicacion_anios": 34.65,
     "poblacion_activa": 5391.0,
     "poblacion_inactiva": 6252.0,
-    "pct_pea": 46.3
+    "pct_pea": 46.3,
+    "padron_electoral": 16049.0,
+    "votos_emitidos": 10872.0,
+    "abstencionismo_pct": 32.26,
+    "participacion_pct": 67.74
   },
   {
     "slug": "samayac",
@@ -7245,7 +8589,11 @@
     "tiempo_duplicacion_anios": 29.79,
     "poblacion_activa": 7088.0,
     "poblacion_inactiva": 7876.0,
-    "pct_pea": 47.4
+    "pct_pea": 47.4,
+    "padron_electoral": 12810.0,
+    "votos_emitidos": 8761.0,
+    "abstencionismo_pct": 31.61,
+    "participacion_pct": 68.39
   },
   {
     "slug": "san-antonio-suchitepequez",
@@ -7269,7 +8617,11 @@
     "tiempo_duplicacion_anios": 33.65,
     "poblacion_activa": 6181.0,
     "poblacion_inactiva": 7034.0,
-    "pct_pea": 46.8
+    "pct_pea": 46.8,
+    "padron_electoral": 29314.0,
+    "votos_emitidos": 17695.0,
+    "abstencionismo_pct": 39.64,
+    "participacion_pct": 60.36
   },
   {
     "slug": "san-bernardino",
@@ -7293,7 +8645,11 @@
     "tiempo_duplicacion_anios": 30.7,
     "poblacion_activa": 6452.0,
     "poblacion_inactiva": 7276.0,
-    "pct_pea": 47.0
+    "pct_pea": 47.0,
+    "padron_electoral": 9966.0,
+    "votos_emitidos": 6495.0,
+    "abstencionismo_pct": 34.83,
+    "participacion_pct": 65.17
   },
   {
     "slug": "san-francisco-zapotitlan",
@@ -7317,7 +8673,11 @@
     "tiempo_duplicacion_anios": 34.15,
     "poblacion_activa": 10567.0,
     "poblacion_inactiva": 11175.0,
-    "pct_pea": 48.6
+    "pct_pea": 48.6,
+    "padron_electoral": 13226.0,
+    "votos_emitidos": 795.0,
+    "abstencionismo_pct": 93.99,
+    "participacion_pct": 6.01
   },
   {
     "slug": "san-gabriel",
@@ -7341,7 +8701,11 @@
     "tiempo_duplicacion_anios": 33.18,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": null,
+    "votos_emitidos": null,
+    "abstencionismo_pct": null,
+    "participacion_pct": null
   },
   {
     "slug": "san-jose-el-idolo",
@@ -7365,7 +8729,11 @@
     "tiempo_duplicacion_anios": 35.9,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": null,
+    "votos_emitidos": null,
+    "abstencionismo_pct": null,
+    "participacion_pct": null
   },
   {
     "slug": "san-juan-bautista",
@@ -7389,7 +8757,11 @@
     "tiempo_duplicacion_anios": 33.33,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 5493.0,
+    "votos_emitidos": 3871.0,
+    "abstencionismo_pct": 29.53,
+    "participacion_pct": 70.47
   },
   {
     "slug": "san-lorenzo",
@@ -7413,7 +8785,11 @@
     "tiempo_duplicacion_anios": 36.46,
     "poblacion_activa": 2792.0,
     "poblacion_inactiva": 3556.0,
-    "pct_pea": 44.0
+    "pct_pea": 44.0,
+    "padron_electoral": 8930.0,
+    "votos_emitidos": 6288.0,
+    "abstencionismo_pct": 29.59,
+    "participacion_pct": 70.41
   },
   {
     "slug": "san-miguel-panan",
@@ -7437,7 +8813,11 @@
     "tiempo_duplicacion_anios": 29.05,
     "poblacion_activa": 4768.0,
     "poblacion_inactiva": 5689.0,
-    "pct_pea": 45.6
+    "pct_pea": 45.6,
+    "padron_electoral": 7985.0,
+    "votos_emitidos": 6062.0,
+    "abstencionismo_pct": 24.08,
+    "participacion_pct": 75.92
   },
   {
     "slug": "san-pablo-jocopilas",
@@ -7461,7 +8841,11 @@
     "tiempo_duplicacion_anios": 31.67,
     "poblacion_activa": 3994.0,
     "poblacion_inactiva": 4922.0,
-    "pct_pea": 44.8
+    "pct_pea": 44.8,
+    "padron_electoral": 13226.0,
+    "votos_emitidos": 795.0,
+    "abstencionismo_pct": 93.99,
+    "participacion_pct": 6.01
   },
   {
     "slug": "santa-barbara",
@@ -7485,7 +8869,11 @@
     "tiempo_duplicacion_anios": 35.35,
     "poblacion_activa": 5965.0,
     "poblacion_inactiva": 6911.0,
-    "pct_pea": 46.3
+    "pct_pea": 46.3,
+    "padron_electoral": 15845.0,
+    "votos_emitidos": 11188.0,
+    "abstencionismo_pct": 29.39,
+    "participacion_pct": 70.61
   },
   {
     "slug": "santo-domingo-suchitepequez",
@@ -7509,7 +8897,11 @@
     "tiempo_duplicacion_anios": 37.04,
     "poblacion_activa": 9218.0,
     "poblacion_inactiva": 10028.0,
-    "pct_pea": 47.9
+    "pct_pea": 47.9,
+    "padron_electoral": 21017.0,
+    "votos_emitidos": 11079.0,
+    "abstencionismo_pct": 47.29,
+    "participacion_pct": 52.71
   },
   {
     "slug": "santo-tomas-la-union",
@@ -7533,7 +8925,11 @@
     "tiempo_duplicacion_anios": 30.57,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 8452.0,
+    "votos_emitidos": 6304.0,
+    "abstencionismo_pct": 25.41,
+    "participacion_pct": 74.59
   },
   {
     "slug": "zunilito",
@@ -7557,7 +8953,11 @@
     "tiempo_duplicacion_anios": 36.84,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 7076.0,
+    "votos_emitidos": 5930.0,
+    "abstencionismo_pct": 16.2,
+    "participacion_pct": 83.8
   },
   {
     "slug": "momostenango",
@@ -7581,7 +8981,11 @@
     "tiempo_duplicacion_anios": 38.89,
     "poblacion_activa": 32106.0,
     "poblacion_inactiva": 42162.0,
-    "pct_pea": 43.2
+    "pct_pea": 43.2,
+    "padron_electoral": 51063.0,
+    "votos_emitidos": 25655.0,
+    "abstencionismo_pct": 49.76,
+    "participacion_pct": 50.24
   },
   {
     "slug": "san-andres-xecul",
@@ -7605,7 +9009,11 @@
     "tiempo_duplicacion_anios": 41.18,
     "poblacion_activa": 7137.0,
     "poblacion_inactiva": 9742.0,
-    "pct_pea": 42.3
+    "pct_pea": 42.3,
+    "padron_electoral": 18190.0,
+    "votos_emitidos": 13796.0,
+    "abstencionismo_pct": 24.16,
+    "participacion_pct": 75.84
   },
   {
     "slug": "san-bartolo",
@@ -7629,7 +9037,11 @@
     "tiempo_duplicacion_anios": 33.33,
     "poblacion_activa": 3433.0,
     "poblacion_inactiva": 4883.0,
-    "pct_pea": 41.3
+    "pct_pea": 41.3,
+    "padron_electoral": 7260.0,
+    "votos_emitidos": 4523.0,
+    "abstencionismo_pct": 37.7,
+    "participacion_pct": 62.3
   },
   {
     "slug": "san-cristobal-totonicapan",
@@ -7653,7 +9065,11 @@
     "tiempo_duplicacion_anios": 50.0,
     "poblacion_activa": null,
     "poblacion_inactiva": null,
-    "pct_pea": null
+    "pct_pea": null,
+    "padron_electoral": 24299.0,
+    "votos_emitidos": 13904.0,
+    "abstencionismo_pct": 42.78,
+    "participacion_pct": 57.22
   },
   {
     "slug": "san-francisco-el-alto",
@@ -7677,7 +9093,11 @@
     "tiempo_duplicacion_anios": 43.75,
     "poblacion_activa": 15476.0,
     "poblacion_inactiva": 20438.0,
-    "pct_pea": 43.1
+    "pct_pea": 43.1,
+    "padron_electoral": 33993.0,
+    "votos_emitidos": 20964.0,
+    "abstencionismo_pct": 38.33,
+    "participacion_pct": 61.67
   },
   {
     "slug": "santa-lucia-la-reforma",
@@ -7701,7 +9121,11 @@
     "tiempo_duplicacion_anios": 35.0,
     "poblacion_activa": 5235.0,
     "poblacion_inactiva": 7312.0,
-    "pct_pea": 41.7
+    "pct_pea": 41.7,
+    "padron_electoral": 11962.0,
+    "votos_emitidos": 8186.0,
+    "abstencionismo_pct": 31.57,
+    "participacion_pct": 68.43
   },
   {
     "slug": "santa-maria-chiquimula",
@@ -7725,7 +9149,11 @@
     "tiempo_duplicacion_anios": 36.84,
     "poblacion_activa": 12590.0,
     "poblacion_inactiva": 17142.0,
-    "pct_pea": 42.3
+    "pct_pea": 42.3,
+    "padron_electoral": 28352.0,
+    "votos_emitidos": 15707.0,
+    "abstencionismo_pct": 44.6,
+    "participacion_pct": 55.4
   },
   {
     "slug": "totonicapan",
@@ -7749,7 +9177,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 29471.0,
     "poblacion_inactiva": 33370.0,
-    "pct_pea": 46.9
+    "pct_pea": 46.9,
+    "padron_electoral": 70742.0,
+    "votos_emitidos": 38934.0,
+    "abstencionismo_pct": 44.96,
+    "participacion_pct": 55.04
   },
   {
     "slug": "cabanas",
@@ -7773,7 +9205,11 @@
     "tiempo_duplicacion_anios": 49.65,
     "poblacion_activa": 4144.0,
     "poblacion_inactiva": 5274.0,
-    "pct_pea": 44.0
+    "pct_pea": 44.0,
+    "padron_electoral": 9829.0,
+    "votos_emitidos": 6795.0,
+    "abstencionismo_pct": 30.87,
+    "participacion_pct": 69.13
   },
   {
     "slug": "estanzuela",
@@ -7797,7 +9233,11 @@
     "tiempo_duplicacion_anios": 35.0,
     "poblacion_activa": 2510.0,
     "poblacion_inactiva": 2992.0,
-    "pct_pea": 45.6
+    "pct_pea": 45.6,
+    "padron_electoral": 9643.0,
+    "votos_emitidos": 6480.0,
+    "abstencionismo_pct": 32.8,
+    "participacion_pct": 67.2
   },
   {
     "slug": "gualan",
@@ -7821,7 +9261,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 14083.0,
     "poblacion_inactiva": 16031.0,
-    "pct_pea": 46.8
+    "pct_pea": 46.8,
+    "padron_electoral": 32696.0,
+    "votos_emitidos": 18671.0,
+    "abstencionismo_pct": 42.9,
+    "participacion_pct": 57.1
   },
   {
     "slug": "huite",
@@ -7845,7 +9289,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 3090.0,
     "poblacion_inactiva": 3818.0,
-    "pct_pea": 44.7
+    "pct_pea": 44.7,
+    "padron_electoral": 7640.0,
+    "votos_emitidos": 5356.0,
+    "abstencionismo_pct": 29.9,
+    "participacion_pct": 70.1
   },
   {
     "slug": "la-union",
@@ -7869,7 +9317,11 @@
     "tiempo_duplicacion_anios": 40.94,
     "poblacion_activa": 10166.0,
     "poblacion_inactiva": 12629.0,
-    "pct_pea": 44.6
+    "pct_pea": 44.6,
+    "padron_electoral": 18592.0,
+    "votos_emitidos": 12629.0,
+    "abstencionismo_pct": 32.07,
+    "participacion_pct": 67.93
   },
   {
     "slug": "rio-hondo",
@@ -7893,7 +9345,11 @@
     "tiempo_duplicacion_anios": null,
     "poblacion_activa": 7352.0,
     "poblacion_inactiva": 8269.0,
-    "pct_pea": 47.1
+    "pct_pea": 47.1,
+    "padron_electoral": 15893.0,
+    "votos_emitidos": 10183.0,
+    "abstencionismo_pct": 35.93,
+    "participacion_pct": 64.07
   },
   {
     "slug": "san-diego",
@@ -7917,7 +9373,39 @@
     "tiempo_duplicacion_anios": 42.68,
     "poblacion_activa": 3322.0,
     "poblacion_inactiva": 4295.0,
-    "pct_pea": 43.6
+    "pct_pea": 43.6,
+    "padron_electoral": 6097.0,
+    "votos_emitidos": 4217.0,
+    "abstencionismo_pct": 30.83,
+    "participacion_pct": 69.17
+  },
+  {
+    "slug": "san-jorge",
+    "nombre": "San Jorge",
+    "departamento_slug": "zacapa",
+    "departamento": "Zacapa",
+    "superficie_km2": null,
+    "poblacion_total": null,
+    "densidad_hab_km2": null,
+    "pct_hombres": null,
+    "pct_mujeres": null,
+    "pct_urbana": null,
+    "pct_rural": null,
+    "pct_indigena": null,
+    "esperanza_vida": null,
+    "analfabetismo_pct": null,
+    "acceso_agua_pct": null,
+    "acceso_saneamiento_pct": null,
+    "fecundidad": null,
+    "crecimiento_anual_pct": null,
+    "tiempo_duplicacion_anios": null,
+    "poblacion_activa": null,
+    "poblacion_inactiva": null,
+    "pct_pea": null,
+    "padron_electoral": 9421.0,
+    "votos_emitidos": 5942.0,
+    "abstencionismo_pct": 36.93,
+    "participacion_pct": 63.07
   },
   {
     "slug": "teculutan",
@@ -7941,7 +9429,11 @@
     "tiempo_duplicacion_anios": 39.33,
     "poblacion_activa": 4890.0,
     "poblacion_inactiva": 5952.0,
-    "pct_pea": 45.1
+    "pct_pea": 45.1,
+    "padron_electoral": 12869.0,
+    "votos_emitidos": 8688.0,
+    "abstencionismo_pct": 32.49,
+    "participacion_pct": 67.51
   },
   {
     "slug": "usumatlan",
@@ -7965,7 +9457,11 @@
     "tiempo_duplicacion_anios": 49.3,
     "poblacion_activa": 4944.0,
     "poblacion_inactiva": 6343.0,
-    "pct_pea": 43.8
+    "pct_pea": 43.8,
+    "padron_electoral": 8725.0,
+    "votos_emitidos": 5940.0,
+    "abstencionismo_pct": 31.92,
+    "participacion_pct": 68.08
   },
   {
     "slug": "zacapa",
@@ -7989,6 +9485,10 @@
     "tiempo_duplicacion_anios": 38.89,
     "poblacion_activa": 20943.0,
     "poblacion_inactiva": 22265.0,
-    "pct_pea": 48.5
+    "pct_pea": 48.5,
+    "padron_electoral": 40974.0,
+    "votos_emitidos": 22562.0,
+    "abstencionismo_pct": 44.94,
+    "participacion_pct": 55.06
   }
 ]
