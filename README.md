@@ -672,7 +672,8 @@ imprimen un informe de cobertura al terminar:
 
 ```bash
 # Departamentos: corte de 1994, PEA e ingresos, mortalidad materna, duplicación,
-# nupcialidad, IDH 1994 con componentes y participación electoral 2023
+# nupcialidad, IDH 1994 con componentes, participación electoral 2023 y las
+# correcciones editoriales (sexo 2005, distancias a la capital)
 python backend/app/seed/enrich_departamentos.py
 
 # Municipios: perfiles por departamento + tabla de Guatemala + PEA/PEI 2018 + votantes 2023
@@ -683,7 +684,10 @@ docker compose exec backend python -m app.seed.seed
 ```
 
 Cobertura actual: 22/22 departamentos en los tres cortes (1994, 2005, 2025) y 339 de
-los 340 municipios. El script imprime los huecos que vienen de la fuente:
+los 340 municipios con datos. `municipios.json` incluye **los 340**: un municipio sin
+ninguna fuente (San José La Máquina) igual aparece con las cifras en blanco, para que
+la ficha departamental y la tabla nunca se salten uno. El conteo por departamento
+coincide con la división oficial en los 22. El script imprime los huecos que vienen de la fuente:
 `mortalidad_general` solo existe para 1994, `analfabetismo_pct` no existe para 1994 (el
 libro de ese año no trae indicadores educativos) y Quetzaltenango 1994 no tiene
 población porque el libro omite esa línea.
@@ -764,7 +768,7 @@ Comprobación después de desplegar:
 curl -s 'https://TUDOMINIO/api/v1/departamentos?anio=2025' \
   | python3 -c "import sys,json; d=json.load(sys.stdin); print(sum(1 for x in d if x['indicadores']['padron_electoral']), 'de', len(d))"
 
-# 339 municipios
+# 340 municipios
 curl -s https://TUDOMINIO/api/v1/municipios \
   | python3 -c "import sys,json; print(len(json.load(sys.stdin)))"
 ```

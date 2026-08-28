@@ -20,7 +20,7 @@ import SelectorAniosMulti from "@/components/SelectorAniosMulti";
 import { formatearValor } from "@/lib/utils";
 import { track } from "@/lib/analytics";
 import { agregarNacional } from "@/lib/totales";
-import { VARIABLES, VARIABLES_ALERTA } from "@/types/departamento";
+import { VARIABLES, VARIABLES_ALERTA, notaIndicador } from "@/types/departamento";
 import type { Variable, VariableKey, Indicadores } from "@/types/departamento";
 import TarjetaNacional from "@/components/TarjetaNacional";
 import DepartamentoShape from "@/components/ficha/DepartamentoShape";
@@ -253,6 +253,16 @@ export default function FichaPage() {
       : null;
 
   // Build (anio → Indicadores) map for KPI rendering
+  // Advertencias de los indicadores que se están mostrando (p. ej. las coberturas
+  // de 1994, que el libro estima en plano para los 22 departamentos).
+  const notasVisibles = [
+    ...new Set(
+      KPIS.flatMap(({ key }) =>
+        anios.map((anio) => notaIndicador(key, anio)).filter((t): t is string => !!t)
+      )
+    ),
+  ];
+
   const indicadoresPorAnio = new Map<number, Indicadores | null | undefined>();
   for (const { anio, data } of deptoPorAnio) {
     indicadoresPorAnio.set(anio, data?.indicadores);
@@ -376,6 +386,15 @@ export default function FichaPage() {
             );
           })}
         </div>
+
+        {/* Advertencias de los indicadores mostrados en los años elegidos */}
+        {notasVisibles.length > 0 && (
+          <ul className="text-[11px] text-muted-foreground/80 font-body mt-3 leading-snug list-disc pl-4 space-y-1">
+            {notasVisibles.map((texto) => (
+              <li key={texto}>{texto}</li>
+            ))}
+          </ul>
+        )}
       </div>
 
       {/* National context */}

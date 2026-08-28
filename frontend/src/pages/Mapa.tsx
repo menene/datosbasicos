@@ -14,7 +14,7 @@ import { useMunicipios } from "@/api/municipios";
 import { agregarNacional, esAditiva } from "@/lib/totales";
 import { track } from "@/lib/analytics";
 import { formatearValor } from "@/lib/utils";
-import { VARIABLES } from "@/types/departamento";
+import { VARIABLES, notaIndicador } from "@/types/departamento";
 
 type Tab = "departamentos" | "municipios";
 
@@ -156,6 +156,13 @@ export default function MapaPage() {
 
         {/* Leyenda de color (misma escala en ambas vistas) */}
         <LeyendaColor municipios={esMunicipios} />
+
+        {/* Advertencia cuando el indicador del año activo no es una medición real */}
+        {!esMunicipios && notaIndicador(variableActiva, anioMapa) && (
+          <p className="px-3 pb-2 text-[11px] leading-snug text-muted-foreground/80 font-body">
+            {notaIndicador(variableActiva, anioMapa)}
+          </p>
+        )}
 
         {/* Panel de la selección activa (departamento o municipio) */}
         <AnimatePresence mode="wait">

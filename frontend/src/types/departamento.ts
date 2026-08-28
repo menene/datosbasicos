@@ -103,6 +103,36 @@ export const VARIABLES: Variable[] = [
   { key: "abstencionismo_pct", label: "Abstencionismo 2023 (%)", formato: "porcentaje" },
 ] as const;
 
+/**
+ * Advertencias por indicador y año, para los casos en que el dato no significa lo
+ * que aparenta. Se muestran junto al mapa y al pie de la tabla.
+ */
+interface NotaIndicador {
+  keys: VariableKey[];
+  anios: number[];
+  texto: string;
+}
+
+const NOTAS_INDICADOR: NotaIndicador[] = [
+  {
+    keys: ["acceso_agua_pct", "acceso_saneamiento_pct"],
+    anios: [1994],
+    texto:
+      "En 1994 estas coberturas son una estimación nacional aplicada por igual a los " +
+      "22 departamentos (60 % agua, 57 % saneamiento): el libro las publica en personas, " +
+      "pero cada cifra es ese porcentaje de la población del departamento, así que no " +
+      "hay variación departamental medida.",
+  },
+];
+
+/** Advertencia aplicable a un indicador en un año, si la hay. */
+export function notaIndicador(key: VariableKey, anio: number): string | null {
+  const nota = NOTAS_INDICADOR.find(
+    (n) => n.keys.includes(key) && n.anios.includes(anio)
+  );
+  return nota?.texto ?? null;
+}
+
 export const VARIABLES_ALERTA: VariableKey[] = [
   "analfabetismo_pct",
   "mortalidad_general",

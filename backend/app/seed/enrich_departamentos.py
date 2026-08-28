@@ -14,6 +14,9 @@ per indicator with a row per departamento:
   · IDH Guatemala 1994 → índice, componentes (salud, educación, ingresos) y ranking
   · VOTANTES DEPTOS REP. DE GUATEMALA → padrón, votos emitidos, abstencionismo y
     participación de las Elecciones Generales 2023 (primera vuelta)
+
+Además aplica dos correcciones editoriales indicadas por el autor: la distribución por
+sexo de 2005 (CORRECCION_SEXO_2005) y las distancias a la capital (DISTANCIA_CAPITAL_KM).
   · GUATEMALA DATOS BASICOS 1994 → el corte completo de 1994, un bloque de prosa por
     departamento (extensión, población, mortalidad general y materna, PEA, ingreso…)
 
@@ -485,6 +488,71 @@ def _sin_tildes(s: str) -> str:
     return unicodedata.normalize("NFD", s).encode("ascii", "ignore").decode().upper().strip()
 
 
+# --- Correcciones sobre el corte de 2005 ------------------------------------
+#
+# El documento consolidado imprime "50 % hombres y 50 % mujeres" para 2005 en doce
+# departamentos, contradiciendo su propia línea de lectura ("Tendencia: ligera mayoría
+# femenina") y la estructura real del país, que ronda 49 / 51 en todos ellos. Uno de los
+# doce llega a decir "50% hombres y 50% hombres". Corrección indicada por el autor.
+CORRECCION_SEXO_2005 = (49.0, 51.0)
+
+
+# --- Distancia por carretera de cada cabecera a la Ciudad de Guatemala ------
+#
+# El libro de 1994 trae una línea "Distancia de la Cabecera a la Capital" por
+# departamento, y de ahí venían los valores anteriores. Estas son las distancias
+# oficiales vigentes (Digi-USAC, Dirección General de Investigación), que corrigen 16
+# de las 22: la red vial cambió mucho en treinta años. Ejemplos: Petén 507 → 480 km,
+# Zacapa 156 → 195 km, Jutiapa 124 → 105 km.
+DISTANCIA_CAPITAL_KM: dict[str, int] = {
+    "alta-verapaz": 219,     # Cobán
+    "baja-verapaz": 135,     # Salamá
+    "chimaltenango": 48,
+    "chiquimula": 166,
+    "el-progreso": 78,       # Guastatoya
+    "escuintla": 45,
+    "guatemala": 0,          # Ciudad de Guatemala
+    "huehuetenango": 266,
+    "izabal": 290,           # Puerto Barrios
+    "jalapa": 98,
+    "jutiapa": 105,
+    "peten": 480,            # Flores
+    "quetzaltenango": 205,
+    "quiche": 175,           # Santa Cruz del Quiché
+    "retalhuleu": 190,
+    "sacatepequez": 40,      # Antigua Guatemala
+    "san-marcos": 240,
+    "santa-rosa": 65,        # Cuilapa
+    "solola": 140,
+    "suchitepequez": 160,    # Mazatenango
+    "totonicapan": 195,
+    "zacapa": 195,
+}
+
+
+def aplicar_distancias(data: list[dict]) -> list[tuple[str, int | None, int]]:
+    cambios = []
+    for depto in data:
+        nueva = DISTANCIA_CAPITAL_KM.get(depto["slug"])
+        if nueva is not None and depto.get("distancia_capital_km") != nueva:
+            cambios.append((depto["slug"], depto.get("distancia_capital_km"), nueva))
+            depto["distancia_capital_km"] = nueva
+    return cambios
+
+
+def corregir_sexo_2005(data: list[dict]) -> list[str]:
+    corregidos = []
+    hombres, mujeres = CORRECCION_SEXO_2005
+    for depto in data:
+        for ind in depto["indicadores"]:
+            if ind["anio"] != 2005:
+                continue
+            if (ind.get("pct_hombres"), ind.get("pct_mujeres")) == (50.0, 50.0):
+                ind["pct_hombres"], ind["pct_mujeres"] = hombres, mujeres
+                corregidos.append(depto["slug"])
+    return corregidos
+
+
 # --------------------------------------------------------------------------- apply
 
 
@@ -520,6 +588,9 @@ def main() -> None:
                     escritos += 1
         report.append((label, len(parsed), escritos))
 
+    sexo_2005 = corregir_sexo_2005(data)
+    distancias = aplicar_distancias(data)
+
     # La extensión territorial vive en el departamento, no en el corte anual. La del
     # libro de 1994 es la oficial: las 22 suman 108,889 km², el total del país.
     corregidas = []
@@ -554,11 +625,26 @@ def main() -> None:
     print(f"  OK {'Derivados (densidad, duplicación)':34} "
           f"{derivados['calculado']:3} calculados · {derivados['corregido']:3} corregidos")
 
+    if distancias:
+        print(f"\n  Distancia a la capital actualizada en {len(distancias)} "
+              f"departamentos (Digi-USAC):")
+        for slug, antes, ahora in distancias:
+            print(f"     {slug:16} {antes} -> {ahora} km")
+
+    if sexo_2005:
+        print(f"\n  Distribución por sexo 2005 corregida a "
+              f"{CORRECCION_SEXO_2005[0]:.0f}/{CORRECCION_SEXO_2005[1]:.0f} en "
+              f"{len(sexo_2005)} departamentos que el documento imprimía como 50/50:")
+        print(f"     {', '.join(sorted(sexo_2005))}")
+
     print("\nHuecos conocidos de la fuente:")
     for hueco in HUECOS_LIBRO_1994:
         print(f"  · {hueco}")
     print("  · mortalidad_general 2005 y 2025: ningún documento la publica por "
           "departamento (solo el nacional 2025, ~4.9-5.3 por mil)")
+    print("  · acceso a agua y saneamiento 1994: el libro los publica en personas, pero "
+          "esas cifras son un 60 % y un 57 % planos de la población de cada")
+    print("    departamento, así que no aportan variación departamental real")
 
     print("\nCobertura por año (de 22 departamentos):")
     keys = [

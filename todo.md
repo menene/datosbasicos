@@ -46,7 +46,7 @@ Comprobación después del despliegue:
 curl -s 'https://TUDOMINIO/api/v1/departamentos?anio=2025' \
   | python3 -c "import sys,json; d=json.load(sys.stdin); print(sum(1 for x in d if x['indicadores']['padron_electoral']), 'de', len(d))"
 
-# 339 municipios
+# 340 municipios
 curl -s https://TUDOMINIO/api/v1/municipios \
   | python3 -c "import sys,json; print(len(json.load(sys.stdin)))"
 ```
@@ -56,8 +56,11 @@ curl -s https://TUDOMINIO/api/v1/municipios \
 ## Hecho
 
 ### Vista de municipios
-- [x] Extracción de `/docs/*.docx` → `backend/app/seed/data/municipios.json`
-      (**339 de 340 municipios**). Regenerar: `python3 backend/app/seed/extract_municipios.py`
+- [x] Extracción de `/docs/*.docx` → `backend/app/seed/data/municipios.json`.
+      El archivo trae **los 340 municipios**, 339 con datos: todo municipio del GeoJSON
+      aparece aunque ninguna fuente lo mencione, para que ningún listado se lo salte.
+      El conteo por departamento coincide con el oficial en los 22.
+      Regenerar: `python3 backend/app/seed/extract_municipios.py`
 - [x] Endpoint servido desde JSON: `GET /api/v1/municipios` (+ `?departamento=`) y
       `/{slug}` (con `?departamento=` para desambiguar los 6 slugs repetidos). La caché
       lleva la fecha del archivo en la llave, así que un despliegue que solo cambia el
@@ -102,6 +105,27 @@ curl -s https://TUDOMINIO/api/v1/municipios \
       sumada / superficie sumada (promediar las 22 daba 318 hab/km² cuando la real
       ronda 165) y participación = votos / padrón.
 
+- [x] Revisión del 19/08 sobre municipios faltantes en la ficha: resueltos los 22
+      departamentos. El conteo por departamento coincide con la división oficial, y
+      Alta Verapaz usa **17 municipios** (incluye Santa Catalina La Tinta, 1999, y
+      Raxruhá, 2008), decisión del autor.
+- [x] Distribución por sexo de 2005 corregida a 49 % hombres / 51 % mujeres en los 12
+      departamentos que el documento imprimía como 50/50 mientras su propia línea decía
+      "ligera mayoría femenina" (uno decía "50% hombres y 50% hombres"). Los 7 con
+      mayoría masculina que el documento sí afirma —El Progreso, Santa Rosa, Petén e
+      Izabal 51/49, Chiquimula 52/48, Escuintla 50.5/49.5, Retalhuleu 49.7/50.3— se
+      dejaron como están, decisión del autor.
+- [x] Distancia por carretera de cada cabecera a la capital actualizada con los valores
+      oficiales de Digi-USAC: corrige 16 de las 22 (los anteriores venían del libro de
+      1994, con la red vial de hace treinta años — Petén 507 → 480, Zacapa 156 → 195,
+      Jutiapa 124 → 105). Está en `DISTANCIA_CAPITAL_KM` en el script. Se muestra en la
+      ficha departamental, en el panel del mapa y ahora también como columna ordenable
+      de la tabla, incluida en la exportación a Excel.
+- [x] Acceso a agua y saneamiento de 1994: se conservan los valores del libro (60 % y
+      57 %), pero mapa, tabla y ficha advierten que son una estimación nacional
+      aplicada por igual a los 22 departamentos, no una medición departamental
+      (`notaIndicador` en `types/departamento.ts`).
+
 ### Comprobaciones cruzadas que corren con los scripts
 - [x] Las 22 extensiones territoriales suman 108,889 km² exactos.
 - [x] El padrón de los municipios suma el del departamento en 15 de 22 casos; el script
@@ -127,7 +151,9 @@ curl -s https://TUDOMINIO/api/v1/municipios \
       saneamiento. No se interpoló porque las cifras de 1994 del libro no son
       consistentes con sus propias series 1991-2000. El censo de 1994 da ~503,900.
 - [ ] San José La Máquina (Suchitepéquez) es el único municipio sin ningún dato: no
-      aparece en ningún documento.
+      aparece en ningún documento (se creó en 2014, posterior a la mayoría de las
+      fuentes). Ya figura en los listados con las cifras en blanco.
+
 - [ ] El padrón de los municipios no cuadra con el del departamento en 7 casos
       (Retalhuleu −26 %, Suchitepéquez, Quetzaltenango, San Marcos, Quiché, Petén,
       Sololá): el documento de votantes omite municipios o los da aproximados
@@ -154,6 +180,10 @@ curl -s https://TUDOMINIO/api/v1/municipios \
       la forma se localiza por nombre; conviene corregir el GeoJSON.
 
 ### Código
+- [ ] La distancia a la capital es a la **cabecera** (Cobán, Salamá, Guastatoya, Puerto
+      Barrios, Flores, Santa Cruz del Quiché, Antigua Guatemala, Cuilapa, Mazatenango…),
+      pero el nombre de la cabecera no se guarda en ningún lado. Agregar un campo
+      `cabecera` al departamento daría contexto al número (necesita migración).
 - [ ] 6 slugs de municipio se repiten entre departamentos (La Democracia, San José,
       San Pedro Sacatepéquez, La Libertad, Santa Bárbara, San Lorenzo). Mapa, panel,
       ficha y Excel ya los distinguen por departamento; queda la `key` de React en la

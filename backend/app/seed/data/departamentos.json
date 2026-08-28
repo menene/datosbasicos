@@ -224,8 +224,8 @@
         "anio": 2005,
         "poblacion_total": 275000,
         "densidad_hab_km2": 591.0,
-        "pct_hombres": 50.0,
-        "pct_mujeres": 50.0,
+        "pct_hombres": 49.0,
+        "pct_mujeres": 51.0,
         "pct_urbana": 65.0,
         "pct_rural": 35.0,
         "pct_indigena": 37.0,
@@ -368,7 +368,7 @@
       }
     ],
     "feria_titular": "26 de julio, Santa Ana",
-    "distancia_capital_km": 58,
+    "distancia_capital_km": 48,
     "idiomas_predominantes": "Español, Kaqchikel"
   },
   {
@@ -461,7 +461,7 @@
       }
     ],
     "feria_titular": "8 de diciembre, Inmaculada Concepción",
-    "distancia_capital_km": 59,
+    "distancia_capital_km": 45,
     "idiomas_predominantes": "Español, Poqomam, Kaqchikel"
   },
   {
@@ -554,7 +554,7 @@
       }
     ],
     "feria_titular": "Del 22 al 26 de diciembre, Niño Dios",
-    "distancia_capital_km": 69,
+    "distancia_capital_km": 65,
     "idiomas_predominantes": "Español, Xinka"
   },
   {
@@ -596,8 +596,8 @@
         "anio": 2005,
         "poblacion_total": 325000,
         "densidad_hab_km2": 306.0,
-        "pct_hombres": 50.0,
-        "pct_mujeres": 50.0,
+        "pct_hombres": 49.0,
+        "pct_mujeres": 51.0,
         "pct_urbana": 15.7,
         "pct_rural": 84.3,
         "pct_indigena": 96.0,
@@ -689,8 +689,8 @@
         "anio": 2005,
         "poblacion_total": 410000,
         "densidad_hab_km2": 386.0,
-        "pct_hombres": 50.0,
-        "pct_mujeres": 50.0,
+        "pct_hombres": 49.0,
+        "pct_mujeres": 51.0,
         "pct_urbana": 12.7,
         "pct_rural": 87.3,
         "pct_indigena": 98.0,
@@ -740,7 +740,7 @@
       }
     ],
     "feria_titular": "29 de septiembre, San Miguel Arcángel",
-    "distancia_capital_km": 201,
+    "distancia_capital_km": 195,
     "idiomas_predominantes": "K'iche', Español"
   },
   {
@@ -782,8 +782,8 @@
         "anio": 2005,
         "poblacion_total": 625000,
         "densidad_hab_km2": 320.0,
-        "pct_hombres": 50.0,
-        "pct_mujeres": 50.0,
+        "pct_hombres": 49.0,
+        "pct_mujeres": 51.0,
         "pct_urbana": 42.0,
         "pct_rural": 58.0,
         "pct_indigena": 51.0,
@@ -833,7 +833,7 @@
       }
     ],
     "feria_titular": "6 de octubre, Virgen del Rosario",
-    "distancia_capital_km": 201,
+    "distancia_capital_km": 205,
     "idiomas_predominantes": "Español, K'iche', Mam"
   },
   {
@@ -875,8 +875,8 @@
         "anio": 2005,
         "poblacion_total": 475000,
         "densidad_hab_km2": 189.0,
-        "pct_hombres": 50.0,
-        "pct_mujeres": 50.0,
+        "pct_hombres": 49.0,
+        "pct_mujeres": 51.0,
         "pct_urbana": 44.6,
         "pct_rural": 55.4,
         "pct_indigena": 38.0,
@@ -926,7 +926,7 @@
       }
     ],
     "feria_titular": "Fiesta de Carnaval (movible)",
-    "distancia_capital_km": 167,
+    "distancia_capital_km": 160,
     "idiomas_predominantes": "Español, K'iche', Kaqchikel"
   },
   {
@@ -1019,7 +1019,7 @@
       }
     ],
     "feria_titular": "8 de diciembre, Concepción de María",
-    "distancia_capital_km": 192,
+    "distancia_capital_km": 190,
     "idiomas_predominantes": "Español, K'iche', Mam"
   },
   {
@@ -1061,8 +1061,8 @@
         "anio": 2005,
         "poblacion_total": 825000,
         "densidad_hab_km2": 218.0,
-        "pct_hombres": 50.0,
-        "pct_mujeres": 50.0,
+        "pct_hombres": 49.0,
+        "pct_mujeres": 51.0,
         "pct_urbana": 21.8,
         "pct_rural": 78.2,
         "pct_indigena": 90.0,
@@ -1112,7 +1112,7 @@
       }
     ],
     "feria_titular": "25 de abril, San Marcos",
-    "distancia_capital_km": 252,
+    "distancia_capital_km": 240,
     "idiomas_predominantes": "Español, Mam, Tejutla, Sipakapense"
   },
   {
@@ -1154,8 +1154,8 @@
         "anio": 2005,
         "poblacion_total": 950000,
         "densidad_hab_km2": 128.0,
-        "pct_hombres": 50.0,
-        "pct_mujeres": 50.0,
+        "pct_hombres": 49.0,
+        "pct_mujeres": 51.0,
         "pct_urbana": 28.0,
         "pct_rural": 72.0,
         "pct_indigena": 65.0,
@@ -1247,8 +1247,8 @@
         "anio": 2005,
         "poblacion_total": 950000,
         "densidad_hab_km2": 113.0,
-        "pct_hombres": 50.0,
-        "pct_mujeres": 50.0,
+        "pct_hombres": 49.0,
+        "pct_mujeres": 51.0,
         "pct_urbana": 13.7,
         "pct_rural": 86.3,
         "pct_indigena": 89.0,
@@ -1298,7 +1298,7 @@
       }
     ],
     "feria_titular": "18 de agosto, Santa Elena de la Cruz",
-    "distancia_capital_km": 164,
+    "distancia_capital_km": 175,
     "idiomas_predominantes": "Español, K'iche', Ixil, Pocomchí-Uspanteko, K'iche'-Sakapulteko, Uspanteko"
   },
   {
@@ -1391,7 +1391,7 @@
       }
     ],
     "feria_titular": "21 de septiembre, San Mateo",
-    "distancia_capital_km": 154,
+    "distancia_capital_km": 135,
     "idiomas_predominantes": "Español, Achí, Achí-Poqomchí, Kaqchikel"
   },
   {
@@ -1433,8 +1433,8 @@
         "anio": 2005,
         "poblacion_total": 750000,
         "densidad_hab_km2": 86.0,
-        "pct_hombres": 50.0,
-        "pct_mujeres": 50.0,
+        "pct_hombres": 49.0,
+        "pct_mujeres": 51.0,
         "pct_urbana": 25.0,
         "pct_rural": 75.0,
         "pct_indigena": 94.0,
@@ -1577,7 +1577,7 @@
       }
     ],
     "feria_titular": "15 de enero, Señor de Esquipulas; 12 de diciembre, Virgen de Guadalupe",
-    "distancia_capital_km": 507,
+    "distancia_capital_km": 480,
     "idiomas_predominantes": "Español, Itzá-Español, Itzá, Itzá-Lacandón, Lacandón-Chol-Itzá-Q'eqchi', Ixil, Mopán, Mopán-Q'eqchi', Mopán-Yucateco"
   },
   {
@@ -1670,7 +1670,7 @@
       }
     ],
     "feria_titular": "19 de julio, Sagrado Corazón de Jesús",
-    "distancia_capital_km": 308,
+    "distancia_capital_km": 290,
     "idiomas_predominantes": "Español, Garífuna-Español y Q'eqchi', Garífuna, Q'eqchi'"
   },
   {
@@ -1712,8 +1712,8 @@
         "anio": 2005,
         "poblacion_total": 210000,
         "densidad_hab_km2": 78.0,
-        "pct_hombres": 50.0,
-        "pct_mujeres": 50.0,
+        "pct_hombres": 49.0,
+        "pct_mujeres": 51.0,
         "pct_urbana": 42.5,
         "pct_rural": 57.5,
         "pct_indigena": 2.0,
@@ -1763,7 +1763,7 @@
       }
     ],
     "feria_titular": "Del 4 al 9 de diciembre, Virgen de Concepción",
-    "distancia_capital_km": 156,
+    "distancia_capital_km": 195,
     "idiomas_predominantes": "Español"
   },
   {
@@ -1856,7 +1856,7 @@
       }
     ],
     "feria_titular": "Del 12 al 18 de agosto, Virgen del Tránsito",
-    "distancia_capital_km": 170,
+    "distancia_capital_km": 166,
     "idiomas_predominantes": "Español, Ch'ortí"
   },
   {
@@ -1898,8 +1898,8 @@
         "anio": 2005,
         "poblacion_total": 275000,
         "densidad_hab_km2": 133.0,
-        "pct_hombres": 50.0,
-        "pct_mujeres": 50.0,
+        "pct_hombres": 49.0,
+        "pct_mujeres": 51.0,
         "pct_urbana": 25.1,
         "pct_rural": 74.9,
         "pct_indigena": 39.0,
@@ -1949,7 +1949,7 @@
       }
     ],
     "feria_titular": "Del 2 al 5 de mayo, Santa Cruz",
-    "distancia_capital_km": 101,
+    "distancia_capital_km": 98,
     "idiomas_predominantes": "Español, Poqomam"
   },
   {
@@ -1991,8 +1991,8 @@
         "anio": 2005,
         "poblacion_total": 365000,
         "densidad_hab_km2": 152.0,
-        "pct_hombres": 50.0,
-        "pct_mujeres": 50.0,
+        "pct_hombres": 49.0,
+        "pct_mujeres": 51.0,
         "pct_urbana": 35.0,
         "pct_rural": 65.0,
         "pct_indigena": 20.0,
@@ -2042,7 +2042,7 @@
       }
     ],
     "feria_titular": "24 y 25 de julio, San Cristóbal",
-    "distancia_capital_km": 124,
+    "distancia_capital_km": 105,
     "idiomas_predominantes": "Español, Xinca"
   }
 ]

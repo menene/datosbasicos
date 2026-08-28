@@ -699,6 +699,16 @@ def main() -> None:
         for motivo, n in completar(fields).items():
             derivados[motivo] += n
 
+    # Todo municipio del GeoJSON aparece en el archivo, tenga datos o no: un listado
+    # (la ficha departamental, la tabla) no puede saltarse municipios porque ninguna
+    # fuente los mencione. Solo se crea el registro vacío si ese slug no existe ya en
+    # otro departamento — Chicamán y San Felipe están mal ubicados en el GeoJSON y su
+    # registro bueno ya vive en el departamento que dice su documento.
+    slugs_con_datos = {mslug for _, mslug in fields_by_muni}
+    sin_datos = [k for k in geo if k[1] not in slugs_con_datos]
+    for clave in sin_datos:
+        fields_by_muni[clave] = {}
+
     records = {}
     for (dslug, mslug), fields in fields_by_muni.items():
         dept = fields.get("_departamento") or DEPT_NAME[dslug]
@@ -715,12 +725,17 @@ def main() -> None:
 
     # ---- coverage report ----
     total_geo = len(geo)
-    matched = len(records)
+    matched = len(records) - len(sin_datos)
     field_keys = ALL_KEYS
     filled = {k: sum(1 for r in out if r.get(k) is not None) for k in field_keys}
     print(f"Wrote {OUT.relative_to(ROOT)}")
-    print(f"GeoJSON municipios: {total_geo} | matched with data: {matched} "
-          f"({matched/total_geo*100:.0f}%) | missing: {total_geo - matched}")
+    print(f"GeoJSON municipios: {total_geo} | en el archivo: {len(records)} | "
+          f"con datos: {matched} ({matched/total_geo*100:.0f}%)")
+    if sin_datos:
+        print(f"Sin ningún dato ({len(sin_datos)}), presentes solo para que no falten "
+              f"en los listados:")
+        for _, mslug in sorted(sin_datos):
+            print(f"  {mslug}")
     print("\nTable sources:")
     for label, n, nuevos in aportes:
         print(f"  {label:16} {n:3} municipios ({nuevos} nuevos)")
@@ -758,12 +773,7 @@ def main() -> None:
         print(f"\nParsed but unmatched to GeoJSON ({len(unmatched)}):")
         for d, m, n in unmatched:
             print(f"  {d} / {m}  ({n} fields)")
-    have = set(records.keys())
-    missing = [g for (k, g) in geo.items() if k not in have]
-    if missing:
-        print(f"\nGeoJSON municipios with NO data ({len(missing)}):")
-        for g in sorted(missing)[:80]:
-            print(f"  {g}")
+
 
 
 if __name__ == "__main__":

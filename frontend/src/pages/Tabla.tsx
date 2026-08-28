@@ -27,7 +27,7 @@ import { formatearValor } from "@/lib/utils";
 import { track, trackDebounced } from "@/lib/analytics";
 import { agregarNacional } from "@/lib/totales";
 import type { AgregadoNacional } from "@/lib/totales";
-import { VARIABLES } from "@/types/departamento";
+import { VARIABLES, notaIndicador } from "@/types/departamento";
 import type { Indicadores, Variable, VariableKey } from "@/types/departamento";
 
 const FORMATO_POR_KEY: Record<string, Variable["formato"]> = Object.fromEntries(
@@ -70,6 +70,8 @@ interface Row {
   /** Set for municipios so the name cell can link to the municipio ficha. */
   departamentoSlug?: string;
   superficie_km2: number | null;
+  /** Solo departamentos: distancia por carretera de la cabecera a la capital. */
+  distancia_capital_km?: number | null;
   /** anio → indicadores (or null if missing for that year) */
   porAnio: Record<number, Indicadores | null>;
 }
@@ -125,6 +127,7 @@ export default function TablaPage() {
             nombre: d.nombre,
             grupo: d.region,
             superficie_km2: d.superficie_km2,
+            distancia_capital_km: d.distancia_capital_km,
             porAnio: {},
           };
           map.set(d.slug, r);
@@ -179,11 +182,25 @@ export default function TablaPage() {
 
   const anioBase = aniosEfectivos[0];
 
+  // Advertencias de los indicadores que están a la vista (p. ej. las coberturas de
+  // 1994, que el libro estima en plano para los 22 departamentos).
+  const notas = useMemo(() => {
+    const vistos = new Set<string>();
+    for (const v of variablesActivas) {
+      for (const anio of aniosEfectivos) {
+        const texto = notaIndicador(v.key, anio);
+        if (texto) vistos.add(texto);
+      }
+    }
+    return [...vistos];
+  }, [variablesActivas, aniosEfectivos]);
+
   const celdaTotal = (colId: string): React.ReactNode => {
     if (colId === "nombre")
       return <span className="font-semibold text-selva">Guatemala</span>;
     if (colId === "grupo")
       return <span className="text-muted-foreground text-xs">Total nacional</span>;
+    if (colId === "distancia_capital_km") return "—";  // no tiene total nacional
     if (colId === "superficie_km2") {
       const sup = agregadoPorAnio[anioBase]?.superficie_km2 ?? null;
       return sup !== null ? new Intl.NumberFormat("es-GT").format(sup) : "—";
@@ -244,6 +261,22 @@ export default function TablaPage() {
       }) as ColumnDef<Row, unknown>,
     ];
 
+    // Dato del departamento, no del año; los municipios no lo tienen.
+    if (!esMunicipios) {
+      cols.push(
+        columnHelper.accessor((row) => row.distancia_capital_km ?? null, {
+          id: "distancia_capital_km",
+          header: "Distancia a la capital (km)",
+          cell: (info) => {
+            const v = info.getValue() as number | null;
+            return v !== null ? new Intl.NumberFormat("es-GT").format(v) : "—";
+          },
+          enableSorting: true,
+          sortUndefined: "last" as const,
+        }) as ColumnDef<Row, unknown>
+      );
+    }
+
     for (const v of variablesActivas) {
       if (multiAnio) {
         cols.push(
@@ -279,7 +312,7 @@ export default function TablaPage() {
     }
 
     return cols;
-  }, [navigate, multiAnio, anios, aniosEfectivos, variablesActivas, entidadLabel, grupoLabel]);
+  }, [navigate, multiAnio, anios, aniosEfectivos, variablesActivas, entidadLabel, grupoLabel, esMunicipios]);
 
   const table = useReactTable({
     data,
@@ -316,6 +349,9 @@ export default function TablaPage() {
         [entidadLabel]: r.nombre,
         [grupoLabel]: r.grupo ?? null,
         "Superficie (km²)": r.superficie_km2,
+        ...(esMunicipios
+          ? {}
+          : { "Distancia a la capital (km)": r.distancia_capital_km ?? null }),
       };
       for (const v of variablesActivas) {
         if (multiAnio) {
@@ -550,6 +586,15 @@ export default function TablaPage() {
             </tbody>
           </table>
         </div>
+      )}
+
+      {/* Advertencias de los indicadores visibles en los años elegidos */}
+      {!isLoading && notas.length > 0 && (
+        <ul className="text-[11px] text-muted-foreground/80 font-body mt-3 leading-snug max-w-3xl list-disc pl-4 space-y-1">
+          {notas.map((texto) => (
+            <li key={texto}>{texto}</li>
+          ))}
+        </ul>
       )}
 
       {!isLoading && data.length > 0 && (

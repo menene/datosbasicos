@@ -209,14 +209,22 @@ export default function FichaMunicipioPage() {
           Indicadores
         </h2>
         <div className="grid gap-2 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-          {KPIS.map(({ key, label, formato, unit }) => (
-            <KpiCard
-              key={key}
-              label={label}
-              unit={unit}
-              valores={[{ anio: 2026, texto: formatearValor(muniVal(muni, key), formato) }]}
-            />
-          ))}
+          {KPIS.map(({ key, label, formato, unit }) => {
+            // Un indicador sin dato no aporta: se omite en lugar de dibujar una
+            // tarjeta con un guion. Los municipios que ninguna fuente documenta
+            // (San José La Máquina) siguen apareciendo en los listados, pero su
+            // ficha no se llena de huecos.
+            const valor = muniVal(muni, key);
+            if (valor === null) return null;
+            return (
+              <KpiCard
+                key={key}
+                label={label}
+                unit={unit}
+                valores={[{ anio: 2026, texto: formatearValor(valor, formato) }]}
+              />
+            );
+          })}
         </div>
       </div>
 
