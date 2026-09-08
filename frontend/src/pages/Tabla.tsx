@@ -25,7 +25,7 @@ import { useFiltros } from "@/store/filtros";
 import SelectorAniosMulti from "@/components/SelectorAniosMulti";
 import { formatearValor } from "@/lib/utils";
 import { track, trackDebounced } from "@/lib/analytics";
-import { agregarNacional } from "@/lib/totales";
+import { agregarNacional, ANIO_MUNICIPIOS } from "@/lib/totales";
 import type { AgregadoNacional } from "@/lib/totales";
 import { VARIABLES, notaIndicador } from "@/types/departamento";
 import type { Indicadores, Variable, VariableKey } from "@/types/departamento";
@@ -37,7 +37,8 @@ const FORMATO_POR_KEY: Record<string, Variable["formato"]> = Object.fromEntries(
 type Vista = "departamentos" | "municipios";
 
 // Synthetic single-snapshot year used for municipios (they have no year dimension).
-const ANIO_MUNI = 2026;
+// Es el mismo corte 2025 de los departamentos: las cifras municipales no son de 2026.
+const ANIO_MUNI = ANIO_MUNICIPIOS;
 
 // The subset of VARIABLES that municipios actually carry.
 const MUNI_KEYS = new Set<VariableKey>([
@@ -174,7 +175,8 @@ export default function TablaPage() {
         data.map((r) => ({
           ...(r.porAnio[anio] ?? {}),
           superficie_km2: r.superficie_km2,
-        }))
+        })),
+        anio
       );
     }
     return out;
@@ -389,7 +391,7 @@ export default function TablaPage() {
     }));
 
     const wb = XLSX.utils.book_new();
-    const sufijo = esMunicipios ? "2026" : anios.join("-");
+    const sufijo = esMunicipios ? String(ANIO_MUNI) : anios.join("-");
     const sheetName = `${esMunicipios ? "Municipios" : "Departamentos"} ${sufijo}`;
     XLSX.utils.book_append_sheet(wb, ws, sheetName);
     XLSX.writeFile(
@@ -600,10 +602,13 @@ export default function TablaPage() {
       {!isLoading && data.length > 0 && (
         <p className="text-[11px] text-muted-foreground/80 font-body mt-3 leading-snug max-w-3xl">
           La fila <span className="text-selva font-medium">Guatemala</span> es el
-          total nacional: población y superficie son sumas de{" "}
-          {esMunicipios ? "los 340 municipios" : "los 22 departamentos"}; los
-          porcentajes y tasas son promedios simples (sin ponderar por población),
-          por lo que son aproximados. El ranking IDH no se totaliza.
+          total nacional: la superficie (108,889 km²) y la población del corte
+          2025 (17,675,772 hab.) son las cifras oficiales del país, iguales en la
+          vista de departamentos y en la de municipios; los porcentajes y tasas
+          son promedios simples (sin ponderar por población), por lo que son
+          aproximados. El ranking IDH no se totaliza.
+          {esMunicipios &&
+            " Las demás sumas de la vista municipal son parciales: no todos los municipios tienen dato en cada indicador."}
         </p>
       )}
     </div>

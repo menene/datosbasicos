@@ -12,7 +12,7 @@ const CHAPTERS = [
 const STATS = [
   { icon: MapPin, value: "22", label: "Departamentos" },
   { icon: BarChart2, value: "130+", label: "Indicadores" },
-  { icon: Users, value: "18M", label: "Personas" },
+  { icon: Users, value: "17.7M", label: "Personas" },
   { icon: Droplets, value: "2026", label: "Edición" },
 ];
 

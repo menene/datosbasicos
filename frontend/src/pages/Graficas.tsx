@@ -270,9 +270,10 @@ export default function GraficasPage() {
       porAnio.map(({ anio, data }) => ({
         label: String(anio),
         valor: formatearValor(
-          agregarNacional(data.map((d) => ({ ...d.indicadores }))).valores[
-            variableActiva
-          ] ?? null,
+          agregarNacional(
+            data.map((d) => ({ ...d.indicadores, superficie_km2: d.superficie_km2 })),
+            anio
+          ).valores[variableActiva] ?? null,
           varInfo.formato
         ),
       })),
@@ -374,7 +375,9 @@ export default function GraficasPage() {
           className="mb-6 max-w-xl"
           stats={statsNacional}
           nota={
-            aditivaRanking
+            variableActiva === "poblacion_total"
+              ? "Población nacional oficial del corte."
+              : aditivaRanking
               ? "Total nacional (suma de los 22 departamentos)."
               : "Promedio simple de los 22 departamentos (sin ponderar por población; aproximado)."
           }

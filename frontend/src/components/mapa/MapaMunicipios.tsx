@@ -1,6 +1,7 @@
 import { useCallback, useMemo, useState } from "react";
 import { useGeoMunicipios } from "@/api/geo";
 import { useMunicipios, municipiosDominio } from "@/api/municipios";
+import { useLagos } from "@/api/lagos";
 import { useFiltros } from "@/store/filtros";
 import { useSeleccion } from "@/store/seleccion";
 import { getColorForValue, COLOR_SIN_DATO, COLOR_SELECCIONADO } from "@/lib/colores";
@@ -8,6 +9,7 @@ import { track } from "@/lib/analytics";
 import { MAP_W, MAP_H, featureToSvgPath, slugify } from "@/lib/mapa";
 import { VARIABLES } from "@/types/departamento";
 import type { Municipio } from "@/types/municipio";
+import type { Lago } from "@/types/lago";
 import { formatearValor } from "@/lib/utils";
 
 interface TooltipState {
@@ -16,7 +18,13 @@ interface TooltipState {
   municipio: string;
   departamento: string;
   valor: string;
+  /** Qué es el valor. Los municipios muestran la variable activa; los lagos, su superficie. */
+  etiquetaValor?: string;
 }
+
+/** El GeoJSON de ADM2 trae los lagos como polígonos aparte (Amatitlán, Atitlán).
+ *  No son municipios: se dibujan como agua, sin tooltip ni clic. */
+const esLago = (nombre: string) => slugify(nombre).startsWith("lago-");
 
 function propsOf(feature: GeoJSON.Feature) {
   const props = feature.properties ?? {};
@@ -28,11 +36,24 @@ function propsOf(feature: GeoJSON.Feature) {
 export default function MapaMunicipios() {
   const { data: geoData, isLoading, isError } = useGeoMunicipios();
   const { data: municipios } = useMunicipios();
+  const { data: lagos } = useLagos();
   const variableActiva = useFiltros((s) => s.variableActiva);
-  const { municipioActivo, municipioDeptActivo, setMunicipioActivo } = useSeleccion();
+  const { municipioActivo, municipioDeptActivo, setMunicipioActivo, lagoActivo, setLagoActivo } =
+    useSeleccion();
   const [tooltip, setTooltip] = useState<TooltipState | null>(null);
 
   const variableInfo = VARIABLES.find((v) => v.key === variableActiva);
+
+  // Los polígonos de lago se emparejan con su ficha por el slug de la forma
+  // ("lago-de-atitlan"); los lagos sin polígono en el GeoJSON solo aparecen en la
+  // ficha de su departamento.
+  const lagoPorGeoSlug = useMemo(() => {
+    const map = new Map<string, Lago>();
+    lagos?.forEach((l) => {
+      if (l.geo_slug) map.set(l.geo_slug, l);
+    });
+    return map;
+  }, [lagos]);
 
   // Six municipio slugs repeat across departments (La Libertad, San Lorenzo…), so
   // records are keyed "departamento/municipio". The bare slug is kept as a fallback
@@ -123,10 +144,58 @@ export default function MapaMunicipios() {
           const pathD = featureToSvgPath(feature);
           if (!pathD) return null;
 
+          if (esLago(municipio)) {
+            const lago = lagoPorGeoSlug.get(muniSlug);
+            const lagoSeleccionado = !!lago && lago.slug === lagoActivo;
+            return (
+              <path
+                key={`lago-${muniSlug}-${i}`}
+                d={pathD}
+                fill={lagoSeleccionado ? "#1E4D8C" : "#A8D4E8"}
+                fillOpacity={lagoSeleccionado ? 0.9 : 1}
+                stroke={lagoSeleccionado ? "#3A2A18" : "#7FB8D4"}
+                strokeWidth={lagoSeleccionado ? 1.4 : 0.5}
+                strokeLinejoin="round"
+                style={{
+                  cursor: lago ? "pointer" : "default",
+                  transition: "fill 0.3s ease, stroke 0.2s ease",
+                }}
+                onMouseMove={(e) => {
+                  const container = e.currentTarget.closest(".map-container") as HTMLElement;
+                  if (!container) return;
+                  const rect = container.getBoundingClientRect();
+                  setTooltip({
+                    x: e.clientX - rect.left,
+                    y: e.clientY - rect.top,
+                    municipio: lago?.nombre ?? municipio,
+                    departamento: lago?.departamento ?? (departamento || "—"),
+                    valor:
+                      lago?.area_km2 != null
+                        ? `${new Intl.NumberFormat("es-GT").format(lago.area_km2)} km²`
+                        : "—",
+                    etiquetaValor: "Superficie lacustre",
+                  });
+                }}
+                onMouseLeave={() => setTooltip(null)}
+                onClick={() => {
+                  if (!lago) return;
+                  const deseleccionar = lagoSeleccionado;
+                  setLagoActivo(deseleccionar ? null : lago.slug);
+                  if (!deseleccionar) {
+                    track("mapa_lago_click", {
+                      lago: lago.slug,
+                      departamento: lago.departamento_slug,
+                    });
+                  }
+                }}
+              />
+            );
+          }
+
           const baseFill =
             (muni && fillMap.get(`${muni.departamento_slug}/${muni.slug}`)) ?? COLOR_SIN_DATO;
           const computedFill = isActive ? COLOR_SELECCIONADO : baseFill;
-          const opacity = municipioActivo && !isActive ? 0.72 : 1;
+          const opacity = (municipioActivo || lagoActivo) && !isActive ? 0.72 : 1;
 
           return (
             <path
@@ -186,7 +255,7 @@ export default function MapaMunicipios() {
           </p>
           <p className="text-xs text-muted-foreground mt-0.5">{tooltip.departamento}</p>
           <p className="text-xs text-muted-foreground mt-0.5">
-            {variableInfo?.label}:{" "}
+            {tooltip.etiquetaValor ?? variableInfo?.label}:{" "}
             <span className="font-medium text-foreground">{tooltip.valor}</span>
           </p>
         </div>

@@ -14,7 +14,7 @@ import { useMunicipios } from "@/api/municipios";
 import { useDepartamento } from "@/api/departamentos";
 import { formatearValor } from "@/lib/utils";
 import { track } from "@/lib/analytics";
-import { agregarNacional } from "@/lib/totales";
+import { agregarNacional, ANIO_MUNICIPIOS } from "@/lib/totales";
 import { VARIABLES_ALERTA } from "@/types/departamento";
 import type { VariableKey } from "@/types/departamento";
 import type { Municipio } from "@/types/municipio";
@@ -146,8 +146,12 @@ export default function FichaMunicipioPage() {
   const deptNombre = depto?.nombre ?? muni.departamento;
 
   // National context: national population (sum of municipios) + this share.
+  // El total nacional viene de las cifras oficiales del corte 2025, no de sumar
+  // los municipios cargados (297 de 340 traen población: la suma se quedaba en
+  // 14,357,371 en lugar de 17,675,772).
   const agregadoNacional = agregarNacional(
-    (municipios ?? []).map((m) => m as unknown as Record<string, number | null>)
+    (municipios ?? []).map((m) => m as unknown as Record<string, number | null>),
+    ANIO_MUNICIPIOS
   );
   const poblacionNacional = agregadoNacional.valores.poblacion_total;
   const poblacionMuni = muniVal(muni, "poblacion_total");
@@ -192,7 +196,7 @@ export default function FichaMunicipioPage() {
             {muni.superficie_km2 != null && (
               <span>{new Intl.NumberFormat("es-GT").format(muni.superficie_km2)} km²</span>
             )}
-            <span className="text-xs bg-muted px-2 py-0.5 rounded-full">Datos 2026</span>
+            <span className="text-xs bg-muted px-2 py-0.5 rounded-full">Datos {ANIO_MUNICIPIOS}</span>
           </div>
         </div>
         <MunicipioShape
@@ -221,7 +225,7 @@ export default function FichaMunicipioPage() {
                 key={key}
                 label={label}
                 unit={unit}
-                valores={[{ anio: 2026, texto: formatearValor(valor, formato) }]}
+                valores={[{ anio: ANIO_MUNICIPIOS, texto: formatearValor(valor, formato) }]}
               />
             );
           })}
@@ -235,7 +239,7 @@ export default function FichaMunicipioPage() {
             {
               label: "Población nacional",
               valor: formatearValor(poblacionNacional, "numero"),
-              sub: "suma de 340 municipios",
+              sub: `Año ${ANIO_MUNICIPIOS}`,
             },
             ...(agregadoNacional.superficie_km2 !== null
               ? [

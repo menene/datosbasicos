@@ -9,7 +9,7 @@ import {
   ResponsiveContainer,
   Legend,
 } from "recharts";
-import { ArrowLeft, MapPin } from "lucide-react";
+import { ArrowLeft, MapPin, ChevronLeft, ChevronRight, LayoutGrid } from "lucide-react";
 import {
   useDepartamentoMulti,
   useDepartamentos,
@@ -23,10 +23,12 @@ import { agregarNacional } from "@/lib/totales";
 import { VARIABLES, VARIABLES_ALERTA, notaIndicador } from "@/types/departamento";
 import type { Variable, VariableKey, Indicadores } from "@/types/departamento";
 import TarjetaNacional from "@/components/TarjetaNacional";
+import SeccionSitios from "@/components/ficha/SeccionSitios";
 import DepartamentoShape from "@/components/ficha/DepartamentoShape";
 import KpiCard from "@/components/ficha/KpiCard";
 import Breadcrumb from "@/components/ficha/Breadcrumb";
 import { useMunicipios } from "@/api/municipios";
+import { useSitiosDeDepartamento } from "@/api/sitios";
 
 const COLORES_ANIO: Record<number, string> = {
   1994: "#1E4D8C",
@@ -124,6 +126,9 @@ export default function FichaPage() {
   const { data: todos } = useDepartamentos({ anio: anioMasReciente });
   // Municipios of this department for the bottom drill-down nav.
   const { data: municipios } = useMunicipios();
+  // Los sitios de interés del departamento (lagos, sitios arqueológicos…). Solo se
+  // listan: el informe completo de cada uno vive en su propia ficha, /sitio/:slug.
+  const { data: sitios } = useSitiosDeDepartamento(slug);
   const municipiosDelDepto = municipios
     ?.filter((m) => m.departamento_slug === slug)
     .sort((a, b) => a.nombre.localeCompare(b.nombre));
@@ -178,6 +183,18 @@ export default function FichaPage() {
   const deptOptions = todos
     ?.slice()
     .sort((a, b) => a.nombre.localeCompare(b.nombre));
+
+  // Navegación alfabética entre departamentos: da la vuelta en los extremos, para
+  // que se puedan recorrer los 22 sin volver al índice.
+  const posicionActual = deptOptions?.findIndex((d) => d.slug === slug) ?? -1;
+  const deptoAnterior =
+    deptOptions && posicionActual >= 0
+      ? deptOptions[(posicionActual - 1 + deptOptions.length) % deptOptions.length]
+      : null;
+  const deptoSiguiente =
+    deptOptions && posicionActual >= 0
+      ? deptOptions[(posicionActual + 1) % deptOptions.length]
+      : null;
 
   if (!slug) {
     return (
@@ -240,7 +257,8 @@ export default function FichaPage() {
 
   // National context (most recent year): totals + this department's share.
   const agregadoNacional = agregarNacional(
-    (todos ?? []).map((d) => ({ ...d.indicadores, superficie_km2: d.superficie_km2 }))
+    (todos ?? []).map((d) => ({ ...d.indicadores, superficie_km2: d.superficie_km2 })),
+    anioMasReciente
   );
   const poblacionNacional = agregadoNacional.valores.poblacion_total;
   const poblacionDepto =
@@ -319,10 +337,10 @@ export default function FichaPage() {
           {(depto.distancia_capital_km !== null ||
             depto.feria_titular ||
             depto.idiomas_predominantes) && (
-            <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1 text-sm font-body mt-4 max-w-2xl">
+            <dl className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-x-10 gap-y-1.5 text-sm font-body mt-4">
               {depto.distancia_capital_km !== null && (
                 <div className="flex gap-2">
-                  <dt className="text-muted-foreground">Distancia a la capital:</dt>
+                  <dt className="text-muted-foreground whitespace-nowrap shrink-0">Distancia a la capital:</dt>
                   <dd className="text-foreground font-medium">
                     {new Intl.NumberFormat("es-GT").format(depto.distancia_capital_km)} km
                   </dd>
@@ -330,13 +348,13 @@ export default function FichaPage() {
               )}
               {depto.feria_titular && (
                 <div className="flex gap-2">
-                  <dt className="text-muted-foreground">Feria titular:</dt>
+                  <dt className="text-muted-foreground whitespace-nowrap shrink-0">Feria titular:</dt>
                   <dd className="text-foreground font-medium">{depto.feria_titular}</dd>
                 </div>
               )}
               {depto.idiomas_predominantes && (
                 <div className="flex gap-2 sm:col-span-2">
-                  <dt className="text-muted-foreground">Idiomas:</dt>
+                  <dt className="text-muted-foreground whitespace-nowrap shrink-0">Idiomas:</dt>
                   <dd className="text-foreground font-medium">
                     {depto.idiomas_predominantes}
                   </dd>
@@ -578,13 +596,25 @@ export default function FichaPage() {
         </div>
       )}
 
-      {/* Drill-down: municipios of this department */}
+      {/* Sitios de interés del departamento (solo el índice; la ficha va aparte) */}
+      {sitios && sitios.length > 0 && (
+        <SeccionSitios sitios={sitios} departamento={depto.nombre} />
+      )}
+
+      {/* Drill-down: municipios of this department.
+          Misma rejilla y misma tarjeta que los indicadores de arriba: todas del
+          mismo tamaño, en vez de píldoras de ancho variable que dejaban filas
+          desparejas. */}
       <div className="border-t border-border pt-6">
-        <p className="text-xs text-muted-foreground font-body mb-3">
+        <h2 className="font-display font-semibold text-base text-foreground mb-1">
           Municipios de {depto.nombre}
+        </h2>
+        <p className="text-xs text-muted-foreground font-body mb-4">
+          {municipiosDelDepto?.length ?? 0} municipios · población del corte{" "}
+          {anioMasReciente}
         </p>
         {municipiosDelDepto && municipiosDelDepto.length > 0 ? (
-          <div className="flex flex-wrap gap-2">
+          <div className="grid gap-2 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
             {municipiosDelDepto.map((m) => (
               <Link
                 key={m.slug}
@@ -595,9 +625,16 @@ export default function FichaPage() {
                     origen: "municipios_del_depto",
                   })
                 }
-                className="px-3 py-1 rounded-full text-xs font-body border border-border text-muted-foreground hover:border-selva hover:text-selva hover:bg-selva/5 transition-colors"
+                className="rounded-lg px-4 py-3 border bg-muted/40 border-border hover:border-selva hover:bg-selva/5 transition-colors group"
               >
-                {m.nombre}
+                <p className="font-display font-semibold text-foreground text-sm leading-tight group-hover:text-selva transition-colors">
+                  {m.nombre}
+                </p>
+                <p className="text-xs text-muted-foreground font-body mt-1.5 tabular-nums">
+                  {m.poblacion_total != null
+                    ? `${formatearValor(m.poblacion_total, "numero")} hab.`
+                    : "sin dato"}
+                </p>
               </Link>
             ))}
           </div>
@@ -608,34 +645,65 @@ export default function FichaPage() {
         )}
       </div>
 
-      {/* Lateral nav: other departments */}
-      {deptOptions && (
-        <div className="border-t border-border pt-6">
-          <p className="text-xs text-muted-foreground font-body mb-3">
-            Otros departamentos
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {deptOptions.map((d) => (
-              <button
-                key={d.slug}
-                onClick={() => {
-                  track("navegar_a_ficha", {
-                    destino: `/ficha/${d.slug}`,
-                    origen: "otros_departamentos",
-                  });
-                  navigate(`/ficha/${d.slug}`);
-                }}
-                className={`px-3 py-1 rounded-full text-xs font-body border transition-colors ${
-                  d.slug === slug
-                    ? "bg-selva text-white border-selva"
-                    : "border-border text-muted-foreground hover:border-selva hover:text-selva"
-                }`}
-              >
-                {d.nombre}
-              </button>
-            ))}
-          </div>
-        </div>
+      {/* Navegación entre departamentos: anterior · índice · siguiente.
+          Sustituye la lista de 22 píldoras, que ocupaba dos filas y competía con
+          los datos de la ficha. Mismas tarjetas que la rejilla de municipios. */}
+      {deptoAnterior && deptoSiguiente && (
+        <nav className="border-t border-border pt-6 grid grid-cols-3 gap-2">
+          <button
+            onClick={() => {
+              track("navegar_a_ficha", {
+                destino: `/ficha/${deptoAnterior.slug}`,
+                origen: "nav_departamento_anterior",
+              });
+              navigate(`/ficha/${deptoAnterior.slug}`);
+            }}
+            className="rounded-lg px-4 py-3 border bg-muted/40 border-border hover:border-selva hover:bg-selva/5 transition-colors group text-left min-w-0"
+          >
+            <span className="flex items-center gap-1 text-xs text-muted-foreground font-body mb-1.5 group-hover:text-selva/80 transition-colors">
+              <ChevronLeft size={12} className="shrink-0" />
+              Anterior
+            </span>
+            <span className="block font-display font-semibold text-foreground text-sm leading-tight truncate group-hover:text-selva transition-colors">
+              {deptoAnterior.nombre}
+            </span>
+          </button>
+
+          <button
+            onClick={() => {
+              track("navegar_a_ficha", { destino: "/ficha", origen: "nav_indice" });
+              navigate("/ficha");
+            }}
+            className="rounded-lg px-4 py-3 border bg-muted/40 border-border hover:border-selva hover:bg-selva/5 transition-colors group text-center min-w-0"
+          >
+            <span className="flex items-center justify-center gap-1 text-xs text-muted-foreground font-body mb-1.5 group-hover:text-selva/80 transition-colors">
+              <LayoutGrid size={12} className="shrink-0" />
+              Ver todos
+            </span>
+            <span className="block font-display font-semibold text-foreground text-sm leading-tight group-hover:text-selva transition-colors">
+              Departamentos
+            </span>
+          </button>
+
+          <button
+            onClick={() => {
+              track("navegar_a_ficha", {
+                destino: `/ficha/${deptoSiguiente.slug}`,
+                origen: "nav_departamento_siguiente",
+              });
+              navigate(`/ficha/${deptoSiguiente.slug}`);
+            }}
+            className="rounded-lg px-4 py-3 border bg-muted/40 border-border hover:border-selva hover:bg-selva/5 transition-colors group text-right min-w-0"
+          >
+            <span className="flex items-center justify-end gap-1 text-xs text-muted-foreground font-body mb-1.5 group-hover:text-selva/80 transition-colors">
+              Siguiente
+              <ChevronRight size={12} className="shrink-0" />
+            </span>
+            <span className="block font-display font-semibold text-foreground text-sm leading-tight truncate group-hover:text-selva transition-colors">
+              {deptoSiguiente.nombre}
+            </span>
+          </button>
+        </nav>
       )}
     </div>
   );

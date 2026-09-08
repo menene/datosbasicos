@@ -313,9 +313,11 @@ def match_geo(geo: dict[tuple[str, str], str], dslug: str, mslug: str) -> str | 
 def match_geo_nacional(geo: dict, mslug: str) -> tuple[str, str] | None:
     """Last resort for the department docs: an exact, country-wide unique name.
 
-    A few municipios sit under the wrong department in the GeoJSON (Chicamán and
-    San Felipe, notably). Their prose profile is unambiguous, so the shape is matched
-    by name and the record keeps the department its source document states.
+    geoBoundaries filed two shapes under the wrong department (Chicamán bajo Alta
+    Verapaz y San Felipe bajo Quetzaltenango); ambas quedaron corregidas en
+    guatemala_municipios.geojson. Este atajo se conserva como red de seguridad:
+    si una fuente vuelve a discrepar, la forma se empareja por nombre y el registro
+    conserva el departamento que indica su documento de origen.
     """
     hits = [(d, m) for (d, m) in geo if m == mslug]
     return hits[0] if len(hits) == 1 else None

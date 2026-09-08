@@ -1,7 +1,8 @@
 import { useMemo, useState } from "react";
 import * as d3 from "d3";
-import { useGeoData } from "@/api/geo";
+import { useGeoData, useGeoLagos } from "@/api/geo";
 import { useDepartamentos, useResumenIndicadores } from "@/api/departamentos";
+import { useLagos } from "@/api/lagos";
 import { useFiltros } from "@/store/filtros";
 import { useSeleccion } from "@/store/seleccion";
 import { COLOR_SIN_DATO } from "@/lib/colores";
@@ -9,6 +10,7 @@ import { track } from "@/lib/analytics";
 import { MAP_W, MAP_H, featureToSvgPath, slugify } from "@/lib/mapa";
 import { VARIABLES } from "@/types/departamento";
 import type { Departamento, VariableKey } from "@/types/departamento";
+import type { Lago } from "@/types/lago";
 import { formatearValor } from "@/lib/utils";
 
 // Variables where a sqrt transform gives better visual distribution
@@ -34,18 +36,34 @@ interface TooltipState {
   y: number;
   nombre: string;
   valor: string;
+  /** Qué es el valor: la variable activa en los departamentos, la superficie en los lagos. */
+  etiquetaValor?: string;
 }
 
 export default function MapaChoropleth() {
   const { data: geoData, isLoading: geoLoading, isError: geoError } = useGeoData();
+  const { data: geoLagos } = useGeoLagos();
+  const { data: lagos } = useLagos();
   const variableActiva = useFiltros((s) => s.variableActiva);
   const anio = useFiltros((s) => s.anioMapa);
-  const { departamentoActivo, setDepartamentoActivo } = useSeleccion();
+  const { departamentoActivo, setDepartamentoActivo, lagoActivo, setLagoActivo } =
+    useSeleccion();
   const { data: departamentos } = useDepartamentos({ anio });
   const { data: resumen } = useResumenIndicadores(anio);
   const [tooltip, setTooltip] = useState<TooltipState | null>(null);
 
   const variableInfo = VARIABLES.find((v) => v.key === variableActiva);
+
+  // Los lagos se dibujan como una capa aparte encima de los departamentos.
+  // geoBoundaries dejó hueco donde están Atitlán, Amatitlán e Izabal, pero el
+  // polígono de Petén cubre Petén Itzá con tierra: sin esta capa no se vería.
+  const lagoPorGeoSlug = useMemo(() => {
+    const map = new Map<string, Lago>();
+    lagos?.forEach((l) => {
+      if (l.geo_slug) map.set(l.geo_slug, l);
+    });
+    return map;
+  }, [lagos]);
 
   const deptoMap = useMemo(() => {
     const map = new Map<string, Departamento>();
@@ -172,6 +190,58 @@ export default function MapaChoropleth() {
               />
             );
         })}
+
+        {/* Capa de lagos, encima de los departamentos */}
+        {geoLagos?.features.map((feature, i) => {
+          const nombre: string = feature.properties?.["shapeName"] ?? "";
+          const geoSlug = slugify(nombre);
+          const lago = lagoPorGeoSlug.get(geoSlug);
+          const pathD = featureToSvgPath(feature);
+          if (!pathD) return null;
+          const seleccionado = !!lago && lago.slug === lagoActivo;
+
+          return (
+            <path
+              key={`lago-${geoSlug}-${i}`}
+              d={pathD}
+              fill={seleccionado ? "#1E4D8C" : "#A8D4E8"}
+              stroke={seleccionado ? "#3A2A18" : "#7FB8D4"}
+              strokeWidth={seleccionado ? 2 : 0.8}
+              strokeLinejoin="round"
+              style={{
+                cursor: lago ? "pointer" : "default",
+                transition: "fill 0.3s ease, stroke 0.2s ease",
+              }}
+              onMouseMove={(e) => {
+                const container = e.currentTarget.closest(".map-container") as HTMLElement;
+                if (!container) return;
+                const rect = container.getBoundingClientRect();
+                setTooltip({
+                  x: e.clientX - rect.left,
+                  y: e.clientY - rect.top,
+                  nombre: lago?.nombre ?? nombre,
+                  valor:
+                    lago?.area_km2 != null
+                      ? `${new Intl.NumberFormat("es-GT").format(lago.area_km2)} km²`
+                      : "—",
+                  etiquetaValor: "Superficie lacustre",
+                });
+              }}
+              onMouseLeave={() => setTooltip(null)}
+              onClick={() => {
+                if (!lago) return;
+                const deseleccionar = seleccionado;
+                setLagoActivo(deseleccionar ? null : lago.slug);
+                if (!deseleccionar) {
+                  track("mapa_lago_click", {
+                    lago: lago.slug,
+                    departamento: lago.departamento_slug,
+                  });
+                }
+              }}
+            />
+          );
+        })}
       </svg>
 
       {tooltip && (
@@ -183,7 +253,7 @@ export default function MapaChoropleth() {
             {tooltip.nombre}
           </p>
           <p className="text-xs text-muted-foreground mt-0.5">
-            {variableInfo?.label}:{" "}
+            {tooltip.etiquetaValor ?? variableInfo?.label}:{" "}
             <span className="font-medium text-foreground">{tooltip.valor}</span>
           </p>
         </div>

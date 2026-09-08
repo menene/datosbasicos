@@ -20,6 +20,24 @@ import { calcularDensidad, calcularDuplicacion } from "@/lib/derivados";
  * will not match census-weighted figures exactly.
  */
 
+/**
+ * Cifras oficiales del país. Son fijas y NO se deducen del dataset cargado:
+ * los municipios traen huecos (297 de 340 tienen población, 274 tienen
+ * superficie), así que sumarlos daba 14,357,371 hab. y 83,890 km² —
+ * un "total nacional" que cambiaba según la vista. Con estas constantes el
+ * total es el mismo en mapa, tabla, gráficas y fichas, y en ambas vistas.
+ */
+export const SUPERFICIE_NACIONAL_KM2 = 108_889;
+
+/** Año del corte de municipios: los municipios no tienen dimensión temporal y
+ *  sus cifras son las del corte 2025, igual que los departamentos. */
+export const ANIO_MUNICIPIOS = 2025;
+
+/** Población nacional oficial por año de corte. */
+export const POBLACION_NACIONAL: Readonly<Record<number, number>> = {
+  2025: 17_675_772,
+};
+
 /** Keys whose national figure is a sum, not an average. */
 export const CLAVES_ADITIVAS: ReadonlySet<VariableKey> = new Set<VariableKey>([
   "poblacion_total",
@@ -54,7 +72,7 @@ export type FilaAgregable = Partial<Record<VariableKey, number | null>> & {
 export interface AgregadoNacional {
   /** National figure per indicator (sum, average, or null). */
   valores: Record<VariableKey, number | null>;
-  /** Sum of surface area across entities. */
+  /** Superficie nacional (constante oficial, no la suma de las filas). */
   superficie_km2: number | null;
   /** How many entities were aggregated (had at least one value). */
   n: number;
@@ -64,7 +82,10 @@ export interface AgregadoNacional {
  * Aggregate a list of entities (departamentos or municipios) into a single
  * national record. Nulls are skipped; a key with no data anywhere → null.
  */
-export function agregarNacional(filas: FilaAgregable[]): AgregadoNacional {
+export function agregarNacional(
+  filas: FilaAgregable[],
+  anio?: number
+): AgregadoNacional {
   const valores = {} as Record<VariableKey, number | null>;
 
   for (const { key } of VARIABLES) {
@@ -85,25 +106,31 @@ export function agregarNacional(filas: FilaAgregable[]): AgregadoNacional {
       cuenta === 0 ? null : CLAVES_ADITIVAS.has(key) ? suma : suma / cuenta;
   }
 
-  let sup = 0;
-  let supN = 0;
-  // Para la densidad se suman solo las entidades que tienen las dos cifras: dividir
-  // la población de todas entre la superficie de algunas la inflaría.
+  // Para la densidad de respaldo (años sin cifra oficial) se suman solo las
+  // entidades que tienen las dos cifras: dividir la población de todas entre la
+  // superficie de algunas la inflaría.
   let pobPareada = 0;
   let supPareada = 0;
   for (const fila of filas) {
-    if (typeof fila.superficie_km2 === "number") {
-      sup += fila.superficie_km2;
-      supN += 1;
-      if (typeof fila.poblacion_total === "number") {
-        pobPareada += fila.poblacion_total;
-        supPareada += fila.superficie_km2;
-      }
+    if (typeof fila.superficie_km2 === "number" && typeof fila.poblacion_total === "number") {
+      pobPareada += fila.poblacion_total;
+      supPareada += fila.superficie_km2;
     }
   }
 
-  const superficie = supN === 0 ? null : sup;
-  valores.densidad_hab_km2 = calcularDensidad(pobPareada, supPareada);
+  // La superficie del país no depende de cuántas entidades traiga el dataset:
+  // siempre son los 108,889 km² oficiales, en departamentos y en municipios.
+  const superficie = SUPERFICIE_NACIONAL_KM2;
+
+  // Población: si el año tiene cifra oficial se usa esa, no la suma de las filas
+  // (los municipios están incompletos y la suma se quedaba corta).
+  const poblacionOficial = anio !== undefined ? POBLACION_NACIONAL[anio] : undefined;
+  if (poblacionOficial !== undefined) valores.poblacion_total = poblacionOficial;
+
+  valores.densidad_hab_km2 =
+    poblacionOficial !== undefined
+      ? calcularDensidad(poblacionOficial, SUPERFICIE_NACIONAL_KM2)
+      : calcularDensidad(pobPareada, supPareada);
   // Participación nacional = votos emitidos / padrón, no el promedio de 22 porcentajes.
   const padron = valores.padron_electoral;
   const votos = valores.votos_emitidos;

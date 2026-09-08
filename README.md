@@ -130,6 +130,9 @@ guatemala-datos/
 │       ├── routers/
 │       │   ├── departamentos.py
 │       │   ├── indicadores.py
+│       │   ├── municipios.py     # Sirve municipios.json (sin base de datos)
+│       │   ├── lagos.py          # Sirve lagos.json (sin base de datos)
+│       │   ├── sitios.py         # Índice de sitios de interés
 │       │   └── geo.py            # Endpoint que sirve GeoJSON
 │       ├── crud/
 │       │   └── departamento.py
@@ -138,9 +141,12 @@ guatemala-datos/
 │           ├── derivados.py               # Fórmulas de densidad y duplicación
 │           ├── enrich_departamentos.py    # Rellena departamentos.json desde /docs
 │           ├── extract_municipios.py      # Genera municipios.json desde /docs
+│           ├── fetch_lagos_geojson.py      # Baja polígonos de lagos desde OSM
 │           └── data/
 │               ├── departamentos.json
 │               ├── municipios.json
+│               ├── lagos.json                  # Fichas de los 4 lagos principales
+│               ├── sitios.json                 # Índice de sitios de interés
 │               ├── guatemala.geojson
 │               └── guatemala_municipios.geojson
 │
@@ -275,7 +281,15 @@ docker compose exec backend alembic downgrade -1
 GET  /api/v1/departamentos          Lista todos los departamentos con indicadores
 GET  /api/v1/departamentos/{slug}   Detalle de un departamento
 GET  /api/v1/indicadores/resumen    Estadísticas globales (min, max, promedio)
+GET  /api/v1/municipios             Lista los 340 municipios (?departamento=slug)
+GET  /api/v1/municipios/{slug}      Detalle de un municipio (?departamento=slug)
+GET  /api/v1/lagos                  Los 4 lagos principales (?departamento=slug)
+GET  /api/v1/lagos/{slug}           Ficha de un lago
+GET  /api/v1/sitios                 Sitios de interés (?departamento=slug)
+GET  /api/v1/sitios/{slug}          Ficha de un sitio de interés
 GET  /api/v1/geo/departamentos      GeoJSON de los 22 departamentos
+GET  /api/v1/geo/municipios         GeoJSON de municipios y lagos
+GET  /api/v1/geo/lagos              Solo los polígonos de los lagos (~18 KB)
 GET  /api/v1/health                 Health check
 ```
 
@@ -724,11 +738,131 @@ tabla, mapa, ficha, gráficas, panel y exportación). En ambos lados:
 3. Si faltan los insumos, se conserva lo publicado (58 municipios sin extensión
    territorial y 54 sin tasa de crecimiento siguen sin estos dos indicadores).
 
-El total nacional de la tabla también usa las fórmulas en vez de promediar: la densidad
-es población sumada / superficie sumada (promediar las 22 densidades daba 318 hab/km²
-en 2025, cuando la real ronda 165) y la duplicación sale de la tasa nacional.
+El total nacional nunca se promedia. Dos cifras son **constantes oficiales**, no sumas
+del dataset cargado (`frontend/src/lib/totales.ts`): la superficie del país, 108,889 km²,
+y la población del corte 2025, 17,675,772 habitantes. Las 22 filas departamentales suman
+exactamente esos dos valores, pero los 340 municipios no —297 traen población y 274
+superficie—, así que sumarlos daba un «total nacional» de 14,357,371 hab. y 83,890 km²
+que cambiaba según la vista. Con las constantes, mapa, tabla, gráficas y fichas muestran
+la misma cifra en ambas vistas. De ahí salen las derivadas: la densidad nacional es
+17,675,772 / 108,889 = 162 hab/km² (promediar las 22 densidades daba 318) y la
+duplicación sale de la tasa nacional. Las demás sumas de la vista municipal (padrón, PEA,
+votos) siguen siendo parciales y la tabla lo advierte al pie.
+
+Los municipios no tienen dimensión temporal: sus cifras son del mismo corte **2025** que
+los departamentos. 2026 es el año de la edición del libro, no el de los datos.
 
 El GeoJSON de los departamentos debe obtenerse de GADM (https://gadm.org) nivel ADM1 para Guatemala y colocarse en `backend/app/seed/data/guatemala.geojson`.
+
+El GeoJSON municipal es geoBoundaries GTM ADM2. Dos formas venían con el departamento
+equivocado y están corregidas en el archivo: **San Felipe** figuraba en Quetzaltenango
+cuando es de Retalhuleu, y **Chicamán** en Alta Verapaz cuando es de Quiché. Con la
+corrección, las 340 formas y los 340 registros coinciden uno a uno y el conteo por
+departamento cuadra con la división oficial.
+
+El archivo tiene **344 features: los 340 municipios + 4 lagos**. Los lagos se dibujan
+como agua, no como municipios (`esLago()` en `MapaMunicipios.tsx` los reconoce porque su
+nombre empieza con «Lago»), y van al final del arreglo porque el SVG dibuja en orden: así
+el agua queda encima de los municipios que en ADM2 sí incluyen el área del lago.
+
+El **mapa departamental** dibuja los lagos como una capa aparte, servida por
+`/api/v1/geo/lagos` (los mismos 4 polígonos filtrados del archivo municipal, ~18 KB en vez
+de 1.1 MB). Hace falta porque geoBoundaries solo dejó hueco donde están tres de ellos:
+
+| Lago | ¿El polígono ADM1 del departamento deja hueco? |
+|---|---|
+| Atitlán (Sololá) | Sí — hueco en el polígono |
+| Amatitlán (Guatemala) | Sí — hueco en el polígono |
+| Izabal (Izabal) | Sí — queda fuera del contorno |
+| **Petén Itzá (Petén)** | **No — el departamento lo cubre con tierra sólida** |
+
+Sin esa capa, Petén Itzá era el único de los cuatro que no se veía en la vista de
+departamentos. Con ella, los cuatro se dibujan y se pueden seleccionar en ambas vistas.
+
+### Lagos
+
+`backend/app/seed/data/lagos.json` tiene una ficha por cada uno de los cuatro lagos
+principales; los sirve `/api/v1/lagos` igual que los municipios, sin pasar por la base de
+datos. El informe completo de cada lago vive en su **ficha de sitio**, `/sitio/<slug>`; la ficha
+del departamento solo lo lista (ver «Sitios de interés» más abajo). En el mapa, los cuatro
+lagos son polígonos seleccionables y su panel enlaza a esa ficha.
+
+| Lago | Departamento | Superficie | Estado |
+|---|---|---|---|
+| Atitlán | Sololá | 130 km² (cuenca 546 km²) | Transparencia 15 m (1968) → 6,17 m (2024) |
+| Amatitlán | Guatemala | 90 km² | Hipertrófico — contaminación muy alta |
+| Petén Itzá | Petén | 99 km² | Mesotrófico → eutrófico, en aumento |
+| Izabal | Izabal | 590 km² | Mesotrófico, contaminación focalizada |
+
+Fuentes: informe del **Centro de Estudios Atitlán (CEA-UVG)** para Atitlán —monitoreo
+mensual UVG + AMSCLAE desde 2015— y el estudio comparativo AGUALIMNO/UVG (2019) con
+informes de AMSA, AMPI y CONAP para los otros tres. Los campos que una fuente no
+documenta quedan en `null` y su bloque no se dibuja: por eso Atitlán muestra monitoreo,
+líneas de investigación y recomendaciones, y los demás el cuadro de calidad del agua.
+#### Polígonos de los lagos
+
+geoBoundaries solo recorta Amatitlán y Atitlán. Los de **Petén Itzá e Izabal se bajan de
+OpenStreetMap**, donde cada lago es una relación `natural=water` / `type=multipolygon`:
+
+```bash
+python backend/app/seed/fetch_lagos_geojson.py            # agrega los que falten
+python backend/app/seed/fetch_lagos_geojson.py --dry-run  # solo informa
+```
+
+El script consulta la [API de Overpass](https://overpass-api.de) (con espejo de respaldo
+en `overpass.kumi.systems`), arma los anillos del multipolígono, los simplifica con
+Douglas–Peucker al nivel de detalle del resto del archivo —de 3,566 a ~200 puntos, con
+menos de 0.3 % de cambio de área— y los agrega al GeoJSON. Es idempotente: un lago que ya
+está se salta, así que se puede correr las veces que sea.
+
+| Lago | Relación OSM | Puntos | Área del polígono |
+|---|---|---|---|
+| Izabal | [1580606](https://www.openstreetmap.org/relation/1580606) | 220 | 675 km² |
+| Petén Itzá | [1919447](https://www.openstreetmap.org/relation/1919447) | 200 | 106 km² |
+| Atitlán | [5781818](https://www.openstreetmap.org/relation/5781818) | 122 | *(ya venía en geoBoundaries)* |
+| Amatitlán | [11018382](https://www.openstreetmap.org/relation/11018382) | 56 | *(ya venía en geoBoundaries)* |
+
+El área del polígono de OSM no es la cifra que publica la plataforma: la ficha muestra la
+superficie oficial de `lagos.json` (590 km² para Izabal, 99 km² para Petén Itzá). El
+contorno de OSM sigue la orilla actual con todo su detalle y da algo más; sirve para
+dibujar, no para medir.
+
+### Sitios de interés
+
+Un **sitio de interés** es cualquier lugar que merece ficha propia: los lagos hoy, y
+Tikal, Semuc Champey y los que sigan después. `backend/app/seed/data/sitios.json` es el
+índice —una fila por sitio— y `/api/v1/sitios` lo sirve.
+
+El reparto es a propósito: la ficha del departamento **solo lista** sus sitios en una
+tabla compacta (nombre, tipo, dato principal, enlace), y el informe largo vive en
+`/sitio/<slug>`. Antes el informe del lago se dibujaba entero dentro de la ficha
+departamental y le robaba el foco a los indicadores, que son de lo que trata esa página.
+
+Cada sitio declara dónde está su detalle:
+
+| Campo | Qué hace |
+|---|---|
+| `detalle: "lago"` | La ficha larga se arma con `/api/v1/lagos/{detalle_slug}` (informe completo: parámetros, monitoreo, recomendaciones). |
+| `detalle: null` | El sitio se describe con sus propias `secciones` (`titulo`, `parrafos`, `items`), aquí mismo en `sitios.json`. |
+
+Así, **agregar Tikal o Semuc Champey no necesita código**: basta una entrada en
+`sitios.json` con su `tipo`, `resumen`, `dato_clave` y las `secciones` que lleve. Aparece
+sola en la tabla de su departamento y su ficha `/sitio/<slug>` queda publicada. Solo si un
+tipo de sitio llega a merecer un dataset propio —como los lagos— se agrega un `detalle`
+nuevo.
+
+**Para agregar otro cuerpo de agua:** buscarlo en [openstreetmap.org](https://www.openstreetmap.org),
+copiar el id de su relación, sumar una entrada a `LAGOS` en el script y poner el
+`geo_slug` correspondiente en `lagos.json` (el slug del `shapeName`: «Lago De X» →
+`lago-de-x`). Sin `geo_slug` el lago no se enlaza con su polígono y solo aparece en la
+ficha de su departamento.
+
+Alternativas si algún día hace falta otra fuente: [HydroLAKES](https://www.hydrosheds.org/products/hydrolakes)
+(polígonos globales de lagos, HydroSHEDS/WWF), los shapefiles de cuerpos de agua del
+**MAGA** y del **IGN** de Guatemala, o [DIVA-GIS](https://diva-gis.org/data.html) para
+capas de agua por país. OSM se eligió por estar al día, ser descargable por script y
+permitir el uso con atribución (ODbL) — la atribución va en la propiedad `fuente` de cada
+polígono y en el campo `fuentes` de la ficha del lago.
 
 ---
 
@@ -871,6 +1005,7 @@ adicional, y `/ficha/:slug` da el desglose por departamento desde la URL.
 | `mapa_vista` | Cambio entre pestañas Departamentos / Municipios | `vista` |
 | `mapa_departamento_click` | Clic que **selecciona** un departamento | `departamento`, `variable`, `anio` |
 | `mapa_municipio_click` | Clic que **selecciona** un municipio | `municipio`, `departamento`, `variable` |
+| `mapa_lago_click` | Clic que **selecciona** un lago | `lago`, `departamento` |
 | `variable_seleccionada` | Cambio de variable | `variable`, `origen` |
 | `anio_cambiado` | Cambio de año o de la selección múltiple | `anios`, `origen` |
 | `tabla_vista` | Cambio entre pestañas de la tabla | `vista` |

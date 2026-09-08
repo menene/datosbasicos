@@ -9,6 +9,7 @@ import TablaPage from "@/pages/Tabla";
 import FichaPage from "@/pages/Ficha";
 import FichaMunicipioPage from "@/pages/FichaMunicipio";
 import LibroPage from "@/pages/Libro";
+import FichaSitioPage from "@/pages/FichaSitio";
 import AcercaPage from "@/pages/Acerca";
 
 const NAV_ITEMS = [
@@ -74,6 +75,7 @@ function AppShell() {
               path="/ficha/:departamento_slug/:municipio_slug"
               element={<FichaMunicipioPage />}
             />
+            <Route path="/sitio/:slug" element={<FichaSitioPage />} />
             <Route path="/libro" element={<LibroPage />} />
             <Route path="/acerca" element={<AcercaPage />} />
           </Routes>

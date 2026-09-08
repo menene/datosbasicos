@@ -5,13 +5,14 @@ import MapaChoropleth from "@/components/mapa/MapaChoropleth";
 import MapaMunicipios from "@/components/mapa/MapaMunicipios";
 import PanelDepartamento from "@/components/mapa/PanelDepartamento";
 import PanelMunicipio from "@/components/mapa/PanelMunicipio";
+import PanelLago from "@/components/mapa/PanelLago";
 import LeyendaColor from "@/components/mapa/LeyendaColor";
 import TarjetaNacional from "@/components/TarjetaNacional";
 import { ANIOS_DISPONIBLES, useFiltros } from "@/store/filtros";
 import { useSeleccion } from "@/store/seleccion";
 import { useDepartamentos } from "@/api/departamentos";
 import { useMunicipios } from "@/api/municipios";
-import { agregarNacional, esAditiva } from "@/lib/totales";
+import { agregarNacional, esAditiva, ANIO_MUNICIPIOS } from "@/lib/totales";
 import { track } from "@/lib/analytics";
 import { formatearValor } from "@/lib/utils";
 import { VARIABLES, notaIndicador } from "@/types/departamento";
@@ -22,22 +23,35 @@ export default function MapaPage() {
   const { variableActiva, setVariable } = useFiltros();
   const anioMapa = useFiltros((s) => s.anioMapa);
   const setAnioMapa = useFiltros((s) => s.setAnioMapa);
-  const { departamentoActivo, municipioActivo, setDepartamentoActivo, setMunicipioActivo } =
-    useSeleccion();
+  const {
+    departamentoActivo,
+    municipioActivo,
+    lagoActivo,
+    setDepartamentoActivo,
+    setMunicipioActivo,
+    setLagoActivo,
+  } = useSeleccion();
   const [tab, setTab] = useState<Tab>("departamentos");
 
   const esMunicipios = tab === "municipios";
-  const seleccionActiva = esMunicipios ? municipioActivo : departamentoActivo;
+  const seleccionActiva = lagoActivo ?? (esMunicipios ? municipioActivo : departamentoActivo);
 
   // National figure for the active variable + year, shown in the sidebar.
   const { data: deptos } = useDepartamentos({ anio: anioMapa });
   const { data: municipios } = useMunicipios();
   const varInfo = VARIABLES.find((v) => v.key === variableActiva)!;
+  // El año del corte de municipios es el mismo 2025 de los departamentos, y con él
+  // el total nacional (población y superficie) sale de las cifras oficiales.
+  const anioAgregado = esMunicipios ? ANIO_MUNICIPIOS : anioMapa;
   const agregadoNacional = esMunicipios
     ? agregarNacional(
-        (municipios ?? []).map((m) => m as unknown as Record<string, number | null>)
+        (municipios ?? []).map((m) => m as unknown as Record<string, number | null>),
+        anioAgregado
       )
-    : agregarNacional((deptos ?? []).map((d) => ({ ...d.indicadores })));
+    : agregarNacional(
+        (deptos ?? []).map((d) => ({ ...d.indicadores, superficie_km2: d.superficie_km2 })),
+        anioAgregado
+      );
   const valorNacional = agregadoNacional.valores[variableActiva] ?? null;
   const aditiva = esAditiva(variableActiva);
 
@@ -46,6 +60,7 @@ export default function MapaPage() {
     if (next === tab) return;
     setDepartamentoActivo(null);
     setMunicipioActivo(null);
+    setLagoActivo(null);
     setTab(next);
     track("mapa_vista", { vista: next });
   }
@@ -144,11 +159,14 @@ export default function MapaPage() {
           <TarjetaNacional
             stats={[
               {
-                label: `${varInfo.label} · ${esMunicipios ? "2026" : anioMapa}`,
+                label: `${varInfo.label} · ${anioAgregado}`,
                 valor: formatearValor(valorNacional, varInfo.formato),
-                sub: aditiva
-                  ? `Suma de ${esMunicipios ? "340 municipios" : "22 departamentos"}`
-                  : `Promedio de ${esMunicipios ? "340 municipios" : "22 departamentos"}`,
+                sub:
+                  variableActiva === "poblacion_total"
+                    ? "Cifra oficial del país"
+                    : aditiva
+                      ? `Suma de ${esMunicipios ? "340 municipios" : "22 departamentos"}`
+                      : `Promedio de ${esMunicipios ? "340 municipios" : "22 departamentos"}`,
               },
             ]}
           />
@@ -166,17 +184,21 @@ export default function MapaPage() {
 
         {/* Panel de la selección activa (departamento o municipio) */}
         <AnimatePresence mode="wait">
-          {esMunicipios
-            ? municipioActivo && <PanelMunicipio key={`m-${municipioActivo}`} />
-            : departamentoActivo && <PanelDepartamento key={`d-${departamentoActivo}`} />}
+          {lagoActivo ? (
+            <PanelLago key={`l-${lagoActivo}`} />
+          ) : esMunicipios ? (
+            municipioActivo && <PanelMunicipio key={`m-${municipioActivo}`} />
+          ) : (
+            departamentoActivo && <PanelDepartamento key={`d-${departamentoActivo}`} />
+          )}
         </AnimatePresence>
 
         {/* Placeholder cuando no hay selección */}
         {!seleccionActiva && (
           <div className="flex-1 flex items-center justify-center p-3">
             <p className="text-xs text-muted-foreground text-center font-body leading-relaxed">
-              👈🏽 Haz clic en {esMunicipios ? "un municipio" : "un departamento"} para ver
-              sus indicadores
+              👈🏽 Haz clic en {esMunicipios ? "un municipio" : "un departamento"} o en un lago
+              para ver sus indicadores
             </p>
           </div>
         )}
