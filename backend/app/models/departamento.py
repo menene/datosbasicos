@@ -25,6 +25,7 @@ class Departamento(Base):
     feria_titular: Mapped[str | None] = mapped_column(String(200))
     distancia_capital_km: Mapped[int | None] = mapped_column(Integer)
     idiomas_predominantes: Mapped[str | None] = mapped_column(Text)
+    cabecera: Mapped[str | None] = mapped_column(String(100))
 
     created_at: Mapped[datetime] = mapped_column(TIMESTAMP(timezone=True), server_default=func.now())
 

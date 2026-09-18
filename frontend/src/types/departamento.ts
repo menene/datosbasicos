@@ -43,6 +43,7 @@ export interface Departamento {
   nombre: string;
   region: string | null;
   superficie_km2: number | null;
+  cabecera: string | null;
   feria_titular: string | null;
   distancia_capital_km: number | null;
   idiomas_predominantes: string | null;
