@@ -18,7 +18,9 @@ Plataforma web de análisis e investigación sobre los 22 departamentos de Guate
 10. [Variables de entorno](#variables-de-entorno)
 11. [Comandos de desarrollo](#comandos-de-desarrollo)
 12. [Datos iniciales (seed)](#datos-iniciales-seed)
-13. [Convenciones de código](#convenciones-de-código)
+13. [Despliegue](#despliegue)
+14. [Analítica (Umami)](#analítica-umami)
+15. [Convenciones de código](#convenciones-de-código)
 
 ---
 
@@ -128,14 +130,25 @@ guatemala-datos/
 │       ├── routers/
 │       │   ├── departamentos.py
 │       │   ├── indicadores.py
+│       │   ├── municipios.py     # Sirve municipios.json (sin base de datos)
+│       │   ├── lagos.py          # Sirve lagos.json (sin base de datos)
+│       │   ├── sitios.py         # Índice de sitios de interés
 │       │   └── geo.py            # Endpoint que sirve GeoJSON
 │       ├── crud/
 │       │   └── departamento.py
 │       └── seed/
-│           ├── seed.py           # Script de carga inicial
+│           ├── seed.py                    # Carga inicial (upsert) a PostgreSQL
+│           ├── derivados.py               # Fórmulas de densidad y duplicación
+│           ├── enrich_departamentos.py    # Rellena departamentos.json desde /docs
+│           ├── extract_municipios.py      # Genera municipios.json desde /docs
+│           ├── fetch_lagos_geojson.py      # Baja polígonos de lagos desde OSM
 │           └── data/
 │               ├── departamentos.json
-│               └── guatemala.geojson
+│               ├── municipios.json
+│               ├── lagos.json                  # Fichas de los 4 lagos principales
+│               ├── sitios.json                 # Índice de sitios de interés
+│               ├── guatemala.geojson
+│               └── guatemala_municipios.geojson
 │
 └── frontend/
     ├── Dockerfile
@@ -178,7 +191,8 @@ guatemala-datos/
         │   └── departamento.ts
         └── lib/
             ├── utils.ts          # cn() y helpers
-            └── colores.ts        # Escalas D3 para el choropleth
+            ├── colores.ts        # Escalas D3 para el choropleth
+            └── analytics.ts      # Wrapper tipado sobre Umami
 ```
 
 ---
@@ -267,7 +281,15 @@ docker compose exec backend alembic downgrade -1
 GET  /api/v1/departamentos          Lista todos los departamentos con indicadores
 GET  /api/v1/departamentos/{slug}   Detalle de un departamento
 GET  /api/v1/indicadores/resumen    Estadísticas globales (min, max, promedio)
+GET  /api/v1/municipios             Lista los 340 municipios (?departamento=slug)
+GET  /api/v1/municipios/{slug}      Detalle de un municipio (?departamento=slug)
+GET  /api/v1/lagos                  Los 4 lagos principales (?departamento=slug)
+GET  /api/v1/lagos/{slug}           Ficha de un lago
+GET  /api/v1/sitios                 Sitios de interés (?departamento=slug)
+GET  /api/v1/sitios/{slug}          Ficha de un sitio de interés
 GET  /api/v1/geo/departamentos      GeoJSON de los 22 departamentos
+GET  /api/v1/geo/municipios         GeoJSON de municipios y lagos
+GET  /api/v1/geo/lagos              Solo los polígonos de los lagos (~18 KB)
 GET  /api/v1/health                 Health check
 ```
 
@@ -567,7 +589,16 @@ ALLOWED_ORIGINS=http://localhost:5173
 
 # Frontend
 VITE_API_URL=http://localhost:8000/api/v1
+
+# Analítica (Umami)
+UMAMI_APP_SECRET=change_me_in_production
+VITE_UMAMI_URL=http://localhost:3000
+VITE_UMAMI_WEBSITE_ID=
 ```
+
+`VITE_UMAMI_WEBSITE_ID` se obtiene del panel de Umami tras crear el sitio.
+Mientras esté vacía el frontend no inyecta el tracker ni envía eventos. Ver
+[Analítica (Umami)](#analítica-umami).
 
 ---
 
@@ -594,6 +625,10 @@ docker compose exec backend alembic upgrade head
 
 # Cargar datos iniciales
 docker compose exec backend python -m app.seed.seed
+
+# Crear la base de Umami (una sola vez; ver "Analítica")
+docker compose exec db psql -U $POSTGRES_USER -d $POSTGRES_DB \
+  -c "CREATE DATABASE umami;"
 
 # Crear nueva migración (tras modificar modelos)
 docker compose exec backend alembic revision --autogenerate -m "nombre_cambio"
@@ -628,6 +663,7 @@ docker compose down -v
 | Swagger UI | http://localhost:8000/docs |
 | ReDoc | http://localhost:8000/redoc |
 | pgAdmin | http://localhost:5050 |
+| Umami (analítica) | http://localhost:3000 |
 
 ---
 
@@ -639,9 +675,387 @@ El script `backend/app/seed/seed.py` carga:
 2. Los 22 departamentos con su descripción narrativa
 3. Los indicadores 2025 de cada departamento
 
-Los datos fuente están en `backend/app/seed/data/departamentos.json` extraídos del documento `GUATEMALA_DATOS_BÁSICOS_2026.docx`.
+Los datos fuente están en `backend/app/seed/data/departamentos.json`, construidos a
+partir de los documentos de `/docs`. Los municipios no pasan por la base de datos: se
+sirven directamente desde `backend/app/seed/data/municipios.json`.
+
+### Regenerar los datos desde `/docs`
+
+Ambos JSON se derivan de los `.docx` originales con dos scripts idempotentes, que
+imprimen un informe de cobertura al terminar:
+
+```bash
+# Departamentos: corte de 1994, PEA e ingresos, mortalidad materna, duplicación,
+# nupcialidad, IDH 1994 con componentes, participación electoral 2023 y las
+# correcciones editoriales (sexo 2005, distancias a la capital)
+python backend/app/seed/enrich_departamentos.py
+
+# Municipios: perfiles por departamento + tabla de Guatemala + PEA/PEI 2018 + votantes 2023
+python backend/app/seed/extract_municipios.py
+
+# Cargar el resultado en PostgreSQL (los municipios no lo necesitan)
+docker compose exec backend python -m app.seed.seed
+```
+
+Cobertura actual: 22/22 departamentos en los tres cortes (1994, 2005, 2025) y 339 de
+los 340 municipios con datos. `municipios.json` incluye **los 340**: un municipio sin
+ninguna fuente (San José La Máquina) igual aparece con las cifras en blanco, para que
+la ficha departamental y la tabla nunca se salten uno. El conteo por departamento
+coincide con la división oficial en los 22. El script imprime los huecos que vienen de la fuente:
+`mortalidad_general` solo existe para 1994, `analfabetismo_pct` no existe para 1994 (el
+libro de ese año no trae indicadores educativos) y Quetzaltenango 1994 no tiene
+población porque el libro omite esa línea.
+
+Dos comprobaciones cruzadas avisan si una carga sale mal, y ambas se imprimen al
+correr los scripts:
+
+- Las 22 extensiones territoriales salen del libro de 1994 y suman exactamente los
+  108,889 km² oficiales del país.
+- El padrón electoral de los municipios suma el del departamento en 15 de 22 casos;
+  en los otros 7 el propio documento omite municipios o los da aproximados, y el
+  script imprime cuánto falta en cada uno.
+
+Los indicadores electorales son de las Elecciones Generales 2023 (primera vuelta, TSE
+procesado por FOCO Guatemala) y cuelgan del corte de 2025, el más cercano; las
+etiquetas de la interfaz llevan el año 2023 para que no se confundan.
+
+### Indicadores derivados
+
+Dos indicadores no se copian del documento: se calculan.
+
+```
+densidad_hab_km2         = población total / extensión territorial (km²)
+tiempo_duplicacion_anios = 70 / tasa de crecimiento anual (%)      ← regla del 70
+```
+
+La regla vive en `backend/app/seed/derivados.py` (se aplica al generar los JSON) y en
+`frontend/src/lib/derivados.ts` (se aplica a lo que llega por API, de modo que vale en
+tabla, mapa, ficha, gráficas, panel y exportación). En ambos lados:
+
+1. Si falta el valor y hay insumos, se calcula.
+2. Si el valor publicado contradice a la fórmula por más de 1.5x, gana la fórmula: el
+   número venía atado a una población anterior o es una errata del documento.
+3. Si faltan los insumos, se conserva lo publicado (58 municipios sin extensión
+   territorial y 54 sin tasa de crecimiento siguen sin estos dos indicadores).
+
+El total nacional nunca se promedia. Dos cifras son **constantes oficiales**, no sumas
+del dataset cargado (`frontend/src/lib/totales.ts`): la superficie del país, 108,889 km²,
+y la población del corte 2025, 17,675,772 habitantes. Las 22 filas departamentales suman
+exactamente esos dos valores, pero los 340 municipios no —297 traen población y 274
+superficie—, así que sumarlos daba un «total nacional» de 14,357,371 hab. y 83,890 km²
+que cambiaba según la vista. Con las constantes, mapa, tabla, gráficas y fichas muestran
+la misma cifra en ambas vistas. De ahí salen las derivadas: la densidad nacional es
+17,675,772 / 108,889 = 162 hab/km² (promediar las 22 densidades daba 318) y la
+duplicación sale de la tasa nacional. Las demás sumas de la vista municipal (padrón, PEA,
+votos) siguen siendo parciales y la tabla lo advierte al pie.
+
+Los municipios no tienen dimensión temporal: sus cifras son del mismo corte **2025** que
+los departamentos. 2026 es el año de la edición del libro, no el de los datos.
 
 El GeoJSON de los departamentos debe obtenerse de GADM (https://gadm.org) nivel ADM1 para Guatemala y colocarse en `backend/app/seed/data/guatemala.geojson`.
+
+El GeoJSON municipal es geoBoundaries GTM ADM2. Dos formas venían con el departamento
+equivocado y están corregidas en el archivo: **San Felipe** figuraba en Quetzaltenango
+cuando es de Retalhuleu, y **Chicamán** en Alta Verapaz cuando es de Quiché. Con la
+corrección, las 340 formas y los 340 registros coinciden uno a uno y el conteo por
+departamento cuadra con la división oficial.
+
+El archivo tiene **344 features: los 340 municipios + 4 lagos**. Los lagos se dibujan
+como agua, no como municipios (`esLago()` en `MapaMunicipios.tsx` los reconoce porque su
+nombre empieza con «Lago»), y van al final del arreglo porque el SVG dibuja en orden: así
+el agua queda encima de los municipios que en ADM2 sí incluyen el área del lago.
+
+El **mapa departamental** dibuja los lagos como una capa aparte, servida por
+`/api/v1/geo/lagos` (los mismos 4 polígonos filtrados del archivo municipal, ~18 KB en vez
+de 1.1 MB). Hace falta porque geoBoundaries solo dejó hueco donde están tres de ellos:
+
+| Lago | ¿El polígono ADM1 del departamento deja hueco? |
+|---|---|
+| Atitlán (Sololá) | Sí — hueco en el polígono |
+| Amatitlán (Guatemala) | Sí — hueco en el polígono |
+| Izabal (Izabal) | Sí — queda fuera del contorno |
+| **Petén Itzá (Petén)** | **No — el departamento lo cubre con tierra sólida** |
+
+Sin esa capa, Petén Itzá era el único de los cuatro que no se veía en la vista de
+departamentos. Con ella, los cuatro se dibujan y se pueden seleccionar en ambas vistas.
+
+### Lagos
+
+`backend/app/seed/data/lagos.json` tiene una ficha por cada uno de los cuatro lagos
+principales; los sirve `/api/v1/lagos` igual que los municipios, sin pasar por la base de
+datos. El informe completo de cada lago vive en su **ficha de sitio**, `/sitio/<slug>`; la ficha
+del departamento solo lo lista (ver «Sitios de interés» más abajo). En el mapa, los cuatro
+lagos son polígonos seleccionables y su panel enlaza a esa ficha.
+
+| Lago | Departamento | Superficie | Estado |
+|---|---|---|---|
+| Atitlán | Sololá | 130 km² (cuenca 546 km²) | Transparencia 15 m (1968) → 6,17 m (2024) |
+| Amatitlán | Guatemala | 90 km² | Hipertrófico — contaminación muy alta |
+| Petén Itzá | Petén | 99 km² | Mesotrófico → eutrófico, en aumento |
+| Izabal | Izabal | 590 km² | Mesotrófico, contaminación focalizada |
+
+Fuentes: informe del **Centro de Estudios Atitlán (CEA-UVG)** para Atitlán —monitoreo
+mensual UVG + AMSCLAE desde 2015— y el estudio comparativo AGUALIMNO/UVG (2019) con
+informes de AMSA, AMPI y CONAP para los otros tres. Los campos que una fuente no
+documenta quedan en `null` y su bloque no se dibuja: por eso Atitlán muestra monitoreo,
+líneas de investigación y recomendaciones, y los demás el cuadro de calidad del agua.
+#### Polígonos de los lagos
+
+geoBoundaries solo recorta Amatitlán y Atitlán. Los de **Petén Itzá e Izabal se bajan de
+OpenStreetMap**, donde cada lago es una relación `natural=water` / `type=multipolygon`:
+
+```bash
+python backend/app/seed/fetch_lagos_geojson.py            # agrega los que falten
+python backend/app/seed/fetch_lagos_geojson.py --dry-run  # solo informa
+```
+
+El script consulta la [API de Overpass](https://overpass-api.de) (con espejo de respaldo
+en `overpass.kumi.systems`), arma los anillos del multipolígono, los simplifica con
+Douglas–Peucker al nivel de detalle del resto del archivo —de 3,566 a ~200 puntos, con
+menos de 0.3 % de cambio de área— y los agrega al GeoJSON. Es idempotente: un lago que ya
+está se salta, así que se puede correr las veces que sea.
+
+| Lago | Relación OSM | Puntos | Área del polígono |
+|---|---|---|---|
+| Izabal | [1580606](https://www.openstreetmap.org/relation/1580606) | 220 | 675 km² |
+| Petén Itzá | [1919447](https://www.openstreetmap.org/relation/1919447) | 200 | 106 km² |
+| Atitlán | [5781818](https://www.openstreetmap.org/relation/5781818) | 122 | *(ya venía en geoBoundaries)* |
+| Amatitlán | [11018382](https://www.openstreetmap.org/relation/11018382) | 56 | *(ya venía en geoBoundaries)* |
+
+El área del polígono de OSM no es la cifra que publica la plataforma: la ficha muestra la
+superficie oficial de `lagos.json` (590 km² para Izabal, 99 km² para Petén Itzá). El
+contorno de OSM sigue la orilla actual con todo su detalle y da algo más; sirve para
+dibujar, no para medir.
+
+### Sitios de interés
+
+Un **sitio de interés** es cualquier lugar que merece ficha propia: los lagos hoy, y
+Tikal, Semuc Champey y los que sigan después. `backend/app/seed/data/sitios.json` es el
+índice —una fila por sitio— y `/api/v1/sitios` lo sirve.
+
+El reparto es a propósito: la ficha del departamento **solo lista** sus sitios en una
+tabla compacta (nombre, tipo, dato principal, enlace), y el informe largo vive en
+`/sitio/<slug>`. Antes el informe del lago se dibujaba entero dentro de la ficha
+departamental y le robaba el foco a los indicadores, que son de lo que trata esa página.
+
+Cada sitio declara dónde está su detalle:
+
+| Campo | Qué hace |
+|---|---|
+| `detalle: "lago"` | La ficha larga se arma con `/api/v1/lagos/{detalle_slug}` (informe completo: parámetros, monitoreo, recomendaciones). |
+| `detalle: null` | El sitio se describe con sus propias `secciones` (`titulo`, `parrafos`, `items`), aquí mismo en `sitios.json`. |
+
+Así, **agregar Tikal o Semuc Champey no necesita código**: basta una entrada en
+`sitios.json` con su `tipo`, `resumen`, `dato_clave` y las `secciones` que lleve. Aparece
+sola en la tabla de su departamento y su ficha `/sitio/<slug>` queda publicada. Solo si un
+tipo de sitio llega a merecer un dataset propio —como los lagos— se agrega un `detalle`
+nuevo.
+
+**Para agregar otro cuerpo de agua:** buscarlo en [openstreetmap.org](https://www.openstreetmap.org),
+copiar el id de su relación, sumar una entrada a `LAGOS` en el script y poner el
+`geo_slug` correspondiente en `lagos.json` (el slug del `shapeName`: «Lago De X» →
+`lago-de-x`). Sin `geo_slug` el lago no se enlaza con su polígono y solo aparece en la
+ficha de su departamento.
+
+Alternativas si algún día hace falta otra fuente: [HydroLAKES](https://www.hydrosheds.org/products/hydrolakes)
+(polígonos globales de lagos, HydroSHEDS/WWF), los shapefiles de cuerpos de agua del
+**MAGA** y del **IGN** de Guatemala, o [DIVA-GIS](https://diva-gis.org/data.html) para
+capas de agua por país. OSM se eligió por estar al día, ser descargable por script y
+permitir el uso con atribución (ODbL) — la atribución va en la propiedad `fuente` de cada
+polígono y en el campo `fuentes` de la ficha del lago.
+
+---
+
+## Despliegue
+
+En producción corre el mismo `docker compose` (con los puertos en loopback, detrás de
+Caddy) y el código está montado por volumen, así que **desplegar es hacer `git pull` en
+el servidor** más lo que la base de datos necesite.
+
+Después del pull, en este orden:
+
+```bash
+docker compose exec backend alembic upgrade head      # 1. migraciones pendientes
+docker compose exec backend python -m app.seed.seed   # 2. recargar departamentos
+docker compose restart backend                        # 3. asegurar el reinicio
+```
+
+**El orden importa.** El backend arranca con `--reload`, así que se reinicia solo en
+cuanto el pull cambia un `.py`, y si el modelo ya trae columnas que la base todavía no
+tiene, la API responde 500. Corre `alembic upgrade head` inmediatamente después del pull
+para que esa ventana dure segundos.
+
+El seed hace upsert por `(departamento, año)`: es idempotente, se puede repetir y no
+borra nada. Los municipios **no** pasan por la base —se sirven desde
+`seed/data/municipios.json`— y su caché lleva la fecha del archivo en la llave, así que
+un cambio que solo toque ese JSON surte efecto sin reiniciar nada.
+
+No hace falta `docker compose build` ni `npm install` salvo que hayan cambiado
+`requirements.txt`, `package.json` o los Dockerfiles. Recordá que `docker-compose.yml` y
+`.env` están en `.gitignore`: si cambia `docker-compose.yml.example`, hay que aplicar la
+diferencia a mano en el servidor.
+
+Comprobación después de desplegar:
+
+```bash
+# 22 departamentos con padrón electoral
+curl -s 'https://TUDOMINIO/api/v1/departamentos?anio=2025' \
+  | python3 -c "import sys,json; d=json.load(sys.stdin); print(sum(1 for x in d if x['indicadores']['padron_electoral']), 'de', len(d))"
+
+# 340 municipios
+curl -s https://TUDOMINIO/api/v1/municipios \
+  | python3 -c "import sys,json; print(len(json.load(sys.stdin)))"
+```
+
+---
+
+## Analítica (Umami)
+
+La plataforma usa [Umami](https://umami.is) autoalojado para medir tráfico y
+uso. Es sin cookies y no almacena datos personales, así que **no requiere
+banner de consentimiento** — algo relevante en una herramienta de datos
+públicos.
+
+El servicio `umami` vive en el `docker-compose.yml` de la raíz y comparte el
+Postgres del proyecto usando una base aparte (`umami`), así que no hace falta
+levantar nada adicional: `docker compose up` lo incluye.
+
+### Puesta en marcha
+
+La base `umami` hay que crearla una sola vez. Como el volumen de Postgres ya
+existe, los scripts de `docker-entrypoint-initdb.d` no se ejecutan:
+
+```bash
+docker compose exec db psql -U $POSTGRES_USER -d $POSTGRES_DB \
+  -c "CREATE DATABASE umami;"
+
+docker compose up -d umami
+docker compose logs -f umami        # esperar "Ready on http://0.0.0.0:3000"
+```
+
+El primer arranque corre las migraciones de Prisma (~30–60 s).
+
+Luego, en el panel en http://localhost:3000:
+
+1. Login inicial **`admin` / `umami`** → cambiar la contraseña
+2. **Settings → Websites → Add website**
+   - Name: `Guatemala Datos Básicos`
+   - Domain: `localhost`
+3. Copiar el **Website ID** a `VITE_UMAMI_WEBSITE_ID` en el `.env` de la raíz
+4. `docker compose restart frontend` para que Vite tome la variable
+
+Para comprobar que funciona: abrir la app, DevTools → Network, filtrar por
+`send`. Cada navegación debe producir un `POST /api/send` con respuesta `200`,
+y la visita aparece en **Realtime** del panel en segundos.
+
+### En producción
+
+`docker-compose.yml` y `.env` están en `.gitignore` a propósito: cada entorno
+tiene los suyos. La referencia versionada es `docker-compose.yml.example`, y
+**los cambios hay que aplicarlos a mano en el servidor**.
+
+Dos cosas que no se deducen solas:
+
+**Tener las variables en `.env` no basta.** Compose usa `.env` únicamente para
+interpolar `${VAR}` dentro del compose; la variable llega al contenedor solo si
+está listada en el bloque `environment:` del servicio. Si `VITE_UMAMI_URL` está
+en `.env` pero no bajo `frontend:`, el contenedor nunca la ve y el tracker
+queda deshabilitado en silencio.
+
+**`VITE_UMAMI_URL` se resuelve en el navegador del visitante, no en el
+servidor.** `http://localhost:3000` apunta a la máquina de quien visita el
+sitio. En producción debe ser la URL pública del panel, y **en HTTPS tiene que
+ser HTTPS**: un sitio HTTPS no puede cargar un script HTTP, el navegador lo
+bloquea por contenido mixto antes de que salga la petición.
+
+Como el panel se publica solo en loopback (`127.0.0.1:${UMAMI_PORT}`), eso
+implica un bloque de Caddy:
+
+```
+analytics.tudominio.com {
+	reverse_proxy 127.0.0.1:3030
+}
+```
+
+```bash
+VITE_UMAMI_URL=https://analytics.tudominio.com
+```
+
+Tras cualquier cambio de estas variables hay que **recrear** el contenedor, no
+reiniciarlo — Vite lee el entorno al arrancar el proceso:
+
+```bash
+docker compose up -d --force-recreate frontend
+docker compose exec frontend env | grep VITE_          # deben estar las tres
+curl -s https://TUDOMINIO/src/lib/analytics.ts | head -1   # con valores reales
+```
+
+El `curl` de la página **no** sirve para verificar: el tracker se inyecta desde
+JS en tiempo de ejecución, así que el HTML nunca contiene la palabra `umami`
+aunque todo funcione.
+
+### Eventos instrumentados
+
+Las vistas de página se registran solas — el tracker intercepta
+`history.pushState`, así que las rutas de React Router funcionan sin código
+adicional, y `/ficha/:slug` da el desglose por departamento desde la URL.
+
+| Evento | Se dispara cuando | Propiedades |
+|---|---|---|
+| `mapa_vista` | Cambio entre pestañas Departamentos / Municipios | `vista` |
+| `mapa_departamento_click` | Clic que **selecciona** un departamento | `departamento`, `variable`, `anio` |
+| `mapa_municipio_click` | Clic que **selecciona** un municipio | `municipio`, `departamento`, `variable` |
+| `mapa_lago_click` | Clic que **selecciona** un lago | `lago`, `departamento` |
+| `variable_seleccionada` | Cambio de variable | `variable`, `origen` |
+| `anio_cambiado` | Cambio de año o de la selección múltiple | `anios`, `origen` |
+| `tabla_vista` | Cambio entre pestañas de la tabla | `vista` |
+| `tabla_orden` | Ordenar por una columna | `columna`, `direccion`, `vista` |
+| `tabla_busqueda` | Búsqueda en la tabla (≥2 caracteres, debounce 800 ms) | `termino`, `vista` |
+| `exportar_xlsx` | Descarga del Excel | `vista`, `filas`, `anios` |
+| `ficha_departamento` | Se abre la ficha de un departamento | `departamento`, `anios` |
+| `ficha_municipio` | Se abre la ficha de un municipio | `municipio`, `departamento` |
+| `navegar_a_ficha` | Clic que lleva a una ficha desde otra vista | `destino`, `origen` |
+| `grafica_orden` | Cambio de orden del ranking | `direccion`, `variable` |
+| `dispersion_ejes` | Cambio de eje X o Y en el scatter | `eje`, `variable` |
+| `inicio_cta` | Clic en un botón de la portada | `destino`, `origen` |
+
+Los eventos de selección solo se emiten cuando el estado **cambia de verdad**:
+deseleccionar un departamento o volver a hacer clic en la pestaña activa no
+genera evento. Sin esa guarda los conteos se inflan y dejan de ser comparables
+entre vistas.
+
+La pregunta que estos eventos contestan no es «cuánta gente entró» sino «qué
+partes del trabajo valieron la pena»: si `ficha_municipio` se mueve, la
+extracción de municipios se justificó; si `exportar_xlsx` es alto, la gente
+quiere los datos crudos y conviene publicar un CSV directo.
+
+### Cómo se instrumenta el frontend
+
+Las vistas de página se registran solas: el tracker de Umami intercepta
+`history.pushState`, así que las rutas de React Router funcionan sin código
+adicional.
+
+Los eventos de uso se disparan desde `frontend/src/lib/analytics.ts`:
+
+```ts
+import { track } from "@/lib/analytics";
+
+track("exportar_xlsx", { vista: "municipios", filas: 340 });
+```
+
+Reglas del módulo:
+
+- Los nombres de evento son una **unión cerrada** (`type Evento`). Para agregar
+  uno hay que declararlo primero — así un typo es error de compilación y no una
+  fila huérfana en la base de Umami.
+- Todo queda **inerte** si falta `VITE_UMAMI_URL` o `VITE_UMAMI_WEBSITE_ID`: ni
+  se inyecta el script ni se envían eventos.
+- `track()` nunca lanza. Si un bloqueador impidió cargar el tracker, la llamada
+  simplemente no hace nada.
+- Para cajas de búsqueda existe `trackDebounced()`, que espera 800 ms de
+  inactividad en vez de emitir por pulsación.
+
+Al agregar un evento, actualizar también la tabla de arriba.
 
 ---
 

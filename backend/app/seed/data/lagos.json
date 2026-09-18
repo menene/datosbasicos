@@ -1,0 +1,384 @@
+[
+  {
+    "slug": "atitlan",
+    "nombre": "Lago de Atitlán",
+    "geo_slug": "lago-de-atitlan",
+    "sitio_slug": "lago-de-atitlan",
+    "departamento_slug": "solola",
+    "departamento": "Sololá",
+    "area_km2": 130,
+    "area_nota": "La variación entre fuentes (123–130 km²) depende del nivel de las aguas y del método de medición; 130 km² es la cifra oficial utilizada por la AMSCLAE y entidades del Estado guatemalteco.",
+    "cuenca_km2": 546,
+    "cuenca_nota": "Cuenca completa: incluye tierra + lago.",
+    "altitud_msnm": 1562,
+    "altitud_texto": "1,562 msnm",
+    "profundidad_max_m": 340,
+    "profundidad_texto": "328–340 m",
+    "dimensiones": "18 km de largo × 8 km de ancho",
+    "tipo": "Lago endorreico de caldera volcánica (no tiene salida al mar)",
+    "poblacion_cuenca": 380000,
+    "clasificacion_trofica": null,
+    "nivel_contaminacion": null,
+    "nivel_contaminacion_texto": null,
+    "tendencia": "Pierde transparencia y recibe cargas crecientes de nutrientes",
+    "ica": null,
+    "parametros": [
+      {
+        "label": "Temperatura",
+        "valor": "22,42 °C",
+        "periodo": "2023–2024"
+      },
+      {
+        "label": "pH",
+        "valor": "6,55",
+        "periodo": "2023–2024"
+      },
+      {
+        "label": "Transparencia",
+        "valor": "6,17 m",
+        "periodo": "2024",
+        "detalle": "15 m en 1968 → 6,17 m en 2024 (−8,8 m)"
+      },
+      {
+        "label": "Florecimientos algales",
+        "valor": "Ninguno registrado",
+        "periodo": "2024"
+      },
+      {
+        "label": "Nitrógeno por vía aérea",
+        "valor": "151,2 ton/año",
+        "detalle": "Aporte casi ×2 mayor que todos los ríos juntos"
+      },
+      {
+        "label": "Fósforo por vía aérea",
+        "valor": "5,6 ton/año"
+      }
+    ],
+    "diagnostico": [
+      "El lago pierde visibilidad y recibe cargas crecientes de nutrientes: la transparencia cayó de 15 m (1968) a 6,17 m (2024).",
+      "Las cianobacterias presentes (Microcystis, Limnophila) se ven favorecidas entre 20 y 24 °C y con pH de 7 a 9. El brote de 2009 cubrió el 40 % del lago y el turismo cayó un 25 %.",
+      "Un estudio de 2001–2006 (12 muestreos en 27 sitios) comprobó que las descargas directas de aguas servidas son la fuente principal de contaminación.",
+      "El aporte de nutrientes por vía aérea (151,2 ton/año de nitrógeno y 5,6 ton/año de fósforo) es casi el doble que el de todos los ríos juntos.",
+      "Entre 2017 y 2018 se tomaron 16 muestras superficiales de microplásticos en 8 rutas que cubren todo el lago."
+    ],
+    "fuentes_contaminacion": [
+      "Descargas directas de aguas servidas sin tratamiento",
+      "Nutrientes transportados por vía aérea (nitrógeno y fósforo)",
+      "Microplásticos en aguas superficiales"
+    ],
+    "amenazas": [
+      "Eutrofización",
+      "Aguas residuales sin tratar",
+      "Microplásticos"
+    ],
+    "estado_actual": "Ecosistema bajo fuerte presión: transparencia reducida, exceso de nutrientes y descargas que siguen dañándolo.",
+    "monitoreo": {
+      "titulo": "Monitoreo y calidad del agua",
+      "alianza": "UVG + AMSCLAE, desde 2015",
+      "frecuencia": "Muestreos mensuales hasta 300 m de profundidad",
+      "sitios": [
+        "Centro del lago (WG)",
+        "Bahía de Santiago Atitlán (SA)",
+        "Panajachel (WP)"
+      ],
+      "mide": [
+        "Transparencia",
+        "Temperatura",
+        "Oxígeno",
+        "pH",
+        "Turbidez",
+        "Nutrientes",
+        "Clorofila-a",
+        "Ficocianina",
+        "Coliformes",
+        "E. coli"
+      ],
+      "base_historica": "Repite la red exacta de 27 puntos establecida por C. M. Weiss en los años sesenta, re-medida entre 2001 y 2006."
+    },
+    "investigacion": [
+      {
+        "area": "Ciencias sociales y económicas",
+        "lineas": [
+          "Educación ambiental",
+          "Impacto social de los florecimientos algales",
+          "Movilidad turística limpia (tuk-tuks eléctricos)"
+        ]
+      },
+      {
+        "area": "Salud y agua",
+        "lineas": [
+          "Metales tóxicos: leche materna y crecimiento",
+          "Detección de patógenos",
+          "Macrófitos y biocarbón contra la eutrofización"
+        ]
+      },
+      {
+        "area": "Remediación y tecnología",
+        "lineas": [
+          "Contaminantes orgánicos persistentes",
+          "Alerta temprana con inteligencia artificial",
+          "Limpieza con quitosano (derivado del camarón)"
+        ]
+      }
+    ],
+    "conclusiones": [
+      "Ecosistema bajo fuerte presión: la transparencia reducida, el exceso de nutrientes y las descargas siguen dañándolo.",
+      "El trabajo conjunto UVG–AMSCLAE es indispensable: datos uniformes permiten buenas decisiones.",
+      "El nuevo enfoque integra sociedad, salud y soluciones técnicas y naturales."
+    ],
+    "recomendaciones": [
+      "Tratar todas las aguas residuales antes de verterlas.",
+      "Mantener el monitoreo igual en lugares, tiempos y métodos.",
+      "Pasar de la ciencia a la obra: filtros naturales, carbón inteligente y alertas donde se necesiten.",
+      "Educar y preparar: comprender los riesgos protege mejor y ayuda a reaccionar rápido."
+    ],
+    "institucion": "Universidad del Valle de Guatemala — Centro de Estudios Atitlán (CEA-UVG), Campus Altiplano",
+    "fuentes": [
+      {
+        "nombre": "CEA-UVG · Centro de Estudios Atitlán",
+        "url": "https://uvg.edu.gt/investigacion/cea"
+      },
+      {
+        "nombre": "Repositorio UVG",
+        "url": "https://repositorio.uvg.edu.gt"
+      },
+      {
+        "nombre": "Boletines anuales UVG–AMSCLAE",
+        "url": null
+      }
+    ]
+  },
+  {
+    "slug": "amatitlan",
+    "nombre": "Lago de Amatitlán",
+    "geo_slug": "lago-de-amatitlan",
+    "sitio_slug": "lago-de-amatitlan",
+    "departamento_slug": "guatemala",
+    "departamento": "Guatemala",
+    "area_km2": 90,
+    "area_nota": null,
+    "cuenca_km2": null,
+    "cuenca_nota": null,
+    "altitud_msnm": 1189,
+    "altitud_texto": "1,189 msnm",
+    "profundidad_max_m": null,
+    "profundidad_texto": null,
+    "dimensiones": null,
+    "tipo": null,
+    "poblacion_cuenca": null,
+    "clasificacion_trofica": "Hipertrófico",
+    "nivel_contaminacion": "muy_alto",
+    "nivel_contaminacion_texto": "Muy alto",
+    "tendencia": "Empeora sin un control drástico",
+    "ica": "28–40 (Pobre/Mala)",
+    "parametros": [
+      {
+        "label": "Coliformes fecales",
+        "valor": "10³–10⁵ UFC/100 mL"
+      },
+      {
+        "label": "Fósforo total promedio",
+        "valor": "0,25–0,60 mg/L"
+      },
+      {
+        "label": "Nitrógeno total promedio",
+        "valor": "1,5–3,0 mg/L"
+      },
+      {
+        "label": "Oxígeno disuelto",
+        "valor": "0–4 mg/L",
+        "detalle": "Estratificado"
+      },
+      {
+        "label": "Clorofila-a",
+        "valor": "60–200 µg/L"
+      }
+    ],
+    "diagnostico": [
+      "Es el lago más contaminado de Guatemala. Recibe diariamente miles de metros cúbicos de aguas residuales sin tratamiento provenientes de la ciudad de Amatitlán, Villa Nueva y barrios aledaños.",
+      "Eutrofización extrema: el exceso de nitrógeno y fósforo genera floraciones masivas de algas cianofíceas, algunas productoras de cianotoxinas peligrosas para la salud.",
+      "Aguas frecuentemente con color verdoso, mal olor y mortalidad de peces recurrente.",
+      "El sistema de tratamiento (planta de AMSA) cubre parcialmente la carga; el volumen vertido supera con creces la capacidad de asimilación del lago."
+    ],
+    "fuentes_contaminacion": [
+      "Aguas servidas domésticas (≈80 % de la carga)",
+      "Escorrentía agrícola: fertilizantes y pesticidas de caña de azúcar, hortalizas y granos",
+      "Desechos industriales: textiles, bebidas y procesamiento de alimentos",
+      "Basura y residuos sólidos por turismo y asentamientos informales"
+    ],
+    "amenazas": [
+      "Aguas residuales",
+      "Urbanización",
+      "Fertilizantes"
+    ],
+    "estado_actual": "Hipertrófico — crítico. No cumple normas para contacto directo ni para potabilización. Requiere obras de saneamiento integrales y una reducción drástica de vertidos para revertir la eutrofización.",
+    "monitoreo": null,
+    "investigacion": [],
+    "conclusiones": [],
+    "recomendaciones": [],
+    "institucion": null,
+    "fuentes": [
+      {
+        "nombre": "Estudio comparativo AGUALIMNO/UVG (2019); informes AMSA, AMPI y CONAP; tesis USAC y monitoreos oficiales 2020–2025",
+        "url": null
+      }
+    ]
+  },
+  {
+    "slug": "peten-itza",
+    "nombre": "Lago de Petén Itzá",
+    "geo_slug": "lago-de-peten-itza",
+    "sitio_slug": "lago-de-peten-itza",
+    "departamento_slug": "peten",
+    "departamento": "Petén",
+    "area_km2": 99,
+    "area_nota": null,
+    "cuenca_km2": null,
+    "cuenca_nota": null,
+    "altitud_msnm": 110,
+    "altitud_texto": "110 msnm",
+    "profundidad_max_m": null,
+    "profundidad_texto": null,
+    "dimensiones": null,
+    "tipo": null,
+    "poblacion_cuenca": null,
+    "clasificacion_trofica": "Mesotrófico → Eutrófico",
+    "nivel_contaminacion": "moderado",
+    "nivel_contaminacion_texto": "Moderado (en aumento)",
+    "tendencia": "Empeora lentamente",
+    "ica": "63–72 (Aceptable)",
+    "parametros": [
+      {
+        "label": "Coliformes fecales",
+        "valor": "10–10² UFC/100 mL"
+      },
+      {
+        "label": "Fósforo total promedio",
+        "valor": "0,02–0,04 mg/L"
+      },
+      {
+        "label": "Nitrógeno total promedio",
+        "valor": "0,3–0,6 mg/L"
+      },
+      {
+        "label": "Oxígeno disuelto",
+        "valor": "6–8 mg/L"
+      },
+      {
+        "label": "Clorofila-a",
+        "valor": "3–8 µg/L"
+      }
+    ],
+    "diagnostico": [
+      "Calidad general aceptable, pero con deterioro progresivo en la bahía de San Benito/Poptún, la zona más urbanizada.",
+      "El cuerpo principal del lago aún mantiene buena calidad; la contaminación es focalizada cerca de la ribera norte.",
+      "Muestra tendencia a pasar de mesotrófico a eutrófico por el aumento de nutrientes: el fósforo ha subido cerca de 30 % en 15 años."
+    ],
+    "fuentes_contaminacion": [
+      "Crecimiento urbano acelerado de Flores, San Benito y Santa Elena sin infraestructura de alcantarillado adecuada",
+      "Descargas de embarcaciones y basura de la actividad turística",
+      "Deforestación y quema en la cuenca, que provocan sedimentación",
+      "Escorrentía agrícola incipiente"
+    ],
+    "amenazas": [
+      "Crecimiento urbano",
+      "Deforestación",
+      "Basura"
+    ],
+    "estado_actual": "Mesotrófico — estable pero vigilado. El centro del lago aún presenta agua transparente; las zonas cercanas a la ciudad muestran los primeros signos de degradación. Existe riesgo real de deterioro acelerado si no se controlan las descargas.",
+    "monitoreo": null,
+    "investigacion": [],
+    "conclusiones": [],
+    "recomendaciones": [],
+    "institucion": null,
+    "fuentes": [
+      {
+        "nombre": "Estudio comparativo AGUALIMNO/UVG (2019); informes AMSA, AMPI y CONAP; tesis USAC y monitoreos oficiales 2020–2025",
+        "url": null
+      },
+      {
+        "nombre": "Polígono del lago: OpenStreetMap (ODbL)",
+        "url": "https://www.openstreetmap.org/copyright"
+      }
+    ]
+  },
+  {
+    "slug": "izabal",
+    "nombre": "Lago de Izabal",
+    "geo_slug": "lago-de-izabal",
+    "sitio_slug": "lago-de-izabal",
+    "departamento_slug": "izabal",
+    "departamento": "Izabal",
+    "area_km2": 590,
+    "area_nota": "Es el lago más grande de Guatemala.",
+    "cuenca_km2": null,
+    "cuenca_nota": null,
+    "altitud_msnm": 1,
+    "altitud_texto": "0–1 msnm",
+    "profundidad_max_m": null,
+    "profundidad_texto": null,
+    "dimensiones": null,
+    "tipo": null,
+    "poblacion_cuenca": null,
+    "clasificacion_trofica": "Mesotrófico",
+    "nivel_contaminacion": "moderado",
+    "nivel_contaminacion_texto": "Moderado (focalizado)",
+    "tendencia": "Estable, pero con riesgo minero y agrícola",
+    "ica": "65–75 (Aceptable/Buena)",
+    "parametros": [
+      {
+        "label": "Coliformes fecales",
+        "valor": "Zonas puntuales altas; resto bajo"
+      },
+      {
+        "label": "Fósforo total promedio",
+        "valor": "0,03–0,06 mg/L"
+      },
+      {
+        "label": "Nitrógeno total promedio",
+        "valor": "0,4–0,8 mg/L"
+      },
+      {
+        "label": "Oxígeno disuelto",
+        "valor": "5–7 mg/L"
+      },
+      {
+        "label": "Clorofila-a",
+        "valor": "4–12 µg/L"
+      }
+    ],
+    "diagnostico": [
+      "El lago más grande de Guatemala tiene mejor calidad general gracias a su enorme volumen y capacidad de dilución, pero presenta zonas puntuales gravemente afectadas.",
+      "El tramo más contaminado son las cercanías de El Estor y la desembocadura del río Polochic, donde se detectan niveles altos de coliformes fecales, E. coli y parásitos. El resto del lago mantiene calidad aceptable.",
+      "Es el hábitat más amenazado del manatí antillano."
+    ],
+    "fuentes_contaminacion": [
+      "Actividad minera (mina Fénix): metales pesados y sedimentos",
+      "Plantaciones de palma africana y banano: agroquímicos que escurren por el río Polochic",
+      "Descargas poblacionales sin tratamiento (El Estor, Lívingston)",
+      "Tráfico marítimo y riesgos de hidrocarburos por Puerto Santo Tomás",
+      "Deforestación en la cuenca, con alta sedimentación"
+    ],
+    "amenazas": [
+      "Minería",
+      "Palma africana",
+      "Sedimentación"
+    ],
+    "estado_actual": "Mesotrófico — heterogéneo. El cuerpo principal diluye bien los contaminantes, pero las zonas cercanas a ríos y poblaciones presentan riesgos sanitarios. Su gran tamaño lo protege, pero los riesgos son a mediano plazo y afectan una biodiversidad única.",
+    "monitoreo": null,
+    "investigacion": [],
+    "conclusiones": [],
+    "recomendaciones": [],
+    "institucion": null,
+    "fuentes": [
+      {
+        "nombre": "Estudio comparativo AGUALIMNO/UVG (2019); informes AMSA, AMPI y CONAP; tesis USAC y monitoreos oficiales 2020–2025",
+        "url": null
+      },
+      {
+        "nombre": "Polígono del lago: OpenStreetMap (ODbL)",
+        "url": "https://www.openstreetmap.org/copyright"
+      }
+    ]
+  }
+]

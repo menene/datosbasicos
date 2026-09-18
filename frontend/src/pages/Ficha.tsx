@@ -1,4 +1,5 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import {
   BarChart,
   Bar,
@@ -8,7 +9,7 @@ import {
   ResponsiveContainer,
   Legend,
 } from "recharts";
-import { ArrowLeft, MapPin } from "lucide-react";
+import { ArrowLeft, MapPin, ChevronLeft, ChevronRight, LayoutGrid } from "lucide-react";
 import {
   useDepartamentoMulti,
   useDepartamentos,
@@ -17,9 +18,17 @@ import {
 import { useFiltros } from "@/store/filtros";
 import SelectorAniosMulti from "@/components/SelectorAniosMulti";
 import { formatearValor } from "@/lib/utils";
-import { VARIABLES, VARIABLES_ALERTA } from "@/types/departamento";
-import type { VariableKey, Indicadores } from "@/types/departamento";
+import { track } from "@/lib/analytics";
+import { agregarNacional } from "@/lib/totales";
+import { VARIABLES, VARIABLES_ALERTA, notaIndicador } from "@/types/departamento";
+import type { Variable, VariableKey, Indicadores } from "@/types/departamento";
+import TarjetaNacional from "@/components/TarjetaNacional";
+import SeccionSitios from "@/components/ficha/SeccionSitios";
 import DepartamentoShape from "@/components/ficha/DepartamentoShape";
+import KpiCard from "@/components/ficha/KpiCard";
+import Breadcrumb from "@/components/ficha/Breadcrumb";
+import { useMunicipios } from "@/api/municipios";
+import { useSitiosDeDepartamento } from "@/api/sitios";
 
 const COLORES_ANIO: Record<number, string> = {
   1994: "#1E4D8C",
@@ -38,53 +47,10 @@ const colorPorAnio = (anio: number, idx: number): string =>
 const colorPromedioPorAnio = (anio: number, idx: number): string =>
   COLORES_PROMEDIO[anio] ?? FALLBACK_PROMEDIO[idx % FALLBACK_PROMEDIO.length];
 
-function KpiCard({
-  label,
-  unit,
-  valores,
-}: {
-  label: string;
-  unit?: string;
-  valores: Array<{ anio: number; texto: string }>;
-}) {
-  const multi = valores.length > 1;
-  return (
-    <div className="rounded-lg px-4 py-3 border bg-muted/40 border-border">
-      <p className="text-xs text-muted-foreground font-body mb-1.5">{label}</p>
-      <div className={multi ? "space-y-0.5" : ""}>
-        {valores.map(({ anio, texto }) => (
-          <div
-            key={anio}
-            className="flex items-baseline gap-1.5 leading-tight"
-          >
-            {multi && (
-              <span className="text-[10px] font-body font-medium text-muted-foreground tabular-nums w-9 shrink-0">
-                {anio}
-              </span>
-            )}
-            <p
-              className={`font-display font-semibold text-foreground ${
-                multi ? "text-sm" : "text-lg"
-              }`}
-            >
-              {texto}
-              {unit && (
-                <span className="text-xs font-body font-normal text-muted-foreground ml-1">
-                  {unit}
-                </span>
-              )}
-            </p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 const KPIS: Array<{
   key: VariableKey;
   label: string;
-  formato: "numero" | "decimal" | "porcentaje";
+  formato: Variable["formato"];
   unit?: string;
 }> = [
   { key: "poblacion_total", label: "Población total", formato: "numero" },
@@ -101,7 +67,24 @@ const KPIS: Array<{
   { key: "fecundidad", label: "Tasa de fecundidad", formato: "decimal" },
   { key: "crecimiento_anual_pct", label: "Crecimiento anual", formato: "porcentaje" },
   { key: "tiempo_duplicacion_anios", label: "Tiempo de duplicación", formato: "decimal", unit: "años" },
+  { key: "mortalidad_general", label: "Mortalidad general", formato: "decimal", unit: "×1000 hab." },
+  { key: "mortalidad_materna", label: "Mortalidad materna", formato: "decimal", unit: "×1000 n.v." },
+  { key: "matrimonios_por_1000", label: "Matrimonios", formato: "decimal", unit: "×1000 hab." },
+  { key: "edad_primera_union", label: "Edad 1ª unión (mujeres)", formato: "decimal", unit: "años" },
+  { key: "pct_uniones_consensuales", label: "Uniones de hecho", formato: "porcentaje" },
+  { key: "poblacion_activa", label: "Población activa (PEA)", formato: "numero" },
+  { key: "poblacion_ocupada", label: "Población ocupada", formato: "numero" },
+  { key: "poblacion_desocupada", label: "Población desocupada", formato: "numero" },
+  { key: "ingreso_medio_anual", label: "Ingreso medio anual", formato: "decimal", unit: "Q." },
+  { key: "idh", label: "IDH", formato: "indice" },
+  { key: "idh_salud", label: "IDH · Salud", formato: "indice" },
+  { key: "idh_educacion", label: "IDH · Educación", formato: "indice" },
+  { key: "idh_ingresos", label: "IDH · Ingresos", formato: "indice" },
   { key: "idh_ranking", label: "Ranking IDH", formato: "numero" },
+  { key: "padron_electoral", label: "Padrón electoral (2023)", formato: "numero" },
+  { key: "votos_emitidos", label: "Votos emitidos (2023)", formato: "numero" },
+  { key: "participacion_pct", label: "Participación electoral (2023)", formato: "porcentaje" },
+  { key: "abstencionismo_pct", label: "Abstencionismo (2023)", formato: "porcentaje" },
 ];
 
 interface ChartEntrySolo {
@@ -118,7 +101,7 @@ interface ChartEntryComparativo {
 }
 
 export default function FichaPage() {
-  const { slug } = useParams<{ slug: string }>();
+  const { departamento_slug: slug } = useParams<{ departamento_slug: string }>();
   const navigate = useNavigate();
   const anios = useFiltros((s) => s.anios);
   const multiAnio = anios.length > 1;
@@ -129,8 +112,26 @@ export default function FichaPage() {
     anios
   );
   const { data: resumenPorAnio } = useResumenIndicadoresMulti(anios);
+
+  // La vista de página la registra Umami solo; este evento agrega el corte por
+  // departamento y los años activos, que es lo que no se lee de la URL.
+  useEffect(() => {
+    if (!slug) return;
+    track("ficha_departamento", { departamento: slug, anios: anios.join(",") });
+    // Intencionalmente sin `anios`: interesa la apertura de la ficha, no cada
+    // cambio de año (que ya emite su propio `anio_cambiado`).
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [slug]);
   // Department list for selector & nav uses the most recent year for names.
   const { data: todos } = useDepartamentos({ anio: anioMasReciente });
+  // Municipios of this department for the bottom drill-down nav.
+  const { data: municipios } = useMunicipios();
+  // Los sitios de interés del departamento (lagos, sitios arqueológicos…). Solo se
+  // listan: el informe completo de cada uno vive en su propia ficha, /sitio/:slug.
+  const { data: sitios } = useSitiosDeDepartamento(slug);
+  const municipiosDelDepto = municipios
+    ?.filter((m) => m.departamento_slug === slug)
+    .sort((a, b) => a.nombre.localeCompare(b.nombre));
 
   const deptoMasReciente = deptoPorAnio.find(
     (p) => p.anio === anioMasReciente
@@ -183,6 +184,18 @@ export default function FichaPage() {
     ?.slice()
     .sort((a, b) => a.nombre.localeCompare(b.nombre));
 
+  // Navegación alfabética entre departamentos: da la vuelta en los extremos, para
+  // que se puedan recorrer los 22 sin volver al índice.
+  const posicionActual = deptOptions?.findIndex((d) => d.slug === slug) ?? -1;
+  const deptoAnterior =
+    deptOptions && posicionActual >= 0
+      ? deptOptions[(posicionActual - 1 + deptOptions.length) % deptOptions.length]
+      : null;
+  const deptoSiguiente =
+    deptOptions && posicionActual >= 0
+      ? deptOptions[(posicionActual + 1) % deptOptions.length]
+      : null;
+
   if (!slug) {
     return (
       <div className="max-w-screen-2xl mx-auto px-6 py-12">
@@ -196,7 +209,13 @@ export default function FichaPage() {
           {deptOptions?.map((d) => (
             <button
               key={d.slug}
-              onClick={() => navigate(`/ficha/${d.slug}`)}
+              onClick={() => {
+                track("navegar_a_ficha", {
+                  destino: `/ficha/${d.slug}`,
+                  origen: "selector_ficha",
+                });
+                navigate(`/ficha/${d.slug}`);
+              }}
               className="group flex flex-col items-center gap-2 p-4 rounded-lg border border-border bg-white hover:border-selva hover:shadow-sm transition-all"
             >
               <DepartamentoShape slug={d.slug} size={96} />
@@ -236,7 +255,32 @@ export default function FichaPage() {
 
   const depto = deptoMasReciente;
 
+  // National context (most recent year): totals + this department's share.
+  const agregadoNacional = agregarNacional(
+    (todos ?? []).map((d) => ({ ...d.indicadores, superficie_km2: d.superficie_km2 })),
+    anioMasReciente
+  );
+  const poblacionNacional = agregadoNacional.valores.poblacion_total;
+  const poblacionDepto =
+    typeof depto.indicadores?.poblacion_total === "number"
+      ? depto.indicadores.poblacion_total
+      : null;
+  const participacion =
+    poblacionNacional && poblacionDepto
+      ? (poblacionDepto / poblacionNacional) * 100
+      : null;
+
   // Build (anio → Indicadores) map for KPI rendering
+  // Advertencias de los indicadores que se están mostrando (p. ej. las coberturas
+  // de 1994, que el libro estima en plano para los 22 departamentos).
+  const notasVisibles = [
+    ...new Set(
+      KPIS.flatMap(({ key }) =>
+        anios.map((anio) => notaIndicador(key, anio)).filter((t): t is string => !!t)
+      )
+    ),
+  ];
+
   const indicadoresPorAnio = new Map<number, Indicadores | null | undefined>();
   for (const { anio, data } of deptoPorAnio) {
     indicadoresPorAnio.set(anio, data?.indicadores);
@@ -244,17 +288,24 @@ export default function FichaPage() {
 
   return (
     <div className="max-w-screen-xl mx-auto px-6 py-8 space-y-8">
-      {/* Back + year selector */}
+      {/* Breadcrumb + year selector */}
       <div className="flex items-center justify-between gap-4 flex-wrap">
-        <button
-          onClick={() => navigate(-1)}
-          className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground font-body transition-colors"
-        >
-          <ArrowLeft size={14} />
-          Volver
-        </button>
-        <SelectorAniosMulti />
+        <Breadcrumb
+          items={[
+            { label: "Fichas", to: "/ficha" },
+            { label: depto.nombre },
+          ]}
+        />
+        <SelectorAniosMulti origen="ficha" />
       </div>
+
+      <button
+        onClick={() => navigate(-1)}
+        className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground font-body transition-colors -mt-4"
+      >
+        <ArrowLeft size={14} />
+        Volver
+      </button>
 
       {/* Header */}
       <div className="flex flex-col-reverse sm:flex-row sm:items-start sm:justify-between gap-6">
@@ -286,10 +337,10 @@ export default function FichaPage() {
           {(depto.distancia_capital_km !== null ||
             depto.feria_titular ||
             depto.idiomas_predominantes) && (
-            <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1 text-sm font-body mt-4 max-w-2xl">
+            <dl className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-x-10 gap-y-1.5 text-sm font-body mt-4">
               {depto.distancia_capital_km !== null && (
                 <div className="flex gap-2">
-                  <dt className="text-muted-foreground">Distancia a la capital:</dt>
+                  <dt className="text-muted-foreground whitespace-nowrap shrink-0">Distancia a la capital:</dt>
                   <dd className="text-foreground font-medium">
                     {new Intl.NumberFormat("es-GT").format(depto.distancia_capital_km)} km
                   </dd>
@@ -297,13 +348,13 @@ export default function FichaPage() {
               )}
               {depto.feria_titular && (
                 <div className="flex gap-2">
-                  <dt className="text-muted-foreground">Feria titular:</dt>
+                  <dt className="text-muted-foreground whitespace-nowrap shrink-0">Feria titular:</dt>
                   <dd className="text-foreground font-medium">{depto.feria_titular}</dd>
                 </div>
               )}
               {depto.idiomas_predominantes && (
                 <div className="flex gap-2 sm:col-span-2">
-                  <dt className="text-muted-foreground">Idiomas:</dt>
+                  <dt className="text-muted-foreground whitespace-nowrap shrink-0">Idiomas:</dt>
                   <dd className="text-foreground font-medium">
                     {depto.idiomas_predominantes}
                   </dd>
@@ -332,17 +383,17 @@ export default function FichaPage() {
           }`}
         >
           {KPIS.map(({ key, label, formato, unit }) => {
-            const valores = anios.map((anio) => {
-              const ind = indicadoresPorAnio.get(anio);
-              const raw = ind?.[key];
-              return {
-                anio,
-                texto: formatearValor(
-                  typeof raw === "number" ? raw : null,
-                  formato
-                ),
-              };
+            const crudos = anios.map((anio) => {
+              const raw = indicadoresPorAnio.get(anio)?.[key];
+              return typeof raw === "number" ? raw : null;
             });
+            // Un indicador sin dato en ninguno de los años elegidos no aporta:
+            // se omite en lugar de dibujar una tarjeta llena de guiones.
+            if (crudos.every((v) => v === null)) return null;
+            const valores = anios.map((anio, i) => ({
+              anio,
+              texto: formatearValor(crudos[i], formato),
+            }));
             return (
               <KpiCard
                 key={key}
@@ -353,7 +404,45 @@ export default function FichaPage() {
             );
           })}
         </div>
+
+        {/* Advertencias de los indicadores mostrados en los años elegidos */}
+        {notasVisibles.length > 0 && (
+          <ul className="text-[11px] text-muted-foreground/80 font-body mt-3 leading-snug list-disc pl-4 space-y-1">
+            {notasVisibles.map((texto) => (
+              <li key={texto}>{texto}</li>
+            ))}
+          </ul>
+        )}
       </div>
+
+      {/* National context */}
+      {poblacionNacional !== null && (
+        <TarjetaNacional
+          stats={[
+            {
+              label: "Población nacional",
+              valor: formatearValor(poblacionNacional, "numero"),
+              sub: `Año ${anioMasReciente}`,
+            },
+            {
+              label: "Superficie nacional",
+              valor:
+                agregadoNacional.superficie_km2 !== null
+                  ? `${new Intl.NumberFormat("es-GT").format(agregadoNacional.superficie_km2)} km²`
+                  : "—",
+            },
+            ...(participacion !== null
+              ? [
+                  {
+                    label: `Participación de ${depto.nombre}`,
+                    valor: formatearValor(participacion, "porcentaje"),
+                    sub: "de la población del país",
+                  },
+                ]
+              : []),
+          ]}
+        />
+      )}
 
       {/* Chart */}
       {!multiAnio && chartDataSolo.length > 0 && (
@@ -507,28 +596,114 @@ export default function FichaPage() {
         </div>
       )}
 
-      {/* Department nav */}
-      {deptOptions && (
-        <div className="border-t border-border pt-6">
-          <p className="text-xs text-muted-foreground font-body mb-3">
-            Otros departamentos
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {deptOptions.map((d) => (
-              <button
-                key={d.slug}
-                onClick={() => navigate(`/ficha/${d.slug}`)}
-                className={`px-3 py-1 rounded-full text-xs font-body border transition-colors ${
-                  d.slug === slug
-                    ? "bg-selva text-white border-selva"
-                    : "border-border text-muted-foreground hover:border-selva hover:text-selva"
-                }`}
+      {/* Sitios de interés del departamento (solo el índice; la ficha va aparte) */}
+      {sitios && sitios.length > 0 && (
+        <SeccionSitios sitios={sitios} departamento={depto.nombre} />
+      )}
+
+      {/* Drill-down: municipios of this department.
+          Misma rejilla y misma tarjeta que los indicadores de arriba: todas del
+          mismo tamaño, en vez de píldoras de ancho variable que dejaban filas
+          desparejas. */}
+      <div className="border-t border-border pt-6">
+        <h2 className="font-display font-semibold text-base text-foreground mb-1">
+          Municipios de {depto.nombre}
+        </h2>
+        <p className="text-xs text-muted-foreground font-body mb-4">
+          {municipiosDelDepto?.length ?? 0} municipios · población del corte{" "}
+          {anioMasReciente}
+        </p>
+        {municipiosDelDepto && municipiosDelDepto.length > 0 ? (
+          <div className="grid gap-2 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+            {municipiosDelDepto.map((m) => (
+              <Link
+                key={m.slug}
+                to={`/ficha/${m.departamento_slug}/${m.slug}`}
+                onClick={() =>
+                  track("navegar_a_ficha", {
+                    destino: `/ficha/${m.departamento_slug}/${m.slug}`,
+                    origen: "municipios_del_depto",
+                  })
+                }
+                className="rounded-lg px-4 py-3 border bg-muted/40 border-border hover:border-selva hover:bg-selva/5 transition-colors group"
               >
-                {d.nombre}
-              </button>
+                <p className="font-display font-semibold text-foreground text-sm leading-tight group-hover:text-selva transition-colors">
+                  {m.nombre}
+                </p>
+                <p className="text-xs text-muted-foreground font-body mt-1.5 tabular-nums">
+                  {m.poblacion_total != null
+                    ? `${formatearValor(m.poblacion_total, "numero")} hab.`
+                    : "sin dato"}
+                </p>
+              </Link>
             ))}
           </div>
-        </div>
+        ) : (
+          <p className="text-xs text-muted-foreground/70 font-body italic">
+            Aún no hay fichas de municipios para este departamento.
+          </p>
+        )}
+      </div>
+
+      {/* Navegación entre departamentos: anterior · índice · siguiente.
+          Sustituye la lista de 22 píldoras, que ocupaba dos filas y competía con
+          los datos de la ficha. Mismas tarjetas que la rejilla de municipios. */}
+      {deptoAnterior && deptoSiguiente && (
+        <nav className="border-t border-border pt-6 grid grid-cols-3 gap-2">
+          <button
+            onClick={() => {
+              track("navegar_a_ficha", {
+                destino: `/ficha/${deptoAnterior.slug}`,
+                origen: "nav_departamento_anterior",
+              });
+              navigate(`/ficha/${deptoAnterior.slug}`);
+            }}
+            className="rounded-lg px-4 py-3 border bg-muted/40 border-border hover:border-selva hover:bg-selva/5 transition-colors group text-left min-w-0"
+          >
+            <span className="flex items-center gap-1 text-xs text-muted-foreground font-body mb-1.5 group-hover:text-selva/80 transition-colors">
+              <ChevronLeft size={12} className="shrink-0" />
+              Anterior
+            </span>
+            <span className="block font-display font-semibold text-foreground text-sm leading-tight truncate group-hover:text-selva transition-colors">
+              {deptoAnterior.nombre}
+            </span>
+          </button>
+
+          <button
+            onClick={() => {
+              track("navegar_a_ficha", { destino: "/ficha", origen: "nav_indice" });
+              navigate("/ficha");
+            }}
+            className="rounded-lg px-4 py-3 border bg-muted/40 border-border hover:border-selva hover:bg-selva/5 transition-colors group text-center min-w-0"
+          >
+            <span className="flex items-center justify-center gap-1 text-xs text-muted-foreground font-body mb-1.5 group-hover:text-selva/80 transition-colors">
+              <LayoutGrid size={12} className="shrink-0" />
+              Ver todos
+            </span>
+            <span className="block font-display font-semibold text-foreground text-sm leading-tight group-hover:text-selva transition-colors">
+              Departamentos
+            </span>
+          </button>
+
+          <button
+            onClick={() => {
+              track("navegar_a_ficha", {
+                destino: `/ficha/${deptoSiguiente.slug}`,
+                origen: "nav_departamento_siguiente",
+              });
+              navigate(`/ficha/${deptoSiguiente.slug}`);
+            }}
+            className="rounded-lg px-4 py-3 border bg-muted/40 border-border hover:border-selva hover:bg-selva/5 transition-colors group text-right min-w-0"
+          >
+            <span className="flex items-center justify-end gap-1 text-xs text-muted-foreground font-body mb-1.5 group-hover:text-selva/80 transition-colors">
+              Siguiente
+              <ChevronRight size={12} className="shrink-0" />
+            </span>
+            <span className="block font-display font-semibold text-foreground text-sm leading-tight truncate group-hover:text-selva transition-colors">
+              {deptoSiguiente.nombre}
+            </span>
+          </button>
+        </nav>
       )}
     </div>
   );

@@ -2,23 +2,29 @@ import { useMemo } from "react";
 import * as d3 from "d3";
 import { useFiltros } from "@/store/filtros";
 import { useResumenIndicadores } from "@/api/departamentos";
+import { useMunicipios, municipiosDominio } from "@/api/municipios";
 import { getEscala, COLOR_SIN_DATO } from "@/lib/colores";
 import { VARIABLES } from "@/types/departamento";
 import { formatearValor } from "@/lib/utils";
 
 const STEPS = 5;
 
-export default function LeyendaColor() {
+export default function LeyendaColor({ municipios = false }: { municipios?: boolean }) {
   const variableActiva = useFiltros((s) => s.variableActiva);
   const anio = useFiltros((s) => s.anioMapa);
   const { data: resumen } = useResumenIndicadores(anio);
+  const { data: municipiosData } = useMunicipios();
 
   const variableInfo = VARIABLES.find((v) => v.key === variableActiva);
 
   const { dominio, swatches } = useMemo(() => {
-    const r = resumen?.find((item) => item.campo === variableActiva);
-    const dom: [number, number] =
-      r && r.minimo !== null && r.maximo !== null ? [r.minimo, r.maximo] : [0, 1];
+    let dom: [number, number];
+    if (municipios) {
+      dom = municipiosDominio(municipiosData, variableActiva) ?? [0, 1];
+    } else {
+      const r = resumen?.find((item) => item.campo === variableActiva);
+      dom = r && r.minimo !== null && r.maximo !== null ? [r.minimo, r.maximo] : [0, 1];
+    }
     const escala = getEscala(variableActiva, dom);
     const ticks = d3.range(STEPS).map((i) => dom[0] + (i / (STEPS - 1)) * (dom[1] - dom[0]));
     const items = ticks.map((val) => ({
@@ -26,7 +32,7 @@ export default function LeyendaColor() {
       label: formatearValor(val, variableInfo?.formato ?? "decimal"),
     }));
     return { dominio: dom, swatches: items };
-  }, [resumen, variableActiva, variableInfo]);
+  }, [municipios, municipiosData, resumen, variableActiva, variableInfo]);
 
   return (
     <div className="px-4 py-3 border-t border-border">

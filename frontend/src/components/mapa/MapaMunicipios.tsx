@@ -1,0 +1,265 @@
+import { useCallback, useMemo, useState } from "react";
+import { useGeoMunicipios } from "@/api/geo";
+import { useMunicipios, municipiosDominio } from "@/api/municipios";
+import { useLagos } from "@/api/lagos";
+import { useFiltros } from "@/store/filtros";
+import { useSeleccion } from "@/store/seleccion";
+import { getColorForValue, COLOR_SIN_DATO, COLOR_SELECCIONADO } from "@/lib/colores";
+import { track } from "@/lib/analytics";
+import { MAP_W, MAP_H, featureToSvgPath, slugify } from "@/lib/mapa";
+import { VARIABLES } from "@/types/departamento";
+import type { Municipio } from "@/types/municipio";
+import type { Lago } from "@/types/lago";
+import { formatearValor } from "@/lib/utils";
+
+interface TooltipState {
+  x: number;
+  y: number;
+  municipio: string;
+  departamento: string;
+  valor: string;
+  /** Qué es el valor. Los municipios muestran la variable activa; los lagos, su superficie. */
+  etiquetaValor?: string;
+}
+
+/** El GeoJSON de ADM2 trae los lagos como polígonos aparte (Amatitlán, Atitlán).
+ *  No son municipios: se dibujan como agua, sin tooltip ni clic. */
+const esLago = (nombre: string) => slugify(nombre).startsWith("lago-");
+
+function propsOf(feature: GeoJSON.Feature) {
+  const props = feature.properties ?? {};
+  const municipio: string = props["shapeName"] ?? props["NAME_2"] ?? props["name"] ?? "";
+  const departamento: string = props["departamento"] ?? props["NAME_1"] ?? "";
+  return { municipio, departamento };
+}
+
+export default function MapaMunicipios() {
+  const { data: geoData, isLoading, isError } = useGeoMunicipios();
+  const { data: municipios } = useMunicipios();
+  const { data: lagos } = useLagos();
+  const variableActiva = useFiltros((s) => s.variableActiva);
+  const { municipioActivo, municipioDeptActivo, setMunicipioActivo, lagoActivo, setLagoActivo } =
+    useSeleccion();
+  const [tooltip, setTooltip] = useState<TooltipState | null>(null);
+
+  const variableInfo = VARIABLES.find((v) => v.key === variableActiva);
+
+  // Los polígonos de lago se emparejan con su ficha por el slug de la forma
+  // ("lago-de-atitlan"); los lagos sin polígono en el GeoJSON solo aparecen en la
+  // ficha de su departamento.
+  const lagoPorGeoSlug = useMemo(() => {
+    const map = new Map<string, Lago>();
+    lagos?.forEach((l) => {
+      if (l.geo_slug) map.set(l.geo_slug, l);
+    });
+    return map;
+  }, [lagos]);
+
+  // Six municipio slugs repeat across departments (La Libertad, San Lorenzo…), so
+  // records are keyed "departamento/municipio". The bare slug is kept as a fallback
+  // for the few shapes the GeoJSON files under a different department than the data.
+  const muniMap = useMemo(() => {
+    const map = new Map<string, Municipio>();
+    const repetidos = new Set<string>();
+    municipios?.forEach((m) => {
+      map.set(`${m.departamento_slug}/${m.slug}`, m);
+      if (map.has(m.slug)) repetidos.add(m.slug);
+      else map.set(m.slug, m);
+    });
+    repetidos.forEach((slug) => map.delete(slug));
+    return map;
+  }, [municipios]);
+
+  const buscarMuni = useCallback(
+    (deptSlug: string, muniSlug: string) =>
+      muniMap.get(`${deptSlug}/${muniSlug}`) ?? muniMap.get(muniSlug),
+    [muniMap]
+  );
+
+  // Precompute slug → hex color for the active variable (same ramp as departamentos).
+  // Municipios without a value for the variable fall back to COLOR_SIN_DATO (gray).
+  const fillMap = useMemo(() => {
+    const result = new Map<string, string>();
+    const dominio = municipiosDominio(municipios, variableActiva);
+    if (!dominio) return result;
+    const [min, max] = dominio;
+    for (const m of municipios ?? []) {
+      const raw = (m as unknown as Record<string, unknown>)[variableActiva];
+      const color =
+        typeof raw === "number" ? getColorForValue(variableActiva, raw, min, max) : COLOR_SIN_DATO;
+      result.set(`${m.departamento_slug}/${m.slug}`, color);
+    }
+    return result;
+  }, [municipios, variableActiva]);
+
+  if (isLoading) {
+    return (
+      <div className="flex-1 flex items-center justify-center" style={{ background: "#EAF4F0" }}>
+        <div className="space-y-3 text-center">
+          <div className="w-8 h-8 border-2 border-selva border-t-transparent rounded-full animate-spin mx-auto" />
+          <p className="text-sm text-muted-foreground font-body">Cargando municipios…</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (isError || !geoData) {
+    return (
+      <div className="flex-1 flex items-center justify-center" style={{ background: "#EAF4F0" }}>
+        <div className="text-center space-y-2 max-w-sm px-6">
+          <p className="font-display font-semibold text-foreground text-lg">GeoJSON no disponible</p>
+          <p className="text-sm text-muted-foreground font-body">
+            Coloca el archivo de municipios en:
+          </p>
+          <code className="block text-xs bg-muted px-3 py-2 rounded text-foreground mt-1">
+            backend/app/seed/data/guatemala_municipios.geojson
+          </code>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div
+      className="map-container flex-1 relative h-full overflow-hidden"
+      style={{ background: "#D8ECF5" }}
+    >
+      <svg
+        viewBox={`0 0 ${MAP_W} ${MAP_H}`}
+        width="100%"
+        height="100%"
+        onMouseLeave={() => setTooltip(null)}
+      >
+        <rect x={0} y={0} width={MAP_W} height={MAP_H} fill="#D8ECF5" />
+        {geoData.features.map((feature, i) => {
+          const { municipio, departamento } = propsOf(feature);
+          const deptSlug = slugify(departamento);
+          const muniSlug = slugify(municipio);
+          const muni = buscarMuni(deptSlug, muniSlug);
+          const isActive =
+            !!muniSlug &&
+            muniSlug === municipioActivo &&
+            (!municipioDeptActivo || municipioDeptActivo === muni?.departamento_slug);
+
+          const pathD = featureToSvgPath(feature);
+          if (!pathD) return null;
+
+          if (esLago(municipio)) {
+            const lago = lagoPorGeoSlug.get(muniSlug);
+            const lagoSeleccionado = !!lago && lago.slug === lagoActivo;
+            return (
+              <path
+                key={`lago-${muniSlug}-${i}`}
+                d={pathD}
+                fill={lagoSeleccionado ? "#1E4D8C" : "#A8D4E8"}
+                fillOpacity={lagoSeleccionado ? 0.9 : 1}
+                stroke={lagoSeleccionado ? "#3A2A18" : "#7FB8D4"}
+                strokeWidth={lagoSeleccionado ? 1.4 : 0.5}
+                strokeLinejoin="round"
+                style={{
+                  cursor: lago ? "pointer" : "default",
+                  transition: "fill 0.3s ease, stroke 0.2s ease",
+                }}
+                onMouseMove={(e) => {
+                  const container = e.currentTarget.closest(".map-container") as HTMLElement;
+                  if (!container) return;
+                  const rect = container.getBoundingClientRect();
+                  setTooltip({
+                    x: e.clientX - rect.left,
+                    y: e.clientY - rect.top,
+                    municipio: lago?.nombre ?? municipio,
+                    departamento: lago?.departamento ?? (departamento || "—"),
+                    valor:
+                      lago?.area_km2 != null
+                        ? `${new Intl.NumberFormat("es-GT").format(lago.area_km2)} km²`
+                        : "—",
+                    etiquetaValor: "Superficie lacustre",
+                  });
+                }}
+                onMouseLeave={() => setTooltip(null)}
+                onClick={() => {
+                  if (!lago) return;
+                  const deseleccionar = lagoSeleccionado;
+                  setLagoActivo(deseleccionar ? null : lago.slug);
+                  if (!deseleccionar) {
+                    track("mapa_lago_click", {
+                      lago: lago.slug,
+                      departamento: lago.departamento_slug,
+                    });
+                  }
+                }}
+              />
+            );
+          }
+
+          const baseFill =
+            (muni && fillMap.get(`${muni.departamento_slug}/${muni.slug}`)) ?? COLOR_SIN_DATO;
+          const computedFill = isActive ? COLOR_SELECCIONADO : baseFill;
+          const opacity = (municipioActivo || lagoActivo) && !isActive ? 0.72 : 1;
+
+          return (
+            <path
+              key={`${deptSlug}-${muniSlug}-${i}`}
+              d={pathD}
+              fill={computedFill}
+              fillOpacity={opacity}
+              stroke={isActive ? "#3A2A18" : "white"}
+              strokeWidth={isActive ? 1.4 : 0.5}
+              strokeLinejoin="round"
+              style={{ cursor: "pointer", transition: "fill 0.3s ease, fill-opacity 0.2s ease, stroke 0.2s ease" }}
+              onMouseMove={(e) => {
+                const container = e.currentTarget.closest(".map-container") as HTMLElement;
+                if (!container) return;
+                const rect = container.getBoundingClientRect();
+                const raw = (muni as unknown as Record<string, unknown> | undefined)?.[
+                  variableActiva
+                ];
+                setTooltip({
+                  x: e.clientX - rect.left,
+                  y: e.clientY - rect.top,
+                  municipio: municipio || "—",
+                  departamento: departamento || "—",
+                  valor: formatearValor(
+                    typeof raw === "number" ? raw : null,
+                    variableInfo?.formato ?? "decimal"
+                  ),
+                });
+              }}
+              onMouseLeave={() => setTooltip(null)}
+              onClick={() => {
+                const deseleccionar = isActive;
+                setMunicipioActivo(
+                  deseleccionar ? null : muniSlug,
+                  muni?.departamento_slug ?? deptSlug
+                );
+                if (!deseleccionar) {
+                  track("mapa_municipio_click", {
+                    municipio: muniSlug,
+                    departamento: deptSlug,
+                    variable: variableActiva,
+                  });
+                }
+              }}
+            />
+          );
+        })}
+      </svg>
+
+      {tooltip && (
+        <div
+          className="absolute z-20 pointer-events-none bg-white border border-border rounded-lg shadow-md px-3 py-2 text-sm"
+          style={{ left: tooltip.x + 14, top: Math.max(8, tooltip.y - 56) }}
+        >
+          <p className="font-display font-semibold text-foreground leading-tight">
+            {tooltip.municipio}
+          </p>
+          <p className="text-xs text-muted-foreground mt-0.5">{tooltip.departamento}</p>
+          <p className="text-xs text-muted-foreground mt-0.5">
+            {tooltip.etiquetaValor ?? variableInfo?.label}:{" "}
+            <span className="font-medium text-foreground">{tooltip.valor}</span>
+          </p>
+        </div>
+      )}
+    </div>
+  );
+}

@@ -20,9 +20,12 @@ import {
 import { useFiltros } from "@/store/filtros";
 import SelectorAniosMulti from "@/components/SelectorAniosMulti";
 import { VARIABLES, VARIABLES_ALERTA } from "@/types/departamento";
-import type { VariableKey } from "@/types/departamento";
+import type { Variable, VariableKey } from "@/types/departamento";
 import { formatearValor } from "@/lib/utils";
+import { track } from "@/lib/analytics";
+import { agregarNacional, esAditiva } from "@/lib/totales";
 import { getColorForValue } from "@/lib/colores";
+import TarjetaNacional from "@/components/TarjetaNacional";
 
 const COLORES_ANIO: Record<number, string> = {
   1994: "#1E4D8C",
@@ -92,11 +95,7 @@ function RankingTooltipMulti({
 }: {
   active?: boolean;
   payload?: { dataKey: string; value: number }[];
-  formato: VariableKey extends infer K
-    ? K extends VariableKey
-      ? "numero" | "decimal" | "porcentaje"
-      : never
-    : never;
+  formato: Variable["formato"];
 }) {
   if (!active || !payload?.length) return null;
   const first = payload[0] as unknown as RankingTooltipMultiPayload;
@@ -170,6 +169,32 @@ export default function GraficasPage() {
   const [varX, setVarX] = useState<VariableKey>("acceso_agua_pct");
   const [varY, setVarY] = useState<VariableKey>("analfabetismo_pct");
 
+  /** Navegación a ficha desde cualquiera de las tres gráficas. */
+  const irAFicha = (slug: string, origen: string) => {
+    track("navegar_a_ficha", { destino: `/ficha/${slug}`, origen });
+    navigate(`/ficha/${slug}`);
+  };
+
+  const cambiarVariable = (v: VariableKey) => {
+    setVariableActiva(v);
+    track("variable_seleccionada", { variable: v, origen: "graficas" });
+  };
+
+  const cambiarEje = (eje: "x" | "y", v: VariableKey) => {
+    if (eje === "x") setVarX(v);
+    else setVarY(v);
+    track("dispersion_ejes", { eje, variable: v });
+  };
+
+  const cambiarOrden = (asc: boolean) => {
+    if (asc === sortAsc) return;
+    setSortAsc(asc);
+    track("grafica_orden", {
+      direccion: asc ? "asc" : "desc",
+      variable: variableActiva,
+    });
+  };
+
   const { data: porAnio, isLoading } = useDepartamentosMulti(anios);
   const { data: resumenPorAnio } = useResumenIndicadoresMulti(anios);
 
@@ -239,6 +264,23 @@ export default function GraficasPage() {
     return rows;
   }, [multiAnio, porAnio, anios, variableActiva, sortAsc, anioReciente]);
 
+  // National figure for the ranking variable, one stat per selected year.
+  const statsNacional = useMemo(
+    () =>
+      porAnio.map(({ anio, data }) => ({
+        label: String(anio),
+        valor: formatearValor(
+          agregarNacional(
+            data.map((d) => ({ ...d.indicadores, superficie_km2: d.superficie_km2 })),
+            anio
+          ).valores[variableActiva] ?? null,
+          varInfo.formato
+        ),
+      })),
+    [porAnio, variableActiva, varInfo]
+  );
+  const aditivaRanking = esAditiva(variableActiva);
+
   // Scatter
   const scatterDataPorAnio = useMemo(() => {
     return porAnio.map(({ anio, data }) => {
@@ -283,7 +325,7 @@ export default function GraficasPage() {
             Rankings y correlaciones · {anios.join(", ")}
           </p>
         </div>
-        <SelectorAniosMulti />
+        <SelectorAniosMulti origen="graficas" />
       </div>
 
       {/* ── Ranking ── */}
@@ -292,13 +334,13 @@ export default function GraficasPage() {
           <div className="flex-1 min-w-48">
             <VarSelect
               value={variableActiva}
-              onChange={setVariableActiva}
+              onChange={cambiarVariable}
               label="Variable"
             />
           </div>
           <div className="flex gap-1">
             <button
-              onClick={() => setSortAsc(false)}
+              onClick={() => cambiarOrden(false)}
               className={`px-3 py-1.5 rounded-l-md border text-xs font-body transition-colors ${
                 !sortAsc
                   ? "bg-selva text-white border-selva"
@@ -308,7 +350,7 @@ export default function GraficasPage() {
               Mayor → menor
             </button>
             <button
-              onClick={() => setSortAsc(true)}
+              onClick={() => cambiarOrden(true)}
               className={`px-3 py-1.5 rounded-r-md border-y border-r text-xs font-body transition-colors ${
                 sortAsc
                   ? "bg-selva text-white border-selva"
@@ -328,6 +370,18 @@ export default function GraficasPage() {
             </span>
           )}
         </h2>
+
+        <TarjetaNacional
+          className="mb-6 max-w-xl"
+          stats={statsNacional}
+          nota={
+            variableActiva === "poblacion_total"
+              ? "Población nacional oficial del corte."
+              : aditivaRanking
+              ? "Total nacional (suma de los 22 departamentos)."
+              : "Promedio simple de los 22 departamentos (sin ponderar por población; aproximado)."
+          }
+        />
 
         {!multiAnio && (
           <ResponsiveContainer
@@ -389,7 +443,7 @@ export default function GraficasPage() {
                     {formatearValor(value, varInfo.formato)}
                   </text>
                 )}
-                onClick={(d: { slug: string }) => navigate(`/ficha/${d.slug}`)}
+                onClick={(d: { slug: string }) => irAFicha(d.slug, "ranking")}
                 style={{ cursor: "pointer" }}
               >
                 {rankingDataSolo.map((entry, i) => (
@@ -435,9 +489,7 @@ export default function GraficasPage() {
               <Tooltip
                 content={
                   <RankingTooltipMulti
-                    formato={
-                      varInfo.formato as "numero" | "decimal" | "porcentaje"
-                    }
+                    formato={varInfo.formato}
                   />
                 }
                 cursor={{ fill: "rgba(0,0,0,0.04)" }}
@@ -462,7 +514,7 @@ export default function GraficasPage() {
                   radius={[0, 3, 3, 0]}
                   style={{ cursor: "pointer" }}
                   onClick={(d: { slug: string }) =>
-                    navigate(`/ficha/${d.slug}`)
+                    irAFicha(d.slug, "ranking_multianio")
                   }
                 />
               ))}
@@ -482,8 +534,8 @@ export default function GraficasPage() {
         </h2>
 
         <div className="flex flex-wrap gap-4 mb-6">
-          <VarSelect value={varX} onChange={setVarX} label="Eje X" />
-          <VarSelect value={varY} onChange={setVarY} label="Eje Y" />
+          <VarSelect value={varX} onChange={(v) => cambiarEje("x", v)} label="Eje X" />
+          <VarSelect value={varY} onChange={(v) => cambiarEje("y", v)} label="Eje Y" />
         </div>
 
         <ResponsiveContainer width="100%" height={multiAnio ? 440 : 400}>
@@ -553,7 +605,7 @@ export default function GraficasPage() {
                     : "#1B6B3A"
                 }
                 fillOpacity={0.75}
-                onClick={(d: { slug: string }) => navigate(`/ficha/${d.slug}`)}
+                onClick={(d: { slug: string }) => irAFicha(d.slug, "dispersion")}
                 style={{ cursor: "pointer" }}
               />
             ))}

@@ -1,0 +1,58 @@
+[
+  {
+    "slug": "lago-de-atitlan",
+    "nombre": "Lago de Atitlán",
+    "tipo": "Lago",
+    "departamento_slug": "solola",
+    "departamento": "Sololá",
+    "ubicacion": "Panajachel, Santiago Atitlán, San Pedro La Laguna y otros",
+    "resumen": "Lago endorreico de caldera volcánica, sin salida al mar, rodeado por los volcanes Atitlán, Tolimán y San Pedro.",
+    "dato_clave_label": "Superficie lacustre",
+    "dato_clave": "130 km²",
+    "detalle": "lago",
+    "detalle_slug": "atitlan",
+    "secciones": []
+  },
+  {
+    "slug": "lago-de-amatitlan",
+    "nombre": "Lago de Amatitlán",
+    "tipo": "Lago",
+    "departamento_slug": "guatemala",
+    "departamento": "Guatemala",
+    "ubicacion": "Amatitlán, Villa Nueva y San Miguel Petapa",
+    "resumen": "El lago más contaminado del país: recibe sin tratamiento las aguas residuales del sur de la capital.",
+    "dato_clave_label": "Superficie lacustre",
+    "dato_clave": "90 km²",
+    "detalle": "lago",
+    "detalle_slug": "amatitlan",
+    "secciones": []
+  },
+  {
+    "slug": "lago-de-peten-itza",
+    "nombre": "Lago de Petén Itzá",
+    "tipo": "Lago",
+    "departamento_slug": "peten",
+    "departamento": "Petén",
+    "ubicacion": "Flores, San Benito, San Andrés y San José",
+    "resumen": "Segundo lago más grande del país; conserva buena calidad de agua salvo en la ribera urbanizada del norte.",
+    "dato_clave_label": "Superficie lacustre",
+    "dato_clave": "99 km²",
+    "detalle": "lago",
+    "detalle_slug": "peten-itza",
+    "secciones": []
+  },
+  {
+    "slug": "lago-de-izabal",
+    "nombre": "Lago de Izabal",
+    "tipo": "Lago",
+    "departamento_slug": "izabal",
+    "departamento": "Izabal",
+    "ubicacion": "El Estor, Lívingston, Morales y Los Amates",
+    "resumen": "El lago más grande de Guatemala y el hábitat más amenazado del manatí antillano.",
+    "dato_clave_label": "Superficie lacustre",
+    "dato_clave": "590 km²",
+    "detalle": "lago",
+    "detalle_slug": "izabal",
+    "secciones": []
+  }
+]

@@ -1,7 +1,8 @@
-import { X, MapPin, ExternalLink } from "lucide-react";
+import { X, MapPin, ExternalLink, Droplets } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useDepartamento } from "@/api/departamentos";
+import { useLagoDeDepartamento } from "@/api/lagos";
 import { useFiltros } from "@/store/filtros";
 import { useSeleccion } from "@/store/seleccion";
 import { formatearValor } from "@/lib/utils";
@@ -53,6 +54,8 @@ export default function PanelDepartamento() {
   const { departamentoActivo, setDepartamentoActivo } = useSeleccion();
   const anio = useFiltros((s) => s.anioMapa);
   const { data: depto, isLoading } = useDepartamento(departamentoActivo, anio);
+  // Cuatro departamentos tienen uno de los lagos principales; el resto no muestra nada.
+  const { data: lago } = useLagoDeDepartamento(departamentoActivo);
 
   if (!departamentoActivo) return null;
 
@@ -126,6 +129,27 @@ export default function PanelDepartamento() {
                 </div>
               )}
             </dl>
+          )}
+
+          {/* Lago del departamento */}
+          {lago && (
+            <Link
+              to={`/sitio/${lago.sitio_slug}`}
+              className="flex items-center gap-2 rounded-md border border-lago/25 bg-lago/[0.05] px-3 py-2 hover:border-lago/50 transition-colors"
+            >
+              <Droplets size={14} className="text-lago shrink-0" />
+              <span className="min-w-0">
+                <span className="block text-xs font-medium text-foreground font-body leading-tight">
+                  {lago.nombre}
+                </span>
+                {lago.area_km2 != null && (
+                  <span className="block text-[11px] text-muted-foreground font-body">
+                    {new Intl.NumberFormat("es-GT").format(lago.area_km2)} km² de superficie
+                    lacustre
+                  </span>
+                )}
+              </span>
+            </Link>
           )}
 
           {/* KPI grid */}

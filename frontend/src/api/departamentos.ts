@@ -1,5 +1,6 @@
 import { useQueries, useQuery } from "@tanstack/react-query";
 import type { Departamento, DepartamentoDetail, IndicadorResumen, VariableKey } from "@/types/departamento";
+import { completarDepartamento } from "@/lib/derivados";
 
 export interface DepartamentosPorAnio {
   anio: number;
@@ -24,6 +25,16 @@ async function fetchJson<T>(url: string): Promise<T> {
   return res.json() as Promise<T>;
 }
 
+// Densidad y tiempo de duplicación se derivan aquí, en la puerta de entrada de los
+// datos, para que todas las vistas trabajen con ellos ya resueltos (ver lib/derivados).
+async function fetchLista(url: string): Promise<Departamento[]> {
+  return (await fetchJson<Departamento[]>(url)).map(completarDepartamento);
+}
+
+async function fetchDetalle(url: string): Promise<DepartamentoDetail> {
+  return completarDepartamento(await fetchJson<DepartamentoDetail>(url));
+}
+
 interface ListParams {
   region?: string | null;
   orden?: VariableKey | null;
@@ -41,7 +52,7 @@ export function useDepartamentos(params: ListParams = {}) {
 
   return useQuery({
     queryKey: ["departamentos", params],
-    queryFn: () => fetchJson<Departamento[]>(`${API}/departamentos?${qs}`),
+    queryFn: () => fetchLista(`${API}/departamentos?${qs}`),
     staleTime: 5 * 60 * 1000,
   });
 }
@@ -49,7 +60,7 @@ export function useDepartamentos(params: ListParams = {}) {
 export function useDepartamento(slug: string | null, anio = 2025) {
   return useQuery({
     queryKey: ["departamento", slug, anio],
-    queryFn: () => fetchJson<DepartamentoDetail>(`${API}/departamentos/${slug}?anio=${anio}`),
+    queryFn: () => fetchDetalle(`${API}/departamentos/${slug}?anio=${anio}`),
     enabled: !!slug,
     staleTime: 5 * 60 * 1000,
   });
@@ -79,7 +90,7 @@ export function useDepartamentosMulti(
       qs.set("anio", String(anio));
       return {
         queryKey: ["departamentos", { region, orden, dir, anio }],
-        queryFn: () => fetchJson<Departamento[]>(`${API}/departamentos?${qs}`),
+        queryFn: () => fetchLista(`${API}/departamentos?${qs}`),
         staleTime: 5 * 60 * 1000,
       };
     }),
@@ -98,10 +109,7 @@ export function useDepartamentoMulti(slug: string | null, anios: number[]) {
   return useQueries({
     queries: anios.map((anio) => ({
       queryKey: ["departamento", slug, anio],
-      queryFn: () =>
-        fetchJson<DepartamentoDetail>(
-          `${API}/departamentos/${slug}?anio=${anio}`
-        ),
+      queryFn: () => fetchDetalle(`${API}/departamentos/${slug}?anio=${anio}`),
       enabled: !!slug,
       staleTime: 5 * 60 * 1000,
     })),

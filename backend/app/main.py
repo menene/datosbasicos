@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
-from app.routers import departamentos, indicadores, geo
+from app.routers import departamentos, indicadores, geo, municipios, lagos, sitios
 
 app = FastAPI(
     title="Guatemala Datos Básicos API",
@@ -22,6 +22,9 @@ app.add_middleware(
 app.include_router(departamentos.router, prefix="/api/v1")
 app.include_router(indicadores.router, prefix="/api/v1")
 app.include_router(geo.router, prefix="/api/v1")
+app.include_router(municipios.router, prefix="/api/v1")
+app.include_router(lagos.router, prefix="/api/v1")
+app.include_router(sitios.router, prefix="/api/v1")
 
 
 @app.get("/api/v1/health", tags=["health"])

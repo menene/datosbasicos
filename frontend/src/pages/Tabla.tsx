@@ -20,23 +20,64 @@ import {
 } from "lucide-react";
 import * as XLSX from "xlsx";
 import { useDepartamentosMulti } from "@/api/departamentos";
+import { useMunicipios } from "@/api/municipios";
 import { useFiltros } from "@/store/filtros";
 import SelectorAniosMulti from "@/components/SelectorAniosMulti";
 import { formatearValor } from "@/lib/utils";
-import { VARIABLES } from "@/types/departamento";
-import type { Indicadores, VariableKey } from "@/types/departamento";
+import { track, trackDebounced } from "@/lib/analytics";
+import { agregarNacional, ANIO_MUNICIPIOS } from "@/lib/totales";
+import type { AgregadoNacional } from "@/lib/totales";
+import { VARIABLES, notaIndicador } from "@/types/departamento";
+import type { Indicadores, Variable, VariableKey } from "@/types/departamento";
+
+const FORMATO_POR_KEY: Record<string, Variable["formato"]> = Object.fromEntries(
+  VARIABLES.map((v) => [v.key, v.formato])
+);
+
+type Vista = "departamentos" | "municipios";
+
+// Synthetic single-snapshot year used for municipios (they have no year dimension).
+// Es el mismo corte 2025 de los departamentos: las cifras municipales no son de 2026.
+const ANIO_MUNI = ANIO_MUNICIPIOS;
+
+// The subset of VARIABLES that municipios actually carry.
+const MUNI_KEYS = new Set<VariableKey>([
+  "poblacion_total",
+  "densidad_hab_km2",
+  "pct_urbana",
+  "pct_rural",
+  "pct_indigena",
+  "pct_hombres",
+  "pct_mujeres",
+  "analfabetismo_pct",
+  "acceso_agua_pct",
+  "acceso_saneamiento_pct",
+  "esperanza_vida",
+  "fecundidad",
+  "crecimiento_anual_pct",
+  "tiempo_duplicacion_anios",
+  "poblacion_activa",
+  "padron_electoral",
+  "votos_emitidos",
+  "participacion_pct",
+  "abstencionismo_pct",
+]);
 
 interface Row {
   slug: string;
   nombre: string;
-  region: string | null;
+  /** Region (departamentos) or parent department name (municipios). */
+  grupo: string | null;
+  /** Set for municipios so the name cell can link to the municipio ficha. */
+  departamentoSlug?: string;
   superficie_km2: number | null;
+  /** Solo departamentos: distancia por carretera de la cabecera a la capital. */
+  distancia_capital_km?: number | null;
   /** anio → indicadores (or null if missing for that year) */
   porAnio: Record<number, Indicadores | null>;
 }
 
-const COLUMNAS_TEXTO = new Set(["nombre", "region"]);
-const TEXT_COL_IDS = COLUMNAS_TEXTO;
+const TEXT_COL_IDS = new Set(["nombre", "grupo"]);
 const esTexto = (id: string) => TEXT_COL_IDS.has(id);
 
 const columnHelper = createColumnHelper<Row>();
@@ -47,11 +88,7 @@ function SortIcon({ sorted }: { sorted: false | "asc" | "desc" }) {
   return <ArrowUpDown size={13} className="text-muted-foreground/50" />;
 }
 
-function valorDe(
-  row: Row,
-  key: VariableKey,
-  anio: number
-): number | null {
+function valorDe(row: Row, key: VariableKey, anio: number): number | null {
   const ind = row.porAnio[anio];
   const v = ind?.[key];
   return typeof v === "number" ? v : null;
@@ -60,16 +97,28 @@ function valorDe(
 export default function TablaPage() {
   const navigate = useNavigate();
   const anios = useFiltros((s) => s.anios);
-  const multiAnio = anios.length > 1;
+  const [vista, setVista] = useState<Vista>("departamentos");
   const [sorting, setSorting] = useState<SortingState>([]);
   const [globalFilter, setGlobalFilter] = useState("");
 
-  const { data: porAnio, isLoading } = useDepartamentosMulti(anios);
+  const esMunicipios = vista === "municipios";
+  const aniosEfectivos = esMunicipios ? [ANIO_MUNI] : anios;
+  const multiAnio = !esMunicipios && anios.length > 1;
+  const variablesPosibles = useMemo<Variable[]>(
+    () => (esMunicipios ? VARIABLES.filter((v) => MUNI_KEYS.has(v.key)) : VARIABLES),
+    [esMunicipios]
+  );
 
-  // Pivot: one row per departamento; values keyed by year
-  const data = useMemo<Row[]>(() => {
+  const { data: porAnio, isLoading: deptLoading } = useDepartamentosMulti(anios);
+  const { data: municipios, isLoading: muniLoading } = useMunicipios();
+  const isLoading = esMunicipios ? muniLoading : deptLoading;
+
+  const grupoLabel = esMunicipios ? "Departamento" : "Región";
+  const entidadLabel = esMunicipios ? "Municipio" : "Departamento";
+
+  // Pivot departamentos: one row per departamento, values keyed by year.
+  const dataDeptos = useMemo<Row[]>(() => {
     const map = new Map<string, Row>();
-    // Walk all years; first year's metadata wins for nombre/region/superficie.
     for (const { anio, data: deptos } of porAnio) {
       for (const d of deptos) {
         let r = map.get(d.slug);
@@ -77,8 +126,9 @@ export default function TablaPage() {
           r = {
             slug: d.slug,
             nombre: d.nombre,
-            region: d.region,
+            grupo: d.region,
             superficie_km2: d.superficie_km2,
+            distancia_capital_km: d.distancia_capital_km,
             porAnio: {},
           };
           map.set(d.slug, r);
@@ -89,23 +139,112 @@ export default function TablaPage() {
     return Array.from(map.values());
   }, [porAnio]);
 
+  // Municipios: one row each; the municipio itself doubles as its Indicadores
+  // (shared field names) under the synthetic snapshot year.
+  const dataMunis = useMemo<Row[]>(
+    () =>
+      (municipios ?? []).map((m) => ({
+        slug: m.slug,
+        nombre: m.nombre,
+        grupo: m.departamento,
+        departamentoSlug: m.departamento_slug,
+        superficie_km2: m.superficie_km2,
+        porAnio: { [ANIO_MUNI]: m as unknown as Indicadores },
+      })),
+    [municipios]
+  );
+
+  const data = esMunicipios ? dataMunis : dataDeptos;
+
+  // Un indicador sin un solo dato en los años elegidos se omite: una columna entera
+  // de guiones no informa y empuja fuera de pantalla a las que sí tienen datos.
+  const variablesActivas = useMemo(
+    () =>
+      variablesPosibles.filter((v) =>
+        data.some((r) => aniosEfectivos.some((a) => valorDe(r, v.key, a) !== null))
+      ),
+    [variablesPosibles, data, aniosEfectivos]
+  );
+
+  // National total per year (sum for additive keys, simple average otherwise).
+  // Computed over the full dataset — the country total is independent of search.
+  const agregadoPorAnio = useMemo<Record<number, AgregadoNacional>>(() => {
+    const out: Record<number, AgregadoNacional> = {};
+    for (const anio of aniosEfectivos) {
+      out[anio] = agregarNacional(
+        data.map((r) => ({
+          ...(r.porAnio[anio] ?? {}),
+          superficie_km2: r.superficie_km2,
+        })),
+        anio
+      );
+    }
+    return out;
+  }, [data, aniosEfectivos]);
+
+  const anioBase = aniosEfectivos[0];
+
+  // Advertencias de los indicadores que están a la vista (p. ej. las coberturas de
+  // 1994, que el libro estima en plano para los 22 departamentos).
+  const notas = useMemo(() => {
+    const vistos = new Set<string>();
+    for (const v of variablesActivas) {
+      for (const anio of aniosEfectivos) {
+        const texto = notaIndicador(v.key, anio);
+        if (texto) vistos.add(texto);
+      }
+    }
+    return [...vistos];
+  }, [variablesActivas, aniosEfectivos]);
+
+  const celdaTotal = (colId: string): React.ReactNode => {
+    if (colId === "nombre")
+      return <span className="font-semibold text-selva">Guatemala</span>;
+    if (colId === "grupo")
+      return <span className="text-muted-foreground text-xs">Total nacional</span>;
+    if (colId === "distancia_capital_km") return "—";  // no tiene total nacional
+    if (colId === "superficie_km2") {
+      const sup = agregadoPorAnio[anioBase]?.superficie_km2 ?? null;
+      return sup !== null ? new Intl.NumberFormat("es-GT").format(sup) : "—";
+    }
+    let key = colId as VariableKey;
+    let anio = anioBase;
+    if (colId.includes("__")) {
+      const [k, a] = colId.split("__");
+      key = k as VariableKey;
+      anio = Number(a);
+    }
+    const val = agregadoPorAnio[anio]?.valores[key] ?? null;
+    return formatearValor(val, FORMATO_POR_KEY[key]);
+  };
+
   const columns = useMemo<ColumnDef<Row, unknown>[]>(() => {
     const cols: ColumnDef<Row, unknown>[] = [
       columnHelper.accessor("nombre", {
-        header: "Departamento",
-        cell: (info) => (
-          <button
-            onClick={() => navigate(`/ficha/${info.row.original.slug}`)}
-            className="flex items-center gap-1 font-medium text-selva hover:underline text-left"
-          >
-            {info.getValue() as string}
-            <ExternalLink size={11} className="shrink-0 opacity-60" />
-          </button>
-        ),
+        header: entidadLabel,
+        cell: (info) => {
+          const r = info.row.original;
+          const to = r.departamentoSlug
+            ? `/ficha/${r.departamentoSlug}/${r.slug}`
+            : `/ficha/${r.slug}`;
+          return (
+            <button
+              onClick={() => {
+                track("navegar_a_ficha", { destino: to, origen: "tabla" });
+                navigate(to);
+              }}
+              className="flex items-center gap-1 font-medium text-selva hover:underline text-left"
+            >
+              {info.getValue() as string}
+              <ExternalLink size={11} className="shrink-0 opacity-60" />
+            </button>
+          );
+        },
         enableSorting: true,
       }) as ColumnDef<Row, unknown>,
-      columnHelper.accessor("region", {
-        header: "Región",
+      columnHelper.accessor("grupo", {
+        id: "grupo",
+        header: grupoLabel,
         cell: (info) => (
           <span className="text-muted-foreground text-xs">
             {(info.getValue() as string | null) ?? "—"}
@@ -118,39 +257,49 @@ export default function TablaPage() {
         header: "Superficie (km²)",
         cell: (info) => {
           const v = info.getValue() as number | null;
-          return v !== null
-            ? new Intl.NumberFormat("es-GT").format(v)
-            : "—";
+          return v !== null ? new Intl.NumberFormat("es-GT").format(v) : "—";
         },
         enableSorting: true,
       }) as ColumnDef<Row, unknown>,
     ];
 
-    for (const v of VARIABLES) {
+    // Dato del departamento, no del año; los municipios no lo tienen.
+    if (!esMunicipios) {
+      cols.push(
+        columnHelper.accessor((row) => row.distancia_capital_km ?? null, {
+          id: "distancia_capital_km",
+          header: "Distancia a la capital (km)",
+          cell: (info) => {
+            const v = info.getValue() as number | null;
+            return v !== null ? new Intl.NumberFormat("es-GT").format(v) : "—";
+          },
+          enableSorting: true,
+          sortUndefined: "last" as const,
+        }) as ColumnDef<Row, unknown>
+      );
+    }
+
+    for (const v of variablesActivas) {
       if (multiAnio) {
-        // Group header: variable label. Children: one column per year.
         cols.push(
           columnHelper.group({
             id: v.key,
             header: v.label,
             columns: anios.map(
               (anio) =>
-                columnHelper.accessor(
-                  (row) => valorDe(row, v.key, anio),
-                  {
-                    id: `${v.key}__${anio}`,
-                    header: String(anio),
-                    cell: (info) =>
-                      formatearValor(info.getValue() as number | null, v.formato),
-                    enableSorting: true,
-                    sortUndefined: "last" as const,
-                  }
-                ) as ColumnDef<Row, unknown>
+                columnHelper.accessor((row) => valorDe(row, v.key, anio), {
+                  id: `${v.key}__${anio}`,
+                  header: String(anio),
+                  cell: (info) =>
+                    formatearValor(info.getValue() as number | null, v.formato),
+                  enableSorting: true,
+                  sortUndefined: "last" as const,
+                }) as ColumnDef<Row, unknown>
             ),
           }) as ColumnDef<Row, unknown>
         );
       } else {
-        const onlyAnio = anios[0];
+        const onlyAnio = aniosEfectivos[0];
         cols.push(
           columnHelper.accessor((row) => valorDe(row, v.key, onlyAnio), {
             id: v.key,
@@ -165,13 +314,25 @@ export default function TablaPage() {
     }
 
     return cols;
-  }, [navigate, multiAnio, anios]);
+  }, [navigate, multiAnio, anios, aniosEfectivos, variablesActivas, entidadLabel, grupoLabel, esMunicipios]);
 
   const table = useReactTable({
     data,
     columns,
     state: { sorting, globalFilter },
-    onSortingChange: setSorting,
+    onSortingChange: (updater) => {
+      const siguiente =
+        typeof updater === "function" ? updater(sorting) : updater;
+      setSorting(siguiente);
+      const col = siguiente[0];
+      if (col) {
+        track("tabla_orden", {
+          columna: col.id,
+          direccion: col.desc ? "desc" : "asc",
+          vista,
+        });
+      }
+    },
     onGlobalFilterChange: setGlobalFilter,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
@@ -179,64 +340,111 @@ export default function TablaPage() {
   });
 
   const descargarExcel = () => {
+    track("exportar_xlsx", {
+      vista,
+      filas: table.getRowModel().rows.length,
+      anios: aniosEfectivos.join(","),
+    });
     const filas = table.getRowModel().rows.map((row) => {
       const r = row.original;
       const fila: Record<string, string | number | null> = {
-        Departamento: r.nombre,
-        "Región": r.region ?? null,
+        [entidadLabel]: r.nombre,
+        [grupoLabel]: r.grupo ?? null,
         "Superficie (km²)": r.superficie_km2,
+        ...(esMunicipios
+          ? {}
+          : { "Distancia a la capital (km)": r.distancia_capital_km ?? null }),
       };
-      for (const v of VARIABLES) {
+      for (const v of variablesActivas) {
         if (multiAnio) {
           for (const anio of anios) {
             fila[`${v.label} (${anio})`] = valorDe(r, v.key, anio);
           }
         } else {
-          fila[v.label] = valorDe(r, v.key, anios[0]);
+          fila[v.label] = valorDe(r, v.key, aniosEfectivos[0]);
         }
       }
       return fila;
     });
 
+    // Prepend the national total row.
+    const totalFila: Record<string, string | number | null> = {
+      [entidadLabel]: "Guatemala (total nacional)",
+      [grupoLabel]: null,
+      "Superficie (km²)": agregadoPorAnio[anioBase]?.superficie_km2 ?? null,
+    };
+    for (const v of variablesActivas) {
+      if (multiAnio) {
+        for (const anio of anios) {
+          totalFila[`${v.label} (${anio})`] =
+            agregadoPorAnio[anio]?.valores[v.key] ?? null;
+        }
+      } else {
+        totalFila[v.label] = agregadoPorAnio[anioBase]?.valores[v.key] ?? null;
+      }
+    }
+    filas.unshift(totalFila);
+
     const ws = XLSX.utils.json_to_sheet(filas);
-    const colWidths = Object.keys(filas[0] ?? {}).map((key) => ({
+    ws["!cols"] = Object.keys(filas[0] ?? {}).map((key) => ({
       wch: Math.max(key.length + 2, 14),
     }));
-    ws["!cols"] = colWidths;
 
     const wb = XLSX.utils.book_new();
-    const sheetName = `Departamentos ${anios.join("-")}`;
+    const sufijo = esMunicipios ? String(ANIO_MUNI) : anios.join("-");
+    const sheetName = `${esMunicipios ? "Municipios" : "Departamentos"} ${sufijo}`;
     XLSX.utils.book_append_sheet(wb, ws, sheetName);
-    XLSX.writeFile(wb, `guatemala-departamentos-${anios.join("-")}.xlsx`);
-  };
-
-  if (isLoading) {
-    return (
-      <div className="max-w-screen-2xl mx-auto px-6 py-12 animate-pulse space-y-3">
-        <div className="h-8 bg-muted rounded w-64" />
-        <div className="h-10 bg-muted rounded" />
-        {Array.from({ length: 8 }).map((_, i) => (
-          <div key={i} className="h-9 bg-muted rounded" />
-        ))}
-      </div>
+    XLSX.writeFile(
+      wb,
+      `guatemala-${esMunicipios ? "municipios" : "departamentos"}-${sufijo}.xlsx`
     );
-  }
+  };
 
   return (
     <div className="max-w-screen-2xl mx-auto px-6 py-8">
+      {/* Vista toggle (Departamentos / Municipios) — fixed at top so it never shifts */}
+      <div className="mb-4">
+        <div className="inline-flex rounded-lg border border-border bg-background p-0.5">
+          {(
+            [
+              { key: "departamentos", label: "Departamentos" },
+              { key: "municipios", label: "Municipios" },
+            ] as const
+          ).map((t) => (
+            <button
+              key={t.key}
+              onClick={() => {
+                if (t.key === vista) return;
+                setVista(t.key);
+                setSorting([]);
+                track("tabla_vista", { vista: t.key });
+              }}
+              className={`px-4 py-1.5 text-sm font-body rounded-md transition-colors ${
+                vista === t.key
+                  ? "bg-selva text-white font-medium"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {t.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
       {/* Header + controls */}
       <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
         <div>
           <h1 className="font-display font-semibold text-xl text-foreground">
-            Datos por departamento
+            Datos por {esMunicipios ? "municipio" : "departamento"}
           </h1>
           <p className="text-xs text-muted-foreground font-body mt-0.5">
-            {table.getRowModel().rows.length} de {data.length} departamentos ·{" "}
-            {anios.join(", ")}
+            {table.getRowModel().rows.length} de {data.length}{" "}
+            {esMunicipios ? "municipios" : "departamentos"}
+            {!esMunicipios && ` · ${anios.join(", ")}`}
           </p>
         </div>
         <div className="flex items-center gap-2 flex-wrap">
-          <SelectorAniosMulti />
+          {!esMunicipios && <SelectorAniosMulti origen="tabla" />}
           <div className="relative">
             <Search
               size={14}
@@ -244,8 +452,18 @@ export default function TablaPage() {
             />
             <input
               value={globalFilter}
-              onChange={(e) => setGlobalFilter(e.target.value)}
-              placeholder="Buscar departamento…"
+              onChange={(e) => {
+                const termino = e.target.value;
+                setGlobalFilter(termino);
+                // Debounce: emitir por pulsación produciría ruido inservible.
+                if (termino.trim().length >= 2) {
+                  trackDebounced("tabla_busqueda", {
+                    termino: termino.trim().toLowerCase(),
+                    vista,
+                  });
+                }
+              }}
+              placeholder={`Buscar ${esMunicipios ? "municipio" : "departamento"}…`}
               className="pl-8 pr-3 py-1.5 text-sm font-body border border-border rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-selva w-56"
             />
           </div>
@@ -261,97 +479,138 @@ export default function TablaPage() {
         </div>
       </div>
 
-      {/* Table */}
-      <div className="w-full overflow-x-auto rounded-lg border border-border">
-        <table className="w-full text-sm border-collapse">
-          <thead>
-            {table.getHeaderGroups().map((hg, hgIdx) => {
-              const isLastRow = hgIdx === table.getHeaderGroups().length - 1;
-              return (
-                <tr
-                  key={hg.id}
-                  className={`bg-muted/50 ${isLastRow ? "border-b border-border" : ""}`}
-                >
-                  {hg.headers.map((header) => {
-                    const id = header.column.id;
-                    // Sub-year headers look like "v.key__2025"
-                    const isYearLeaf = id.includes("__");
-                    const isText = esTexto(id);
-                    const centrada = !isText;
-                    const colSpan = header.colSpan;
-                    const isGroupHeader = header.subHeaders.length > 0;
+      {isLoading ? (
+        <div className="animate-pulse space-y-3">
+          <div className="h-10 bg-muted rounded" />
+          {Array.from({ length: 10 }).map((_, i) => (
+            <div key={i} className="h-9 bg-muted rounded" />
+          ))}
+        </div>
+      ) : (
+        /* Table */
+        <div className="w-full overflow-x-auto rounded-lg border border-border">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              {table.getHeaderGroups().map((hg, hgIdx) => {
+                const isLastRow = hgIdx === table.getHeaderGroups().length - 1;
+                return (
+                  <tr
+                    key={hg.id}
+                    className={`bg-muted/50 ${isLastRow ? "border-b border-border" : ""}`}
+                  >
+                    {hg.headers.map((header) => {
+                      const id = header.column.id;
+                      const isYearLeaf = id.includes("__");
+                      const isText = esTexto(id);
+                      const centrada = !isText;
+                      const isGroupHeader = header.subHeaders.length > 0;
 
-                    return (
-                      <th
-                        key={header.id}
-                        colSpan={colSpan}
-                        className={`px-3 py-2.5 font-medium text-xs text-muted-foreground font-body whitespace-nowrap select-none ${
-                          centrada ? "text-center" : "text-left"
-                        } ${
-                          isGroupHeader
-                            ? "border-b border-border bg-muted/70"
-                            : ""
-                        } ${
-                          isYearLeaf ? "text-[11px]" : ""
-                        }`}
-                        style={{
-                          minWidth: id === "nombre" ? 160 : isYearLeaf ? 76 : 110,
-                        }}
-                      >
-                        {header.isPlaceholder ? null : isGroupHeader ? (
-                          flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )
-                        ) : (
-                          <button
-                            onClick={header.column.getToggleSortingHandler()}
-                            className={`flex items-center gap-1 hover:text-foreground transition-colors ${
-                              centrada ? "mx-auto" : ""
-                            }`}
-                          >
-                            {flexRender(
+                      return (
+                        <th
+                          key={header.id}
+                          colSpan={header.colSpan}
+                          className={`px-3 py-2.5 font-medium text-xs text-muted-foreground font-body whitespace-nowrap select-none ${
+                            centrada ? "text-center" : "text-left"
+                          } ${isGroupHeader ? "border-b border-border bg-muted/70" : ""} ${
+                            isYearLeaf ? "text-[11px]" : ""
+                          }`}
+                          style={{
+                            minWidth: id === "nombre" ? 160 : isYearLeaf ? 76 : 110,
+                          }}
+                        >
+                          {header.isPlaceholder ? null : isGroupHeader ? (
+                            flexRender(
                               header.column.columnDef.header,
                               header.getContext()
-                            )}
-                            <SortIcon sorted={header.column.getIsSorted()} />
-                          </button>
-                        )}
-                      </th>
+                            )
+                          ) : (
+                            <button
+                              onClick={header.column.getToggleSortingHandler()}
+                              className={`flex items-center gap-1 hover:text-foreground transition-colors ${
+                                centrada ? "mx-auto" : ""
+                              }`}
+                            >
+                              {flexRender(
+                                header.column.columnDef.header,
+                                header.getContext()
+                              )}
+                              <SortIcon sorted={header.column.getIsSorted()} />
+                            </button>
+                          )}
+                        </th>
+                      );
+                    })}
+                  </tr>
+                );
+              })}
+            </thead>
+            <tbody>
+              {data.length > 0 && (
+                <tr className="border-b-2 border-selva/30 bg-selva/[0.06] font-medium">
+                  {table.getVisibleLeafColumns().map((col) => {
+                    const centrada = !esTexto(col.id);
+                    return (
+                      <td
+                        key={col.id}
+                        className={`px-3 py-2.5 font-body whitespace-nowrap text-foreground ${
+                          centrada ? "text-center tabular-nums" : ""
+                        }`}
+                      >
+                        {celdaTotal(col.id)}
+                      </td>
                     );
                   })}
                 </tr>
-              );
-            })}
-          </thead>
-          <tbody>
-            {table.getRowModel().rows.map((row, i) => (
-              <tr
-                key={row.id}
-                className={`border-b border-border last:border-0 transition-colors hover:bg-muted/30 ${
-                  i % 2 === 0 ? "" : "bg-muted/10"
-                }`}
-              >
-                {row.getVisibleCells().map((cell) => {
-                  const id = cell.column.id;
-                  const isText = esTexto(id);
-                  const centrada = !isText;
-                  return (
-                    <td
-                      key={cell.id}
-                      className={`px-3 py-2 font-body whitespace-nowrap text-foreground ${
-                        centrada ? "text-center tabular-nums" : ""
-                      }`}
-                    >
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                    </td>
-                  );
-                })}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+              )}
+              {table.getRowModel().rows.map((row, i) => (
+                <tr
+                  key={row.id}
+                  className={`border-b border-border last:border-0 transition-colors hover:bg-muted/30 ${
+                    i % 2 === 0 ? "" : "bg-muted/10"
+                  }`}
+                >
+                  {row.getVisibleCells().map((cell) => {
+                    const isText = esTexto(cell.column.id);
+                    const centrada = !isText;
+                    return (
+                      <td
+                        key={cell.id}
+                        className={`px-3 py-2 font-body whitespace-nowrap text-foreground ${
+                          centrada ? "text-center tabular-nums" : ""
+                        }`}
+                      >
+                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+
+      {/* Advertencias de los indicadores visibles en los años elegidos */}
+      {!isLoading && notas.length > 0 && (
+        <ul className="text-[11px] text-muted-foreground/80 font-body mt-3 leading-snug max-w-3xl list-disc pl-4 space-y-1">
+          {notas.map((texto) => (
+            <li key={texto}>{texto}</li>
+          ))}
+        </ul>
+      )}
+
+      {!isLoading && data.length > 0 && (
+        <p className="text-[11px] text-muted-foreground/80 font-body mt-3 leading-snug max-w-3xl">
+          La fila <span className="text-selva font-medium">Guatemala</span> es el
+          total nacional: la superficie (108,889 km²) y la población del corte
+          2025 (17,675,772 hab.) son las cifras oficiales del país, iguales en la
+          vista de departamentos y en la de municipios; los porcentajes y tasas
+          son promedios simples (sin ponderar por población), por lo que son
+          aproximados. El ranking IDH no se totaliza.
+          {esMunicipios &&
+            " Las demás sumas de la vista municipal son parciales: no todos los municipios tienen dato en cada indicador."}
+        </p>
+      )}
     </div>
   );
 }

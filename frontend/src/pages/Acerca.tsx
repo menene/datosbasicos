@@ -1,3 +1,4 @@
+import * as Tabs from "@radix-ui/react-tabs";
 import { BookOpen, Code2, Mail } from "lucide-react";
 
 const STACK: Array<{ name: string; slug: string; color: string }> = [
@@ -20,6 +21,17 @@ const STACK: Array<{ name: string; slug: string; color: string }> = [
   { name: "PostgreSQL", slug: "postgresql", color: "4169E1" },
   // Infrastructure
   { name: "Docker", slug: "docker", color: "2496ED" },
+];
+
+const PROLOGO_PARRAFOS = [
+  "El análisis de la población es el fundamento sobre el cual se construye toda política pública o estrategia de desarrollo. Conocer y entender la estructura de toda la población, o sea, cuántos somos, dónde estamos y cómo vivimos, es bastante más que números, es un instrumento indispensable para comprender los retos sociales, económicos y ambientales a los que toda sociedad se enfrenta.",
+  "El libro Guatemala Datos Básicos 2026, ofrece una radiografía cuantitativa y analítica de la población, en tres momentos diferentes: 1994, 2005 y 2025, en los que el lector encuentra los datos básicos para estudiar los componentes vitales y comprender los cambios que a lo largo de estos años se han dado en la población del país.",
+  "Constituye la experiencia acumulada en el manejo de datos a través de los años, que tiene como fundamento una publicación anterior, “Guatemala Datos Básicos 1994”, que hoy sirve de línea de base para esta nueva publicación, datos que provienen de fuentes como, el X Censo Nacional de Población de 1994, publicaciones de SEGEPLAN y el Informe de Desarrollo Humano de 1993.",
+  "Han pasado 32 años desde esa primera publicación, hoy se presenta una nueva versión actualizada, que incorpora, el desglose de los datos e indicadores a nivel municipal, 340 municipios, que más allá de los números y las cifras, permite acercarse con mayor certeza a las realidades locales, en donde la proporción de población urbana y rural debe definir la planificación y calidad de los servicios de salud, saneamiento ambiental, educación, infraestructura y desarrollo económico. Factor que bien llevado se constituye en una herramienta de gran utilidad y precisión en los diferentes procesos de planificación municipal.",
+  "Conscientes de la importancia de la organización de los datos, que facilite el análisis objetivo y sólidamente fundamentado y proporcione información crítica y determinante en la toma de decisiones estratégicas, los autores realizaron un proceso de análisis e interpretación de los datos y garantizar así, la producción de información de valor, organizando los datos de tal manera que, con el uso de la nueva tecnología, se convirtiera en un instrumento eficaz para facilitar y asegurar la calidad del estudio, análisis e interpretación de la realidad.",
+  "Surge entonces con el uso de la nueva tecnología en el manejo de datos, “Guatemala Datos Básicos 2026 – Plataforma Digital”, que como bien se dice en la introducción: “La plataforma digital en línea ‘Guatemala Datos Básicos 2026’ surge como una herramienta diseñada para proporcionar indicadores demográficos, económicos y sociales actualizados, fundamentados en datos oficiales del Instituto Nacional de Estadística (INE), el Banco de Guatemala y otras fuentes de alta fiabilidad”.",
+  "La plataforma cumple con las condiciones técnicas y metodológicas, que descentralizan el control y permiten al usuario interpretar y procesar la información de manera autónoma, y facilita buscar, filtrar y descargar datos en formatos conocidos que permiten utilizarlos de nuevo para realizar su propio análisis e interpretación. La plataforma integra los datos en hasta cuatro formas de visualización: mapas, gráficos, tablas y fichas, de los 15 indicadores disponibles, para los 22 departamentos y los 340 municipios.",
+  "Ofrecer una plataforma abierta que reúna información y datos de fuentes autorizadas y confiables, así como, su fácil manejo, es resultado de la unión de dos generaciones, dos profesiones diferentes, un arquitecto y demógrafo junto a un ingeniero en sistemas, así como, dos experiencias distintas pero fundidas en una profunda vocación pedagógica, que se complementaron para construir “Guatemala Datos Básicos 2026 – Plataforma Digital”, y poner en manos del lector no solo un libro impreso, sino además una plataforma digital, como herramienta de gran utilidad para planificadores, tomadores de decisiones, investigadores, docentes, estudiantes y un largo etcétera.",
 ];
 
 const ACERCA_PARRAFOS = [
@@ -67,18 +79,69 @@ export default function AcercaPage() {
         </div>
       </section>
 
-      {/* ── Long-form intro ── */}
+      {/* ── Prólogo / Introducción (tabs) ── */}
       <section className="max-w-screen-lg mx-auto px-6 py-14">
-        <div className="space-y-5">
-          {ACERCA_PARRAFOS.map((parrafo, i) => (
-            <p
-              key={i}
-              className="font-body text-foreground text-[15px] leading-relaxed"
-            >
-              {parrafo}
-            </p>
-          ))}
-        </div>
+        <Tabs.Root defaultValue="prologo">
+          <Tabs.List
+            className="flex items-center gap-6 border-b border-border mb-8"
+            aria-label="Prólogo e introducción"
+          >
+            {[
+              { value: "prologo", label: "Prólogo" },
+              { value: "introduccion", label: "Introducción" },
+            ].map((t) => (
+              <Tabs.Trigger
+                key={t.value}
+                value={t.value}
+                className="relative -mb-px pb-3 font-display font-semibold text-lg text-muted-foreground
+                           border-b-2 border-transparent transition-colors outline-none
+                           hover:text-foreground
+                           data-[state=active]:text-selva data-[state=active]:border-selva
+                           focus-visible:text-foreground"
+              >
+                {t.label}
+              </Tabs.Trigger>
+            ))}
+          </Tabs.List>
+
+          <Tabs.Content
+            value="prologo"
+            className="outline-none data-[state=active]:animate-in data-[state=active]:fade-in-0"
+          >
+            <div className="space-y-5">
+              {PROLOGO_PARRAFOS.map((parrafo, i) => (
+                <p
+                  key={i}
+                  className="font-body text-foreground text-[15px] leading-relaxed"
+                >
+                  {parrafo}
+                </p>
+              ))}
+            </div>
+            <div className="mt-10 pt-6 border-t border-border flex items-center gap-2">
+              <BookOpen size={14} className="text-selva shrink-0" />
+              <p className="font-display font-semibold text-foreground text-base">
+                Mateo Adolfo Herrera de León
+              </p>
+            </div>
+          </Tabs.Content>
+
+          <Tabs.Content
+            value="introduccion"
+            className="outline-none data-[state=active]:animate-in data-[state=active]:fade-in-0"
+          >
+            <div className="space-y-5">
+              {ACERCA_PARRAFOS.map((parrafo, i) => (
+                <p
+                  key={i}
+                  className="font-body text-foreground text-[15px] leading-relaxed"
+                >
+                  {parrafo}
+                </p>
+              ))}
+            </div>
+          </Tabs.Content>
+        </Tabs.Root>
       </section>
 
       {/* ── Cards ── */}
