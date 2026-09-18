@@ -319,6 +319,10 @@ export default function TablaPage() {
   const table = useReactTable({
     data,
     columns,
+    // Municipio slugs repeat across departamentos (e.g. "san-jose"); scope the
+    // row id to the parent departamento so React keys and table row state
+    // stay unique and stable across sorts/filters.
+    getRowId: (row) => (row.departamentoSlug ? `${row.departamentoSlug}-${row.slug}` : row.slug),
     state: { sorting, globalFilter },
     onSortingChange: (updater) => {
       const siguiente =
