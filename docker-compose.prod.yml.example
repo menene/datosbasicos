@@ -1,0 +1,75 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: guatemala_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5431:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: guatemala_backend
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+      ENVIRONMENT: production
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS}
+    ports:
+      - "127.0.0.1:8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    # No --reload and no ./backend bind-mount (unlike the dev template): the
+    # image ships the code it was built with, and a code change means a rebuild.
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      target: production
+      # Vite bakes these into the static bundle at build time — see
+      # frontend/Dockerfile. Runtime env has no effect on a static build.
+      args:
+        VITE_API_URL: ${VITE_API_URL}
+        VITE_UMAMI_URL: ${VITE_UMAMI_URL:-}
+        VITE_UMAMI_WEBSITE_ID: ${VITE_UMAMI_WEBSITE_ID:-}
+    container_name: guatemala_frontend
+    restart: unless-stopped
+    ports:
+      # Static assets served by Caddy inside the image; no source bind-mount.
+      - "127.0.0.1:8080:80"
+    depends_on:
+      - backend
+
+  umami:
+    image: ghcr.io/umami-software/umami:postgresql-latest
+    container_name: guatemala_umami
+    restart: unless-stopped
+    environment:
+      DATABASE_TYPE: postgresql
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/umami
+      APP_SECRET: ${UMAMI_APP_SECRET}
+      DISABLE_TELEMETRY: "1"
+    ports:
+      # Solo loopback: el acceso público pasa por Caddy (TLS). Ver docs/Caddyfile.example.
+      - "127.0.0.1:${UMAMI_PORT:-3000}:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  postgres_data:

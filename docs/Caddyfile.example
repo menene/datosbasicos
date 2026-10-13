@@ -1,0 +1,45 @@
+# Edge reference for datosbasicos.gt. Runs Caddy on the production host (or in
+# its own container on the host network) in front of the guatemala_backend and
+# guatemala_frontend containers started by docker-compose.prod.yml.example.
+#
+# Caddy issues and renews the TLS certificate automatically (ACME/Let's Encrypt)
+# and, because this site block only declares the HTTPS host, it inserts the
+# corresponding HTTP->HTTPS redirect (308) on its own — no separate :80 block
+# needed. Copy to /etc/caddy/Caddyfile on the server, replace the domain, and
+# point DNS at the host.
+
+datosbasicos.gt {
+	encode gzip
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		-Server
+	}
+
+	# Backend API — path kept as-is (routes are already mounted under /api/v1).
+	@api path /api/*
+	handle @api {
+		reverse_proxy 127.0.0.1:8000
+	}
+
+	# Frontend static bundle (guatemala_frontend, built with target: production).
+	handle {
+		reverse_proxy 127.0.0.1:8080
+	}
+}
+
+# Optional: analytics, if VITE_UMAMI_URL points at a public subdomain.
+# umami.datosbasicos.gt {
+# 	encode gzip
+#
+# 	header {
+# 		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+# 		X-Content-Type-Options "nosniff"
+# 		Referrer-Policy "strict-origin-when-cross-origin"
+# 		-Server
+# 	}
+#
+# 	reverse_proxy 127.0.0.1:3000
+# }

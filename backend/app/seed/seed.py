@@ -16,6 +16,34 @@ from app.models.indicador import Indicador
 
 DATA_PATH = Path(__file__).parent / "data" / "departamentos.json"
 
+# Cabecera departamental (capital municipality of each department) — administrative
+# fact, not a sourced statistical indicator, so it's kept here rather than in the
+# indicadores data files.
+CABECERAS: dict[str, str] = {
+    "alta-verapaz": "Cobán",
+    "baja-verapaz": "Salamá",
+    "chimaltenango": "Chimaltenango",
+    "chiquimula": "Chiquimula",
+    "el-progreso": "Guastatoya",
+    "escuintla": "Escuintla",
+    "guatemala": "Ciudad de Guatemala",
+    "huehuetenango": "Huehuetenango",
+    "izabal": "Puerto Barrios",
+    "jalapa": "Jalapa",
+    "jutiapa": "Jutiapa",
+    "peten": "Flores",
+    "quetzaltenango": "Quetzaltenango",
+    "quiche": "Santa Cruz del Quiché",
+    "retalhuleu": "Retalhuleu",
+    "sacatepequez": "Antigua Guatemala",
+    "san-marcos": "San Marcos",
+    "santa-rosa": "Cuilapa",
+    "solola": "Sololá",
+    "suchitepequez": "Mazatenango",
+    "totonicapan": "Totonicapán",
+    "zacapa": "Zacapa",
+}
+
 
 async def seed(db: AsyncSession) -> None:
     if not DATA_PATH.exists():
@@ -64,6 +92,7 @@ async def seed(db: AsyncSession) -> None:
         for campo in DEPTO_FIELDS:
             if campo in entry and hasattr(depto, campo):
                 setattr(depto, campo, entry[campo])
+        depto.cabecera = CABECERAS.get(entry["slug"])
         await db.flush()
 
         # Indicadores — soporta lista (un registro por año) o dict (legacy, un solo año)
