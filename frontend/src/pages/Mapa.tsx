@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import MapaChoropleth from "@/components/mapa/MapaChoropleth";
@@ -15,12 +15,17 @@ import { useMunicipios } from "@/api/municipios";
 import { agregarNacional, esAditiva, ANIO_MUNICIPIOS } from "@/lib/totales";
 import { track } from "@/lib/analytics";
 import { formatearValor } from "@/lib/utils";
-import { VARIABLES, notaIndicador } from "@/types/departamento";
+import {
+  VARIABLES,
+  TODAS_LAS_VARIABLES,
+  esSoloMunicipio,
+  notaIndicador,
+} from "@/types/departamento";
 
 type Tab = "departamentos" | "municipios";
 
 export default function MapaPage() {
-  const { variableActiva, setVariable } = useFiltros();
+  const { variableActiva, setVariable, mostrarRios, setMostrarRios } = useFiltros();
   const anioMapa = useFiltros((s) => s.anioMapa);
   const setAnioMapa = useFiltros((s) => s.setAnioMapa);
   const {
@@ -39,7 +44,9 @@ export default function MapaPage() {
   // National figure for the active variable + year, shown in the sidebar.
   const { data: deptos } = useDepartamentos({ anio: anioMapa });
   const { data: municipios } = useMunicipios();
-  const varInfo = VARIABLES.find((v) => v.key === variableActiva)!;
+  const varInfo = TODAS_LAS_VARIABLES.find((v) => v.key === variableActiva)!;
+  // La vulnerabilidad social solo existe por municipio: se ofrece únicamente en esa vista.
+  const variablesDisponibles = esMunicipios ? TODAS_LAS_VARIABLES : VARIABLES;
   // El año del corte de municipios es el mismo 2025 de los departamentos, y con él
   // el total nacional (población y superficie) sale de las cifras oficiales.
   const anioAgregado = esMunicipios ? ANIO_MUNICIPIOS : anioMapa;
@@ -54,6 +61,12 @@ export default function MapaPage() {
       );
   const valorNacional = agregadoNacional.valores[variableActiva] ?? null;
   const aditiva = esAditiva(variableActiva);
+
+  // La variable activa sobrevive al cambio de pestaña y de página; en la vista de
+  // departamentos un indicador solo municipal no tiene datos, así que vuelve a población.
+  useEffect(() => {
+    if (!esMunicipios && esSoloMunicipio(variableActiva)) setVariable("poblacion_total");
+  }, [esMunicipios, variableActiva, setVariable]);
 
   // Switching views clears the other view's selection so panels don't leak across.
   function cambiarTab(next: Tab) {
@@ -115,7 +128,7 @@ export default function MapaPage() {
                 }}
                 className="w-full appearance-none bg-muted border border-border rounded-md px-3 py-2 text-sm font-body text-foreground focus:outline-none focus:ring-2 focus:ring-selva cursor-pointer pr-8"
               >
-                {VARIABLES.map((v) => (
+                {variablesDisponibles.map((v) => (
                   <option key={v.key} value={v.key}>
                     {v.label}
                   </option>
@@ -154,6 +167,17 @@ export default function MapaPage() {
               />
             </div>
           </div>
+
+          <label className="flex items-center gap-2 text-sm font-body text-foreground cursor-pointer select-none">
+            <input
+              type="checkbox"
+              checked={mostrarRios}
+              onChange={(e) => setMostrarRios(e.target.checked)}
+              className="accent-[#2E6FB7] w-4 h-4"
+            />
+            <span className="inline-block w-5 h-0.5 rounded-full bg-[#2E6FB7]" aria-hidden />
+            Mostrar ríos principales
+          </label>
 
           {/* Total nacional para la variable + año activos */}
           <TarjetaNacional

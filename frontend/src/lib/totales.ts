@@ -1,4 +1,4 @@
-import { VARIABLES } from "@/types/departamento";
+import { TODAS_LAS_VARIABLES } from "@/types/departamento";
 import type { VariableKey } from "@/types/departamento";
 import { calcularDensidad, calcularDuplicacion } from "@/lib/derivados";
 
@@ -88,7 +88,7 @@ export function agregarNacional(
 ): AgregadoNacional {
   const valores = {} as Record<VariableKey, number | null>;
 
-  for (const { key } of VARIABLES) {
+  for (const { key } of TODAS_LAS_VARIABLES) {
     if (CLAVES_SIN_TOTAL.has(key) || CLAVES_DERIVADAS.has(key)) {
       valores[key] = null; // las derivadas se resuelven abajo, con los totales ya sumados
       continue;

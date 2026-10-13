@@ -24,11 +24,13 @@ import { VARIABLES, VARIABLES_ALERTA, notaIndicador } from "@/types/departamento
 import type { Variable, VariableKey, Indicadores } from "@/types/departamento";
 import TarjetaNacional from "@/components/TarjetaNacional";
 import SeccionSitios from "@/components/ficha/SeccionSitios";
+import SeccionRios from "@/components/ficha/SeccionRios";
 import DepartamentoShape from "@/components/ficha/DepartamentoShape";
 import KpiCard from "@/components/ficha/KpiCard";
 import Breadcrumb from "@/components/ficha/Breadcrumb";
 import { useMunicipios } from "@/api/municipios";
 import { useSitiosDeDepartamento } from "@/api/sitios";
+import { useRiosDeDepartamento } from "@/api/rios";
 
 const COLORES_ANIO: Record<number, string> = {
   1994: "#1E4D8C",
@@ -129,6 +131,7 @@ export default function FichaPage() {
   // Los sitios de interés del departamento (lagos, sitios arqueológicos…). Solo se
   // listan: el informe completo de cada uno vive en su propia ficha, /sitio/:slug.
   const { data: sitios } = useSitiosDeDepartamento(slug);
+  const { data: rios } = useRiosDeDepartamento(slug);
   const municipiosDelDepto = municipios
     ?.filter((m) => m.departamento_slug === slug)
     .sort((a, b) => a.nombre.localeCompare(b.nombre));
@@ -600,6 +603,9 @@ export default function FichaPage() {
       {sitios && sitios.length > 0 && (
         <SeccionSitios sitios={sitios} departamento={depto.nombre} />
       )}
+
+      {/* Ríos cuya cuenca drena el departamento (estudios hidrosociales, /docs/agua) */}
+      {rios && rios.length > 0 && <SeccionRios rios={rios} departamento={depto.nombre} />}
 
       {/* Drill-down: municipios of this department.
           Misma rejilla y misma tarjeta que los indicadores de arriba: todas del

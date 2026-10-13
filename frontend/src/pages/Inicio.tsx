@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Map, BarChart2, Table2, FileText, ArrowRight, Calendar, GitCompareArrows } from "lucide-react";
 import { ANIOS_DISPONIBLES } from "@/store/filtros";
 import { track } from "@/lib/analytics";
+import BloqueContacto from "@/components/BloqueContacto";
 
 const SECTIONS = [
   {
@@ -134,11 +135,18 @@ export default function InicioPage() {
           </div>
 
           {/* Highlight stats */}
-          <div className="flex flex-wrap gap-8 mt-14 pt-10 border-t border-border">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 mt-14 pt-12 border-t border-border">
             {HIGHLIGHTS.map(({ value, label }) => (
-              <div key={label}>
-                <p className="font-display font-bold text-foreground text-3xl leading-none">{value}</p>
-                <p className="text-muted-foreground font-body text-sm mt-1">{label}</p>
+              <div key={label} className="text-center">
+                <p
+                  className="font-display font-bold text-foreground leading-none tabular-nums"
+                  style={{ fontSize: "clamp(2.75rem, 6vw, 4.5rem)" }}
+                >
+                  {value}
+                </p>
+                <p className="text-muted-foreground font-body text-sm md:text-base uppercase tracking-widest mt-3">
+                  {label}
+                </p>
               </div>
             ))}
           </div>
@@ -191,6 +199,11 @@ export default function InicioPage() {
             </button>
           ))}
         </div>
+      </section>
+
+      {/* ── Contacto ── */}
+      <section className="border-t border-border bg-muted/30">
+        <BloqueContacto className="max-w-screen-xl mx-auto px-6 py-16" />
       </section>
 
       {/* ── Footer note ── */}

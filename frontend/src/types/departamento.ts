@@ -35,6 +35,14 @@ export interface Indicadores {
   votos_emitidos: number | null;
   abstencionismo_pct: number | null;
   participacion_pct: number | null;
+  // Solo municipios (VARIABLES_SOLO_MUNICIPIO): los departamentos nunca los traen.
+  vulnerabilidad_social?: number | null;
+  vuln_sociodemografica?: number | null;
+  vuln_educacion?: number | null;
+  vuln_empleo?: number | null;
+  vuln_vivienda?: number | null;
+  vuln_servicios?: number | null;
+  vuln_equipamiento?: number | null;
 }
 
 export interface Departamento {
@@ -102,6 +110,33 @@ export const VARIABLES: Variable[] = [
   { key: "participacion_pct", label: "Participación electoral 2023 (%)", formato: "porcentaje" },
   { key: "abstencionismo_pct", label: "Abstencionismo 2023 (%)", formato: "porcentaje" },
 ] as const;
+
+/**
+ * Indicadores que solo existen por municipio: el índice de vulnerabilidad social
+ * multidimensional (Clavius 2023, Censo 2018) no tiene cifra departamental. Van en
+ * el mapa y la tabla de municipios, nunca en las vistas de departamentos.
+ * Mayor valor = más vulnerable.
+ */
+export const VARIABLES_SOLO_MUNICIPIO: Variable[] = [
+  { key: "vulnerabilidad_social", label: "Vulnerabilidad social (índice)", formato: "decimal" },
+  { key: "vuln_sociodemografica", label: "Vulnerabilidad sociodemográfica", formato: "decimal" },
+  { key: "vuln_educacion", label: "Vulnerabilidad en educación", formato: "decimal" },
+  { key: "vuln_empleo", label: "Vulnerabilidad en empleo", formato: "decimal" },
+  { key: "vuln_vivienda", label: "Vulnerabilidad en vivienda", formato: "decimal" },
+  { key: "vuln_servicios", label: "Vulnerabilidad en servicios básicos", formato: "decimal" },
+  { key: "vuln_equipamiento", label: "Vulnerabilidad en equipamiento", formato: "decimal" },
+];
+
+/** Todas las variables, para buscar etiqueta y formato de cualquier clave. */
+export const TODAS_LAS_VARIABLES: Variable[] = [...VARIABLES, ...VARIABLES_SOLO_MUNICIPIO];
+
+export const esSoloMunicipio = (key: VariableKey): boolean =>
+  VARIABLES_SOLO_MUNICIPIO.some((v) => v.key === key);
+
+/** La variable activa la comparten las páginas: las vistas departamentales la
+ *  sustituyen por la población si viene de un indicador solo municipal. */
+export const comoDepartamental = (key: VariableKey): VariableKey =>
+  esSoloMunicipio(key) ? "poblacion_total" : key;
 
 /**
  * Advertencias por indicador y año, para los casos en que el dato no significa lo

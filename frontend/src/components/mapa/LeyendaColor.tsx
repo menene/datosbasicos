@@ -4,7 +4,7 @@ import { useFiltros } from "@/store/filtros";
 import { useResumenIndicadores } from "@/api/departamentos";
 import { useMunicipios, municipiosDominio } from "@/api/municipios";
 import { getEscala, COLOR_SIN_DATO } from "@/lib/colores";
-import { VARIABLES } from "@/types/departamento";
+import { TODAS_LAS_VARIABLES } from "@/types/departamento";
 import { formatearValor } from "@/lib/utils";
 
 const STEPS = 5;
@@ -15,7 +15,7 @@ export default function LeyendaColor({ municipios = false }: { municipios?: bool
   const { data: resumen } = useResumenIndicadores(anio);
   const { data: municipiosData } = useMunicipios();
 
-  const variableInfo = VARIABLES.find((v) => v.key === variableActiva);
+  const variableInfo = TODAS_LAS_VARIABLES.find((v) => v.key === variableActiva);
 
   const { dominio, swatches } = useMemo(() => {
     let dom: [number, number];

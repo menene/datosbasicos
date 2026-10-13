@@ -12,6 +12,8 @@ Two kinds of source coexist:
      PEA / PEI (Censo 2018, base 15 años y más) to municipios country-wide.
    · "VOTANTES DEPTOS REP. DE GUATEMALA", padrón, votos emitidos, abstencionismo y
      participación de las Elecciones Generales 2023 (primera vuelta).
+3. docs/update — one Indicador × año table per municipio, written to cover the
+   municipios the department docs left out. Final revision: overrides every other source.
 
 The PEA tables carry stray rows (municipios listed under the wrong department, and
 names that are not municipios at all), so each table's department is decided by
@@ -66,8 +68,24 @@ def slugify(name: str) -> str:
     return re.sub(r"-+", "-", n).strip("-")
 
 
+def _fila(m: re.Match) -> str:
+    """One table row as a single line: "Indicador | Dato" rows become "Indicador: Dato".
+
+    The Alta Verapaz doc gives each municipio as two-column tables; flattened cell by
+    cell, the label and its value would land on separate lines and never pair up.
+    """
+    celdas = [
+        re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", c)).strip()
+        for c in re.findall(r"<w:tc\b.*?</w:tc>", m.group(0), flags=re.S)
+    ]
+    celdas = [c for c in celdas if c]
+    sep = ": " if len(celdas) == 2 and ":" not in celdas[0] else " | "
+    return sep.join(celdas) + "\n"
+
+
 def docx_lines(path: Path) -> list[str]:
     xml = zipfile.ZipFile(path).read("word/document.xml").decode("utf-8", "ignore")
+    xml = re.sub(r"<w:tr\b.*?</w:tr>", _fila, xml, flags=re.S)
     xml = re.sub(r"</w:p>", "\n", xml)
     txt = re.sub(r"<[^>]+>", "", xml)
     txt = txt.replace(" ", " ")
@@ -120,8 +138,43 @@ def dept_for_file(path: Path) -> str | None:
 
 
 # Field -> list of (regex on label line, extractor). First match wins.
+NUM = r"\d[\d.,]*(?:\s\d{3})*"
+RANGO = re.compile(rf"({NUM})\s*[–—‑-]\s*({NUM})(\s*%)?")
+
+
+def rango(val: str, kind: str) -> float | None:
+    """Midpoint of a range ("10 000–12 500 habitantes", "1,5–2,0%") when the value
+    opens with one; the first number alone would understate it.
+
+    Only narrow ranges qualify. A wide one ("117-204 km², fuentes varían") is two
+    sources disagreeing, and its midpoint would be a figure no source gives.
+    """
+    m = RANGO.search(val)
+    primero = re.search(r"\d", val)
+    if not m or not primero or m.start() != primero.start():
+        return None
+    if kind == "pct" and not m.group(3):
+        return None
+    a, b = parse_num(m.group(1)), parse_num(m.group(2))
+    if a is None or b is None or not a < b:
+        return None
+    if (b - a > 15) if kind == "pct" else (b > a * 1.25):
+        return None
+    return round((a + b) / 2, 2)
+
+
+def rango_amplio(line: str) -> bool:
+    """The value opens with a range too wide for rango() to average."""
+    val = line.split(":", 1)[1] if ":" in line else line
+    m = RANGO.search(val)
+    primero = re.search(r"\d", val)
+    return bool(m and primero and m.start() == primero.start()) and rango(val, "num") is None
+
+
 def field_value(line: str, kind: str) -> float | None:
     val = line.split(":", 1)[1] if ":" in line else line
+    if (medio := rango(val, kind)) is not None:
+        return medio
     if kind == "pct":
         return first_pct(val)
     if kind == "num":
@@ -133,6 +186,9 @@ LABELS: list[tuple[str, str, str]] = [
     # (indicator key, label regex, kind)
     ("superficie_km2", r"superficie", "num"),
     ("poblacion_total", r"poblaci.n total", "num"),
+    # Bare "Población: …" / "Población (2002): …" (Zacapa, Alta Verapaz). The colon is
+    # required so headings like "Población (2025)" are not read as a figure.
+    ("poblacion_total", r"^poblaci.n\s*(\([^)]*\))?\s*:", "num"),
     ("densidad_hab_km2", r"densidad", "num"),
     ("pct_hombres", r"^hombres", "pct"),
     ("pct_mujeres", r"^mujeres", "pct"),
@@ -187,28 +243,58 @@ EXTRA_KEYS = [
     "votos_emitidos",
     "abstencionismo_pct",
     "participacion_pct",
+    # Vulnerabilidad social multidimensional (seed/data/vulnerabilidad.json).
+    "vulnerabilidad_social",
+    "vulnerabilidad_categoria",
+    "vulnerabilidad_ranking",
+    "vuln_sociodemografica",
+    "vuln_educacion",
+    "vuln_empleo",
+    "vuln_vivienda",
+    "vuln_servicios",
+    "vuln_equipamiento",
 ]
+
+
+def anio_etiqueta(line: str) -> int:
+    """Latest year named in the label ("Población total (Censo 2018)" -> 2018), or 0."""
+    etiqueta = line.split(":", 1)[0] if ":" in line else ""
+    return max((int(a) for a in re.findall(r"\b(?:19|20)\d\d\b", etiqueta)), default=0)
 
 
 def parse_block(lines: list[str]) -> dict:
     out: dict[str, float | None] = {}
+    anio: dict[str, int] = {}
     for raw in lines:
         line = CLEAN_MARKERS.sub("", raw)
         low = unicodedata.normalize("NFD", line).encode("ascii", "ignore").decode().lower()
         for key, pat, kind in LABELS:
-            if key in out:
+            # First match wins, except that a label dated later replaces an earlier
+            # one: the Alta Verapaz tables list "Población total (2002)" before
+            # "Población total (Censo 2018)".
+            if key in out and anio_etiqueta(line) <= anio.get(key, 0):
                 continue
             if re.search(pat, low):
                 v = field_value(line, kind)
+                if key == "poblacion_total" and v is not None and rango_amplio(line):
+                    v = None    # "148,344 - 279,972": sources disagree, use the census
+                if key == "poblacion_total" and v is not None:
+                    # "según el Censo 2002, … 23 201 habitantes": a year is not a
+                    # population; leave it to the census-table fallback.
+                    v = None if v.is_integer() and 1900 <= v <= 2100 else float(round(v))
                 if v is not None:
                     lo, hi = BOUNDS.get(key, (float("-inf"), float("inf")))
                     if lo <= v <= hi:
                         out[key] = v
+                        anio[key] = anio_etiqueta(line)
                 break
     return out
 
 
-HEADER_NOISE = re.compile(r"^(?:Municipio de|Descripci.n del municipio de)\s+", re.I)
+HEADER_NOISE = re.compile(
+    r"^(?:Municipio de|Descripci.n del municipio de|Perfil descriptivo del municipio de)\s+",
+    re.I,
+)
 # Prose openers that masquerade as headers ("Se ubica en…, …", "A nivel…, …").
 PROSE_STOP = re.compile(
     r"^(se |a nivel|est. |en |si |no se|para |como |desde |durante |seg.n )",
@@ -217,7 +303,9 @@ PROSE_STOP = re.compile(
 
 
 def _clean_name(muni: str) -> str | None:
-    muni = HEADER_NOISE.sub("", muni.strip()).strip(" .()")
+    # "San José (conocido también como Puerto San José)" -> "San José"
+    muni = re.sub(r"\([^)]*\)", " ", muni)
+    muni = re.sub(r"\s+", " ", HEADER_NOISE.sub("", muni.strip())).strip(" .()")
     if not (2 <= len(muni) <= 60) or re.search(r"\d", muni):
         return None
     if PROSE_STOP.match(muni) or len(muni.split()) > 6:  # reject prose sentences
@@ -233,6 +321,22 @@ def is_header(line: str, dept: str) -> str | None:
     # is sometimes a full descriptive sentence (with colons), so check it first.
     m = re.match(r"^(.+?)\s+es un municipio\b.*?departamento de\s+.+$", line, re.I)
     if m:
+        return _clean_name(m.group(1))
+    # "El municipio de Granados se encuentra en el departamento de Baja Verapaz…"
+    m = re.match(
+        r"^El municipio de\s+(.+?)\s+se\s+(?:ubica|encuentra|localiza|sit.a)\b.*?departamento de",
+        line, re.I,
+    )
+    if m:
+        return _clean_name(m.group(1))
+    # "…un perfil descriptivo del municipio de Río Hondo, Zacapa, con base en…"
+    m = re.search(r"perfil descriptivo del municipio de\s+(.+?),\s*(.+)$", line, re.I)
+    if m and slugify(m.group(2)).startswith(dslug):
+        return _clean_name(m.group(1))
+    # Alta Verapaz table titles: "Tamahú en 2025: Resumen del Municipio",
+    # "Lanquín (San Agustín Lanquín), Alta Verapaz: Resumen Demográfico y Social (2025)"
+    m = re.match(r"^(.+?)(?:\s+en\s+20\d\d|,\s*([^,:]+))\s*:\s*(?:resumen|descripci)", line, re.I)
+    if m and (m.group(2) is None or slugify(m.group(2)) == dslug):
         return _clean_name(m.group(1))
     if ":" in line or "✅" in line or line.isupper():
         return None
@@ -571,6 +675,156 @@ def pea_tables(geo: dict) -> dict[tuple[str, str], dict]:
     return out
 
 
+UPDATE_DIR = DOCS_DIR / "update"
+
+# Row label -> (key, kind). "abs_pct" rows ("≈ 7,450 (22.0%)", or just "≈ 6,780")
+# yield a share of the total population.
+FILAS_ACTUALIZACION: list[tuple[str, str, str]] = [
+    (r"^superficie", "superficie_km2", "num"),
+    (r"^poblacion total", "poblacion_total", "num"),
+    (r"^densidad", "densidad_hab_km2", "num"),
+    (r"^hombres", "pct_hombres", "abs_pct"),
+    (r"^mujeres", "pct_mujeres", "abs_pct"),
+    (r"^poblacion urbana", "pct_urbana", "abs_pct"),
+    (r"^poblacion rural", "pct_rural", "abs_pct"),
+    (r"^poblacion indigena", "pct_indigena", "abs_pct"),
+    (r"^esperanza de vida", "esperanza_vida", "num"),
+    (r"analfabetismo", "analfabetismo_pct", "pct"),
+    (r"agua", "acceso_agua_pct", "pct"),
+    (r"red sanitaria|saneamiento|drenaje", "acceso_saneamiento_pct", "pct"),
+    (r"fecundidad", "fecundidad", "num"),
+    (r"crecimiento", "crecimiento_anual_pct", "pct"),
+]
+
+
+def _cuerpo_en_orden(path: Path):
+    """Body paragraphs (as text) and tables (as rows of cells), in document order."""
+    root = ET.fromstring(zipfile.ZipFile(path).read("word/document.xml"))
+    body = root.find(f"{W}body")
+    for el in body:
+        if el.tag == f"{W}p":
+            yield "p", "".join(t.text or "" for t in el.iter(f"{W}t")).strip()
+        elif el.tag == f"{W}tbl":
+            yield "tbl", [
+                [re.sub(r"\s+", " ", "".join(t.text or "" for t in tc.iter(f"{W}t"))).strip()
+                 for tc in tr.findall(f"{W}tc")]
+                for tr in el.findall(f"{W}tr")
+            ]
+
+
+def _nombre_titulo(titulo: str) -> str:
+    """"🏛️ 1. Mazatenango (Cabecera departamental)" -> "Mazatenango";
+    "🏙️ 1. Municipio de Flores, Petén" -> "Flores"."""
+    t = re.sub(r"^[^\wÁÉÍÓÚÑáéíóúñ]+", "", titulo)
+    t = re.sub(r"^\d+\.\s*", "", t)
+    t = re.sub(r"^Municipio de\s+", "", t, flags=re.I)
+    return re.split(r"[(,⚠]", t)[0].strip(" .")
+
+
+def _celda_2025(fila: list[str], col: int) -> str:
+    """The 2025 cell; "←" repeats the value of the column to its left."""
+    i = col
+    while i > 1 and fila[i].strip() in ("←", ""):
+        i -= 1
+    return fila[i] if i >= 1 else ""
+
+
+def tablas_actualizacion(geo: dict) -> dict[tuple[str, str], dict]:
+    """docs/update: one table per municipio, Indicador | 1994 | (2005|2018) | 2025.
+
+    These documents are the final revision: they cover the municipios the department
+    docs left out and restate others, and wherever they give a value it overrides
+    every other source. The 2025 projection column is used, matching the
+    single-snapshot shape of municipios.json.
+
+    PEA / PEI rows are not taken: here they add up to the whole population, while
+    the PEA columns everywhere else are Censo 2018 with a base of 15 years and over.
+    """
+    out: dict[tuple[str, str], dict] = {}
+    if not UPDATE_DIR.is_dir():
+        return out
+    for path in sorted(UPDATE_DIR.glob("*.docx")):
+        dept = dept_for_file(path)
+        titulo = None
+        for tipo, contenido in _cuerpo_en_orden(path):
+            if tipo == "p":
+                # Only numbered or "Municipio de …" headings: notes in between ("en
+                # 1994 su territorio pertenecía a Dolores") must not rename the table.
+                if re.match(r"^\W*(?:\d+\.\s|Municipio de\s)", contenido, re.I):
+                    titulo = contenido
+                continue
+            rows = contenido
+            if not rows or norm(rows[0][0]) != "indicador" or titulo is None:
+                continue
+            col = max((i for i, h in enumerate(rows[0]) if "2025" in h), default=None)
+            if col is None:
+                continue
+            nombre = _nombre_titulo(titulo)
+            mslug = slugify(nombre)
+            geo_name = match_geo(geo, slugify(dept), mslug) if dept else None
+            clave = (slugify(dept), slugify(geo_name)) if geo_name else match_geo_nacional(geo, mslug)
+            if clave is None:
+                print(f"  ! docs/update: '{nombre}' ({path.name}) no coincide con el GeoJSON")
+                continue
+
+            celdas = {}
+            for fila in rows[1:]:
+                if len(fila) <= col:
+                    continue
+                etiqueta = norm(fila[0])
+                for pat, key, kind in FILAS_ACTUALIZACION:
+                    if re.search(pat, etiqueta):
+                        celdas.setdefault(key, (kind, _celda_2025(fila, col)))
+                        break
+
+            fields: dict[str, float] = {}
+            for key, (kind, celda) in celdas.items():
+                if kind != "abs_pct":
+                    v = first_pct(celda) if kind == "pct" else parse_num(celda)
+                    if v is not None:
+                        fields[key] = v
+            total = fields.get("poblacion_total")
+            for key, (kind, celda) in celdas.items():
+                if kind != "abs_pct":
+                    continue
+                v = first_pct(celda)                 # "(22.0%)" or a bare "≈ 46.5%"
+                if v is None and total and (n := parse_num(celda)):
+                    v = round(n / total * 100, 1)    # absolute only: share of the total
+                if v is not None:
+                    fields[key] = v
+            if "poblacion_total" in fields:
+                fields["poblacion_total"] = float(round(fields["poblacion_total"]))
+            fields = {
+                k: v for k, v in fields.items()
+                if BOUNDS[k][0] <= v <= BOUNDS[k][1]
+            }
+            if len(fields) >= 4:
+                out[clave] = {**fields, "_departamento": dept or DEPT_NAME[clave[0]]}
+    return out
+
+
+def vulnerabilidad() -> dict[tuple[str, str], dict]:
+    """Índice de vulnerabilidad social multidimensional por municipio.
+
+    Fuente: Tercero, Rosito, Hernández, Zurita y Pineda, "Vulnerabilidad social
+    multidimensional en Guatemala: un análisis municipal basado en el XII Censo
+    Nacional de Población y VII de Vivienda 2018", Clavius 1(1), 2023 — Apéndice 2.
+    El PDF de docs/ es un escaneo sin texto, así que vulnerabilidad.json se armó por
+    OCR y se verificó fila por fila: el índice total es la suma de las seis
+    dimensiones, y toda fila que no cuadraba (más cuatro que el OCR perdió) se leyó
+    directamente del escaneo. Las claves ya vienen con el slug de municipios.json.
+    """
+    path = DATA_DIR / "vulnerabilidad.json"
+    if not path.exists():
+        return {}
+    return {
+        (r["departamento_slug"], r["slug"]): {
+            k: v for k, v in r.items() if k not in ("departamento_slug", "slug")
+        }
+        for r in json.loads(path.read_text(encoding="utf-8"))
+    }
+
+
 DEPT_NAME = {slugify(d): d for d in DEPARTAMENTOS}
 
 ALL_KEYS = [k for k, _, _ in LABELS] + EXTRA_KEYS
@@ -646,7 +900,10 @@ def main() -> None:
             continue
         dslug = slugify(dept)
         for muni, fields in blocks:
-            if len(fields) < 4:  # too few fields → likely a prose false-positive block
+            # Too few fields → likely a prose false-positive block. Surface plus total
+            # population is a real profile, though: the Alta Verapaz tables give only
+            # those two and the density for several municipios.
+            if len(fields) < 4 and not {"superficie_km2", "poblacion_total"} <= fields.keys():
                 continue
             geo_name = match_geo(geo, dslug, slugify(muni))
             clave = (dslug, slugify(geo_name)) if geo_name else match_geo_nacional(geo, slugify(muni))
@@ -658,10 +915,13 @@ def main() -> None:
 
     # 2. Table docs. The Guatemala table is the only source for the capital
     #    department, so it also creates records; PEA adds columns to any municipio.
+    #    docs/update goes last: it is the final revision and overrides the rest.
     fuentes = [
         ("tabla Guatemala", guatemala_table(geo)),
         ("PEA/PEI 2018", pea_tables(geo)),
         ("Votantes 2023", votantes_tablas(geo)),
+        ("docs/update", tablas_actualizacion(geo)),
+        ("Vulnerabilidad", vulnerabilidad()),
     ]
     aportes = []
     for label, parsed in fuentes:

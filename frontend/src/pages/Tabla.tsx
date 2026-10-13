@@ -27,11 +27,36 @@ import { formatearValor } from "@/lib/utils";
 import { track, trackDebounced } from "@/lib/analytics";
 import { agregarNacional, ANIO_MUNICIPIOS } from "@/lib/totales";
 import type { AgregadoNacional } from "@/lib/totales";
-import { VARIABLES, notaIndicador } from "@/types/departamento";
+import { VARIABLES, VARIABLES_SOLO_MUNICIPIO, notaIndicador } from "@/types/departamento";
 import type { Indicadores, Variable, VariableKey } from "@/types/departamento";
 
+/** Campos que solo traen los municipios: no existen en los indicadores departamentales. */
+type ClaveSoloMuni = "poblacion_inactiva" | "pct_pea" | "vulnerabilidad_ranking";
+type ClaveColumna = VariableKey | ClaveSoloMuni;
+
+interface Columna {
+  key: ClaveColumna;
+  label: string;
+  formato: Variable["formato"];
+}
+
+// PEA / PEI del Censo 2018, base 15 años y más (ver types/municipio.ts).
+const VARIABLES_SOLO_MUNI: Columna[] = [
+  { key: "poblacion_inactiva", label: "Población inactiva (PEI)", formato: "numero" },
+  { key: "pct_pea", label: "PEA sobre 15+ (%)", formato: "porcentaje" },
+];
+
+// Puesto en el Apéndice 2 de Clavius 2023: 1 = el municipio más vulnerable.
+const RANKING_VULNERABILIDAD: Columna = {
+  key: "vulnerabilidad_ranking",
+  label: "Ranking de vulnerabilidad (1 = más vulnerable)",
+  formato: "numero",
+};
+
 const FORMATO_POR_KEY: Record<string, Variable["formato"]> = Object.fromEntries(
-  VARIABLES.map((v) => [v.key, v.formato])
+  [...VARIABLES, ...VARIABLES_SOLO_MUNI, ...VARIABLES_SOLO_MUNICIPIO, RANKING_VULNERABILIDAD].map(
+    (v) => [v.key, v.formato]
+  )
 );
 
 type Vista = "departamentos" | "municipios";
@@ -88,8 +113,10 @@ function SortIcon({ sorted }: { sorted: false | "asc" | "desc" }) {
   return <ArrowUpDown size={13} className="text-muted-foreground/50" />;
 }
 
-function valorDe(row: Row, key: VariableKey, anio: number): number | null {
-  const ind = row.porAnio[anio];
+function valorDe(row: Row, key: ClaveColumna, anio: number): number | null {
+  // Las filas de municipio son el propio Municipio, que trae también los campos
+  // de VARIABLES_SOLO_MUNI.
+  const ind = row.porAnio[anio] as Record<string, unknown> | null | undefined;
   const v = ind?.[key];
   return typeof v === "number" ? v : null;
 }
@@ -104,8 +131,20 @@ export default function TablaPage() {
   const esMunicipios = vista === "municipios";
   const aniosEfectivos = esMunicipios ? [ANIO_MUNI] : anios;
   const multiAnio = !esMunicipios && anios.length > 1;
-  const variablesPosibles = useMemo<Variable[]>(
-    () => (esMunicipios ? VARIABLES.filter((v) => MUNI_KEYS.has(v.key)) : VARIABLES),
+  const variablesPosibles = useMemo<Columna[]>(
+    () =>
+      esMunicipios
+        ? [
+            ...VARIABLES.filter((v) => MUNI_KEYS.has(v.key)).flatMap((v) =>
+              // PEI y % PEA, junto a la PEA.
+              v.key === "poblacion_activa" ? [v, ...VARIABLES_SOLO_MUNI] : [v]
+            ),
+            // Vulnerabilidad social multidimensional, al final: índice, ranking y ámbitos.
+            VARIABLES_SOLO_MUNICIPIO[0],
+            RANKING_VULNERABILIDAD,
+            ...VARIABLES_SOLO_MUNICIPIO.slice(1),
+          ]
+        : VARIABLES,
     [esMunicipios]
   );
 
@@ -184,13 +223,34 @@ export default function TablaPage() {
 
   const anioBase = aniosEfectivos[0];
 
+  // Total nacional de una columna. PEI se suma; % PEA sale de los totales
+  // (PEA / (PEA + PEI) de los municipios con ambas cifras), no del promedio.
+  const totalDe = (key: ClaveColumna, anio: number): number | null => {
+    if (key === "vulnerabilidad_ranking") return null;  // un puesto no tiene total
+    if (key === "poblacion_inactiva" || key === "pct_pea") {
+      let pea = 0;
+      let pei = 0;
+      for (const r of data) {
+        const a = valorDe(r, "poblacion_activa", anio);
+        const i = valorDe(r, "poblacion_inactiva", anio);
+        if (a !== null && i !== null) {
+          pea += a;
+          pei += i;
+        }
+      }
+      if (key === "poblacion_inactiva") return pei || null;
+      return pea + pei ? (pea / (pea + pei)) * 100 : null;
+    }
+    return agregadoPorAnio[anio]?.valores[key] ?? null;
+  };
+
   // Advertencias de los indicadores que están a la vista (p. ej. las coberturas de
   // 1994, que el libro estima en plano para los 22 departamentos).
   const notas = useMemo(() => {
     const vistos = new Set<string>();
     for (const v of variablesActivas) {
       for (const anio of aniosEfectivos) {
-        const texto = notaIndicador(v.key, anio);
+        const texto = notaIndicador(v.key as VariableKey, anio);  // PEI / % PEA no tienen nota
         if (texto) vistos.add(texto);
       }
     }
@@ -207,15 +267,14 @@ export default function TablaPage() {
       const sup = agregadoPorAnio[anioBase]?.superficie_km2 ?? null;
       return sup !== null ? new Intl.NumberFormat("es-GT").format(sup) : "—";
     }
-    let key = colId as VariableKey;
+    let key = colId as ClaveColumna;
     let anio = anioBase;
     if (colId.includes("__")) {
       const [k, a] = colId.split("__");
-      key = k as VariableKey;
+      key = k as ClaveColumna;
       anio = Number(a);
     }
-    const val = agregadoPorAnio[anio]?.valores[key] ?? null;
-    return formatearValor(val, FORMATO_POR_KEY[key]);
+    return formatearValor(totalDe(key, anio), FORMATO_POR_KEY[key]);
   };
 
   const columns = useMemo<ColumnDef<Row, unknown>[]>(() => {
@@ -380,11 +439,10 @@ export default function TablaPage() {
     for (const v of variablesActivas) {
       if (multiAnio) {
         for (const anio of anios) {
-          totalFila[`${v.label} (${anio})`] =
-            agregadoPorAnio[anio]?.valores[v.key] ?? null;
+          totalFila[`${v.label} (${anio})`] = totalDe(v.key, anio);
         }
       } else {
-        totalFila[v.label] = agregadoPorAnio[anioBase]?.valores[v.key] ?? null;
+        totalFila[v.label] = totalDe(v.key, anioBase);
       }
     }
     filas.unshift(totalFila);

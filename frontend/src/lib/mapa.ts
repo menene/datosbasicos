@@ -39,3 +39,19 @@ export function slugify(name: string): string {
     .replace(/[\s_]+/g, "-")
     .replace(/[^a-z0-9-]/g, "");
 }
+
+/** LineString / MultiLineString → path abierto (sin "Z"), para los ríos. */
+export function lineaToSvgPath(feature: GeoJSON.Feature): string | null {
+  const geom = feature.geometry;
+  if (!geom) return null;
+  let lineas: number[][][];
+  if (geom.type === "LineString") lineas = [geom.coordinates as number[][]];
+  else if (geom.type === "MultiLineString") lineas = geom.coordinates as number[][][];
+  else return null;
+  return lineas
+    .map((linea) => {
+      const pts = (linea as [number, number][]).map(([lon, lat]) => projectPt(lon, lat));
+      return "M" + pts.map(([x, y]) => `${x.toFixed(1)},${y.toFixed(1)}`).join("L");
+    })
+    .join(" ");
+}

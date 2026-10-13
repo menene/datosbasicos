@@ -20,3 +20,13 @@ async def test_geo_lagos_returns_only_lago_features(client):
     assert len(body["features"]) > 0
     for feature in body["features"]:
         assert feature["properties"]["shapeName"].lower().startswith("lago")
+
+
+async def test_geo_rios_returns_lines(client):
+    res = await client.get("/api/v1/geo/rios")
+    assert res.status_code == 200
+    body = res.json()
+    assert body["type"] == "FeatureCollection"
+    assert len(body["features"]) > 0
+    assert body["features"][0]["geometry"]["type"] == "MultiLineString"
+    assert "slug" in body["features"][0]["properties"]

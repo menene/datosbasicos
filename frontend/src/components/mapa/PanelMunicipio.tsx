@@ -5,6 +5,7 @@ import { useMunicipio } from "@/api/municipios";
 import { useSeleccion } from "@/store/seleccion";
 import { formatearValor } from "@/lib/utils";
 import type { Municipio } from "@/types/municipio";
+import BloqueVulnerabilidad from "@/components/ficha/BloqueVulnerabilidad";
 
 const KPIS: Array<{
   key: keyof Municipio;
@@ -125,6 +126,12 @@ export default function PanelMunicipio() {
             <p className="text-xs text-muted-foreground font-body leading-relaxed border-t border-border pt-3">
               Todavía no hay indicadores disponibles para este municipio.
             </p>
+          )}
+
+          {muni && muni.vulnerabilidad_social !== null && (
+            <div className="border-t border-border pt-3">
+              <BloqueVulnerabilidad municipio={muni} compacto />
+            </div>
           )}
 
           {/* Link to ficha */}

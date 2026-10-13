@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, NavLink, Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Map, BarChart2, Table2, FileText, Users } from "lucide-react";
+import { Map, BarChart2, Table2, FileText, FolderOpen, Users } from "lucide-react";
 
 import InicioPage from "@/pages/Inicio";
 import MapaPage from "@/pages/Mapa";
@@ -11,6 +11,7 @@ import FichaMunicipioPage from "@/pages/FichaMunicipio";
 import LibroPage from "@/pages/Libro";
 import FichaSitioPage from "@/pages/FichaSitio";
 import AcercaPage from "@/pages/Acerca";
+import AnexosPage from "@/pages/Anexos";
 
 const NAV_ITEMS = [
   { to: "/mapa", label: "Mapa", icon: Map },
@@ -18,6 +19,7 @@ const NAV_ITEMS = [
   { to: "/tabla", label: "Tabla", icon: Table2 },
   { to: "/ficha", label: "Ficha", icon: FileText },
 //   { to: "/libro", label: "Libro", icon: BookMarked },
+  { to: "/anexos", label: "Anexos", icon: FolderOpen },
   { to: "/acerca", label: "Acerca", icon: Users },
 ];
 
@@ -77,6 +79,7 @@ function AppShell() {
             />
             <Route path="/sitio/:slug" element={<FichaSitioPage />} />
             <Route path="/libro" element={<LibroPage />} />
+            <Route path="/anexos" element={<AnexosPage />} />
             <Route path="/acerca" element={<AcercaPage />} />
           </Routes>
         </motion.div>

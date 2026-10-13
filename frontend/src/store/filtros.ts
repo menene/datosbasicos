@@ -12,12 +12,15 @@ interface FiltrosStore {
   anios: number[];
   /** Single-year selection used by the Mapa page (independent of `anios`). */
   anioMapa: number;
+  /** Capa de ríos en los mapas (departamentos y municipios). */
+  mostrarRios: boolean;
   setVariable: (v: VariableKey) => void;
   setRegion: (r: string | null) => void;
   setBusqueda: (b: string) => void;
   setAnios: (a: number[]) => void;
   toggleAnio: (a: number) => void;
   setAnioMapa: (a: number) => void;
+  setMostrarRios: (v: boolean) => void;
 }
 
 export const useFiltros = create<FiltrosStore>((set, get) => ({
@@ -26,6 +29,7 @@ export const useFiltros = create<FiltrosStore>((set, get) => ({
   busqueda: "",
   anios: [ANIO_PREDETERMINADO],
   anioMapa: ANIO_PREDETERMINADO,
+  mostrarRios: true,
 
   setVariable: (v) => set({ variableActiva: v }),
   setRegion: (r) => set({ region: r }),
@@ -43,4 +47,5 @@ export const useFiltros = create<FiltrosStore>((set, get) => ({
     set({ anios: next.sort((x, y) => x - y) });
   },
   setAnioMapa: (a) => set({ anioMapa: a }),
+  setMostrarRios: (v) => set({ mostrarRios: v }),
 }));

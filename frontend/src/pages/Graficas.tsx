@@ -19,7 +19,7 @@ import {
 } from "@/api/departamentos";
 import { useFiltros } from "@/store/filtros";
 import SelectorAniosMulti from "@/components/SelectorAniosMulti";
-import { VARIABLES, VARIABLES_ALERTA } from "@/types/departamento";
+import { VARIABLES, VARIABLES_ALERTA, comoDepartamental } from "@/types/departamento";
 import type { Variable, VariableKey } from "@/types/departamento";
 import { formatearValor } from "@/lib/utils";
 import { track } from "@/lib/analytics";
@@ -160,7 +160,9 @@ function ScatterTooltip({
 
 export default function GraficasPage() {
   const navigate = useNavigate();
-  const { variableActiva, setVariable: setVariableActiva } = useFiltros();
+  const { variableActiva: variableGuardada, setVariable: setVariableActiva } = useFiltros();
+  // Puede venir del mapa de municipios con un indicador que no existe por departamento.
+  const variableActiva = comoDepartamental(variableGuardada);
   const anios = useFiltros((s) => s.anios);
   const multiAnio = anios.length > 1;
   const anioReciente = anios[anios.length - 1];

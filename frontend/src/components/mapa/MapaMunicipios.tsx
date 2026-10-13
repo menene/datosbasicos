@@ -7,10 +7,11 @@ import { useSeleccion } from "@/store/seleccion";
 import { getColorForValue, COLOR_SIN_DATO, COLOR_SELECCIONADO } from "@/lib/colores";
 import { track } from "@/lib/analytics";
 import { MAP_W, MAP_H, featureToSvgPath, slugify } from "@/lib/mapa";
-import { VARIABLES } from "@/types/departamento";
+import { TODAS_LAS_VARIABLES } from "@/types/departamento";
 import type { Municipio } from "@/types/municipio";
 import type { Lago } from "@/types/lago";
 import { formatearValor } from "@/lib/utils";
+import CapaRios from "@/components/mapa/CapaRios";
 
 interface TooltipState {
   x: number;
@@ -42,7 +43,7 @@ export default function MapaMunicipios() {
     useSeleccion();
   const [tooltip, setTooltip] = useState<TooltipState | null>(null);
 
-  const variableInfo = VARIABLES.find((v) => v.key === variableActiva);
+  const variableInfo = TODAS_LAS_VARIABLES.find((v) => v.key === variableActiva);
 
   // Los polígonos de lago se emparejan con su ficha por el slug de la forma
   // ("lago-de-atitlan"); los lagos sin polígono en el GeoJSON solo aparecen en la
@@ -243,6 +244,22 @@ export default function MapaMunicipios() {
             />
           );
         })}
+
+        {/* Ríos encima de municipios y lagos (los lagos van en el mismo bucle) */}
+        <CapaRios
+          onTooltip={(t) =>
+            setTooltip(
+              t && {
+                x: t.x,
+                y: t.y,
+                municipio: t.nombre,
+                departamento: "Río principal",
+                valor: t.valor,
+                etiquetaValor: t.etiquetaValor,
+              }
+            )
+          }
+        />
       </svg>
 
       {tooltip && (

@@ -8,10 +8,11 @@ import { useSeleccion } from "@/store/seleccion";
 import { COLOR_SIN_DATO } from "@/lib/colores";
 import { track } from "@/lib/analytics";
 import { MAP_W, MAP_H, featureToSvgPath, slugify } from "@/lib/mapa";
-import { VARIABLES } from "@/types/departamento";
+import { VARIABLES, comoDepartamental } from "@/types/departamento";
 import type { Departamento, VariableKey } from "@/types/departamento";
 import type { Lago } from "@/types/lago";
 import { formatearValor } from "@/lib/utils";
+import CapaRios from "@/components/mapa/CapaRios";
 
 // Variables where a sqrt transform gives better visual distribution
 const SQRT_VARS: VariableKey[] = ["poblacion_total", "densidad_hab_km2"];
@@ -44,7 +45,7 @@ export default function MapaChoropleth() {
   const { data: geoData, isLoading: geoLoading, isError: geoError } = useGeoData();
   const { data: geoLagos } = useGeoLagos();
   const { data: lagos } = useLagos();
-  const variableActiva = useFiltros((s) => s.variableActiva);
+  const variableActiva = comoDepartamental(useFiltros((s) => s.variableActiva));
   const anio = useFiltros((s) => s.anioMapa);
   const { departamentoActivo, setDepartamentoActivo, lagoActivo, setLagoActivo } =
     useSeleccion();
@@ -190,6 +191,9 @@ export default function MapaChoropleth() {
               />
             );
         })}
+
+        {/* Ríos, bajo los lagos: así su desembocadura queda bajo el agua */}
+        <CapaRios onTooltip={setTooltip} />
 
         {/* Capa de lagos, encima de los departamentos */}
         {geoLagos?.features.map((feature, i) => {

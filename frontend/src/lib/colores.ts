@@ -2,7 +2,17 @@ import * as d3 from "d3";
 import type { VariableKey } from "@/types/departamento";
 
 const SQRT_VARS: VariableKey[] = ["poblacion_total", "densidad_hab_km2"];
-const ALERT_VARS: VariableKey[] = ["analfabetismo_pct"];
+const ALERT_VARS: VariableKey[] = [
+  "analfabetismo_pct",
+  // Vulnerabilidad: mayor valor = peor, como el analfabetismo.
+  "vulnerabilidad_social",
+  "vuln_sociodemografica",
+  "vuln_educacion",
+  "vuln_empleo",
+  "vuln_vivienda",
+  "vuln_servicios",
+  "vuln_equipamiento",
+];
 
 export const COLOR_SIN_DATO = "#E0D8CC";
 export const COLOR_SELECCIONADO = "#E8C547";

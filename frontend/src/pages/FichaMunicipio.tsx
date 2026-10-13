@@ -19,6 +19,7 @@ import { VARIABLES_ALERTA } from "@/types/departamento";
 import type { VariableKey } from "@/types/departamento";
 import type { Municipio } from "@/types/municipio";
 import TarjetaNacional from "@/components/TarjetaNacional";
+import BloqueVulnerabilidad from "@/components/ficha/BloqueVulnerabilidad";
 import KpiCard from "@/components/ficha/KpiCard";
 import MunicipioShape from "@/components/ficha/MunicipioShape";
 import Breadcrumb from "@/components/ficha/Breadcrumb";
@@ -231,6 +232,9 @@ export default function FichaMunicipioPage() {
           })}
         </div>
       </div>
+
+      {/* Vulnerabilidad social multidimensional (Clavius 2023) */}
+      {muni && <BloqueVulnerabilidad municipio={muni} />}
 
       {/* National context */}
       {poblacionNacional !== null && (

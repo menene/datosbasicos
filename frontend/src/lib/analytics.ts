@@ -50,7 +50,9 @@ export type Evento =
   | "navegar_a_ficha"
   | "grafica_orden"
   | "dispersion_ejes"
-  | "inicio_cta";
+  | "inicio_cta"
+  | "anexo_abierto"
+  | "anexo_descargado";
 
 const URL_BASE = import.meta.env.VITE_UMAMI_URL?.replace(/\/$/, "");
 const WEBSITE_ID = import.meta.env.VITE_UMAMI_WEBSITE_ID;

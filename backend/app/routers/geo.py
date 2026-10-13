@@ -67,3 +67,12 @@ async def get_geo_lagos():
             },
         )
     return JSONResponse(content=_lagos(GEOJSON_MUNICIPIOS_PATH.stat().st_mtime))
+
+
+@router.get("/rios")
+async def get_geo_rios():
+    """Trazo de los ríos de rios.json (OpenStreetMap), ya recortado a Guatemala.
+
+    Lo genera seed/fetch_rios_geojson.py; cada línea lleva el `slug` de su río.
+    """
+    return _serve_geojson(DATA_DIR / "rios.geojson", "backend/app/seed/data/rios.geojson")

@@ -1,5 +1,6 @@
 import * as Tabs from "@radix-ui/react-tabs";
-import { BookOpen, Code2, Mail } from "lucide-react";
+import { BookOpen, Code2 } from "lucide-react";
+import BloqueContacto from "@/components/BloqueContacto";
 
 const STACK: Array<{ name: string; slug: string; color: string }> = [
   // Frontend
@@ -176,7 +177,7 @@ export default function AcercaPage() {
                   la USAC (1995–1998) y Asesor en Medio Ambiente del Parlamento
                   Latinoamericano en Brasil (1991–1994).
                 </p>
-                <p className="text-sm text-muted-foreground font-body leading-relaxed mb-5">
+                <p className="text-sm text-muted-foreground font-body leading-relaxed">
                   Autor de diversos libros especializados en Demografía,
                   ex columnista de los diarios <em>La Hora</em> y{" "}
                   <em>La República</em>, y cofundador del programa radial{" "}
@@ -184,15 +185,6 @@ export default function AcercaPage() {
                   (18 años al aire, finalizado en 2022). Actualmente columnista
                   de la revista digital <em>Publicogt</em>.
                 </p>
-                <div className="flex flex-wrap gap-3">
-                  <a
-                    href="mailto:omar@datosbasicos.gt"
-                    className="inline-flex items-center gap-1.5 text-xs font-body text-muted-foreground hover:text-foreground transition-colors border border-border rounded-md px-3 py-1.5"
-                  >
-                    <Mail size={12} />
-                    omar@datosbasicos.gt
-                  </a>
-                </div>
               </div>
             </div>
           </div>
@@ -216,7 +208,7 @@ export default function AcercaPage() {
                   experiencia en desarrollo de software y 10 años como docente.
                   Catedrático en la Universidad del Valle de Guatemala.
                 </p>
-                <p className="text-sm text-muted-foreground font-body leading-relaxed mb-5">
+                <p className="text-sm text-muted-foreground font-body leading-relaxed">
                   Responsable del diseño, desarrollo y programación íntegra de
                   la plataforma <em>Guatemala Datos Básicos 2026</em>, motivado
                   por continuar el legado de su padre y honrar el libro
@@ -225,20 +217,14 @@ export default function AcercaPage() {
                   acceso a datos, la transparencia y la toma de decisiones
                   informadas para Guatemala.
                 </p>
-                <div className="flex flex-wrap gap-3">
-                  <a
-                    href="mailto:erick@datosbasicos.gt"
-                    className="inline-flex items-center gap-1.5 text-xs font-body text-muted-foreground hover:text-foreground transition-colors border border-border rounded-md px-3 py-1.5"
-                  >
-                    <Mail size={12} />
-                    erick@datosbasicos.gt
-                  </a>
-                </div>
               </div>
             </div>
           </div>
 
         </div>
+
+        {/* Contact */}
+        <BloqueContacto className="mt-14" />
 
       </section>
 

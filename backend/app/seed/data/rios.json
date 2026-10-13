@@ -1,0 +1,432 @@
+[
+  {
+    "slug": "samala",
+    "nombre": "Río Samalá",
+    "vertiente": "Pacífico",
+    "departamentos": [
+      "quetzaltenango",
+      "totonicapan",
+      "retalhuleu"
+    ],
+    "longitud_km": null,
+    "cuenca_km2": 1510,
+    "caudal_m3s": null,
+    "caudal_nota": null,
+    "poblacion_cuenca": null,
+    "desembocadura": "Océano Pacífico",
+    "calidad": "Moderada (ICA-GT)",
+    "carga_valor": "412 t/año",
+    "carga_label": "plástico que llega al mar",
+    "problematica": "Zafra cañera y descargas municipales; recolección de residuos 47 %.",
+    "fuente": "Estudio Hidrosocial de la Vertiente del Pacífico (MARN/FAO 2023; ICC 2016–2024; INSIVUMEH 2024)"
+  },
+  {
+    "slug": "ocosito",
+    "nombre": "Río Ocosito",
+    "vertiente": "Pacífico",
+    "departamentos": [
+      "san-marcos",
+      "quetzaltenango",
+      "retalhuleu"
+    ],
+    "longitud_km": null,
+    "cuenca_km2": 2035,
+    "caudal_m3s": null,
+    "caudal_nota": null,
+    "poblacion_cuenca": null,
+    "desembocadura": "Océano Pacífico",
+    "calidad": "Severa (ICA-GT)",
+    "carga_valor": "521 t/año",
+    "carga_label": "plástico que llega al mar",
+    "problematica": "Palma africana y asentamientos costeros; vertidos oleosos en Manchón Guamuchal; recolección de residuos 44 %.",
+    "fuente": "Estudio Hidrosocial de la Vertiente del Pacífico (MARN/FAO 2023; ICC 2016–2024; INSIVUMEH 2024)"
+  },
+  {
+    "slug": "naranjo",
+    "nombre": "Río Naranjo",
+    "vertiente": "Pacífico",
+    "departamentos": [
+      "san-marcos",
+      "quetzaltenango"
+    ],
+    "longitud_km": null,
+    "cuenca_km2": 1273,
+    "caudal_m3s": null,
+    "caudal_nota": null,
+    "poblacion_cuenca": null,
+    "desembocadura": "Océano Pacífico",
+    "calidad": null,
+    "carga_valor": "312 t/año",
+    "carga_label": "plástico que llega al mar",
+    "problematica": "Café y descargas rurales dispersas; recolección de residuos 43 %.",
+    "fuente": "Estudio Hidrosocial de la Vertiente del Pacífico (MARN/FAO 2023; ICC 2016–2024; INSIVUMEH 2024)"
+  },
+  {
+    "slug": "madre-vieja",
+    "nombre": "Río Madre Vieja",
+    "vertiente": "Pacífico",
+    "departamentos": [
+      "chimaltenango",
+      "solola",
+      "suchitepequez",
+      "escuintla"
+    ],
+    "longitud_km": null,
+    "cuenca_km2": 1007,
+    "caudal_m3s": null,
+    "caudal_nota": null,
+    "poblacion_cuenca": null,
+    "desembocadura": "Océano Pacífico",
+    "calidad": "Moderada (ICA-GT)",
+    "carga_valor": "218 t/año",
+    "carga_label": "plástico que llega al mar",
+    "problematica": "Zona rural; arrastre por lluvias y crecidas súbitas; recolección de residuos 51 %.",
+    "fuente": "Estudio Hidrosocial de la Vertiente del Pacífico (MARN/FAO 2023; ICC 2016–2024; INSIVUMEH 2024)"
+  },
+  {
+    "slug": "coyolate",
+    "nombre": "Río Coyolate",
+    "vertiente": "Pacífico",
+    "departamentos": [
+      "chimaltenango",
+      "escuintla"
+    ],
+    "longitud_km": null,
+    "cuenca_km2": 1648,
+    "caudal_m3s": null,
+    "caudal_nota": null,
+    "poblacion_cuenca": null,
+    "desembocadura": "Océano Pacífico",
+    "calidad": "Moderada (ICA-GT)",
+    "carga_valor": "387 t/año",
+    "carga_label": "plástico que llega al mar",
+    "problematica": "Piña y ganadería extensiva; recolección de residuos 40 %.",
+    "fuente": "Estudio Hidrosocial de la Vertiente del Pacífico (MARN/FAO 2023; ICC 2016–2024; INSIVUMEH 2024)"
+  },
+  {
+    "slug": "achiguate",
+    "nombre": "Río Achiguate",
+    "vertiente": "Pacífico",
+    "departamentos": [
+      "sacatepequez",
+      "escuintla"
+    ],
+    "longitud_km": null,
+    "cuenca_km2": 1291,
+    "caudal_m3s": null,
+    "caudal_nota": null,
+    "poblacion_cuenca": null,
+    "desembocadura": "Océano Pacífico",
+    "calidad": "Severa (ICA-GT)",
+    "carga_valor": "356 t/año",
+    "carga_label": "plástico que llega al mar",
+    "problematica": "Expansión urbana sin planificación; recolección de residuos 36 %.",
+    "fuente": "Estudio Hidrosocial de la Vertiente del Pacífico (MARN/FAO 2023; ICC 2016–2024; INSIVUMEH 2024)"
+  },
+  {
+    "slug": "maria-linda",
+    "nombre": "Río María Linda",
+    "vertiente": "Pacífico",
+    "departamentos": [
+      "guatemala",
+      "sacatepequez",
+      "escuintla",
+      "santa-rosa"
+    ],
+    "longitud_km": 70,
+    "cuenca_km2": 2727,
+    "caudal_m3s": 13.1,
+    "caudal_nota": "estación Guacamayas",
+    "poblacion_cuenca": 2500000,
+    "desembocadura": "Océano Pacífico, entre Escuintla y Santa Rosa",
+    "calidad": "Severa a muy severa (ICA-GT)",
+    "carga_valor": "1 258 t/año",
+    "carga_label": "plástico que llega al mar — el mayor emisor de la vertiente",
+    "problematica": "Nace en el Lago de Amatitlán y recibe las aguas residuales sin tratar de más de 1 millón de habitantes del sur de la capital, Villa Nueva y Amatitlán; genera 1 297,5 t/día de residuos sólidos.",
+    "fuente": "Estudio Hidrosocial Río María Linda (ICC/USAC; INSIVUMEH); Generación de residuos — MARN 2026"
+  },
+  {
+    "slug": "los-esclavos",
+    "nombre": "Río Los Esclavos",
+    "vertiente": "Pacífico",
+    "departamentos": [
+      "santa-rosa",
+      "jutiapa"
+    ],
+    "longitud_km": null,
+    "cuenca_km2": 2271,
+    "caudal_m3s": null,
+    "caudal_nota": null,
+    "poblacion_cuenca": null,
+    "desembocadura": "Océano Pacífico",
+    "calidad": "Severa (ICA-GT)",
+    "carga_valor": "742 t/año",
+    "carga_label": "plástico que llega al mar",
+    "problematica": "Agricultura y asentamientos informales; su mesa técnica de cuenca es la más consolidada; recolección de residuos 45 %.",
+    "fuente": "Estudio Hidrosocial de la Vertiente del Pacífico (MARN/FAO 2023; ICC 2016–2024; INSIVUMEH 2024)"
+  },
+  {
+    "slug": "motagua",
+    "nombre": "Río Motagua",
+    "vertiente": "Caribe",
+    "departamentos": [
+      "quiche",
+      "totonicapan",
+      "solola",
+      "chimaltenango",
+      "sacatepequez",
+      "guatemala",
+      "jalapa",
+      "chiquimula",
+      "zacapa",
+      "izabal",
+      "el-progreso",
+      "alta-verapaz",
+      "baja-verapaz"
+    ],
+    "longitud_km": 486,
+    "cuenca_km2": 12670,
+    "caudal_m3s": 265,
+    "caudal_nota": "promedio de estaciones",
+    "poblacion_cuenca": 5197255,
+    "desembocadura": "Mar Caribe (Bahía de Amatique)",
+    "calidad": "Muy mala en el tramo medio y bajo",
+    "carga_valor": "10 000–12 000 t/año",
+    "carga_label": "residuos sólidos arrastrados al mar",
+    "problematica": "Recibe cerca del 80 % de las aguas servidas de la Ciudad de Guatemala; menos del 5 % recibe tratamiento. Es el río más contaminado del país; su afluente Las Vacas registra 1 600 000 NMP/100 ml de coliformes fecales.",
+    "fuente": "Estudio Hidrosocial — Cuencas de la Vertiente del Caribe (Censo 2018; INSIVUMEH; BID)"
+  },
+  {
+    "slug": "polochic",
+    "nombre": "Río Polochic",
+    "vertiente": "Caribe",
+    "departamentos": [
+      "alta-verapaz",
+      "izabal"
+    ],
+    "longitud_km": 194,
+    "cuenca_km2": 2811,
+    "caudal_m3s": 69.3,
+    "caudal_nota": "estación Telemán",
+    "poblacion_cuenca": 330000,
+    "desembocadura": "Lago de Izabal",
+    "calidad": "Regular a mala",
+    "carga_valor": "17,8 t/día",
+    "carga_label": "DBO₅ de aguas residuales domésticas",
+    "problematica": "Aporta ~60 % del caudal que entra al Lago de Izabal. Monocultivos (palma, caña, plátano), deforestación y sedimentación; zona de alta vulnerabilidad a inundaciones.",
+    "fuente": "Estudio Hidrosocial de la Cuenca Cahabón-Polochic; Estudio Hidrosocial — Cuencas de la Vertiente del Caribe (Censo 2018; INSIVUMEH; BID)"
+  },
+  {
+    "slug": "cahabon",
+    "nombre": "Río Cahabón",
+    "vertiente": "Caribe",
+    "departamentos": [
+      "alta-verapaz"
+    ],
+    "longitud_km": 196,
+    "cuenca_km2": 2459,
+    "caudal_m3s": 164.2,
+    "caudal_nota": "estación Cahaboncito",
+    "poblacion_cuenca": 275000,
+    "desembocadura": "Río Polochic, en Panzós",
+    "calidad": "Regular",
+    "carga_valor": "14,9 t/día",
+    "carga_label": "DBO₅ de aguas residuales domésticas",
+    "problematica": "Nace en la Sierra de las Minas y pasa por Semuc Champey; sagrado para el pueblo Q'eqchi'. Saneamiento mejorado ~22 % y menos del 1 % de aguas tratadas; contaminación en su porción alta (Laguna de Chichoj).",
+    "fuente": "Estudio Hidrosocial de la Cuenca Cahabón-Polochic; Estudio Hidrosocial — Cuencas de la Vertiente del Caribe (Censo 2018; INSIVUMEH; BID)"
+  },
+  {
+    "slug": "sarstun",
+    "nombre": "Río Sarstún",
+    "vertiente": "Caribe",
+    "departamentos": [
+      "alta-verapaz",
+      "izabal"
+    ],
+    "longitud_km": null,
+    "cuenca_km2": null,
+    "caudal_m3s": 80,
+    "caudal_nota": "estimado por analogía",
+    "poblacion_cuenca": 60000,
+    "desembocadura": "Mar Caribe; frontera natural con Belice en su tramo inferior",
+    "calidad": "Buena a regular",
+    "carga_valor": "3,2 t/día",
+    "carga_label": "DBO₅ de aguas residuales domésticas",
+    "problematica": "Baja densidad poblacional, bosques y áreas protegidas; amenazado por navegación y descargas de asentamientos.",
+    "fuente": "Estudio Hidrosocial — Cuencas de la Vertiente del Caribe (Censo 2018; INSIVUMEH; BID)"
+  },
+  {
+    "slug": "rio-dulce",
+    "nombre": "Río Dulce",
+    "vertiente": "Caribe",
+    "departamentos": [
+      "izabal"
+    ],
+    "longitud_km": 43,
+    "cuenca_km2": null,
+    "caudal_m3s": 453,
+    "caudal_nota": null,
+    "poblacion_cuenca": 42000,
+    "desembocadura": "Bahía de Amatique (Mar Caribe), desde el Lago de Izabal",
+    "calidad": "Regular a buena",
+    "carga_valor": "2,3 t/día",
+    "carga_label": "DBO₅ de aguas residuales domésticas",
+    "problematica": "Protegido como Parque Nacional Río Dulce (130 km²); población garífuna y q'eqchi'. Cargas crecientes de coliformes y nutrientes por turismo y asentamientos.",
+    "fuente": "Estudio Hidrosocial — Cuencas de la Vertiente del Caribe (Censo 2018; INSIVUMEH; BID)"
+  },
+  {
+    "slug": "usumacinta",
+    "nombre": "Río Usumacinta",
+    "vertiente": "Golfo de México",
+    "departamentos": [
+      "peten"
+    ],
+    "longitud_km": 1123,
+    "cuenca_km2": 47697,
+    "caudal_m3s": 1500,
+    "caudal_nota": "sección fronteriza; el más caudaloso de Centroamérica",
+    "poblacion_cuenca": 264292,
+    "desembocadura": "Golfo de México (Tabasco)",
+    "calidad": null,
+    "carga_valor": "163,9 t/día",
+    "carga_label": "desechos sólidos generados en la cuenca",
+    "problematica": "Nace de la confluencia del Salinas y La Pasión y recorre ~310 km como frontera con México. Sin tratado de gestión conjunta; deforestación en Petén y presas aguas arriba que alteran caudal y sedimentos.",
+    "fuente": "Estudio Hidrosocial de la Cuenca del Río Usumacinta; Estudio Hidrosocial — Vertiente del Golfo de México; cuadros de generación de desechos (INE/MARN 2024)"
+  },
+  {
+    "slug": "la-pasion",
+    "nombre": "Río La Pasión",
+    "vertiente": "Golfo de México",
+    "departamentos": [
+      "peten"
+    ],
+    "longitud_km": null,
+    "cuenca_km2": 3433,
+    "caudal_m3s": null,
+    "caudal_nota": null,
+    "poblacion_cuenca": 189743,
+    "desembocadura": "Río Salinas",
+    "calidad": null,
+    "carga_valor": "117,6 t/día",
+    "carga_label": "desechos sólidos generados en la cuenca",
+    "problematica": "Contaminación por agrotóxicos de palma aceitera, mortandad de peces y tala en las cabeceras; población concentrada en Sayaxché.",
+    "fuente": "Estudio Hidrosocial — Vertiente del Golfo de México; cuadros de generación de desechos (INE/MARN 2024)"
+  },
+  {
+    "slug": "salinas",
+    "nombre": "Río Salinas",
+    "vertiente": "Golfo de México",
+    "departamentos": [
+      "peten"
+    ],
+    "longitud_km": null,
+    "cuenca_km2": 12150,
+    "caudal_m3s": null,
+    "caudal_nota": null,
+    "poblacion_cuenca": 604610,
+    "desembocadura": "Forma el Usumacinta al unirse con La Pasión",
+    "calidad": null,
+    "carga_valor": "374,9 t/día",
+    "carga_label": "desechos sólidos generados en la cuenca",
+    "problematica": "Frontera Petén–Chiapas. Proyectos hidroeléctricos sin consulta previa, desplazamiento de comunidades y falta de acuerdo binacional.",
+    "fuente": "Estudio Hidrosocial — Vertiente del Golfo de México; cuadros de generación de desechos (INE/MARN 2024)"
+  },
+  {
+    "slug": "san-pedro",
+    "nombre": "Río San Pedro",
+    "vertiente": "Golfo de México",
+    "departamentos": [
+      "peten"
+    ],
+    "longitud_km": null,
+    "cuenca_km2": 3900,
+    "caudal_m3s": null,
+    "caudal_nota": null,
+    "poblacion_cuenca": 103918,
+    "desembocadura": "Río Usumacinta",
+    "calidad": null,
+    "carga_valor": "64,4 t/día",
+    "carga_label": "desechos sólidos generados en la cuenca",
+    "problematica": "Incluye el Parque Nacional Laguna del Tigre. La ganadería extensiva avanza sobre el bosque; sus concesiones forestales comunitarias son un referente mundial.",
+    "fuente": "Estudio Hidrosocial — Vertiente del Golfo de México; cuadros de generación de desechos (INE/MARN 2024)"
+  },
+  {
+    "slug": "candelaria",
+    "nombre": "Río Candelaria",
+    "vertiente": "Golfo de México",
+    "departamentos": [
+      "peten"
+    ],
+    "longitud_km": null,
+    "cuenca_km2": 3000,
+    "caudal_m3s": null,
+    "caudal_nota": null,
+    "poblacion_cuenca": 35525,
+    "desembocadura": "Río Usumacinta",
+    "calidad": null,
+    "carga_valor": "22,0 t/día",
+    "carga_label": "desechos sólidos generados en la cuenca",
+    "problematica": "La cuenca menos poblada de la vertiente, con ~62 % de cobertura boscosa; avance de la frontera ganadera y saneamiento casi inexistente.",
+    "fuente": "Estudio Hidrosocial — Vertiente del Golfo de México; cuadros de generación de desechos (INE/MARN 2024)"
+  },
+  {
+    "slug": "chixoy",
+    "nombre": "Río Chixoy (Negro)",
+    "vertiente": "Golfo de México",
+    "departamentos": [
+      "quiche",
+      "alta-verapaz",
+      "baja-verapaz"
+    ],
+    "longitud_km": null,
+    "cuenca_km2": 12150,
+    "caudal_m3s": null,
+    "caudal_nota": null,
+    "poblacion_cuenca": 613669,
+    "desembocadura": "Río Salinas",
+    "calidad": null,
+    "carga_valor": "380,5 t/día",
+    "carga_label": "desechos sólidos generados en la cuenca",
+    "problematica": "La cuenca más poblada de la vertiente. La represa Chixoy genera ~30 % de la electricidad del país; deuda histórica por las masacres y el desplazamiento de 1978–1983, y sedimentación por erosión.",
+    "fuente": "Estudio Hidrosocial — Vertiente del Golfo de México; cuadros de generación de desechos (INE/MARN 2024)"
+  },
+  {
+    "slug": "ixcan",
+    "nombre": "Río Ixcán",
+    "vertiente": "Golfo de México",
+    "departamentos": [
+      "quiche",
+      "huehuetenango"
+    ],
+    "longitud_km": null,
+    "cuenca_km2": 2300,
+    "caudal_m3s": null,
+    "caudal_nota": null,
+    "poblacion_cuenca": 109372,
+    "desembocadura": "Río Usumacinta",
+    "calidad": null,
+    "carga_valor": "67,8 t/día",
+    "carga_label": "desechos sólidos generados en la cuenca",
+    "problematica": "Agroquímicos de palma aceitera y escasez de agua potable pese a la alta pluviosidad; fuerte organización comunitaria tras la repoblación.",
+    "fuente": "Estudio Hidrosocial — Vertiente del Golfo de México; cuadros de generación de desechos (INE/MARN 2024)"
+  },
+  {
+    "slug": "xaclbal",
+    "nombre": "Río Xaclbal",
+    "vertiente": "Golfo de México",
+    "departamentos": [
+      "quiche"
+    ],
+    "longitud_km": null,
+    "cuenca_km2": 919,
+    "caudal_m3s": null,
+    "caudal_nota": null,
+    "poblacion_cuenca": 50803,
+    "desembocadura": "Río Chixoy",
+    "calidad": null,
+    "carga_valor": "31,5 t/día",
+    "carga_label": "desechos sólidos generados en la cuenca",
+    "problematica": "Cabecera del sistema Chixoy (Chajul): cuenca de recarga estratégica con deforestación y erosión severa en laderas.",
+    "fuente": "Estudio Hidrosocial — Vertiente del Golfo de México; cuadros de generación de desechos (INE/MARN 2024)"
+  }
+]

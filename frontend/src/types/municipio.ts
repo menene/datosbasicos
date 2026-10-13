@@ -31,4 +31,19 @@ export interface Municipio {
   votos_emitidos: number | null;
   abstencionismo_pct: number | null;
   participacion_pct: number | null;
+  /**
+   * Vulnerabilidad social multidimensional (Clavius 2023, Censo 2018). El índice es
+   * la suma de los seis ámbitos; mayor = más vulnerable. Ranking 1 = el más vulnerable.
+   */
+  vulnerabilidad_social: number | null;
+  vulnerabilidad_categoria: CategoriaVulnerabilidad | null;
+  vulnerabilidad_ranking: number | null;
+  vuln_sociodemografica: number | null;
+  vuln_educacion: number | null;
+  vuln_empleo: number | null;
+  vuln_vivienda: number | null;
+  vuln_servicios: number | null;
+  vuln_equipamiento: number | null;
 }
+
+export type CategoriaVulnerabilidad = "muy baja" | "baja" | "media" | "alta" | "muy alta";
