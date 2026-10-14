@@ -744,14 +744,20 @@ def tablas_actualizacion(geo: dict) -> dict[tuple[str, str], dict]:
     if not UPDATE_DIR.is_dir():
         return out
     for path in sorted(UPDATE_DIR.glob("*.docx")):
-        dept = dept_for_file(path)
-        titulo = None
+        dept_archivo = dept_for_file(path)
+        dept, titulo = dept_archivo, None
         for tipo, contenido in _cuerpo_en_orden(path):
             if tipo == "p":
                 # Only numbered or "Municipio de …" headings: notes in between ("en
                 # 1994 su territorio pertenecía a Dolores") must not rename the table.
                 if re.match(r"^\W*(?:\d+\.\s|Municipio de\s)", contenido, re.I):
-                    titulo = contenido
+                    titulo, dept = contenido, dept_archivo
+                # Multi-department docs ("MUNICIPIOS QUE HACEN FALTA") head each table
+                # "San Jerónimo, Baja Verapaz": the department comes from the heading.
+                elif dept_archivo is None and (m := re.match(r"^([^,]+),\s*(.+?)\.?$", contenido)):
+                    d = DEPT_NAME.get(slugify(m.group(2)))
+                    if d:
+                        titulo, dept = m.group(1), d
                 continue
             rows = contenido
             if not rows or norm(rows[0][0]) != "indicador" or titulo is None:
