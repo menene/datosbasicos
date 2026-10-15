@@ -179,21 +179,23 @@ export default function MapaPage() {
             Mostrar ríos principales
           </label>
 
-          {/* Total nacional para la variable + año activos */}
-          <TarjetaNacional
-            stats={[
-              {
-                label: `${varInfo.label} · ${anioAgregado}`,
-                valor: formatearValor(valorNacional, varInfo.formato),
-                sub:
-                  variableActiva === "poblacion_total"
-                    ? "Cifra oficial del país"
-                    : aditiva
-                      ? `Suma de ${esMunicipios ? "340 municipios" : "22 departamentos"}`
-                      : `Promedio de ${esMunicipios ? "340 municipios" : "22 departamentos"}`,
-              },
-            ]}
-          />
+          {/* Total nacional para la variable + año activos (una categoría no tiene) */}
+          {varInfo.formato !== "nivel" && (
+            <TarjetaNacional
+              stats={[
+                {
+                  label: `${varInfo.label} · ${anioAgregado}`,
+                  valor: formatearValor(valorNacional, varInfo.formato),
+                  sub:
+                    variableActiva === "poblacion_total"
+                      ? "Cifra oficial del país"
+                      : aditiva
+                        ? `Suma de ${esMunicipios ? "340 municipios" : "22 departamentos"}`
+                        : `Promedio de ${esMunicipios ? "340 municipios" : "22 departamentos"}`,
+                },
+              ]}
+            />
+          )}
         </div>
 
         {/* Leyenda de color (misma escala en ambas vistas) */}

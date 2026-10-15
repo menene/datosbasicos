@@ -2,28 +2,6 @@ import * as Tabs from "@radix-ui/react-tabs";
 import { BookOpen, Code2 } from "lucide-react";
 import BloqueContacto from "@/components/BloqueContacto";
 
-const STACK: Array<{ name: string; slug: string; color: string }> = [
-  // Frontend
-  { name: "React", slug: "react", color: "61DAFB" },
-  { name: "TypeScript", slug: "typescript", color: "3178C6" },
-  { name: "Vite", slug: "vite", color: "646CFF" },
-  { name: "Tailwind CSS", slug: "tailwindcss", color: "06B6D4" },
-  { name: "React Router", slug: "reactrouter", color: "CA4245" },
-  { name: "TanStack Query", slug: "reactquery", color: "FF4154" },
-  { name: "Framer Motion", slug: "framer", color: "0055FF" },
-  { name: "Radix UI", slug: "radixui", color: "161618" },
-  { name: "shadcn/ui", slug: "shadcnui", color: "000000" },
-  { name: "Lucide", slug: "lucide", color: "F56565" },
-  // Backend
-  { name: "Python", slug: "python", color: "3776AB" },
-  { name: "FastAPI", slug: "fastapi", color: "009688" },
-  { name: "SQLAlchemy", slug: "sqlalchemy", color: "D71F00" },
-  { name: "Pydantic", slug: "pydantic", color: "E92063" },
-  { name: "PostgreSQL", slug: "postgresql", color: "4169E1" },
-  // Infrastructure
-  { name: "Docker", slug: "docker", color: "2496ED" },
-];
-
 const PROLOGO_PARRAFOS = [
   "El análisis de la población es el fundamento sobre el cual se construye toda política pública o estrategia de desarrollo. Conocer y entender la estructura de toda la población, o sea, cuántos somos, dónde estamos y cómo vivimos, es bastante más que números, es un instrumento indispensable para comprender los retos sociales, económicos y ambientales a los que toda sociedad se enfrenta.",
   "El libro Guatemala Datos Básicos 2026, ofrece una radiografía cuantitativa y analítica de la población, en tres momentos diferentes: 1994, 2005 y 2025, en los que el lector encuentra los datos básicos para estudiar los componentes vitales y comprender los cambios que a lo largo de estos años se han dado en la población del país.",
@@ -226,39 +204,6 @@ export default function AcercaPage() {
         {/* Contact */}
         <BloqueContacto className="mt-14" />
 
-      </section>
-
-      {/* ── Stack ── */}
-      <section className="border-t border-border bg-muted/20">
-        <div className="max-w-screen-lg mx-auto px-6 py-12">
-          <h3 className="font-display font-semibold text-foreground text-base mb-1">
-            Construido con
-          </h3>
-          <p className="text-xs text-muted-foreground font-body mb-6">
-            Stack open source — frontend, backend, datos e infraestructura.
-          </p>
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3">
-            {STACK.map(({ name, slug, color }) => (
-              <div
-                key={name}
-                className="group flex flex-col items-center justify-center gap-2 p-3 rounded-xl border border-border bg-white aspect-square hover:shadow-sm hover:border-selva/40 transition-all"
-                title={name}
-              >
-                <img
-                  src={`https://cdn.simpleicons.org/${slug}/${color}`}
-                  alt={name}
-                  width={32}
-                  height={32}
-                  loading="lazy"
-                  className="opacity-90 group-hover:opacity-100 transition-opacity"
-                />
-                <span className="text-[10px] font-body font-medium text-muted-foreground text-center leading-tight">
-                  {name}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
       </section>
 
     </div>

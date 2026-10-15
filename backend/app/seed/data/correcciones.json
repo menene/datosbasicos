@@ -1,0 +1,40 @@
+[
+  {
+    "departamento_slug": "quiche",
+    "slug": "chiche",
+    "_fuente": "Revisión del 2026-10-15 (tabla 1994 / 2025 enviada como corrección); sustituye a docs/update/MUNICIPIOS QUE HACEN FALTA DATOS BÁSICOS 141026.docx",
+    "superficie_km2": 144.0,
+    "poblacion_total": 35800.0,
+    "densidad_hab_km2": 248.6,
+    "pct_hombres": 48.4,
+    "pct_mujeres": 51.6,
+    "pct_urbana": 23.0,
+    "pct_rural": 77.0,
+    "pct_indigena": 94.0,
+    "esperanza_vida": 71.5,
+    "analfabetismo_pct": 13.5,
+    "acceso_agua_pct": 81.0,
+    "acceso_saneamiento_pct": 74.5,
+    "fecundidad": 3.0,
+    "crecimiento_anual_pct": 2.0
+  },
+  {
+    "departamento_slug": "baja-verapaz",
+    "slug": "san-jeronimo",
+    "_fuente": "Revisión del 2026-10-15 (tabla 1994 / 2018 / 2025 enviada como corrección); sustituye a docs/update/MUNICIPIOS QUE HACEN FALTA DATOS BÁSICOS 141026.docx",
+    "superficie_km2": 380.0,
+    "poblacion_total": 29230.0,
+    "densidad_hab_km2": 76.9,
+    "pct_hombres": 49.0,
+    "pct_mujeres": 51.0,
+    "pct_urbana": 41.0,
+    "pct_rural": 59.0,
+    "pct_indigena": 31.0,
+    "esperanza_vida": 73.3,
+    "analfabetismo_pct": 12.0,
+    "acceso_agua_pct": 90.5,
+    "acceso_saneamiento_pct": 83.8,
+    "fecundidad": 2.9,
+    "crecimiento_anual_pct": 2.0
+  }
+]

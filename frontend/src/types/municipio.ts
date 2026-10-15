@@ -37,6 +37,8 @@ export interface Municipio {
    */
   vulnerabilidad_social: number | null;
   vulnerabilidad_categoria: CategoriaVulnerabilidad | null;
+  /** Derivado en el cliente de la categoría: 1 (muy baja) a 5 (muy alta). */
+  vulnerabilidad_nivel: number | null;
   vulnerabilidad_ranking: number | null;
   vuln_sociodemografica: number | null;
   vuln_educacion: number | null;
@@ -44,6 +46,12 @@ export interface Municipio {
   vuln_vivienda: number | null;
   vuln_servicios: number | null;
   vuln_equipamiento: number | null;
+  /**
+   * Otros años del municipio ("1994", "2005", "2018"), de los documentos de
+   * revisión (docs/update). Solo los campos que el documento trae; el registro
+   * principal es 2025. Vacío para los municipios que esos documentos no cubren.
+   */
+  series: Record<string, Partial<Record<string, number>>>;
 }
 
 export type CategoriaVulnerabilidad = "muy baja" | "baja" | "media" | "alta" | "muy alta";

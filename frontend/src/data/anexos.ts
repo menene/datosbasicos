@@ -114,3 +114,122 @@ export const DOCUMENTOS_REFERENCIA: DocumentoReferencia[] = [
     mb: 3.8,
   },
 ];
+
+/**
+ * Sitios externos de consulta. No son archivos: se abren en otra pestaña, sin
+ * descarga ni tamaño.
+ */
+export interface RecursoEnLinea {
+  slug: string;
+  titulo: string;
+  institucion: string;
+  descripcion: string;
+  url: string;
+}
+
+export const RECURSOS_EN_LINEA: RecursoEnLinea[] = [
+  {
+    slug: "coleccion-biblioteca-landivar",
+    titulo: "Colección en la biblioteca de la Universidad Rafael Landívar",
+    institucion: "CRAI · Universidad Rafael Landívar",
+    descripcion: "Colección digital del catálogo de la biblioteca de la Universidad Rafael Landívar.",
+    url: "https://crailandivarlibrary.primo.exlibrisgroup.com/discovery/collectionDiscovery?vid=502URL_INST:502URL&collectionId=8173007860007696&lang=es",
+  },
+  {
+    slug: "documento-biblioteca-landivar",
+    titulo: "Documento en la biblioteca de la Universidad Rafael Landívar",
+    institucion: "CRAI · Universidad Rafael Landívar",
+    descripcion: "Documento digital disponible para consulta en línea en la biblioteca de la Universidad Rafael Landívar.",
+    url: "https://crailandivarlibrary.primo.exlibrisgroup.com/discovery/delivery/502URL_INST:502URL/12142568390007696",
+  },
+  {
+    slug: "infoiarna",
+    titulo: "InfoIarna",
+    institucion: "Iarna · Universidad Rafael Landívar",
+    descripcion:
+      "Publicaciones del Iarna sobre el ambiente de Guatemala: el Perfil Ambiental, las cuentas ambientales, información de ecosistemas y la revista Clavius.",
+    url: "https://infoiarna.url.edu.gt/",
+  },
+];
+
+/**
+ * Infografías propias de la plataforma, como imagen o PDF, en
+ * frontend/public/archivos/infografias. Los PDF llevan una miniatura de su primera
+ * página (pdftoppm -jpeg -r 50 -f 1 -l 1 -singlefile).
+ */
+export interface Infografia {
+  slug: string;
+  titulo: string;
+  autor?: string;
+  descripcion: string;
+  url: string;
+  /** Imagen de la tarjeta; si falta, la propia imagen de `url`. */
+  miniatura?: string;
+  formato: "JPG" | "PDF";
+  /** "768 × 1376 px" para una imagen, "2 páginas" para un PDF. */
+  detalle: string;
+  /** Tamaño del archivo en KB. */
+  kb: number;
+}
+
+export const INFOGRAFIAS: Infografia[] = [
+  {
+    slug: "estadisticas-geograficas-departamentos",
+    titulo: "Estadísticas geográficas de los departamentos de Guatemala",
+    descripcion:
+      "Los 22 departamentos en una tabla: cabecera, región, área, municipios, aldeas, distancia a la capital, ríos y sitios arqueológicos.",
+    url: "/archivos/infografias/estadisticas-geograficas-departamentos.jpg",
+    formato: "JPG",
+    detalle: "768 × 1376 px",
+    kb: 264,
+  },
+  {
+    slug: "proyecciones-demograficas-departamentos",
+    titulo: "Proyecciones demográficas por departamento, 2024–2050",
+    autor: "Omar Marroquín Pacheco",
+    descripcion:
+      "Población de los 22 departamentos proyectada a 2030, 2040 y 2050 a partir de su tiempo de duplicación, con los principales hallazgos e implicaciones para la planificación.",
+    url: "/archivos/infografias/proyecciones-demograficas-departamentos.pdf",
+    miniatura: "/archivos/infografias/proyecciones-demograficas-departamentos-miniatura.jpg",
+    formato: "PDF",
+    detalle: "2 páginas",
+    kb: 30,
+  },
+];
+
+/**
+ * Noticias de prensa sobre temas de la plataforma: enlace a la nota en línea y la
+ * versión impresa escaneada, en frontend/public/archivos/noticias.
+ */
+export interface Noticia {
+  slug: string;
+  /** Titular de portada. */
+  titulo: string;
+  bajada: string;
+  medio: string;
+  /** Fecha de publicación, AAAA-MM-DD. */
+  fecha: string;
+  autor: string;
+  /** Título de la nota en las páginas interiores. */
+  tituloInterior: string;
+  url: string;
+  paginas: Array<{ etiqueta: string; url: string }>;
+}
+
+export const NOTICIAS: Noticia[] = [
+  {
+    slug: "kubul-idioma-maya-23",
+    titulo: "Luchan por ser el idioma maya número 23",
+    bajada:
+      "Habitantes y autoridades de Cubulco, Baja Verapaz, han solicitado hacer oficial su lengua nativa, el k'ub'ul, que la ALMG considera una variante del achi'.",
+    medio: "Prensa Libre",
+    fecha: "2026-08-30",
+    autor: "Raúl Barreno Castillo",
+    tituloInterior: "K'ub'ul, el idioma que persigue su propio espacio",
+    url: "https://www.prensalibre.com/guatemala/comunitario/kubul-que-hay-detras-de-la-busqueda-por-convertirse-en-el-idioma-maya-numero-23/",
+    paginas: [
+      { etiqueta: "Págs. 8–9", url: "/archivos/noticias/kubul-idioma-maya-23-pags-8-9.jpg" },
+      { etiqueta: "Pág. 10", url: "/archivos/noticias/kubul-idioma-maya-23-pag-10.jpg" },
+    ],
+  },
+];

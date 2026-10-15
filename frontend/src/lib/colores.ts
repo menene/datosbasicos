@@ -14,6 +14,23 @@ const ALERT_VARS: VariableKey[] = [
   "vuln_equipamiento",
 ];
 
+/**
+ * Índice de vulnerabilidad por niveles: los cinco colores de la leyenda de la
+ * Figura 3 de Tercero et al. (Clavius 2023), «Índice de vulnerabilidad municipal
+ * según suma ponderada de datos», muestreados de la figura. No es una rampa: cada
+ * nivel tiene su color, y el campo numérico es el orden del nivel (1 = muy bajo).
+ */
+export const NIVELES_VULNERABILIDAD = [
+  { categoria: "muy baja", etiqueta: "Muy bajo", color: "#6CB52E" },
+  { categoria: "baja", etiqueta: "Bajo", color: "#9B9B9B" },
+  { categoria: "media", etiqueta: "Medio", color: "#323232" },
+  { categoria: "alta", etiqueta: "Alto", color: "#E43D3C" },
+  { categoria: "muy alta", etiqueta: "Muy alto", color: "#BD4341" },
+] as const;
+
+/** Nivel 1–5 → su entrada en NIVELES_VULNERABILIDAD. */
+export const nivelVulnerabilidad = (nivel: number) => NIVELES_VULNERABILIDAD[nivel - 1];
+
 export const COLOR_SIN_DATO = "#E0D8CC";
 export const COLOR_SELECCIONADO = "#E8C547";
 
@@ -23,6 +40,9 @@ export function getColorForValue(
   min: number,
   max: number
 ): string {
+  if (variableKey === "vulnerabilidad_nivel") {
+    return nivelVulnerabilidad(value)?.color ?? COLOR_SIN_DATO;
+  }
   const isAlerta = ALERT_VARS.includes(variableKey);
   const startColor = isAlerta ? "#FAE0CC" : "#D6ECD8";
   const endColor = isAlerta ? "#8B2500" : "#1B6B3A";

@@ -11,7 +11,9 @@ import FichaMunicipioPage from "@/pages/FichaMunicipio";
 import LibroPage from "@/pages/Libro";
 import FichaSitioPage from "@/pages/FichaSitio";
 import AcercaPage from "@/pages/Acerca";
+import PiePagina from "@/components/PiePagina";
 import AnexosPage from "@/pages/Anexos";
+import NoEncontradoPage from "@/pages/NoEncontrado";
 
 const NAV_ITEMS = [
   { to: "/mapa", label: "Mapa", icon: Map },
@@ -81,9 +83,12 @@ function AppShell() {
             <Route path="/libro" element={<LibroPage />} />
             <Route path="/anexos" element={<AnexosPage />} />
             <Route path="/acerca" element={<AcercaPage />} />
+            <Route path="*" element={<NoEncontradoPage />} />
           </Routes>
         </motion.div>
       </main>
+
+      <PiePagina />
     </div>
   );
 }

@@ -57,9 +57,10 @@ export const CLAVES_DERIVADAS: ReadonlySet<VariableKey> = new Set<VariableKey>([
   "abstencionismo_pct",
 ]);
 
-/** Keys we never aggregate — a ranking can't be summed or averaged. */
+/** Keys we never aggregate — a ranking or a category can't be summed or averaged. */
 export const CLAVES_SIN_TOTAL: ReadonlySet<VariableKey> = new Set<VariableKey>([
   "idh_ranking",
+  "vulnerabilidad_nivel",
 ]);
 
 export const esAditiva = (key: VariableKey): boolean => CLAVES_ADITIVAS.has(key);

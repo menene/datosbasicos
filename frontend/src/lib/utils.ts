@@ -1,6 +1,7 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import type { Indicadores, Variable } from "@/types/departamento";
+import { nivelVulnerabilidad } from "@/lib/colores";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -18,6 +19,8 @@ export function formatearValor(valor: number | null, formato: Variable["formato"
     case "indice":
       // Índices 0-1 (IDH): tres decimales, que es como se publican.
       return new Intl.NumberFormat("es-GT", { minimumFractionDigits: 3, maximumFractionDigits: 3 }).format(valor);
+    case "nivel":
+      return nivelVulnerabilidad(valor)?.etiqueta ?? "—";
   }
 }
 

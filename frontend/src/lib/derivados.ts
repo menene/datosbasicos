@@ -18,6 +18,7 @@
  */
 import type { Departamento, Indicadores } from "@/types/departamento";
 import type { Municipio } from "@/types/municipio";
+import { NIVELES_VULNERABILIDAD } from "@/lib/colores";
 
 /** Regla del 70: con r = 2.00 % anual, 70 / 2.00 = 35 años. */
 export const CONSTANTE_DUPLICACION = 70;
@@ -81,8 +82,11 @@ export function completarDepartamento<T extends Departamento>(depto: T): T {
 
 export function completarMunicipio(muni: Municipio): Municipio {
   if (!muni) return muni;
-  return completarDerivados(
+  const completo = completarDerivados(
     muni as unknown as Record<string, unknown>,
     muni.superficie_km2
   ) as unknown as Municipio;
+  // La categoría de vulnerabilidad como número ordenable, para el mapa por niveles.
+  const i = NIVELES_VULNERABILIDAD.findIndex((n) => n.categoria === muni.vulnerabilidad_categoria);
+  return { ...completo, vulnerabilidad_nivel: i >= 0 ? i + 1 : null };
 }

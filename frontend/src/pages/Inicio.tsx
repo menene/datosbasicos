@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Map, BarChart2, Table2, FileText, ArrowRight, Calendar, GitCompareArrows } from "lucide-react";
+import { Map, BarChart2, Table2, FileText, ArrowRight, Calendar, GitCompareArrows, FolderOpen } from "lucide-react";
 import { ANIOS_DISPONIBLES } from "@/store/filtros";
 import { track } from "@/lib/analytics";
 import BloqueContacto from "@/components/BloqueContacto";
@@ -44,6 +44,14 @@ const SECTIONS = [
     color: "#8B4513",
     bg: "#FDF1D8",
     desc: "Compara los indicadores entre 1994, 2005 y 2025 lado a lado en tabla, gráficas y fichas. Selecciona los años desde cada sección.",
+  },
+  {
+    to: "/anexos",
+    icon: FolderOpen,
+    label: "Anexos",
+    color: "#0F766E",
+    bg: "#CCFBF1",
+    desc: "Estudios hidrosociales por vertiente, infografías, noticias y documentos de referencia, para ver o descargar.",
   },
 //   {
 //     to: "/libro",
@@ -165,12 +173,12 @@ export default function InicioPage() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {SECTIONS.map(({ to, icon: Icon, label, color, bg, desc }) => (
             <button
-              key={to}
+              key={label}
               onClick={() => {
                 track("inicio_cta", { destino: to, origen: "herramientas" });
                 navigate(to);
               }}
-              className="group text-left rounded-2xl border border-border bg-white p-6 hover:border-transparent hover:shadow-lg transition-all duration-200"
+              className="group flex flex-col justify-start text-left rounded-2xl border border-border bg-white p-6 hover:border-transparent hover:shadow-lg transition-all duration-200"
               style={{ "--hover-color": color } as React.CSSProperties}
             >
               <div
@@ -180,7 +188,7 @@ export default function InicioPage() {
                 <Icon size={18} style={{ color }} />
               </div>
 
-              <div className="flex items-center justify-between mb-2">
+              <div className="w-full flex items-center justify-between mb-2">
                 <h3
                   className="font-display font-semibold text-foreground text-base group-hover:transition-colors"
                   style={{ color: undefined }}
@@ -205,18 +213,6 @@ export default function InicioPage() {
       <section className="border-t border-border bg-muted/30">
         <BloqueContacto className="max-w-screen-xl mx-auto px-6 py-16" />
       </section>
-
-      {/* ── Footer note ── */}
-      <footer className="border-t border-border">
-        <div className="max-w-screen-xl mx-auto px-6 py-8 flex flex-wrap items-center justify-between gap-4">
-          <p className="text-xs text-muted-foreground font-body">
-            Datos con fines educativos e informativos. Fuentes: INE, MSPAS, MINEDUC · Guatemala {new Date().getFullYear()}.
-          </p>
-          <span className="font-display font-semibold text-selva text-sm tracking-tight">
-            Guatemala <span className="text-maiz">·</span> Datos Básicos 2026
-          </span>
-        </div>
-      </footer>
     </div>
   );
 }

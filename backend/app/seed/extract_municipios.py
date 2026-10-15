@@ -12,8 +12,10 @@ Two kinds of source coexist:
      PEA / PEI (Censo 2018, base 15 años y más) to municipios country-wide.
    · "VOTANTES DEPTOS REP. DE GUATEMALA", padrón, votos emitidos, abstencionismo y
      participación de las Elecciones Generales 2023 (primera vuelta).
-3. docs/update — one Indicador × año table per municipio, written to cover the
-   municipios the department docs left out. Final revision: overrides every other source.
+3. docs/update and docs/update2 — one Indicador × año table per municipio, written to
+   cover the municipios the department docs left out. Final revision: overrides every
+   other source (update2 over update). Their 2025 column fills the record; the 1994,
+   2005 and 2018 columns go to `series`, by year.
 
 The PEA tables carry stray rows (municipios listed under the wrong department, and
 names that are not municipios at all), so each table's department is decided by
@@ -675,7 +677,10 @@ def pea_tables(geo: dict) -> dict[tuple[str, str], dict]:
     return out
 
 
-UPDATE_DIR = DOCS_DIR / "update"
+# Revisiones por municipio, en orden de antigüedad: un documento de update2 sustituye
+# lo que dijo uno de update. update2 trae además un PDF de Alta Verapaz (151026) que
+# no se lee: ver la nota en tablas_actualizacion.
+UPDATE_DIRS = [DOCS_DIR / "update", DOCS_DIR / "update2"]
 
 # Row label -> (key, kind). "abs_pct" rows ("≈ 7,450 (22.0%)", or just "≈ 6,780")
 # yield a share of the total population.
@@ -721,40 +726,83 @@ def _nombre_titulo(titulo: str) -> str:
     return re.split(r"[(,⚠]", t)[0].strip(" .")
 
 
-def _celda_2025(fila: list[str], col: int) -> str:
-    """The 2025 cell; "←" repeats the value of the column to its left."""
+def _celda(fila: list[str], col: int) -> str:
+    """The cell of column `col`; "←" repeats the value of the column to its left."""
     i = col
     while i > 1 and fila[i].strip() in ("←", ""):
         i -= 1
     return fila[i] if i >= 1 else ""
 
 
-def tablas_actualizacion(geo: dict) -> dict[tuple[str, str], dict]:
-    """docs/update: one table per municipio, Indicador | 1994 | (2005|2018) | 2025.
+# Encabezado de municipio: numerado ("🏛️ 1. Mazatenango (Cabecera…)"), "Municipio de
+# …", o solo emoji y nombre ("🏛️ Chimaltenango"). Las notas que van entre el
+# encabezado y su tabla ("⚠️ En 1994: territorio perteneciente a Dolores…") llevan
+# dos puntos y no deben renombrar la tabla.
+ENCABEZADO = re.compile(r"^\W*(?:\d+\.\s|Municipio de\s)|^[^\w\s]+\s*[A-ZÁÉÍÓÚÑ][^:]{2,60}$", re.I)
 
-    These documents are the final revision: they cover the municipios the department
-    docs left out and restate others, and wherever they give a value it overrides
-    every other source. The 2025 projection column is used, matching the
-    single-snapshot shape of municipios.json.
+
+def _campos_columna(rows: list[list[str]], col: int) -> dict[str, float]:
+    celdas = {}
+    for fila in rows[1:]:
+        if len(fila) <= col:
+            continue
+        etiqueta = norm(fila[0])
+        for pat, key, kind in FILAS_ACTUALIZACION:
+            if re.search(pat, etiqueta):
+                celdas.setdefault(key, (kind, _celda(fila, col)))
+                break
+
+    fields: dict[str, float] = {}
+    for key, (kind, celda) in celdas.items():
+        if kind != "abs_pct":
+            v = first_pct(celda) if kind == "pct" else parse_num(celda)
+            if v is not None:
+                fields[key] = v
+    total = fields.get("poblacion_total")
+    for key, (kind, celda) in celdas.items():
+        if kind != "abs_pct":
+            continue
+        v = first_pct(celda)                 # "(22.0%)" or a bare "≈ 46.5%"
+        if v is None and total and (n := parse_num(celda)):
+            v = round(n / total * 100, 1)    # absolute only: share of the total
+        if v is not None:
+            fields[key] = v
+    if "poblacion_total" in fields:
+        fields["poblacion_total"] = float(round(fields["poblacion_total"]))
+    return {
+        k: v for k, v in fields.items()
+        if BOUNDS[k][0] <= v <= BOUNDS[k][1]
+    }
+
+
+def tablas_actualizacion(geo: dict) -> dict[tuple[str, str], dict]:
+    """docs/update y docs/update2: una tabla por municipio, Indicador | año | año | ….
+
+    Son la revisión final: cubren los municipios que dejaron fuera los documentos
+    departamentales y reescriben otros, y donde dan un valor sustituye al de cualquier
+    otra fuente. Las columnas cambian de documento a documento (1994, 2005, 2018 y
+    2025, como censo, estimado o proyección): la de 2025 llena el registro principal y
+    las demás van a `_series`, por año.
 
     PEA / PEI rows are not taken: here they add up to the whole population, while
     the PEA columns everywhere else are Censo 2018 with a base of 15 years and over.
+
+    `MUNICIPIOS DE ALTA VERAPAZ 151026.pdf` (update2) no se lee: contradice al censo
+    2018 —San Pedro Carchá proyectado a 146,800 en 2025 frente a 235,275 censados en
+    2018; el departamento suma 992,160 frente a 1,215,038 del censo—, pone a Panzós
+    como cabecera y trae 15 de los 17 municipios. Se usa el .docx del 280826.
     """
     out: dict[tuple[str, str], dict] = {}
-    if not UPDATE_DIR.is_dir():
-        return out
-    for path in sorted(UPDATE_DIR.glob("*.docx")):
+    for path in sorted(p for d in UPDATE_DIRS if d.is_dir() for p in d.glob("*.docx")):
         dept_archivo = dept_for_file(path)
         dept, titulo = dept_archivo, None
         for tipo, contenido in _cuerpo_en_orden(path):
             if tipo == "p":
-                # Only numbered or "Municipio de …" headings: notes in between ("en
-                # 1994 su territorio pertenecía a Dolores") must not rename the table.
-                if re.match(r"^\W*(?:\d+\.\s|Municipio de\s)", contenido, re.I):
+                if ENCABEZADO.match(contenido) and not contenido.startswith("⚠"):
                     titulo, dept = contenido, dept_archivo
                 # Multi-department docs ("MUNICIPIOS QUE HACEN FALTA") head each table
                 # "San Jerónimo, Baja Verapaz": the department comes from the heading.
-                elif dept_archivo is None and (m := re.match(r"^([^,]+),\s*(.+?)\.?$", contenido)):
+                if dept_archivo is None and (m := re.match(r"^([^,]+),\s*(.+?)\.?$", contenido)):
                     d = DEPT_NAME.get(slugify(m.group(2)))
                     if d:
                         titulo, dept = m.group(1), d
@@ -762,8 +810,11 @@ def tablas_actualizacion(geo: dict) -> dict[tuple[str, str], dict]:
             rows = contenido
             if not rows or norm(rows[0][0]) != "indicador" or titulo is None:
                 continue
-            col = max((i for i, h in enumerate(rows[0]) if "2025" in h), default=None)
-            if col is None:
+            columnas = {
+                int(a.group(0)): i for i, h in enumerate(rows[0])
+                if i and (a := re.search(r"\b(?:19|20)\d\d\b", h))
+            }
+            if 2025 not in columnas:
                 continue
             nombre = _nombre_titulo(titulo)
             mslug = slugify(nombre)
@@ -772,40 +823,22 @@ def tablas_actualizacion(geo: dict) -> dict[tuple[str, str], dict]:
             if clave is None:
                 print(f"  ! docs/update: '{nombre}' ({path.name}) no coincide con el GeoJSON")
                 continue
+            if geo_name is None:
+                # Encontrado en otro departamento (el documento de Huehuetenango trae
+                # Ixcán y Chicamán, que son de Quiché): manda el GeoJSON.
+                if dept: print(f"  · docs/update: '{nombre}' ({path.name}) es de {DEPT_NAME[clave[0]]}, "
+                      f"no de {dept}")
+                dept = DEPT_NAME[clave[0]]
 
-            celdas = {}
-            for fila in rows[1:]:
-                if len(fila) <= col:
-                    continue
-                etiqueta = norm(fila[0])
-                for pat, key, kind in FILAS_ACTUALIZACION:
-                    if re.search(pat, etiqueta):
-                        celdas.setdefault(key, (kind, _celda_2025(fila, col)))
-                        break
-
-            fields: dict[str, float] = {}
-            for key, (kind, celda) in celdas.items():
-                if kind != "abs_pct":
-                    v = first_pct(celda) if kind == "pct" else parse_num(celda)
-                    if v is not None:
-                        fields[key] = v
-            total = fields.get("poblacion_total")
-            for key, (kind, celda) in celdas.items():
-                if kind != "abs_pct":
-                    continue
-                v = first_pct(celda)                 # "(22.0%)" or a bare "≈ 46.5%"
-                if v is None and total and (n := parse_num(celda)):
-                    v = round(n / total * 100, 1)    # absolute only: share of the total
-                if v is not None:
-                    fields[key] = v
-            if "poblacion_total" in fields:
-                fields["poblacion_total"] = float(round(fields["poblacion_total"]))
-            fields = {
-                k: v for k, v in fields.items()
-                if BOUNDS[k][0] <= v <= BOUNDS[k][1]
+            fields = _campos_columna(rows, columnas[2025])
+            series = {
+                anio: campos for anio, col in columnas.items()
+                if anio != 2025 and len(campos := _campos_columna(rows, col)) >= 4
             }
+            # Un documento posterior sustituye al municipio completo, con sus otros
+            # años: la serie de un municipio sale siempre de un solo documento.
             if len(fields) >= 4:
-                out[clave] = {**fields, "_departamento": dept or DEPT_NAME[clave[0]]}
+                out[clave] = {**fields, "_departamento": dept, "_series": series}
     return out
 
 
@@ -834,6 +867,25 @@ def vulnerabilidad() -> dict[tuple[str, str], dict]:
 DEPT_NAME = {slugify(d): d for d in DEPARTAMENTOS}
 
 ALL_KEYS = [k for k, _, _ in LABELS] + EXTRA_KEYS
+
+
+def correcciones() -> dict[tuple[str, str], dict]:
+    """Correcciones puntuales llegadas como revisión, fuera de los documentos.
+
+    Van en correcciones.json, una entrada por municipio con su `_fuente`, y se
+    aplican después de todas las demás fuentes: son la cifra más reciente. Igual que
+    en docs/update, se toma la proyección 2025 y no la PEA/PEI.
+    """
+    path = DATA_DIR / "correcciones.json"
+    if not path.exists():
+        return {}
+    return {
+        (r["departamento_slug"], r["slug"]): {
+            k: v for k, v in r.items()
+            if k not in ("departamento_slug", "slug") and not k.startswith("_")
+        }
+        for r in json.loads(path.read_text(encoding="utf-8"))
+    }
 
 
 def votantes_tablas(geo: dict) -> dict[tuple[str, str], dict]:
@@ -921,19 +973,25 @@ def main() -> None:
 
     # 2. Table docs. The Guatemala table is the only source for the capital
     #    department, so it also creates records; PEA adds columns to any municipio.
-    #    docs/update goes last: it is the final revision and overrides the rest.
+    #    docs/update overrides the documents before it, and correcciones.json —
+    #    hand-entered review fixes — overrides everything.
     fuentes = [
         ("tabla Guatemala", guatemala_table(geo)),
         ("PEA/PEI 2018", pea_tables(geo)),
         ("Votantes 2023", votantes_tablas(geo)),
         ("docs/update", tablas_actualizacion(geo)),
         ("Vulnerabilidad", vulnerabilidad()),
+        ("Correcciones", correcciones()),
     ]
     aportes = []
     for label, parsed in fuentes:
         nuevos = sum(1 for k in parsed if k not in fields_by_muni)
         for key, fields in parsed.items():
             registro = fields_by_muni.setdefault(key, {})
+            # Los otros años (solo los trae docs/update) van aparte, enteros.
+            if "_series" in fields:
+                registro["_series"] = fields["_series"]
+                fields = {k: v for k, v in fields.items() if k != "_series"}
             # Una densidad publicada corresponde a la población con la que se calculó:
             # si esta fuente trae otra población, la densidad anterior queda obsoleta y
             # se descarta para recalcularla en el paso 4.
@@ -964,8 +1022,11 @@ def main() -> None:
     #    población anterior, o erratas del documento).
     derivados = {"calculado": 0, "corregido": 0}
     for fields in fields_by_muni.values():
-        for motivo, n in completar(fields).items():
-            derivados[motivo] += n
+        for corte in [fields, *fields.get("_series", {}).values()]:
+            if corte is not fields and corte.get("superficie_km2") is None:
+                corte["superficie_km2"] = fields.get("superficie_km2")
+            for motivo, n in completar(corte).items():
+                derivados[motivo] += n
 
     # Todo municipio del GeoJSON aparece en el archivo, tenga datos o no: un listado
     # (la ficha departamental, la tabla) no puede saltarse municipios porque ninguna
@@ -986,6 +1047,12 @@ def main() -> None:
             "departamento_slug": slugify(dept),
             "departamento": dept,
             **{k: fields.get(k) for k in ALL_KEYS},
+            # Otros años (1994, 2005, 2018) de los documentos de docs/update; el
+            # registro principal es 2025. Solo los campos que el documento trae.
+            "series": {
+                str(anio): {k: v for k, v in corte.items() if k in ALL_KEYS and v is not None}
+                for anio, corte in sorted(fields.get("_series", {}).items())
+            },
         }
 
     out = sorted(records.values(), key=lambda r: (r["departamento_slug"], r["slug"]))
@@ -1034,6 +1101,11 @@ def main() -> None:
     for k, v, t in descuadres:
         print(f"       {k:16} {v:>10,.0f} vs {t:>10,}  ({(v - t) / t * 100:+.1f}%, "
               f"el documento omite o aproxima municipios)")
+    por_anio: dict[str, int] = {}
+    for r in out:
+        for anio in r["series"]:
+            por_anio[anio] = por_anio.get(anio, 0) + 1
+    print("  otros años       " + ", ".join(f"{a}: {n} municipios" for a, n in sorted(por_anio.items())))
     print("\nField fill rate (of matched):")
     for k in field_keys:
         print(f"  {k:24} {filled[k]:3}/{matched}")

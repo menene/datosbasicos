@@ -69,6 +69,18 @@ function muniVal(m: Municipio | undefined, key: VariableKey): number | null {
   return typeof v === "number" ? v : null;
 }
 
+/** Años con dato para la clave, del más antiguo al corte principal (2025). */
+function valoresPorAnio(m: Municipio, key: VariableKey): Array<{ anio: number; valor: number }> {
+  const otros = Object.entries(m.series ?? {}).flatMap(([anio, corte]) => {
+    const v = corte[key];
+    return typeof v === "number" ? [{ anio: Number(anio), valor: v }] : [];
+  });
+  const actual = muniVal(m, key);
+  return [...otros, ...(actual === null ? [] : [{ anio: ANIO_MUNICIPIOS, valor: actual }])].sort(
+    (a, b) => a.anio - b.anio
+  );
+}
+
 export default function FichaMunicipioPage() {
   const { departamento_slug, municipio_slug } = useParams<{
     departamento_slug: string;
@@ -145,6 +157,7 @@ export default function FichaMunicipioPage() {
   }
 
   const deptNombre = depto?.nombre ?? muni.departamento;
+  const anios = [...Object.keys(muni.series ?? {}).map(Number), ANIO_MUNICIPIOS].sort();
 
   // National context: national population (sum of municipios) + this share.
   // El total nacional viene de las cifras oficiales del corte 2025, no de sumar
@@ -197,7 +210,7 @@ export default function FichaMunicipioPage() {
             {muni.superficie_km2 != null && (
               <span>{new Intl.NumberFormat("es-GT").format(muni.superficie_km2)} km²</span>
             )}
-            <span className="text-xs bg-muted px-2 py-0.5 rounded-full">Datos {ANIO_MUNICIPIOS}</span>
+            <span className="text-xs bg-muted px-2 py-0.5 rounded-full">Datos {anios.join(" · ")}</span>
           </div>
         </div>
         <MunicipioShape
@@ -219,14 +232,17 @@ export default function FichaMunicipioPage() {
             // tarjeta con un guion. Los municipios que ninguna fuente documenta
             // (San José La Máquina) siguen apareciendo en los listados, pero su
             // ficha no se llena de huecos.
-            const valor = muniVal(muni, key);
-            if (valor === null) return null;
+            const valores = valoresPorAnio(muni, key);
+            if (valores.length === 0) return null;
             return (
               <KpiCard
                 key={key}
                 label={label}
                 unit={unit}
-                valores={[{ anio: ANIO_MUNICIPIOS, texto: formatearValor(valor, formato) }]}
+                valores={valores.map(({ anio, valor }) => ({
+                  anio,
+                  texto: formatearValor(valor, formato),
+                }))}
               />
             );
           })}

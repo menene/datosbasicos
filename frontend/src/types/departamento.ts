@@ -37,6 +37,8 @@ export interface Indicadores {
   participacion_pct: number | null;
   // Solo municipios (VARIABLES_SOLO_MUNICIPIO): los departamentos nunca los traen.
   vulnerabilidad_social?: number | null;
+  /** Nivel de la categoría de vulnerabilidad, 1 (muy bajo) a 5 (muy alto). */
+  vulnerabilidad_nivel?: number | null;
   vuln_sociodemografica?: number | null;
   vuln_educacion?: number | null;
   vuln_empleo?: number | null;
@@ -74,7 +76,8 @@ export type VariableKey = keyof Omit<Indicadores, "id" | "departamento_id" | "an
 export interface Variable {
   key: VariableKey;
   label: string;
-  formato: "numero" | "decimal" | "porcentaje" | "indice";
+  /** "nivel": un orden 1–5 que se muestra con el nombre del nivel (NIVELES_VULNERABILIDAD). */
+  formato: "numero" | "decimal" | "porcentaje" | "indice" | "nivel";
 }
 
 export const VARIABLES: Variable[] = [
@@ -128,10 +131,26 @@ export const VARIABLES_SOLO_MUNICIPIO: Variable[] = [
   { key: "vuln_equipamiento", label: "Vulnerabilidad en equipamiento", formato: "decimal" },
 ];
 
+/**
+ * Índice de vulnerabilidad por niveles (muy bajo … muy alto), como el mapa de la
+ * Figura 3 de Clavius 2023. Es una variable del mapa de municipios: categórica, sin
+ * cifra que sumar ni promediar, así que no va en la tabla.
+ */
+export const VARIABLE_NIVEL_VULNERABILIDAD: Variable = {
+  key: "vulnerabilidad_nivel",
+  label: "Índice de vulnerabilidad",
+  formato: "nivel",
+};
+
 /** Todas las variables, para buscar etiqueta y formato de cualquier clave. */
-export const TODAS_LAS_VARIABLES: Variable[] = [...VARIABLES, ...VARIABLES_SOLO_MUNICIPIO];
+export const TODAS_LAS_VARIABLES: Variable[] = [
+  ...VARIABLES,
+  VARIABLE_NIVEL_VULNERABILIDAD,
+  ...VARIABLES_SOLO_MUNICIPIO,
+];
 
 export const esSoloMunicipio = (key: VariableKey): boolean =>
+  key === VARIABLE_NIVEL_VULNERABILIDAD.key ||
   VARIABLES_SOLO_MUNICIPIO.some((v) => v.key === key);
 
 /** La variable activa la comparten las páginas: las vistas departamentales la
