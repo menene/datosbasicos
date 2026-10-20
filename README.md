@@ -1011,6 +1011,10 @@ adicional, y `/ficha/:slug` da el desglose por departamento desde la URL.
 | `tabla_vista` | Cambio entre pestañas de la tabla | `vista` |
 | `tabla_orden` | Ordenar por una columna | `columna`, `direccion`, `vista` |
 | `tabla_busqueda` | Búsqueda en la tabla (≥2 caracteres, debounce 800 ms) | `termino`, `vista` |
+| `anexos_busqueda` | Búsqueda en Anexos (≥2 caracteres, debounce 800 ms) | `termino` |
+| `explorador_cambio` | Cambio de un control del Explorador de gráficas | `control`, `valor` |
+| `explorador_csv` | Descarga del CSV de la vista del Explorador | `nivel`, `tipo`, `variable`, `filas` |
+| `explorador_enlace` | «Copiar enlace» en el Explorador | `nivel`, `tipo` |
 | `exportar_xlsx` | Descarga del Excel | `vista`, `filas`, `anios` |
 | `ficha_departamento` | Se abre la ficha de un departamento | `departamento`, `anios` |
 | `ficha_municipio` | Se abre la ficha de un municipio | `municipio`, `departamento` |

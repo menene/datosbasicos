@@ -52,7 +52,11 @@ export type Evento =
   | "dispersion_ejes"
   | "inicio_cta"
   | "anexo_abierto"
-  | "anexo_descargado";
+  | "anexo_descargado"
+  | "anexos_busqueda"
+  | "explorador_cambio"
+  | "explorador_csv"
+  | "explorador_enlace";
 
 const URL_BASE = import.meta.env.VITE_UMAMI_URL?.replace(/\/$/, "");
 const WEBSITE_ID = import.meta.env.VITE_UMAMI_WEBSITE_ID;

@@ -1,10 +1,11 @@
 import { BrowserRouter, Routes, Route, NavLink, Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Map, BarChart2, Table2, FileText, FolderOpen, Users } from "lucide-react";
+import { Map, BarChart2, Compass, Table2, FileText, FolderOpen, Users } from "lucide-react";
 
 import InicioPage from "@/pages/Inicio";
 import MapaPage from "@/pages/Mapa";
 import GraficasPage from "@/pages/Graficas";
+import ExploradorPage from "@/pages/Explorador";
 import TablaPage from "@/pages/Tabla";
 import FichaPage from "@/pages/Ficha";
 import FichaMunicipioPage from "@/pages/FichaMunicipio";
@@ -17,6 +18,7 @@ import NoEncontradoPage from "@/pages/NoEncontrado";
 
 const NAV_ITEMS = [
   { to: "/mapa", label: "Mapa", icon: Map },
+  { to: "/explorador", label: "Explorador", icon: Compass },
   { to: "/graficas", label: "Gráficas", icon: BarChart2 },
   { to: "/tabla", label: "Tabla", icon: Table2 },
   { to: "/ficha", label: "Ficha", icon: FileText },
@@ -31,21 +33,22 @@ function AppShell() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <header className="border-b border-border bg-white/80 backdrop-blur-sm sticky top-0 z-50">
-        <div className="max-w-screen-2xl mx-auto px-4 h-14 flex items-center gap-8">
+        <div className="max-w-screen-2xl mx-auto px-4 h-14 flex items-center gap-4 lg:gap-8">
           <Link
             to="/"
-            className="font-display font-semibold text-selva text-lg tracking-tight hover:opacity-80 transition-opacity"
+            className="shrink-0 font-display font-semibold text-selva text-lg tracking-tight hover:opacity-80 transition-opacity"
           >
             Guatemala <span className="text-maiz">·</span> Datos Básicos 2026
           </Link>
 
-          <nav className="flex items-center gap-1 ml-4">
+          {/* En pantallas angostas el menú se desplaza de lado en vez de ensanchar la página. */}
+          <nav className="flex items-center gap-1 lg:ml-4 min-w-0 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {NAV_ITEMS.map(({ to, label, icon: Icon }) => (
               <NavLink
                 key={to}
                 to={to}
                 className={({ isActive }) =>
-                  `flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
+                  `shrink-0 whitespace-nowrap flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
                     isActive
                       ? "bg-selva text-white"
                       : "text-muted-foreground hover:text-foreground hover:bg-muted"
@@ -72,6 +75,7 @@ function AppShell() {
             <Route path="/" element={<InicioPage />} />
             <Route path="/mapa" element={<MapaPage />} />
             <Route path="/graficas" element={<GraficasPage />} />
+            <Route path="/explorador" element={<ExploradorPage />} />
             <Route path="/tabla" element={<TablaPage />} />
             <Route path="/ficha" element={<FichaPage />} />
             <Route path="/ficha/:departamento_slug" element={<FichaPage />} />

@@ -24,8 +24,11 @@ import KpiCard from "@/components/ficha/KpiCard";
 import MunicipioShape from "@/components/ficha/MunicipioShape";
 import Breadcrumb from "@/components/ficha/Breadcrumb";
 
+// pct_pea es propio de los municipios (no es VariableKey de los departamentos).
+type KpiKey = VariableKey | "pct_pea";
+
 const KPIS: Array<{
-  key: VariableKey;
+  key: KpiKey;
   label: string;
   formato: "numero" | "decimal" | "porcentaje";
   unit?: string;
@@ -45,6 +48,7 @@ const KPIS: Array<{
   { key: "crecimiento_anual_pct", label: "Crecimiento anual", formato: "porcentaje" },
   { key: "tiempo_duplicacion_anios", label: "Tiempo de duplicación", formato: "decimal", unit: "años" },
   { key: "poblacion_activa", label: "Población económicamente activa", formato: "numero" },
+  { key: "pct_pea", label: "PEA sobre población de 15+", formato: "porcentaje" },
   { key: "padron_electoral", label: "Padrón electoral (2023)", formato: "numero" },
   { key: "votos_emitidos", label: "Votos emitidos (2023)", formato: "numero" },
   { key: "participacion_pct", label: "Participación electoral (2023)", formato: "porcentaje" },
@@ -64,13 +68,13 @@ const CHART_VARS: Array<{ key: VariableKey; label: string }> = [
   { key: "crecimiento_anual_pct", label: "Crecimiento" },
 ];
 
-function muniVal(m: Municipio | undefined, key: VariableKey): number | null {
+function muniVal(m: Municipio | undefined, key: KpiKey): number | null {
   const v = (m as unknown as Record<string, unknown> | undefined)?.[key];
   return typeof v === "number" ? v : null;
 }
 
 /** Años con dato para la clave, del más antiguo al corte principal (2025). */
-function valoresPorAnio(m: Municipio, key: VariableKey): Array<{ anio: number; valor: number }> {
+function valoresPorAnio(m: Municipio, key: KpiKey): Array<{ anio: number; valor: number }> {
   const otros = Object.entries(m.series ?? {}).flatMap(([anio, corte]) => {
     const v = corte[key];
     return typeof v === "number" ? [{ anio: Number(anio), valor: v }] : [];

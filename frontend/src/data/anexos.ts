@@ -195,6 +195,17 @@ export const INFOGRAFIAS: Infografia[] = [
     detalle: "2 páginas",
     kb: 30,
   },
+  {
+    slug: "doble-carga-malnutricion-guatemala",
+    titulo: "Doble carga de malnutrición en Guatemala",
+    descripcion:
+      "La coexistencia de la desnutrición crónica y el rápido aumento del sobrepeso y la obesidad: indicadores clave, brechas territoriales y recomendaciones 2025–2030. Con datos de la SESAN.",
+    url: "/archivos/infografias/doble-carga-malnutricion-guatemala.pdf",
+    miniatura: "/archivos/infografias/doble-carga-malnutricion-guatemala-miniatura.jpg",
+    formato: "PDF",
+    detalle: "2 páginas",
+    kb: 222,
+  },
 ];
 
 /**

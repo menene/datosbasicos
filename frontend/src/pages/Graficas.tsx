@@ -26,6 +26,7 @@ import { track } from "@/lib/analytics";
 import { agregarNacional, esAditiva } from "@/lib/totales";
 import { getColorForValue } from "@/lib/colores";
 import TarjetaNacional from "@/components/TarjetaNacional";
+import SeccionVulnerabilidad from "@/components/graficas/SeccionVulnerabilidad";
 
 const COLORES_ANIO: Record<number, string> = {
   1994: "#1E4D8C",
@@ -618,6 +619,9 @@ export default function GraficasPage() {
           Haz clic en un punto para ver la ficha del departamento.
         </p>
       </section>
+
+      {/* ── Vulnerabilidad social (solo municipal, un corte) ── */}
+      <SeccionVulnerabilidad />
     </div>
   );
 }
